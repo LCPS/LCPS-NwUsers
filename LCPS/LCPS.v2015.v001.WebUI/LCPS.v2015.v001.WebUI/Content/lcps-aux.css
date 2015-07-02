@@ -1,0 +1,13 @@
+﻿.lcps-front-button
+{
+    display: inline-block;
+    border: solid 1pt Black;
+    border-radius: 12px;
+    padding: 32px;
+    font-size: 48px;
+    text-align: center;
+}
+
+.lcps-front-button-caption {
+    font-size: 12px;
+}

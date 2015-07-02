@@ -1,0 +1,43 @@
+﻿@model LCPS.v2015.v001.NwUsers.HumanResources.Staff.HREmployeeType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HREmployeeType</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeTypeLinkId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

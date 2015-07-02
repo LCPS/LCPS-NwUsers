@@ -1,0 +1,23 @@
+﻿@using Anvil.v2015.v001.Domain.Exceptions;
+
+@model AnvilExceptionModel
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2>Error!</h2>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        @Model.Title
+    </div>
+    <div class="panel-body">
+        @foreach(string e in Model)
+        {
+            <span class="text-danger">@e</span><br />
+        }
+    </div>
+</div>
+
+<a href="@Url.Action(@Model.Action, Model.Controller, new { area = Model.Area } )"><i class="fa fa-backwards"></i> Back</a>

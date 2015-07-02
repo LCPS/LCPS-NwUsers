@@ -1,0 +1,63 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+
+@model ImportSessionModel
+
+@{
+    ViewBag.Title = "Import";
+    Layout = Model.ViewLayoutPath;  //"~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Import - @Model.TypeName </h2>
+
+<div class="row">
+    @using (Html.BeginForm("ReadFile", "ImportFile", new { area = "Import"}, FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.SessionId)
+        @Html.HiddenFor(model => model.FullAssemblyTypeName)
+        @Html.HiddenFor(model => model.Area)
+        @Html.HiddenFor(model => model.Action)
+        @Html.HiddenFor(model => model.Controller)
+        @Html.HiddenFor(model => model.ViewLayoutPath)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TypeName, new { @readonly = "true", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TypeName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Author, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Author, new { @readonly = "true", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Author)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SessionDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.SessionDate, new { @readonly = "true", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SessionDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImportFilePost, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ImportFilePost, new { @type = "file", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ImportFilePost)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Read Import File" class="btn btn-success" />
+        </div>
+
+
+    }
+</div>

@@ -1,0 +1,8 @@
+﻿@using LCPS.v2015.v001.WebUI.Models;
+
+@model LcpsMvcHugeButtonModel
+
+<a href="@Url.Action(Model.Action, Model.Controller, new { area = @Model.Area } )" class="lcps-front-button">
+    <i class="@Model.CssClass"></i><br />
+    <span class="lcps-front-button-caption">@Model.Text</span>
+</a>

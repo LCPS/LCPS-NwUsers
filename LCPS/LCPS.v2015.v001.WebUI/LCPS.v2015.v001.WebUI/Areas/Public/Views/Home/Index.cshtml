@@ -1,0 +1,26 @@
+﻿@using LCPS.v2015.v001.WebUI.Infrastructure;
+@using LCPS.v2015.v001.WebUI.Models;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>@LcpsDbContext.Application.AppName</h1>
+    <p class="lead">@LcpsDbContext.Application.MissionStatement</p>
+</div>
+
+
+@if (User.IsInRole("APP-Admins") | User.IsInRole("HR-Managers"))
+{
+    @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
+{
+    Area = "HumanResources",
+    Controller = "EmployeeType",
+    Action = "Index",
+    CssClass = "fa fa-group",
+    Text = "Human Resources"
+})
+
+}
+
