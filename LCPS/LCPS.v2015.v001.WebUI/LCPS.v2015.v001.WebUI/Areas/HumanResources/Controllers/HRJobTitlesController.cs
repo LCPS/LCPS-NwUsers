@@ -152,7 +152,11 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             {
                 return HttpNotFound();
             }
+            
+            
             return View(hRJobTitle);
+
+
         }
 
         // POST: HumanResources/HRJobTitles/Edit/5
@@ -166,8 +170,10 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             {
                 db.Entry(hRJobTitle).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect(String.Format("{0}#{1}", Url.RouteUrl(new { area = "HumanResources", controller = "HRJobTitles", action = "Index" }), hRJobTitle.JobTitleKey.ToString()));
             }
+
+            
             return View(hRJobTitle);
         }
 

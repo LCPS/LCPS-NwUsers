@@ -1,0 +1,20 @@
+﻿@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+
+@model StaffSearchModel
+
+<div class="col-sm-3 col-md-3 pull-right">
+    @using (Html.BeginForm("StaffSearch", "HRStaff", new { area = "HumanResources" }, FormMethod.Post))
+    {
+        <div class="input-group">
+            <div class="input-group-addon">
+                Search:
+            </div>
+             @Html.TextBoxFor(model => model.SearchString, new { @class = "form-control" })
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    }
+
+</div>

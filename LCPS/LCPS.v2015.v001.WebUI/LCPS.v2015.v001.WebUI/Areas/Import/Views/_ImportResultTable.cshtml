@@ -24,7 +24,7 @@ else
                 <td>@Html.DisplayFor(model => item.LineIndex)</td>
                 <td>@Html.DisplayFor(model => item.Description)</td>
                 <td>@Html.DisplayFor(model => item.ImportStatus)</td>
-                <td>@Html.DisplayFor(model => item.Comment)</td>
+                <td>@Html.Raw(@Html.DisplayFor(model => item.Comment).ToString().Replace("\n", "<br>"))</td>
             </tr>
         }
 

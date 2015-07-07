@@ -75,20 +75,25 @@
   <ItemGroup>
     <Compile Include="HumanResources\HRBuildingCandidate.cs" />
     <Compile Include="HumanResources\HRBuildingSession.cs" />
+    <Compile Include="HumanResources\HRGenders.cs" />
     <Compile Include="HumanResources\HRImport\HREmployeeTypeCandidate.cs" />
     <Compile Include="HumanResources\HRImport\HREmployeeTypeImportSession.cs" />
     <Compile Include="HumanResources\HRImport\HRJobTitleCandidate.cs" />
     <Compile Include="HumanResources\HRImport\HRJobTitleSession.cs" />
-    <Compile Include="HumanResources\HRPerson.cs" />
     <Compile Include="HumanResources\HRBuilding.cs" />
+    <Compile Include="HumanResources\HRImport\HRStaffCandidate.cs" />
+    <Compile Include="HumanResources\HRImport\HRStaffSession.cs" />
     <Compile Include="HumanResources\IBuilding.cs" />
+    <Compile Include="HumanResources\IPerson.cs" />
     <Compile Include="HumanResources\Staff\HREmployeeType.cs" />
     <Compile Include="HumanResources\Staff\HRJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaff.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
-    <Compile Include="HumanResources\Staff\HRStaffPositionCollection.cs" />
     <Compile Include="HumanResources\Staff\IEmployeeType.cs" />
     <Compile Include="HumanResources\Staff\IJobTitle.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffPositionCandidate.cs" />
+    <Compile Include="HumanResources\Staff\IStaff.cs" />
+    <Compile Include="HumanResources\Staff\IStaffPosition.cs" />
     <Compile Include="Importing\IImportEntity.cs" />
     <Compile Include="Importing\IImportSession.cs" />
     <Compile Include="Importing\IImportStatus.cs" />

@@ -49,7 +49,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td id="@item.JobTitleKey">
                 @Html.DisplayFor(modelItem => item.EmployeeTypeName)
             </td>
             <td>

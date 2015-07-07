@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources
 {
+    [Serializable]
     [Table("HRBuilding", Schema = "HumanResources")]
     public class HRBuilding : IBuilding
     {

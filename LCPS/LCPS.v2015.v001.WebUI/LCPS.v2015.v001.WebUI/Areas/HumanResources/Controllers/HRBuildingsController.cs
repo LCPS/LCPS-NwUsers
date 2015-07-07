@@ -9,6 +9,16 @@ using System.Web.Mvc;
 using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.WebUI.Infrastructure;
 
+
+using LCPS.v2015.v001.NwUsers.Importing;
+using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
     [Authorize(Roles = "APP-Admins,HR-Admins")]
@@ -16,6 +26,67 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
     {
         private LcpsDbContext db = new LcpsDbContext();
 
+        #region Import
+
+
+        public ActionResult ImportFile()
+        {
+            ImportSession s = new ImportSession
+                (
+                    area: "HumanResources",
+                    controller: "HRBuildings",
+                    action: "Preview",
+                    itemType: typeof(HRBuildingCandidate),
+                    viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml",
+                    addIfNotExist: true,
+                    updateIfExists: false,
+                    viewTitle: "Import Buildings"
+                );
+
+            return View("~/Areas/Import/Views/ImportFile.cshtml", s);
+        }
+
+        [HttpPost]
+        public ActionResult Preview(ImportSession s)
+        {
+            try
+            {
+                ImportSession dbs = db.ImportSessions.First(x => x.SessionId.Equals(s.SessionId));
+
+                HRBuildingSession jt = new HRBuildingSession(dbs);
+                using (StreamReader sr = new StreamReader(s.ImportFile.InputStream))
+                {
+                    jt.ParseItems(sr);
+                }
+
+
+                ImportPreviewModel m = new ImportPreviewModel(s.SessionId);
+                return View("~/Areas/Import/Views/Preview.cshtml", m);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Parse Import File", "HumanResources", "HRJobTitles", "Index"));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Import(ImportSession s)
+        {
+            try
+            {
+                ImportSession dbs = db.ImportSessions.First(x => x.SessionId.Equals(s.SessionId));
+                HRBuildingSession jt = new HRBuildingSession(dbs);
+                jt.Import();
+                ImportPreviewModel m = new ImportPreviewModel(s.SessionId);
+                return View("~/Areas/Import/Views/Import.cshtml", m);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Import Job Titles", "HumanResources", "HRJobTitles", "Preview"));
+            }
+        }
+
+        #endregion
 
         #region CRUD
 

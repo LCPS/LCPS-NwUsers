@@ -23,10 +23,12 @@ using Anvil.v2015.v001.Domain.Exceptions;
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources
 {
+    [Serializable]
     public class HRBuildingCandidate : IBuilding, IImportStatus, IImportEntity
     {
         #region Fields
 
+        [NonSerialized]
         public LcpsDbContext db = new LcpsDbContext();
         private byte[] _serialized;
 
@@ -79,13 +81,13 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
 
         public object Deserialize()
         {
-            return Deserialize();
+            HRBuildingCandidate t = (HRBuildingCandidate)ImportFileTSV.DeserializeItem(this.GetType(), _serialized);
+            return t;
         }
 
         public object Deserialize(IImportSession session)
         {
-            HRBuildingCandidate t = (HRBuildingCandidate)ImportFileTSV.DeserializeItem(this.GetType(), _serialized);
-            return t;
+            return Deserialize();
         }
 
         public ImportEntityStatus EntityStatus { get; set; }
@@ -119,6 +121,11 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
             AnvilEntity e = new AnvilEntity(this);
             e.CopyTo(b);
             return b;
+        }
+
+        public override string ToString()
+        {
+            return BuildingId + " - " + Name;
         }
 
         #endregion

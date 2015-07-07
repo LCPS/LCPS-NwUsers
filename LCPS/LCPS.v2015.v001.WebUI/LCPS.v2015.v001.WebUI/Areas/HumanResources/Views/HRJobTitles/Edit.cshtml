@@ -56,5 +56,12 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(linkText: "Back to List", 
+        actionName: "Index", 
+        routeValues: new {area = "HumanResources"}, 
+        controllerName: "HRJobTitles",
+        htmlAttributes: null,
+        protocol: null,
+        hostName: null,
+        fragment: Model.JobTitleKey.ToString())
 </div>

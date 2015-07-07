@@ -6,8 +6,19 @@
 
 @using (Html.BeginForm("Import", @Model.Controller, new { area = Model.Area }, FormMethod.Post))
 {
-
     @Html.HiddenFor(model => model.SessionId)
+    @Html.HiddenFor(model => model.SessionDate)
+    @Html.HiddenFor(model => model.Author)
+    @Html.HiddenFor(model => model.FullAssemblyTypeName)
+    @Html.HiddenFor(model => model.ViewTitle)
+    @Html.HiddenFor(model => model.Area)
+    @Html.HiddenFor(model => model.Controller)
+    @Html.HiddenFor(model => model.Action)
+    @Html.HiddenFor(model => model.ViewLayoutPath)
+    @Html.HiddenFor(model => model.Delimiter)
+    @Html.HiddenFor(model => model.AddIfNotExist)
+    @Html.HiddenFor(model => model.UpdateIfExists)
+    
 
     <div class="row">
         <div class="col-xs-2">

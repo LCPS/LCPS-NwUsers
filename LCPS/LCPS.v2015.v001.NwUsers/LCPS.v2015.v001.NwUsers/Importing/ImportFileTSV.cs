@@ -57,8 +57,6 @@ namespace LCPS.v2015.v001.NwUsers.Importing
             Delimiter = '\t'.ToString();
             AddIfNotExist = addIfNotExists;
             UpdateIfExists = updateIfExists;
-
-            Record();
         }
 
         public Guid SessionId { get; set; }
@@ -93,7 +91,9 @@ namespace LCPS.v2015.v001.NwUsers.Importing
 
         public void ParseItems(StreamReader reader)
         {
-            
+
+            Record();
+
             int index = 0;
 
             ItemType = System.Type.GetType(FullAssemblyTypeName);
@@ -158,81 +158,87 @@ namespace LCPS.v2015.v001.NwUsers.Importing
                         }
                     }
 
+                    index++;
 
-                    IImportStatus iis = sourceItem as IImportStatus;
-                    if (iis == null)
-                        throw new Exception("Parse import file failed. The items must implement IImportStatus");
-
-                    IImportEntity iie = sourceItem as IImportEntity;
-
-                    if (iie == null)
-                        throw new Exception("Parse import file failed. The items must implement IImportEntity");
-
-                    try
+                    if (sourceItem != null)
                     {
-                        iis.LineIndex = index - 1;
-                        iis.ImportItemId = Guid.NewGuid();
-                        iis.SessionId = this.SessionId;
-                        iis.EntryDate = DateTime.Now;
-                        Byte[] _bytes = SerializeItem(sourceItem);
-                        iis.SerializedData = _bytes;
-                        iis.SourceItem = sourceItem;
-                    }
-                    catch (Exception ex)
-                    {
-                        AnvilExceptionCollector ec = new AnvilExceptionCollector(ex);
-                        ec.Insert(0, string.Format("Could not serialize item at index {0}", index.ToString()));
-                        ec.Insert(0, l);
-                        throw ec.ToException();
-                    }
+                        IImportStatus iis = sourceItem as IImportStatus;
+                        if (iis == null)
+                            throw new Exception("Parse import file failed. The items must implement IImportStatus");
 
+                        IImportEntity iie = sourceItem as IImportEntity;
 
+                        if (iie == null)
+                            throw new Exception("Parse import file failed. The items must implement IImportEntity");
 
-                    try
-                    {
                         try
                         {
-                            iis.Validate();
+                            iis.LineIndex = index - 1;
+                            iis.ImportItemId = Guid.NewGuid();
+                            iis.SessionId = this.SessionId;
+                            iis.EntryDate = DateTime.Now;
+                            Byte[] _bytes = SerializeItem(sourceItem);
+                            iis.SerializedData = _bytes;
+                            iis.SourceItem = sourceItem;
                         }
                         catch (Exception ex)
                         {
                             AnvilExceptionCollector ec = new AnvilExceptionCollector(ex);
-                            iis.Comment = string.Join("\n", ec.ToArray());
-                            iis.EntityStatus = ImportEntityStatus.Error;
+                            ec.Insert(0, string.Format("Could not serialize item at index {0}", index.ToString()));
+                            ec.Insert(0, l);
+                            throw ec.ToException();
                         }
 
-                        if (iis.EntityStatus == ImportEntityStatus.Error)
-                            goto completesync;
 
-                        if (iie.TargetExists())
+
+                        try
                         {
-                            if (UpdateIfExists)
+                            try
                             {
-                                if (iie.IsSyncJustified())
-                                    iis.EntityStatus = ImportEntityStatus.Update;
+                                iis.Validate();
+                            }
+                            catch (Exception ex)
+                            {
+                                AnvilExceptionCollector ec = new AnvilExceptionCollector(ex);
+                                iis.Comment = string.Join("\n", ec.ToArray());
+                                iis.EntityStatus = ImportEntityStatus.Error;
+                            }
+
+                            if (iis.EntityStatus == ImportEntityStatus.Error)
+                                goto completesync;
+
+                            if (iie.TargetExists())
+                            {
+                                if (UpdateIfExists)
+                                {
+                                    if (iie.IsSyncJustified())
+                                        iis.EntityStatus = ImportEntityStatus.Update;
+                                    else
+                                        iis.EntityStatus = ImportEntityStatus.None;
+                                }
                                 else
-                                    iis.EntityStatus = ImportEntityStatus.None;
+                                    iis.EntityStatus = ImportEntityStatus.Ignore;
                             }
                             else
-                                iis.EntityStatus = ImportEntityStatus.Ignore;
+                            {
+                                if (AddIfNotExist)
+                                    iis.EntityStatus = ImportEntityStatus.Create;
+                                else
+                                    iis.EntityStatus = ImportEntityStatus.Ignore;
+                            }
                         }
-                        else
-                        {
-                            if (AddIfNotExist)
-                                iis.EntityStatus = ImportEntityStatus.Create;
-                            else
-                                iis.EntityStatus = ImportEntityStatus.Ignore;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("Could not get sync status of this item", ex);
-                    }
 
-                completesync:
-                    iis.SerializedData = SerializeItem(iis);
-                    iis.Record();
-                    index++;
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Could not get sync status of this item", ex);
+                        }
+
+                    completesync:
+                        iis.SerializedData = SerializeItem(iis);
+                        iis.Record();
+                        
+
+                    }
                 }
             }
 
@@ -277,7 +283,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
                             if (p.PropertyType == typeof(int))
                                 v = Convert.ToInt32(t);
 
-                            if(p.PropertyType.IsEnum)
+                            if (p.PropertyType.IsEnum)
                                 v = System.Enum.Parse(p.PropertyType, t);
 
                         }
@@ -312,14 +318,24 @@ namespace LCPS.v2015.v001.NwUsers.Importing
 
         public void Record()
         {
-            ImportSession session = new ImportSession();
+
+            LcpsDbContext db = new LcpsDbContext();
+
+            ImportSession session = db.ImportSessions.FirstOrDefault(x => x.SessionId.Equals(this.SessionId));
+
+            if(session == null)
+            {
+                db.ImportSessions.Add(this.ToImportSession());
+            }
+            else
+            {
+                db.Entry(this.ToImportSession()).State = System.Data.Entity.EntityState.Modified;
+            }
 
 
-
-            AnvilEntity e = new AnvilEntity(this);
-            e.CopyTo(session);
-            db.ImportSessions.Add(session);
             db.SaveChanges();
+
+
         }
 
         public abstract void DetectConflicts();
@@ -333,7 +349,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
 
         public void Import()
         {
-            List<ImportItem> cc  = db.ImportItems.Where(x => x.SessionId.Equals(this.SessionId) & (x.EntityStatus == ImportEntityStatus.Create | x.EntityStatus == ImportEntityStatus.Update) ).ToList();
+            List<ImportItem> cc = db.ImportItems.Where(x => x.SessionId.Equals(this.SessionId) & (x.EntityStatus == ImportEntityStatus.Create | x.EntityStatus == ImportEntityStatus.Update)).ToList();
 
             System.Type t = System.Type.GetType(FullAssemblyTypeName);
 

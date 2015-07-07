@@ -167,8 +167,11 @@
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HRStaffController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
     <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
+    <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
+    <Compile Include="Areas\Import\Controllers\ImportSessionController.cs" />
     <Compile Include="Areas\Import\ImportAreaRegistration.cs" />
     <Compile Include="Areas\Import\Models\ImportPreviewModel.cs" />
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
@@ -191,6 +194,14 @@
     <Compile Include="Migrations\201507071040050_Building-001.cs" />
     <Compile Include="Migrations\201507071040050_Building-001.Designer.cs">
       <DependentUpon>201507071040050_Building-001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507071453083_HRStaff-01.cs" />
+    <Compile Include="Migrations\201507071453083_HRStaff-01.Designer.cs">
+      <DependentUpon>201507071453083_HRStaff-01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507071916152_HRStaffPosition-01.cs" />
+    <Compile Include="Migrations\201507071916152_HRStaffPosition-01.Designer.cs">
+      <DependentUpon>201507071916152_HRStaffPosition-01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -270,6 +281,12 @@
     <Content Include="Areas\HumanResources\Views\HRBuildings\Details.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRBuildings\Edit.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRBuildings\Index.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\Create.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\Delete.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\Details.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\Edit.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\Index.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\_HRStaffSearch.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -316,7 +333,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HRImporting\Views\Shared\" />
-    <Folder Include="Areas\Import\Controllers\" />
+    <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
     <Folder Include="Assets\" />
@@ -347,6 +364,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507071040050_Building-001.resx">
       <DependentUpon>201507071040050_Building-001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507071453083_HRStaff-01.resx">
+      <DependentUpon>201507071453083_HRStaff-01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507071916152_HRStaffPosition-01.resx">
+      <DependentUpon>201507071916152_HRStaffPosition-01.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,6 @@
 ﻿@using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 @using LCPS.v2015.v001.NwUsers.Importing;
+@using LCPS.v2015.v001.WebUI.Infrastructure;
 
 @model ImportSession
 
@@ -10,5 +11,14 @@
 
 <h2>@Model.ViewTitle</h2>
 
-@Html.Partial("~/Areas/Import/Views/Shared/_ImportSessionPartial.cshtml", @Model)
-
+<div class="row">
+    <div class="col-md-4">
+        @Html.Partial("~/Areas/Import/Views/_ImportSessionList.cshtml", (new LcpsDbContext()).ImportSessions.Where(x => x.FullAssemblyTypeName == Model.FullAssemblyTypeName).OrderByDescending(x => x.SessionDate).ToList())
+    </div>
+    <div class="col-md-1">
+        &nbsp;
+    </div>
+    <div class="col-md-6">
+        @Html.Partial("~/Areas/Import/Views/Shared/_ImportSessionPartial.cshtml", @Model)
+    </div>
+</div>

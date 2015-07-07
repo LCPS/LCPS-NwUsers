@@ -40,8 +40,6 @@ namespace LCPS.v2015.v001.NwUsers.Importing
             this.FullAssemblyTypeName = itemType.AssemblyQualifiedName;
             this.ViewLayoutPath = viewLayoutPath;
             this.ViewTitle = viewTitle;
-
-            Record();
         }
 
         [Key]
