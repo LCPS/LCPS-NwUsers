@@ -73,17 +73,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HumanResources\HRImport\HREmployeeTypeCandidate.cs" />
+    <Compile Include="HumanResources\HRImport\HREmployeeTypeImportSession.cs" />
+    <Compile Include="HumanResources\HRImport\HRJobTitleCandidate.cs" />
+    <Compile Include="HumanResources\HRImport\HRJobTitleSession.cs" />
     <Compile Include="HumanResources\HRPerson.cs" />
     <Compile Include="HumanResources\HRBuilding.cs" />
     <Compile Include="HumanResources\Staff\HREmployeeType.cs" />
     <Compile Include="HumanResources\Staff\HRJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaff.cs" />
-    <Compile Include="HumanResources\Staff\HRStaffImportModel.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
-    <Compile Include="Importing\ImportFile.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffPositionCollection.cs" />
+    <Compile Include="HumanResources\Staff\IEmployeeType.cs" />
+    <Compile Include="HumanResources\Staff\IJobTitle.cs" />
+    <Compile Include="Importing\IImportEntity.cs" />
+    <Compile Include="Importing\IImportSession.cs" />
+    <Compile Include="Importing\IImportStatus.cs" />
+    <Compile Include="Importing\ImportFileTSV.cs" />
     <Compile Include="Importing\ImportItem.cs" />
     <Compile Include="Importing\ImportSession.cs" />
-    <Compile Include="Importing\ImportStatus.cs" />
     <Compile Include="Infrastructure\LcpsDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

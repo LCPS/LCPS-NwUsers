@@ -1,0 +1,11 @@
+﻿
+@using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
+@model HREmployeeTypeImportSession
+
+@{
+    ViewBag.Title = "ImportEmployeeType";
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+@Html.Partial("~/Areas/Import/Views/Shared/_ImportSessionPartial.cshtml", @Model.ToImportSession())
+

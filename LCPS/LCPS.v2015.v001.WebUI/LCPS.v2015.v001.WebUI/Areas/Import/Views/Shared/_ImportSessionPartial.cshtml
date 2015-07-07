@@ -1,0 +1,45 @@
+﻿
+@using LCPS.v2015.v001.NwUsers.Importing;
+
+@model ImportSession
+
+@using (Html.BeginForm(@Model.Action, @Model.Controller, new { area = @Model.Area }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@Model.ViewTitle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SessionId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SessionDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SessionDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SessionDate, "", new { @class = "text-danger" })
+            </div>
+            
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImportFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ImportFile, new { @class = "form-control", type = "file" } )
+                @Html.ValidationMessageFor(model => model.ImportFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Preview File" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

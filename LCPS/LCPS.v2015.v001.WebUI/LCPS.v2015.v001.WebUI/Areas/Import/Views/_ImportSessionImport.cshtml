@@ -1,0 +1,36 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing;
+@using LCPS.v2015.v001.NwUsers.Infrastructure;
+
+@model ImportSession
+
+
+<div class="row">
+    <div class="col-xs-4">
+        <strong>@Html.DisplayNameFor(model => model.SessionId)</strong>
+    </div>
+    <div class="col-xs-2">
+        <strong>@Html.DisplayNameFor(model => model.SessionDate)</strong>
+    </div>
+    <div class="col-xs-2">
+        <strong>@Html.DisplayNameFor(model => model.Author)</strong>
+    </div>
+    <div class="col-xs-2">
+        <strong>Total</strong>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-4">
+        @Html.DisplayFor(model => model.SessionId)
+    </div>
+    <div class="col-xs-2">
+        @Html.DisplayFor(model => model.SessionDate)
+    </div>
+    <div class="col-xs-2">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+    <div class="col-xs-2">
+        <span>@((new LcpsDbContext()).ImportItems.Where(x => x.SessionId.Equals(Model.SessionId) & x.EntityStatus != ImportEntityStatus.None ).Count().ToString())</span>
+    </div>
+</div>
+

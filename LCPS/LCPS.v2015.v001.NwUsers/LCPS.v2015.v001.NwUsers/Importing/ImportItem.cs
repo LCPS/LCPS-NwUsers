@@ -7,56 +7,71 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Serialization;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace LCPS.v2015.v001.NwUsers.Importing
 {
     [Table("ImportItem", Schema = "Importing")]
-    public class ImportItem
+    public class ImportItem : IImportStatus
     {
-        public enum LcpsImportStatus
-        {
-            @default = 0,
-            success = 1,
-            info = 2,
-            warning = 3,
-            danger = 4
-        }
-
+        ImportSession _session = new ImportSession();
 
         [Key]
-        public Guid RecordId { get; set; }
+        public Guid ImportItemId { get; set; }
 
         public Guid SessionId { get; set; }
 
-        public byte[] SerializedItem { get; set; }
-
-        [Display(Name = "Candidate Status")]
-        public LcpsImportStatus ReadStatus { get; set; }
-
-        [Display(Name = "Import Status")]
-        public LcpsImportStatus ImportStatus { get; set; }
-
-        [Display(Name = "Comment")]
+        [ForeignKey("SessionId")]
+        public virtual ImportSession Session { get; set; }
+        
         public string Comment { get; set; }
 
-        [Display(Name = "Description")]
         public string Description { get; set; }
 
-        [Display(Name = "Entry Date")]
         public DateTime EntryDate { get; set; }
 
-        public Object GetDeserialized(string assemblyTypeName)
+        public ImportResultStatus ImportStatus { get; set; }
+
+        public byte[] SerializedData { get; set; }
+
+        public object SourceItem { get; set; }
+
+        public void Serialize()
         {
-            System.Type t = System.Type.GetType(assemblyTypeName);
-            return Deserialize(SerializedItem, t);
+            throw new NotImplementedException();
         }
 
-        public static object Deserialize(byte[] content, System.Type itemType)
+      
+        public ImportEntityStatus EntityStatus { get; set; }
+
+        public int LineIndex { get; set; }
+
+        public void Validate()
         {
-            XmlSerializer x = new XmlSerializer(itemType);
-            MemoryStream m = new MemoryStream(content);
-            return x.Deserialize(m);
+            throw new NotImplementedException();
         }
 
+        public void Record()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ImportItem ToImportItem()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public object Deserialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Deserialize(IImportSession session)
+        {
+            System.Type t = System.Type.GetType(session.FullAssemblyTypeName);
+            return ImportFileTSV.DeserializeItem(t, SerializedData);
+        }
     }
 }

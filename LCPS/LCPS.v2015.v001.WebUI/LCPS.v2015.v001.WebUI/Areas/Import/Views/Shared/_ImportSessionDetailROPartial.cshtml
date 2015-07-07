@@ -1,0 +1,35 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing;
+
+@model ImportSession
+
+
+@using (Html.BeginForm("Import", @Model.Controller, new { area = Model.Area }, FormMethod.Post))
+{
+
+    @Html.HiddenFor(model => model.SessionId)
+
+        <div class="row">
+        <div class="col-xs-2">
+            <strong>@Html.DisplayNameFor(model => model.SessionDate)</strong>
+        </div>
+        <div class="col-xs-2">
+            <strong>@Html.DisplayNameFor(model => model.Author)</strong>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2">
+            @Html.DisplayFor(model => model.SessionDate)
+        </div>
+        <div class="col-xs-2">
+            @Html.DisplayFor(model => model.Author)
+        </div>
+
+        @if (Model.Mode == ImportSessionMode.Preview)
+        {
+            <div class="col-xs-2">
+                 <input type="submit" value="Import" class="btn btn-xs btn-success" />
+            </div>
+        }
+    </div>
+}

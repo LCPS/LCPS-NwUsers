@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml;
 using System.Xml.Serialization;
+using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
 using LCPS.v2015.v001.NwUsers.Security;
 #endregion
@@ -22,11 +23,39 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         #region Fields
 
         private LcpsDbContext db = new LcpsDbContext();
-        private List<HRStaffPosition> _positions;
+        private HRStaffPositionCollection _positions = new HRStaffPositionCollection();
         private IEnumerable<LcpsStaffEmail> _emails;
 
         #endregion
 
+
+        #region Constructors
+
+        public HRStaff()
+        { }
+
+
+        public HRStaff(Guid staffLinkId)
+        {
+            /*
+            HRStaff dbStaff = db.StaffMembers.FirstOrDefault(x => x.StaffLinkId.Equals(staffLinkId));
+            if(dbStaff != null)
+            {
+                this.StaffLinkId = staffLinkId;
+                this.StaffId = dbStaff.StaffId;
+                this.FirstName = dbStaff.FirstName;
+                this.MiddleInitial = dbStaff.MiddleInitial;
+                this.LastName = dbStaff.LastName;
+                this.Birthdate = dbStaff.Birthdate;
+                this.Gender = dbStaff.Gender;
+                this.Email = dbStaff.Email;
+                _positions = new HRStaffPositionCollection(staffLinkId);
+             * }
+             */ 
+            
+        }
+
+        #endregion
 
         #region Properties
 
@@ -40,25 +69,21 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         public string StaffId { get; set; }
 
         [XmlIgnore]
-        public virtual IEnumerable<HRStaffPosition> Positions
+        public virtual HRStaffPositionCollection Positions
         {
-            get 
-            { 
-                if (_positions == null)
-                {
-                    _positions = db.StaffPositions.Where(x => x.StaffLinkId.Equals(this.StaffLinkId)).ToList();
-                }
+            get
+            {
                 return _positions;
             }
-            set { _positions = value.ToList(); }
+            set { _positions = value; }
         }
 
-        [XmlIgnore]                
+        [XmlIgnore]
         public virtual IEnumerable<LcpsStaffEmail> Emails
         {
             get
             {
-                return db.StaffEmails.Where(x => x.StaffLinkId.Equals(StaffLinkId)).ToList();
+                return new List<LcpsStaffEmail>(); // return db.StaffEmails.Where(x => x.StaffLinkId.Equals(StaffLinkId)).ToList();
             }
             set
             {
@@ -68,6 +93,9 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         #endregion
 
-        
+        public override string ToString()
+        {
+            return "(" + StaffId + "), " + LastName + ", " + FirstName + " " + MiddleInitial + " (" + Gender.ToString() + Birthdate.ToShortDateString() + ")";
+        }
     }
 }

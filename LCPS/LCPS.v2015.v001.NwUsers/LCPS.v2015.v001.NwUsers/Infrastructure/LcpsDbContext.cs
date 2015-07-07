@@ -17,6 +17,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
+
 
 #endregion
 
@@ -52,16 +54,34 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
         public DbSet<HREmployeeType> EmployeeTypes { get; set; }
         public DbSet<HRJobTitle> JobTitles { get; set; }
+        
+        /*
         public DbSet<HRBuilding> Buildings { get; set; }
         public DbSet<HRStaff> StaffMembers { get; set; }
         public DbSet<HRStaffPosition> StaffPositions { get; set; }
+        */
+
 
         public DbSet<Importing.ImportItem> ImportItems { get; set; }
         public DbSet<Importing.ImportSession> ImportSessions { get; set; }
 
+        /*
         public DbSet<Security.LcpsStaffEmail> StaffEmails { get; set; }
+        */
+
 
         #endregion
+
+
+        /*
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Ignore<HREmployeeTypeCandidate>();
+            base.OnModelCreating(modelBuilder);
+        }
+        */
+
+
 
     }
 }

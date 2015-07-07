@@ -20,14 +20,15 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink(@LcpsDbContext.Application.Title, "Index", "Home", new { area = "Public" }, new { @class = "navbar-brand" })
-
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.Action("Index", "EmployeeType", new { area = "HumanResources"})">Employee Types</a> </li>
-                    <li><a href="@Url.Action("Index", "JobTitle", new { area = "HumanResources"})">Job Titles</a> </li>
-                    <li><a href="@Url.Action("Index", "Building", new { area = "HumanResources"})">Buildings</a> </li>
-                    <li><a href="@Url.Action("Index", "HRStaff", new { area = "HumanResources"})">Staff</a> </li>
+                    <li>
+                        <a href="@Url.Action("Index", "HREmployeeTypes", new { @area = "HumanResources" })">Employee Types</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "HRJobTitles", new { @area = "HumanResources" })">Job Titles</a>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

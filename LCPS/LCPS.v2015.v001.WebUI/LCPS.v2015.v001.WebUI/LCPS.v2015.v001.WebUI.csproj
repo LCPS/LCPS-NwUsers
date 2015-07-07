@@ -160,114 +160,18 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\HumanResources\Controllers\BuildingController.cs" />
-    <Compile Include="Areas\HumanResources\Controllers\EmployeeTypeController.cs" />
-    <Compile Include="Areas\HumanResources\Controllers\HRImportController.cs" />
-    <Compile Include="Areas\HumanResources\Controllers\HRStaffController.cs" />
-    <Compile Include="Areas\HumanResources\Controllers\JobTitleController.cs" />
+    <Compile Include="Areas\HRImporting\Controllers\HREmployeeTypeImportController.cs" />
+    <Compile Include="Areas\HRImporting\HRImportingAreaRegistration.cs" />
+    <Compile Include="Areas\HRImporting\Models\HREmployeeTypeImportModel.cs" />
+    <Compile Include="Areas\HRImporting\Models\HREmployeeTypePreviewModel.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
-    <Compile Include="Areas\HumanResources\Models\HRJobTitleImportModel.cs" />
-    <Compile Include="Areas\Import\Controllers\ImportFileController.cs" />
+    <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
     <Compile Include="Areas\Import\ImportAreaRegistration.cs" />
-    <Compile Include="Areas\Import\Models\ImportFileModel.cs" />
+    <Compile Include="Areas\Import\Models\ImportPreviewModel.cs" />
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Security\Controllers\SecurityImportsController.cs" />
-    <Compile Include="Areas\Security\SecurityAreaRegistration.cs" />
-    <Compile Include="Migrations\201506302014447_Init01.cs" />
-    <Compile Include="Migrations\201506302014447_Init01.Designer.cs">
-      <DependentUpon>201506302014447_Init01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507010152504_Import01.cs" />
-    <Compile Include="Migrations\201507010152504_Import01.Designer.cs">
-      <DependentUpon>201507010152504_Import01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507010330589_Import02.cs" />
-    <Compile Include="Migrations\201507010330589_Import02.Designer.cs">
-      <DependentUpon>201507010330589_Import02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507011219270_Import03.cs" />
-    <Compile Include="Migrations\201507011219270_Import03.Designer.cs">
-      <DependentUpon>201507011219270_Import03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507011406132_Import04.cs" />
-    <Compile Include="Migrations\201507011406132_Import04.Designer.cs">
-      <DependentUpon>201507011406132_Import04.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507011513146_JobTitle01.cs" />
-    <Compile Include="Migrations\201507011513146_JobTitle01.Designer.cs">
-      <DependentUpon>201507011513146_JobTitle01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507011715506_Recreate_01.cs" />
-    <Compile Include="Migrations\201507011715506_Recreate_01.Designer.cs">
-      <DependentUpon>201507011715506_Recreate_01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507011722144_Recreate_02.cs" />
-    <Compile Include="Migrations\201507011722144_Recreate_02.Designer.cs">
-      <DependentUpon>201507011722144_Recreate_02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507011816402_Recreate_03.cs" />
-    <Compile Include="Migrations\201507011816402_Recreate_03.Designer.cs">
-      <DependentUpon>201507011816402_Recreate_03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507011939484_Building01.cs" />
-    <Compile Include="Migrations\201507011939484_Building01.Designer.cs">
-      <DependentUpon>201507011939484_Building01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507020047297_Staff01.cs" />
-    <Compile Include="Migrations\201507020047297_Staff01.Designer.cs">
-      <DependentUpon>201507020047297_Staff01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021423181_HRPositionFK01.cs" />
-    <Compile Include="Migrations\201507021423181_HRPositionFK01.Designer.cs">
-      <DependentUpon>201507021423181_HRPositionFK01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021502169_HRPositionFK02.cs" />
-    <Compile Include="Migrations\201507021502169_HRPositionFK02.Designer.cs">
-      <DependentUpon>201507021502169_HRPositionFK02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021531249_HRPositionFK03.cs" />
-    <Compile Include="Migrations\201507021531249_HRPositionFK03.Designer.cs">
-      <DependentUpon>201507021531249_HRPositionFK03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021555127_HRPositionFK04.cs" />
-    <Compile Include="Migrations\201507021555127_HRPositionFK04.Designer.cs">
-      <DependentUpon>201507021555127_HRPositionFK04.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021835550_HREmplioyeeTypeSchema01.cs" />
-    <Compile Include="Migrations\201507021835550_HREmplioyeeTypeSchema01.Designer.cs">
-      <DependentUpon>201507021835550_HREmplioyeeTypeSchema01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021837194_HRSchema01.cs" />
-    <Compile Include="Migrations\201507021837194_HRSchema01.Designer.cs">
-      <DependentUpon>201507021837194_HRSchema01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021839188_HRSchema02.cs" />
-    <Compile Include="Migrations\201507021839188_HRSchema02.Designer.cs">
-      <DependentUpon>201507021839188_HRSchema02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021840351_HRSchema03.cs" />
-    <Compile Include="Migrations\201507021840351_HRSchema03.Designer.cs">
-      <DependentUpon>201507021840351_HRSchema03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021852152_LcpSEmail01.cs" />
-    <Compile Include="Migrations\201507021852152_LcpSEmail01.Designer.cs">
-      <DependentUpon>201507021852152_LcpSEmail01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021853268_LcpsEmail02.cs" />
-    <Compile Include="Migrations\201507021853268_LcpsEmail02.Designer.cs">
-      <DependentUpon>201507021853268_LcpsEmail02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021921457_LcpsEmail03.cs" />
-    <Compile Include="Migrations\201507021921457_LcpsEmail03.Designer.cs">
-      <DependentUpon>201507021921457_LcpsEmail03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507021923463_LcpsEmail04.cs" />
-    <Compile Include="Migrations\201507021923463_LcpsEmail04.Designer.cs">
-      <DependentUpon>201507021923463_LcpsEmail04.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Infrastructure\LcpsDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -275,6 +179,16 @@
     </Compile>
     <Compile Include="Infrastructure\LcpsRoleManager.cs" />
     <Compile Include="Infrastructure\LcpsUserManager.cs" />
+    <Compile Include="Migrations\201507060228340_INIT-001.cs" />
+    <Compile Include="Migrations\201507060228340_INIT-001.Designer.cs">
+      <DependentUpon>201507060228340_INIT-001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507061836433_JobTitle-001.cs" />
+    <Compile Include="Migrations\201507061836433_JobTitle-001.Designer.cs">
+      <DependentUpon>201507061836433_JobTitle-001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Models\LcpsMvcActionTarget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -301,9 +215,7 @@
     <Content Include="Areas\Public\Views\Home\Login.cshtml" />
     <Content Include="Content\lcps-theme.less" />
     <Content Include="Content\lcps-variables.less" />
-    <Content Include="Areas\HumanResources\Views\web.config" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Views\Shared\_HugeButtonPartial.cshtml" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -314,37 +226,40 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Areas\Import\Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\Import\Views\ImportFile\Index.cshtml" />
-    <Content Include="Areas\Import\Views\ImportFile\_ImportSessionPartial.cshtml" />
-    <Content Include="Areas\Import\Views\ImportFile\_ImportResultListPartial.cshtml" />
-    <Content Include="Areas\Import\Views\ImportFile\_ImportCandidateListPartial.cshtml" />
-    <Content Include="Areas\Import\Views\ImportFile\Results.cshtml" />
-    <Content Include="Areas\HumanResources\Views\EmployeeType\Create.cshtml" />
-    <Content Include="Areas\HumanResources\Views\EmployeeType\Delete.cshtml" />
-    <Content Include="Areas\HumanResources\Views\EmployeeType\Details.cshtml" />
-    <Content Include="Areas\HumanResources\Views\EmployeeType\Edit.cshtml" />
-    <Content Include="Areas\HumanResources\Views\EmployeeType\Index.cshtml" />
-    <Content Include="Areas\HumanResources\Views\JobTitle\Create.cshtml" />
-    <Content Include="Areas\HumanResources\Views\JobTitle\Delete.cshtml" />
-    <Content Include="Areas\HumanResources\Views\JobTitle\Details.cshtml" />
-    <Content Include="Areas\HumanResources\Views\JobTitle\Edit.cshtml" />
-    <Content Include="Areas\HumanResources\Views\JobTitle\Index.cshtml" />
+    <Content Include="Areas\HRImporting\Views\web.config" />
+    <Content Include="Areas\Import\Views\web.config" />
+    <Content Include="Areas\Import\Views\Shared\_ImportSessionPartial.cshtml" />
+    <Content Include="Areas\HumanResources\Views\web.config" />
+    <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Create.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Delete.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Details.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Edit.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Index.cshtml" />
+    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\Index.cshtml" />
+    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\Preview.cshtml" />
     <Content Include="Areas\HumanResources\Views\Shared\_HumanResourcesLayout.cshtml" />
-    <Content Include="Areas\HumanResources\Views\Building\Create.cshtml" />
-    <Content Include="Areas\HumanResources\Views\Building\Delete.cshtml" />
-    <Content Include="Areas\HumanResources\Views\Building\Details.cshtml" />
-    <Content Include="Areas\HumanResources\Views\Building\Edit.cshtml" />
-    <Content Include="Areas\HumanResources\Views\Building\Index.cshtml" />
-    <Content Include="Areas\HumanResources\Views\HRStaff\Create.cshtml" />
-    <Content Include="Areas\HumanResources\Views\HRStaff\Delete.cshtml" />
-    <Content Include="Areas\HumanResources\Views\HRStaff\Details.cshtml" />
-    <Content Include="Areas\HumanResources\Views\HRStaff\Edit.cshtml" />
-    <Content Include="Areas\HumanResources\Views\HRStaff\Index.cshtml" />
-    <Content Include="Areas\HumanResources\Views\HRStaff\_HRStaffPositionListPartial.cshtml" />
-    <Content Include="Areas\Security\Views\web.config" />
+    <Content Include="Areas\Import\Views\Shared\_ImportSessionDetailROPartial.cshtml" />
+    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\_HREmployeeTypeImportItemsPartial.cshtml" />
+    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\_HREmployeeTypeImportResultPartial.cshtml" />
+    <Content Include="Areas\Import\Views\Shared\_ImportResult.cshtml" />
+    <Content Include="Areas\Import\Views\_ImportSessionPreview.cshtml" />
+    <Content Include="Areas\Import\Views\_ImportSessionImport.cshtml" />
+    <Content Include="Areas\Import\Views\_ImportSessionPreviewList.cshtml" />
+    <Content Include="Areas\Import\Views\_ImportPreviewTable.cshtml" />
+    <Content Include="Areas\Import\Views\Preview.cshtml" />
+    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\Import.cshtml" />
+    <Content Include="Areas\Import\Views\_ImportSessionImportList.cshtml" />
+    <Content Include="Areas\Import\Views\_ImportResultTable.cshtml" />
+    <Content Include="Areas\Import\Views\Import.cshtml" />
+    <Content Include="Areas\Import\Views\Sessions.cshtml" />
+    <Content Include="Areas\Import\Views\_ImportSessionList.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRJobTitles\Create.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRJobTitles\Delete.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRJobTitles\Details.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRJobTitles\Edit.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRJobTitles\Index.cshtml" />
+    <Content Include="Areas\Import\Views\ImportFile.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRJobTitles\_JobTitleFilterByEmployeeType.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -382,6 +297,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_HugeButtonPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Web.config" />
@@ -389,12 +305,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Import\Views\Shared\" />
+    <Folder Include="Areas\HRImporting\Views\Shared\" />
+    <Folder Include="Areas\Import\Controllers\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
-    <Folder Include="Areas\Security\Models\" />
-    <Folder Include="Areas\Security\Views\SecurityImports\" />
-    <Folder Include="Areas\Security\Views\Shared\" />
+    <Folder Include="Assets\" />
     <Folder Include="Models\Importing\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Import\" />
@@ -402,77 +317,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506302014447_Init01.resx">
-      <DependentUpon>201506302014447_Init01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507010152504_Import01.resx">
-      <DependentUpon>201507010152504_Import01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507010330589_Import02.resx">
-      <DependentUpon>201507010330589_Import02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507011219270_Import03.resx">
-      <DependentUpon>201507011219270_Import03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507011406132_Import04.resx">
-      <DependentUpon>201507011406132_Import04.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507011513146_JobTitle01.resx">
-      <DependentUpon>201507011513146_JobTitle01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507011715506_Recreate_01.resx">
-      <DependentUpon>201507011715506_Recreate_01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507011722144_Recreate_02.resx">
-      <DependentUpon>201507011722144_Recreate_02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507011816402_Recreate_03.resx">
-      <DependentUpon>201507011816402_Recreate_03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507011939484_Building01.resx">
-      <DependentUpon>201507011939484_Building01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507020047297_Staff01.resx">
-      <DependentUpon>201507020047297_Staff01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021423181_HRPositionFK01.resx">
-      <DependentUpon>201507021423181_HRPositionFK01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021502169_HRPositionFK02.resx">
-      <DependentUpon>201507021502169_HRPositionFK02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021531249_HRPositionFK03.resx">
-      <DependentUpon>201507021531249_HRPositionFK03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021555127_HRPositionFK04.resx">
-      <DependentUpon>201507021555127_HRPositionFK04.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021835550_HREmplioyeeTypeSchema01.resx">
-      <DependentUpon>201507021835550_HREmplioyeeTypeSchema01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021837194_HRSchema01.resx">
-      <DependentUpon>201507021837194_HRSchema01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021839188_HRSchema02.resx">
-      <DependentUpon>201507021839188_HRSchema02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021840351_HRSchema03.resx">
-      <DependentUpon>201507021840351_HRSchema03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021852152_LcpSEmail01.resx">
-      <DependentUpon>201507021852152_LcpSEmail01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021853268_LcpsEmail02.resx">
-      <DependentUpon>201507021853268_LcpsEmail02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021921457_LcpsEmail03.resx">
-      <DependentUpon>201507021921457_LcpsEmail03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507021923463_LcpsEmail04.resx">
-      <DependentUpon>201507021923463_LcpsEmail04.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Anvil.v2015.v001.Domain\Anvil.v2015.v001.Domain\Anvil.v2015.v001.Domain.csproj">
@@ -483,6 +327,14 @@
       <Project>{05cf2b1c-46f2-4818-9f1c-4cb5eb0e17db}</Project>
       <Name>LCPS.v2015.v001.NwUsers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201507060228340_INIT-001.resx">
+      <DependentUpon>201507060228340_INIT-001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507061836433_JobTitle-001.resx">
+      <DependentUpon>201507061836433_JobTitle-001.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

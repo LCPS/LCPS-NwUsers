@@ -64,6 +64,11 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
         [MaxLength(75)]
         public string LastName { get; set; }
 
+        [Display(Name = "Email Address")]
+        [MaxLength(256)]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
 
         [Display(Name = "Name")]
         public string SortName
@@ -83,6 +88,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
         [DataType(DataType.Date)]
         public DateTime Birthdate { get; set; }
         
+
 
         #endregion
 

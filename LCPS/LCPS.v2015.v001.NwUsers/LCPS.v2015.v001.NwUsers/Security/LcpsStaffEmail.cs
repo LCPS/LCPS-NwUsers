@@ -25,7 +25,7 @@ namespace LCPS.v2015.v001.NwUsers.Security
         [XmlIgnore]
         public virtual HRStaff StaffMember
         {
-            get { return db.StaffMembers.FirstOrDefault(x => x.StaffLinkId.Equals(StaffLinkId)); }
+            get { return new HRStaff(); } //db.StaffMembers.FirstOrDefault(x => x.StaffLinkId.Equals(StaffLinkId)); }
             set { _staff = value;  }
         }
 

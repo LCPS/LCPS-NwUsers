@@ -1,0 +1,63 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing;
+
+
+@model IEnumerable<ImportItem>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#Success" role="tab" data-toggle="tab">
+            <i class="fa fa-check"></i>
+            Success &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportResultStatus.success).ToString()
+            </span>
+        </a>
+    </li>
+    <li>
+        <a href="#Warning" role="tab" data-toggle="tab">
+            <i class="fa fa-warning"></i>
+            Warning &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportResultStatus.warning).ToString()
+            </span>
+        </a>
+    </li>
+    <li>
+        <a href="#Info" role="tab" data-toggle="tab">
+            <i class="fa fa-info"></i>
+            Success &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportResultStatus.info).ToString()
+            </span>
+        </a>
+    </li>
+    <li>
+        <a href="#Error" role="tab" data-toggle="tab">
+            <i class="fa fa-remove"></i>
+            Errors &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportResultStatus.danger).ToString()
+            </span>
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="Success">
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportResultTable.cshtml", ImportSession.Filter(Model, ImportResultStatus.success))
+        </div>
+    </div>
+    <div class="tab-pane fade" id="Warning">
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportResultTable.cshtml", ImportSession.Filter(Model, ImportResultStatus.warning))
+        </div>
+    </div>
+    <div class="tab-pane fade" id="Info">
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportResultTable.cshtml", ImportSession.Filter(Model, ImportResultStatus.info))
+        </div>
+    </div>
+    <div class="tab-pane fade" id="Error">
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportResultTable.cshtml", ImportSession.Filter(Model, ImportResultStatus.danger))
+        </div>
+    </div>
+</div>
+

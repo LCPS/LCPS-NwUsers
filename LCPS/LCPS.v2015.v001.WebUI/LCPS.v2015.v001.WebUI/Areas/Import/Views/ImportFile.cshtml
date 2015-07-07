@@ -1,0 +1,14 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+@using LCPS.v2015.v001.NwUsers.Importing;
+
+@model ImportSession
+
+@{
+    ViewBag.Title = @Model.ViewTitle;
+    Layout = @Model.ViewLayoutPath;
+}
+
+<h2>@Model.ViewTitle</h2>
+
+@Html.Partial("~/Areas/Import/Views/Shared/_ImportSessionPartial.cshtml", @Model)
+

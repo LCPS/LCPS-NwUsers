@@ -1,0 +1,32 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing;
+@using LCPS.v2015.v001.WebUI.Infrastructure;
+
+@model IEnumerable<ImportItem>
+
+
+@if (@Model.Count() == 0)
+{
+    <p>There are no items in this filter</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.LineIndex)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.ImportStatus)</th>
+            <th>@Html.DisplayNameFor(model => model.Comment)</th>
+        </tr>
+
+        @foreach (ImportItem item in @Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => item.LineIndex)</td>
+                <td>@Html.DisplayFor(model => item.Description)</td>
+                <td>@Html.DisplayFor(model => item.ImportStatus)</td>
+                <td>@Html.DisplayFor(model => item.Comment)</td>
+            </tr>
+        }
+
+    </table>
+}

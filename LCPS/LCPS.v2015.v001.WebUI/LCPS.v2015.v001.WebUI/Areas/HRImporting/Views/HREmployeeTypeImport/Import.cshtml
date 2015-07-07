@@ -1,0 +1,17 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing;
+@using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+
+@model ImportPreviewModel
+
+@{
+    ViewBag.Title = "Import";
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+<h2>Import Results</h2>
+
+
+
+@Html.Partial("~/Areas/Import/Views/Shared/_ImportSessionImport.cshtml", Model.Session)
+<p></p>
+@Html.Partial("~/Areas/Import/Views/Shared/_ImportSessionPreviewList.cshtml", Model.Items)

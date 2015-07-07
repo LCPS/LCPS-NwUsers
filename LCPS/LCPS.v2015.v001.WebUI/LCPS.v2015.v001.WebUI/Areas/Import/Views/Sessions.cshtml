@@ -1,0 +1,19 @@
+﻿@model LCPS.v2015.v001.WebUI.Areas.Import.Models.ImportSessionModel
+
+@{
+    ViewBag.Title = @Model.PageHeader;
+    Layout = @Model.Layout;
+}
+
+<h2>Import Session</h2>
+
+<span class="badge">@Model.Sessions.Count().ToString()</span> Sessions 
+
+<p></p>
+
+@Html.Partial("~/Areas/Import/Views/_ImportSessionList.cshtml", Model.Sessions)
+
+
+
+
+

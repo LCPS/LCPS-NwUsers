@@ -1,0 +1,70 @@
+﻿@using LCPS.v2015.v001.NwUsers.Infrastructure
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+
+@model IEnumerable<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRJobTitle>
+
+@{
+    ViewBag.Title = "Job Titles";
+    ViewBag.EmployeeTypes = (new LcpsDbContext()).EmployeeTypes.Select(m => new SelectListItem()
+        {
+            Text = m.EmployeeTypeName,
+            Value = m.EmployeeTypeLinkId.ToString()
+        });
+        
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+<h2>Job Titles</h2>
+
+
+<div class="navbar navbar">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                @Html.ActionLink("Create New", "Create")
+            </li>
+            <li>
+                <a href="@Url.Action("ImportFile", "HRJobTitles", new { area = "HumanResources" } )">Import </a>
+            </li>
+        </ul>
+
+        @Html.Partial("_JobTitleFilterByEmployeeType", new HRJobTitleFilterModel())
+
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitleName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitleName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.JobTitleKey }) |
+                @Html.ActionLink("Details", "Details", new { id = item.JobTitleKey }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.JobTitleKey })
+            </td>
+        </tr>
+    }
+
+</table>

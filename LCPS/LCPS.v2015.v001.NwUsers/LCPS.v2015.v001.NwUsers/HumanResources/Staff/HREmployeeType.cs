@@ -20,28 +20,19 @@ using System.Web.Mvc;
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
-    [Table("HREmployeeType", Schema = "HumanResources")]
-    public class HREmployeeType
+    public enum HREmployeeTypeCategory
     {
-        #region Enums
+        Unknown = 0,
+        Professional = 1,
+        Classified = 2,
+        Outsource = 3
+    }
 
-        public enum HRCategory
-        {
-            Unknown = 0,
-            Professional = 1,
-            Classified = 2,
-            Outsource = 3
-        }
-
-        
-
-        #endregion
-
-        #region Constants
-        #endregion
-
-        #region Fields
-        #endregion
+    [Serializable]
+    [Table("HREmployeeType", Schema = "HumanResources")]
+    public class HREmployeeType: IEmployeeType
+    {
+      
 
 
         #region Properties
@@ -52,7 +43,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         [Display(Name = "Type ID", Description = "An id uniquely identifying the employee type in the division")]
         [Required(AllowEmptyStrings = false)]
-        [MaxLength(15, ErrorMessage = "The ID cannot be more then {0} characters")]
+        [MaxLength(15, ErrorMessage = "The ID cannot be more then 15 characters")]
         [Remote("CheckEmployeeTypeIdAvailable", "Authors", HttpMethod = "POST")]
         [Index("EmployeeTypeId_IX", IsUnique = true)]
         public string EmployeeTypeId { get; set; }
@@ -64,7 +55,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         public string EmployeeTypeName { get; set; }
 
         [Display(Name = "Category", Description = "Classified, Professional, or Outsource")]
-        public HRCategory Category { get; set; }
+        public HREmployeeTypeCategory Category { get; set; }
 
         #endregion
 

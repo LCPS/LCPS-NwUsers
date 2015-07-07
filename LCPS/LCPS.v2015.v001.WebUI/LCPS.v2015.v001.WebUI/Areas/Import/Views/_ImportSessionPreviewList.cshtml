@@ -1,0 +1,102 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing;
+@using LCPS.v2015.v001.WebUI.Infrastructure;
+
+
+@model IEnumerable<ImportItem>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#Error" role="tab" data-toggle="tab">
+            <i class="fa fa-remove"></i>
+            Errors &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportEntityStatus.Error).ToString()
+            </span>
+
+        </a>
+    </li>
+    <li>
+        <a href="#Create" role="tab" data-toggle="tab">
+            <i class="fa fa-plus"></i>
+            Create &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportEntityStatus.Create).ToString()
+            </span>
+
+        </a>
+    </li>
+    <li>
+        <a href="#Update" role="tab" data-toggle="tab">
+            <i class="fa fa-floppy-o"></i>
+            Update &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportEntityStatus.Update).ToString()
+            </span>
+
+        </a>
+    </li>
+    <li>
+        <a href="#Ignore" role="tab" data-toggle="tab">
+            <i class="fa fa-ban"></i>
+            Ignored &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportEntityStatus.Ignore).ToString()
+            </span>
+
+        </a>
+    </li>
+    <li>
+        <a href="#Duplicate" role="tab" data-toggle="tab">
+            <i class="fa fa-copy"></i>
+            Duplicates &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportEntityStatus.Duplicate).ToString()
+            </span>
+
+        </a>
+    </li>
+    <li>
+        <a href="#Normal" role="tab" data-toggle="tab">
+            <i class="fa fa-removefa-circle-o"></i>
+            Normal &nbsp; <span class="badge">
+                @ImportSession.Count(Model, ImportEntityStatus.None).ToString()
+            </span>
+
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="Error">
+        <h4>Errors</h4>
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportPreviewTable.cshtml", ImportSession.Filter(Model, ImportEntityStatus.Error))
+        </div>
+    </div>
+    <div class="tab-pane fade" id="Create">
+        <h4>Create</h4>
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportPreviewTable.cshtml", ImportSession.Filter(Model, ImportEntityStatus.Create))
+        </div>
+    </div>
+    <div class="tab-pane fade activ" id="Update">
+        <h4>Update</h4>
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportPreviewTable.cshtml", ImportSession.Filter(Model, ImportEntityStatus.Update))
+        </div>
+    </div>
+    <div class="tab-pane fade" id="Ignore">
+        <h4>Ignore</h4>
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportPreviewTable.cshtml", ImportSession.Filter(Model, ImportEntityStatus.Ignore))
+        </div>
+    </div>
+    <div class="tab-pane fade" id="Duplicate">
+        <h4>Duplicate</h4>
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportPreviewTable.cshtml", ImportSession.Filter(Model, ImportEntityStatus.Duplicate))
+        </div>
+    </div>
+    <div class="tab-pane fade" id="None">
+        <h4>Normal</h4>
+        <div class="container">
+            @Html.Partial("~/Areas/Import/Views/_ImportPreviewTable.cshtml", ImportSession.Filter(Model, ImportEntityStatus.None))
+        </div>
+    </div>
+
+</div>

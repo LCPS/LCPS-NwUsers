@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.Importing.ImportSession>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SessionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ViewTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                <a id="Delete" href="@Url.Action("Delete", item.Controller, new { area = item.Area, @id=item.SessionId})" onclick="return confirm('Are you sure you want to delete this session?');">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

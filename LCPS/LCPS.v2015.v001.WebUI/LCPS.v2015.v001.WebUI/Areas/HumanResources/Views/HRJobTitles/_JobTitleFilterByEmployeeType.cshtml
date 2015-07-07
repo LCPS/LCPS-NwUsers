@@ -1,0 +1,24 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+@using LCPS.v2015.v001.WebUI.Infrastructure;
+
+@model HRJobTitleFilterModel
+
+@{
+     ViewBag.EmployeeTypes = (new LcpsDbContext()).EmployeeTypes.Select(m => new SelectListItem()
+        {
+            Text = m.EmployeeTypeName,
+            Value = m.EmployeeTypeLinkId.ToString()
+        });
+}
+<div class="col-sm-3 col-md-3 pull-right">
+    @using (Html.BeginForm("FilterByEmployeeType", "HRJobTitles", new {  area = "HumanResources" },  FormMethod.Post ))
+    {
+        <div class="input-group">
+            @Html.DropDownListFor(model => model.EmployeeTypeLinkId, ViewBag.EmployeeTypes as IEnumerable<SelectListItem>, new { @class = "form-control" })
+
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-folder"></i></button>
+            </div>
+        </div>
+    }
+</div>
