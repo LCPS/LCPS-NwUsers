@@ -6,117 +6,123 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.WebUI.Infrastructure;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
     [Authorize(Roles = "APP-Admins,HR-Admins")]
-    public class HREmployeeTypesController : Controller
+    public class HRBuildingsController : Controller
     {
         private LcpsDbContext db = new LcpsDbContext();
 
-        // GET: HumanResources/HREmployeeTypes
+
+        #region CRUD
+
+        // GET: HumanResources/HRBuildings
         public ActionResult Index()
         {
-            return View(db.EmployeeTypes.ToList());
+            return View(db.Buildings.ToList());
         }
 
-        // GET: HumanResources/HREmployeeTypes/Details/5
+        // GET: HumanResources/HRBuildings/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HREmployeeType hREmployeeType = db.EmployeeTypes.Find(id);
-            if (hREmployeeType == null)
+            HRBuilding hRBuilding = db.Buildings.Find(id);
+            if (hRBuilding == null)
             {
                 return HttpNotFound();
             }
-            return View(hREmployeeType);
+            return View(hRBuilding);
         }
 
-        // GET: HumanResources/HREmployeeTypes/Create
+        // GET: HumanResources/HRBuildings/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HumanResources/HREmployeeTypes/Create
+        // POST: HumanResources/HRBuildings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeTypeLinkId,EmployeeTypeId,EmployeeTypeName,Category")] HREmployeeType hREmployeeType)
+        public ActionResult Create([Bind(Include = "BuildingKey,BuildingId,Name")] HRBuilding hRBuilding)
         {
             if (ModelState.IsValid)
             {
-                hREmployeeType.EmployeeTypeLinkId = Guid.NewGuid();
-                db.EmployeeTypes.Add(hREmployeeType);
+                hRBuilding.BuildingKey = Guid.NewGuid();
+                db.Buildings.Add(hRBuilding);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(hREmployeeType);
+            return View(hRBuilding);
         }
 
-        // GET: HumanResources/HREmployeeTypes/Edit/5
+        // GET: HumanResources/HRBuildings/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HREmployeeType hREmployeeType = db.EmployeeTypes.Find(id);
-            if (hREmployeeType == null)
+            HRBuilding hRBuilding = db.Buildings.Find(id);
+            if (hRBuilding == null)
             {
                 return HttpNotFound();
             }
-            return View(hREmployeeType);
+            return View(hRBuilding);
         }
 
-        // POST: HumanResources/HREmployeeTypes/Edit/5
+        // POST: HumanResources/HRBuildings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeTypeLinkId,EmployeeTypeId,EmployeeTypeName,Category")] HREmployeeType hREmployeeType)
+        public ActionResult Edit([Bind(Include = "BuildingKey,BuildingId,Name")] HRBuilding hRBuilding)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hREmployeeType).State = EntityState.Modified;
+                db.Entry(hRBuilding).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(hREmployeeType);
+            return View(hRBuilding);
         }
 
-        // GET: HumanResources/HREmployeeTypes/Delete/5
+        // GET: HumanResources/HRBuildings/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HREmployeeType hREmployeeType = db.EmployeeTypes.Find(id);
-            if (hREmployeeType == null)
+            HRBuilding hRBuilding = db.Buildings.Find(id);
+            if (hRBuilding == null)
             {
                 return HttpNotFound();
             }
-            return View(hREmployeeType);
+            return View(hRBuilding);
         }
 
-        // POST: HumanResources/HREmployeeTypes/Delete/5
+        // POST: HumanResources/HRBuildings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            HREmployeeType hREmployeeType = db.EmployeeTypes.Find(id);
-            db.EmployeeTypes.Remove(hREmployeeType);
+            HRBuilding hRBuilding = db.Buildings.Find(id);
+            db.Buildings.Remove(hRBuilding);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

@@ -60,3 +60,4 @@ C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\ob
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.dll
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.pdb
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.JobTitle001.resources
+C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Building001.resources

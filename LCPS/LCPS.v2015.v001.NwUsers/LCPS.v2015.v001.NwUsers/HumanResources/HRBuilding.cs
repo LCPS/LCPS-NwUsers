@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LCPS.v2015.v001.NwUsers.HumanResources
 {
     [Table("HRBuilding", Schema = "HumanResources")]
-    public class HRBuilding
+    public class HRBuilding : IBuilding
     {
         [Key]
         public Guid BuildingKey { get; set; }

@@ -164,6 +164,7 @@
     <Compile Include="Areas\HRImporting\HRImportingAreaRegistration.cs" />
     <Compile Include="Areas\HRImporting\Models\HREmployeeTypeImportModel.cs" />
     <Compile Include="Areas\HRImporting\Models\HREmployeeTypePreviewModel.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
@@ -186,6 +187,10 @@
     <Compile Include="Migrations\201507061836433_JobTitle-001.cs" />
     <Compile Include="Migrations\201507061836433_JobTitle-001.Designer.cs">
       <DependentUpon>201507061836433_JobTitle-001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507071040050_Building-001.cs" />
+    <Compile Include="Migrations\201507071040050_Building-001.Designer.cs">
+      <DependentUpon>201507071040050_Building-001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -260,6 +265,11 @@
     <Content Include="Areas\HumanResources\Views\HRJobTitles\Index.cshtml" />
     <Content Include="Areas\Import\Views\ImportFile.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRJobTitles\_JobTitleFilterByEmployeeType.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRBuildings\Create.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRBuildings\Delete.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRBuildings\Details.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRBuildings\Edit.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRBuildings\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -334,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507061836433_JobTitle-001.resx">
       <DependentUpon>201507061836433_JobTitle-001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507071040050_Building-001.resx">
+      <DependentUpon>201507071040050_Building-001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

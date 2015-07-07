@@ -18,6 +18,7 @@ using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
+    [Authorize(Roles = "APP-Admins,HR-Admins")]
     public class HRJobTitlesController : Controller
     {
         private LcpsDbContext db = new LcpsDbContext();

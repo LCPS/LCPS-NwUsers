@@ -16,8 +16,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
     public class HRJobTitle : IJobTitle
     {
 
-        HREmployeeType et;
-
         LCPS.v2015.v001.NwUsers.Infrastructure.LcpsDbContext db = new Infrastructure.LcpsDbContext();
 
         [Key]

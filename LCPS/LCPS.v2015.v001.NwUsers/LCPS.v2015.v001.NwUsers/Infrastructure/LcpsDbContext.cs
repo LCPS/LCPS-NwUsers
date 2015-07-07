@@ -54,9 +54,9 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
         public DbSet<HREmployeeType> EmployeeTypes { get; set; }
         public DbSet<HRJobTitle> JobTitles { get; set; }
-        
-        /*
         public DbSet<HRBuilding> Buildings { get; set; }
+
+        /*
         public DbSet<HRStaff> StaffMembers { get; set; }
         public DbSet<HRStaffPosition> StaffPositions { get; set; }
         */

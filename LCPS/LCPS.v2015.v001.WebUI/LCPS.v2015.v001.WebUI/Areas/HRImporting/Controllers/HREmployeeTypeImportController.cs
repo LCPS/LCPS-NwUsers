@@ -18,6 +18,7 @@ using Anvil.v2015.v001.Domain.Exceptions;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HRImporting.Controllers
 {
+    [Authorize(Roles = "APP-Admins,HR-Admins")]
     public class HREmployeeTypeImportController : Controller
     {
 

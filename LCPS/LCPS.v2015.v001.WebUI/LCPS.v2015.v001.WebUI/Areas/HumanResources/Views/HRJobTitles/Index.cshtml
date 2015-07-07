@@ -19,6 +19,8 @@
 
 <div class="navbar navbar">
     <div class="navbar-collapse collapse">
+        @Html.Partial("_JobTitleFilterByEmployeeType", new HRJobTitleFilterModel())
+
         <ul class="nav navbar-nav">
             <li>
                 @Html.ActionLink("Create New", "Create")
@@ -27,9 +29,6 @@
                 <a href="@Url.Action("ImportFile", "HRJobTitles", new { area = "HumanResources" } )">Import </a>
             </li>
         </ul>
-
-        @Html.Partial("_JobTitleFilterByEmployeeType", new HRJobTitleFilterModel())
-
     </div>
 </div>
 
