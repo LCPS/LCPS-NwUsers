@@ -6,32 +6,26 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using LCPS.v2015.v001.NwUsers.HumanResources;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.WebUI.Infrastructure;
-
+using System.IO;
 
 using LCPS.v2015.v001.NwUsers.Importing;
 using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
-using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
-    [Authorize(Roles = "APP-Admins,HR-Admins")]
-    public class HRBuildingsController : Controller
+    public class HRStaffPositionsController : Controller
     {
         private LcpsDbContext db = new LcpsDbContext();
 
         #region Import
 
-
         public ActionResult ImportFile()
         {
-            ImportSession s = new HRBuildingSession().ToImportSession();
+            ImportSession s = new HRStaffPositionSession().ToImportSession();
 
             return View("~/Areas/Import/Views/ImportFile.cshtml", s);
         }
@@ -43,7 +37,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             {
 
 
-                HRBuildingSession jt = new HRBuildingSession();
+                HRStaffPositionSession jt = new HRStaffPositionSession();
                 jt.SessionId = s.SessionId;
 
                 using (StreamReader sr = new StreamReader(s.ImportFile.InputStream))
@@ -61,13 +55,14 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             }
         }
 
+
         [HttpPost]
         public ActionResult Import(ImportSession s)
         {
             try
             {
                 ImportSession dbs = db.ImportSessions.First(x => x.SessionId.Equals(s.SessionId));
-                HRBuildingSession jt = new HRBuildingSession(dbs);
+                HRStaffPositionSession jt = new HRStaffPositionSession(dbs);
                 jt.Import();
                 ImportPreviewModel m = new ImportPreviewModel(s.SessionId);
                 return View("~/Areas/Import/Views/Import.cshtml", m);
@@ -77,109 +72,118 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
                 return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Import Job Titles", "HumanResources", "HRJobTitles", "Preview"));
             }
         }
+        
+
 
         #endregion
 
-        #region CRUD
 
-        // GET: HumanResources/HRBuildings
+
+        #region Crud
+
+
+        // GET: HumanResources/HRStaffPositions
         public ActionResult Index()
         {
-            return View(db.Buildings.ToList());
+
+            List<HRStaffPosition> items = db.StaffPositions.ToList();
+
+
+            return View(items.OrderBy(x => x.StaffMember.SortName).ToList());
         }
 
-        // GET: HumanResources/HRBuildings/Details/5
+        // GET: HumanResources/HRStaffPositions/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HRBuilding hRBuilding = db.Buildings.Find(id);
-            if (hRBuilding == null)
+            HRStaffPosition hRStaffPosition = db.StaffPositions.Find(id);
+            if (hRStaffPosition == null)
             {
                 return HttpNotFound();
             }
-            return View(hRBuilding);
+            return View(hRStaffPosition);
         }
 
-        // GET: HumanResources/HRBuildings/Create
+        // GET: HumanResources/HRStaffPositions/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HumanResources/HRBuildings/Create
+        // POST: HumanResources/HRStaffPositions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BuildingKey,BuildingId,Name")] HRBuilding hRBuilding)
+        public ActionResult Create([Bind(Include = "PositionKey,StaffMemberId,BuildingKey,EmployeeTypeKey,JobTitleKey,Active,FiscalYear")] HRStaffPosition hRStaffPosition)
         {
             if (ModelState.IsValid)
             {
-                hRBuilding.BuildingKey = Guid.NewGuid();
-                db.Buildings.Add(hRBuilding);
+                hRStaffPosition.PositionKey = Guid.NewGuid();
+                db.StaffPositions.Add(hRStaffPosition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(hRBuilding);
+            return View(hRStaffPosition);
         }
 
-        // GET: HumanResources/HRBuildings/Edit/5
+        // GET: HumanResources/HRStaffPositions/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HRBuilding hRBuilding = db.Buildings.Find(id);
-            if (hRBuilding == null)
+            HRStaffPosition hRStaffPosition = db.StaffPositions.Find(id);
+            if (hRStaffPosition == null)
             {
                 return HttpNotFound();
             }
-            return View(hRBuilding);
+            return View(hRStaffPosition);
         }
 
-        // POST: HumanResources/HRBuildings/Edit/5
+        // POST: HumanResources/HRStaffPositions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BuildingKey,BuildingId,Name")] HRBuilding hRBuilding)
+        public ActionResult Edit([Bind(Include = "PositionKey,StaffMemberId,BuildingKey,EmployeeTypeKey,JobTitleKey,Active,FiscalYear")] HRStaffPosition hRStaffPosition)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hRBuilding).State = EntityState.Modified;
+                db.Entry(hRStaffPosition).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(hRBuilding);
+            return View(hRStaffPosition);
         }
 
-        // GET: HumanResources/HRBuildings/Delete/5
+        // GET: HumanResources/HRStaffPositions/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HRBuilding hRBuilding = db.Buildings.Find(id);
-            if (hRBuilding == null)
+            HRStaffPosition hRStaffPosition = db.StaffPositions.Find(id);
+            if (hRStaffPosition == null)
             {
                 return HttpNotFound();
             }
-            return View(hRBuilding);
+            return View(hRStaffPosition);
         }
 
-        // POST: HumanResources/HRBuildings/Delete/5
+        // POST: HumanResources/HRStaffPositions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            HRBuilding hRBuilding = db.Buildings.Find(id);
-            db.Buildings.Remove(hRBuilding);
+            HRStaffPosition hRStaffPosition = db.StaffPositions.Find(id);
+            db.StaffPositions.Remove(hRStaffPosition);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

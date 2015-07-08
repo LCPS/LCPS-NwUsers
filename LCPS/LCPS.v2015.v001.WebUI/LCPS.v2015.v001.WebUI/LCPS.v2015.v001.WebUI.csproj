@@ -160,14 +160,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\HRImporting\Controllers\HREmployeeTypeImportController.cs" />
-    <Compile Include="Areas\HRImporting\HRImportingAreaRegistration.cs" />
-    <Compile Include="Areas\HRImporting\Models\HREmployeeTypeImportModel.cs" />
-    <Compile Include="Areas\HRImporting\Models\HREmployeeTypePreviewModel.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRStaffController.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HRStaffPositionsController.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HumanResourcesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
     <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
@@ -242,7 +240,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Areas\HRImporting\Views\web.config" />
     <Content Include="Areas\Import\Views\web.config" />
     <Content Include="Areas\Import\Views\Shared\_ImportSessionPartial.cshtml" />
     <Content Include="Areas\HumanResources\Views\web.config" />
@@ -251,19 +248,14 @@
     <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Details.cshtml" />
     <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Edit.cshtml" />
     <Content Include="Areas\HumanResources\Views\HREmployeeTypes\Index.cshtml" />
-    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\Index.cshtml" />
-    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\Preview.cshtml" />
     <Content Include="Areas\HumanResources\Views\Shared\_HumanResourcesLayout.cshtml" />
     <Content Include="Areas\Import\Views\Shared\_ImportSessionDetailROPartial.cshtml" />
-    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\_HREmployeeTypeImportItemsPartial.cshtml" />
-    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\_HREmployeeTypeImportResultPartial.cshtml" />
     <Content Include="Areas\Import\Views\Shared\_ImportResult.cshtml" />
     <Content Include="Areas\Import\Views\_ImportSessionPreview.cshtml" />
     <Content Include="Areas\Import\Views\_ImportSessionImport.cshtml" />
     <Content Include="Areas\Import\Views\_ImportSessionPreviewList.cshtml" />
     <Content Include="Areas\Import\Views\_ImportPreviewTable.cshtml" />
     <Content Include="Areas\Import\Views\Preview.cshtml" />
-    <Content Include="Areas\HRImporting\Views\HREmployeeTypeImport\Import.cshtml" />
     <Content Include="Areas\Import\Views\_ImportSessionImportList.cshtml" />
     <Content Include="Areas\Import\Views\_ImportResultTable.cshtml" />
     <Content Include="Areas\Import\Views\Import.cshtml" />
@@ -287,6 +279,11 @@
     <Content Include="Areas\HumanResources\Views\HRStaff\Edit.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRStaff\Index.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRStaff\_HRStaffSearch.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaffPositions\Create.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaffPositions\Delete.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaffPositions\Details.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaffPositions\Edit.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaffPositions\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -332,7 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\HRImporting\Views\Shared\" />
+    <Folder Include="Areas\HumanResources\Views\HumanResources\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />

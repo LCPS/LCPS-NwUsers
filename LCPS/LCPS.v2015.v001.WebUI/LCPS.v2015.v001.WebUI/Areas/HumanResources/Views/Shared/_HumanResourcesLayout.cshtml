@@ -35,6 +35,12 @@
                     <li>
                         <a href="@Url.Action("Index", "HRStaff", new { @area = "HumanResources" })">Staff</a>
                     </li>
+                    <li>
+                        <a href="@Url.Action("Index", "HRStaffPositions", new { @area = "HumanResources" })">Staff Positions</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Backup", "HumanResources", new { @area = "HumanResources", @u = ViewContext.HttpContext.Request.RawUrl} )">Backup</a>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

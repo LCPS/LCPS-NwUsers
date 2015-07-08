@@ -26,7 +26,9 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
             controller: "HRStaff",
             action: "Preview",
             viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml")
-        {}
+        {
+            SessionId = Guid.NewGuid();
+        }
 
         public HRStaffSession(ImportSession s)
             : base(s)

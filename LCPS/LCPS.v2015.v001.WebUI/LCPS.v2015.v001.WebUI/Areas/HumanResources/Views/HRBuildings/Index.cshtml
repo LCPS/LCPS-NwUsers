@@ -5,11 +5,20 @@
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Buildings</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create") | <a href="@Url.Action("ImportFile", "HRBuildings", new { area = "HumanResources" } )">Import </a>
-</p>
+<div class="navbar">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("Create", "HRBuildings", new { area = "HumanResources" })"><i class="fa fa-plus"></i> Create New</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ImportFile", "HRBuildings", new { area = "HumanResources" } )"><i class="fa fa-upload"></i>  Import</a>
+            </li>
+        </ul>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>

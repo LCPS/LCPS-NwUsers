@@ -29,19 +29,9 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 
         public ActionResult ImportFile()
         {
-            ImportSession s = new ImportSession
-                (
-                    area: "HumanResources",
-                    controller: "HRStaff",
-                    action: "Preview",
-                    itemType: typeof(HRStaffCandidate),
-                    viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml",
-                    addIfNotExist: true,
-                    updateIfExists: false,
-                    viewTitle: "Import Staff Members"
-                );
+            ImportSession i = new HRStaffSession().ToImportSession();
 
-            return View("~/Areas/Import/Views/ImportFile.cshtml", s);
+            return View("~/Areas/Import/Views/ImportFile.cshtml", i);
         }
 
         [HttpPost]
@@ -50,6 +40,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             try
             {
                 HRStaffSession ss = new HRStaffSession();
+                ss.SessionId = s.SessionId;
 
                 using (StreamReader sr = new StreamReader(s.ImportFile.InputStream))
                 {
@@ -79,7 +70,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             }
             catch (Exception ex)
             {
-                return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Import Job Titles", "HumanResources", "HRStaff", "Preview"));
+                return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Import Staff", "HumanResources", "HRStaff", "ImportFile"));
             }
         }
 

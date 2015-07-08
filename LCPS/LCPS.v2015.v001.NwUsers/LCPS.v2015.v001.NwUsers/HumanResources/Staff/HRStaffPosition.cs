@@ -38,6 +38,26 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         #endregion
 
+
+        #region Constructors
+
+        public HRStaffPosition()
+        { }
+
+        public HRStaffPosition(HRStaff staff, HRBuilding building, HREmployeeType employeeType, HRJobTitle jobTitle)
+        {
+            _staff = staff;
+            _building = building;
+            _employeeType = employeeType;
+            _jobTitle = jobTitle;
+            StaffMemberId = staff.StaffKey;
+            BuildingKey = building.BuildingKey;
+            EmployeeTypeKey = employeeType.EmployeeTypeLinkId;
+            JobTitleKey = jobTitle.JobTitleKey;
+        }
+
+        #endregion
+
         [Key]
         public Guid PositionKey { get; set; }
 
@@ -55,7 +75,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
             }
         }
 
-        public IStaff StaffMember
+        public HRStaff StaffMember
         {
             get 
             {
@@ -69,7 +89,8 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [Index("IX_Position", IsUnique = true, Order = 2)]
         public Guid BuildingKey { get; set; }
 
-        public IBuilding Building
+
+        public HRBuilding Building
         {
             get 
             {
@@ -83,12 +104,13 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [Index("IX_Position", IsUnique = true, Order = 3)]
         public Guid EmployeeTypeKey { get; set; }
 
-        public IEmployeeType EmployeeType
+
+        public HREmployeeType EmployeeType
         {
             get 
             {
                 if (_employeeType == null)
-                    _employeeType = Db.EmployeeTypes.First(x => x.EmployeeTypeId.Equals(EmployeeTypeKey));
+                    _employeeType = Db.EmployeeTypes.First(x => x.EmployeeTypeLinkId.Equals(EmployeeTypeKey));
 
                 return _employeeType;
             }
@@ -97,7 +119,8 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [Index("IX_Position", IsUnique = true, Order = 4)]
         public Guid JobTitleKey { get; set; }
 
-        public IJobTitle JobTitle
+
+        public HRJobTitle JobTitle
         {
             get 
             {
@@ -112,18 +135,17 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public string FiscalYear { get; set; }
 
-        public void Load(string staffId, string buildingId, string employeeTypeId, string jobTitleId)
+        public static HRStaffPosition Load(string staffId, string buildingId, string employeeTypeId, string jobTitleId, LcpsDbContext db)
         {
             try
             {
-
-                _staff = Db.StaffMembers.FirstOrDefault(x => x.StaffId == staffId);
+                HRStaff  _staff = db.StaffMembers.FirstOrDefault(x => x.StaffId == staffId);
                 
-                _building = Db.Buildings.FirstOrDefault(x => x.BuildingId == buildingId);
+                HRBuilding _building = db.Buildings.FirstOrDefault(x => x.BuildingId == buildingId);
                 
-                _employeeType = Db.EmployeeTypes.FirstOrDefault(x => x.EmployeeTypeId == employeeTypeId);
+                HREmployeeType _employeeType = db.EmployeeTypes.FirstOrDefault(x => x.EmployeeTypeId == employeeTypeId);
                 
-                _jobTitle = Db.JobTitles.FirstOrDefault(x => x.JobTitleId == jobTitleId);
+                HRJobTitle _jobTitle = db.JobTitles.FirstOrDefault(x => x.JobTitleId == jobTitleId);
 
                 if (_staff == null)
                     throw new Exception(string.Format("{0} is an invalid staff Id", staffId));
@@ -137,21 +159,16 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
                 if (_jobTitle == null)
                     throw new Exception(string.Format("{0} is an invalid job title Id", jobTitleId));
 
-                HRStaffPosition p = Db.StaffPositions.FirstOrDefault(x => x.StaffMemberId.Equals(StaffMember.StaffKey) &
-                    x.BuildingKey.Equals(x.Building.BuildingKey) & 
-                    x.EmployeeTypeKey.Equals(x.EmployeeType.EmployeeTypeId) & 
-                    x.JobTitleKey.Equals(x.JobTitle.JobTitleKey));
+                HRStaffPosition p = new HRStaffPosition(_staff, _building, _employeeType, _jobTitle);
 
-                if (p != null)
-                {
-                    Active = p.Active;
-                    FiscalYear = p.FiscalYear;
-                }
+                return p;
+
             }
             catch (Exception ex)
             {
                 throw new Exception("Could not load position", ex);
             }
+
         }
     }
 }

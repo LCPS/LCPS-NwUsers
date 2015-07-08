@@ -26,6 +26,20 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
     public class HRBuildingSession : ImportFileTSV
     {
 
+        public HRBuildingSession()
+            : base(
+            addIfNotExists: true,
+            updateIfExists: false,
+            itemType: typeof(HRBuildingCandidate),
+            viewTitle: "Import Buildings",
+            area: "HumanResources",
+            controller: "HRBuildings",
+            action: "Preview",
+            viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml")
+        {
+            SessionId = Guid.NewGuid();
+        }
+
         public HRBuildingSession(ImportSession s)
             :base(s)
         { 

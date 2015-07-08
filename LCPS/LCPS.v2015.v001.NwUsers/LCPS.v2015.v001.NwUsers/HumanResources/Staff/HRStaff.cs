@@ -19,10 +19,11 @@ using LCPS.v2015.v001.NwUsers.HumanResources;
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
     [Table("HRStaff", Schema = "HumanResources")]
+    [Serializable]
     public class HRStaff : IPerson, IStaff 
     {
         #region Fields
-
+        [NonSerialized]
         private LcpsDbContext db = new LcpsDbContext();
 
         #endregion

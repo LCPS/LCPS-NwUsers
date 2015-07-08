@@ -16,12 +16,15 @@ using LCPS.v2015.v001.NwUsers.Infrastructure;
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
-    public class HRStaffPositionCandidate : IImportStatus
+    [Serializable]
+    public class HRStaffPositionCandidate : IImportStatus, IImportEntity
     {
 
         #region Fields
 
         byte[] _serialized;
+
+        [NonSerialized]
         LcpsDbContext db = new LcpsDbContext();
 
         #endregion
@@ -79,6 +82,11 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
             return t;
         }
 
+        public object Deserialize(IImportSession session)
+        {
+            return Deserialize();
+        }
+
         public ImportEntityStatus EntityStatus { get; set; }
 
         public int LineIndex { get; set; }
@@ -128,8 +136,8 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public HRStaffPosition ToStaffPosition()
         {
-            HRStaffPosition p = new HRStaffPosition();
-            p.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId);
+            LcpsDbContext db = new LcpsDbContext();
+            HRStaffPosition p = HRStaffPosition.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId, db);
             p.Active = Active;
             p.FiscalYear = FiscalYear;
             return p;
@@ -142,5 +150,92 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         }
 
         #endregion
+
+
+        
+
+        public bool TargetExists()
+        {
+            LcpsDbContext db = new LcpsDbContext();
+
+            HRStaffPosition p = HRStaffPosition.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId, db);
+
+            int count = db.StaffPositions.Where(x => x.StaffMemberId.Equals(p.StaffMemberId) &
+                x.BuildingKey.Equals(p.BuildingKey) &
+                x.EmployeeTypeKey.Equals(p.EmployeeTypeKey) &
+                x.JobTitleKey.Equals(p.JobTitleKey)).Count();
+
+            return (count > 0);
+        }
+
+        public void Create()
+        {
+            try
+            {
+                LcpsDbContext db = new LcpsDbContext();
+
+                HRStaffPosition p = HRStaffPosition.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId, db);
+                p.PositionKey = Guid.NewGuid();
+                p.Active = this.Active;
+                p.FiscalYear = this.FiscalYear;
+
+                db.StaffPositions.Add(p);
+                db.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Could not create position", ex);
+            }
+        }
+
+        public void Update()
+        {
+            try
+            {
+                LcpsDbContext db = new LcpsDbContext();
+
+                HRStaffPosition p = HRStaffPosition.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId, db);
+
+                HRStaffPosition tmp = db.StaffPositions.First(x => x.StaffMemberId.Equals(p.StaffMemberId) &
+                    x.BuildingKey.Equals(p.BuildingKey) &
+                    x.EmployeeTypeKey.Equals(p.EmployeeTypeKey) &
+                    x.JobTitleKey.Equals(p.JobTitleKey));
+
+                tmp.Active = this.Active;
+                tmp.FiscalYear = this.FiscalYear;
+
+                db.Entry(tmp).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Could not update position", ex);
+            }
+        }
+
+        public bool IsSyncJustified()
+        {
+            try
+            {
+                LcpsDbContext db = new LcpsDbContext();
+
+                HRStaffPosition p = HRStaffPosition.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId, db);
+
+                HRStaffPosition tmp = db.StaffPositions.First(x => x.StaffMemberId.Equals(p.StaffMemberId) &
+                    x.BuildingKey.Equals(p.BuildingKey) &
+                    x.EmployeeTypeKey.Equals(p.EmployeeTypeKey) &
+                    x.JobTitleKey.Equals(p.JobTitleKey));
+
+                if (tmp.Active == this.Active & tmp.FiscalYear == this.FiscalYear)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Could not search fpr position in the database", ex);
+            }
+        }
     }
 }

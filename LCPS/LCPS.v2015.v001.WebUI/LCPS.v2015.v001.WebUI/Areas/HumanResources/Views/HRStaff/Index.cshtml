@@ -7,7 +7,7 @@
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Staff Members <span class="badge">@Model.Count()</span></h2>
 
 
 <div class="navbar">
@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<table class="table">
+<table class="table table-condensed table-striped table-hover table-responsive">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.StaffId)

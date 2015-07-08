@@ -15,7 +15,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
     [Table("HRJobTitle", Schema = "HumanResources")]
     public class HRJobTitle : IJobTitle
     {
-
+        [NonSerialized]
         LCPS.v2015.v001.NwUsers.Infrastructure.LcpsDbContext db = new Infrastructure.LcpsDbContext();
 
         [Key]
@@ -59,7 +59,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [MaxLength(30)]
         public string JobTitleId  { get; set; }
 
-        [Display(Name = "Name", Description = "A descriptive name for the job title")]
+        [Display(Name = "Job Title", Description = "A descriptive name for the job title")]
         [Required]
         [MaxLength(128)]
         public string JobTitleName  { get; set; }

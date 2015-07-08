@@ -77,7 +77,7 @@
     <Compile Include="HumanResources\HRBuildingSession.cs" />
     <Compile Include="HumanResources\HRGenders.cs" />
     <Compile Include="HumanResources\HRImport\HREmployeeTypeCandidate.cs" />
-    <Compile Include="HumanResources\HRImport\HREmployeeTypeImportSession.cs" />
+    <Compile Include="HumanResources\HRImport\HREmployeeTypeSession.cs" />
     <Compile Include="HumanResources\HRImport\HRJobTitleCandidate.cs" />
     <Compile Include="HumanResources\HRImport\HRJobTitleSession.cs" />
     <Compile Include="HumanResources\HRBuilding.cs" />
@@ -88,7 +88,9 @@
     <Compile Include="HumanResources\Staff\HREmployeeType.cs" />
     <Compile Include="HumanResources\Staff\HRJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaff.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffBackup.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffPositionSession.cs" />
     <Compile Include="HumanResources\Staff\IEmployeeType.cs" />
     <Compile Include="HumanResources\Staff\IJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionCandidate.cs" />

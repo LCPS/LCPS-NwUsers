@@ -29,17 +29,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 
         public ActionResult ImportFile()
         {
-            ImportSession s = new ImportSession
-                (
-                    area: "HumanResources",
-                    controller: "HRJobTitles",
-                    action: "Preview",
-                    itemType: typeof(HRJobTitleCandidate),
-                    viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml",
-                    addIfNotExist: true,
-                    updateIfExists: false,
-                    viewTitle: "Import Job Titles"
-                );
+            ImportSession s = new HRJobTitleSession().ToImportSession();
 
             return View("~/Areas/Import/Views/ImportFile.cshtml", s);
         }
@@ -49,9 +39,11 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         {
             try
             {
-                ImportSession dbs = db.ImportSessions.First(x => x.SessionId.Equals(s.SessionId));
 
-                HRJobTitleSession jt = new HRJobTitleSession(dbs);
+
+                HRJobTitleSession jt = new HRJobTitleSession();
+                jt.SessionId = s.SessionId;
+
                 using (StreamReader sr = new StreamReader(s.ImportFile.InputStream))
                 {
                     jt.ParseItems(sr);

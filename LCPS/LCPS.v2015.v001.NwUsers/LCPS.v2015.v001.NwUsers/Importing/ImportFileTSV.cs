@@ -44,7 +44,6 @@ namespace LCPS.v2015.v001.NwUsers.Importing
             string area, string controller, string action, string viewLayoutPath,
             bool addIfNotExists, bool updateIfExists)
         {
-            SessionId = Guid.NewGuid();
             SessionDate = DateTime.Now;
             Author = HttpContext.Current.User.Identity.Name;
             ItemType = itemType;
@@ -92,7 +91,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
         public void ParseItems(StreamReader reader)
         {
 
-            Record();
+            this.Record();
 
             int index = 0;
 
@@ -244,7 +243,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
 
 
 
-        }
+         }
 
         private object ParseLine(string line)
         {
@@ -286,6 +285,9 @@ namespace LCPS.v2015.v001.NwUsers.Importing
                             if (p.PropertyType.IsEnum)
                                 v = System.Enum.Parse(p.PropertyType, t);
 
+                            if (p.PropertyType == typeof(bool))
+                                v = Convert.ToBoolean(t);
+
                         }
                         catch (Exception ex)
                         {
@@ -325,7 +327,8 @@ namespace LCPS.v2015.v001.NwUsers.Importing
 
             if(session == null)
             {
-                db.ImportSessions.Add(this.ToImportSession());
+                ImportSession i = this.ToImportSession();
+                db.ImportSessions.Add(i);
             }
             else
             {
@@ -441,6 +444,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
         {
             try
             {
+
                 db.ImportItems.Add(item);
                 db.SaveChanges();
             }

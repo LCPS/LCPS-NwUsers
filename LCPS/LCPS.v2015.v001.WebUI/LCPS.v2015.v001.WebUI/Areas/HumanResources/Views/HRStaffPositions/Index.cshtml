@@ -1,0 +1,75 @@
+﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaffPosition>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+<h2>Staff Positions <span class="badge">@Model.Count()</span></h2>
+
+<div class="navbar">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("Create", "HRStaffPositions", new { area = "HumanResources" })"><i class="fa fa-plus"></i> Create New</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ImportFile", "HRStaffPositions", new { area = "HumanResources" } )"><i class="fa fa-upload"></i>  Import</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffMember.SortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeType.EmployeeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle.JobTitleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FiscalYear)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffMember.SortName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Building.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeType.EmployeeTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle.JobTitleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FiscalYear)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PositionKey }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PositionKey }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PositionKey })
+        </td>
+    </tr>
+}
+
+</table>

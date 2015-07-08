@@ -23,22 +23,24 @@ using Anvil.v2015.v001.Domain.Entities;
 namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
 {
     [Serializable]
-    public class HREmployeeTypeImportSession : ImportFileTSV
+    public class HREmployeeTypeSession : ImportFileTSV
     {
 
-        public HREmployeeTypeImportSession()
+        public HREmployeeTypeSession()
             : base(
             addIfNotExists: true,
             updateIfExists: false,
             itemType: typeof(HREmployeeTypeCandidate),
             viewTitle: "Import Employee Types",
-            area: "HRImporting",
-            controller: "HREmployeeTypeImport",
+            area: "HumanResources",
+            controller: "HREmployeeTypes",
             action: "Preview",
             viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml")
         {
+            SessionId = Guid.NewGuid();
         }
-        public HREmployeeTypeImportSession(ImportSession s )
+
+        public HREmployeeTypeSession(ImportSession s )
             :base(s)
         {}
          

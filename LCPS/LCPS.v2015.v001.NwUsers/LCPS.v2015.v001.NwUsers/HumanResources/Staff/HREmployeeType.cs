@@ -48,7 +48,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [Index("EmployeeTypeId_IX", IsUnique = true)]
         public string EmployeeTypeId { get; set; }
 
-        [Display(Name = "Name", Description = "A descriptive name for the employee type")]
+        [Display(Name = "Employee Type", Description = "A descriptive name for the employee type")]
         [Required(AllowEmptyStrings = false)]
         [MaxLength(128)]
         [Index("EmployeeTypeName_IX", IsUnique = true)]

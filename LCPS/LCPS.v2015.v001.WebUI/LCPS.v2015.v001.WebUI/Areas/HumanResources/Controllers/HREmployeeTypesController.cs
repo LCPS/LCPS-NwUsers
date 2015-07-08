@@ -9,6 +9,13 @@ using System.Web.Mvc;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.WebUI.Infrastructure;
 
+using LCPS.v2015.v001.NwUsers.Importing;
+using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
+using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
     [Authorize(Roles = "APP-Admins,HR-Admins")]
@@ -16,6 +23,60 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
     {
         private LcpsDbContext db = new LcpsDbContext();
 
+        #region Import
+
+        public ActionResult ImportFile()
+        {
+            ImportSession i = new HREmployeeTypeSession().ToImportSession();
+
+            return View("~/Areas/Import/Views/ImportFile.cshtml", i);
+        }
+
+        [HttpPost]
+        public ActionResult Preview(ImportSession s)
+        {
+            try
+            {
+                HREmployeeTypeSession ss = new HREmployeeTypeSession();
+                ss.SessionId = s.SessionId;
+
+                using (StreamReader sr = new StreamReader(s.ImportFile.InputStream))
+                {
+                    ss.ParseItems(sr);
+                }
+
+
+                ImportPreviewModel m = new ImportPreviewModel(ss.SessionId);
+                return View("~/Areas/Import/Views/Preview.cshtml", m);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Parse Import File", "HumanResources", "HRStaff", "Index"));
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult Import(ImportSession s)
+        {
+            try
+            {
+                ImportSession dbs = db.ImportSessions.First(x => x.SessionId.Equals(s.SessionId));
+                HREmployeeTypeSession jt = new HREmployeeTypeSession(dbs);
+                jt.Import();
+                ImportPreviewModel m = new ImportPreviewModel(s.SessionId);
+                return View("~/Areas/Import/Views/Import.cshtml", m);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Import Staff", "HumanResources", "HRStaff", "ImportFile"));
+            }
+        }
+
+        #endregion
+
+
+        #region Crud
         // GET: HumanResources/HREmployeeTypes
         public ActionResult Index()
         {
@@ -117,6 +178,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

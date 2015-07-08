@@ -28,6 +28,20 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
 
         LcpsDbContext db = new LcpsDbContext();
 
+        public HRJobTitleSession()
+            : base(
+            addIfNotExists: true,
+            updateIfExists: false,
+            itemType: typeof(HRJobTitleCandidate),
+            viewTitle: "Import Job Titles",
+            area: "HumanResources",
+            controller: "HRJobTitles",
+            action: "Preview",
+            viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml")
+        {
+            SessionId = Guid.NewGuid();
+        }
+
         public HRJobTitleSession(ImportSession s)
             : base(s)
         { 

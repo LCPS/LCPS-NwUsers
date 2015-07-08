@@ -21,7 +21,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
         [MaxLength(50)]
         public string BuildingId { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "Building")]
         [Required(AllowEmptyStrings = false)]
         [MaxLength(128)]
         public string Name { get; set; }
