@@ -40,8 +40,16 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
         {
             get
             {
-                LcpsDbContext db = new LcpsDbContext();
-                return db.Applications.ToList()[0];
+                try
+                {
+                    LcpsDbContext db = new LcpsDbContext();
+                    return db.Applications.ToList()[0];
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Fatal Error: No default application definition was found in the database", ex);
+                }
+
             }
         }
       

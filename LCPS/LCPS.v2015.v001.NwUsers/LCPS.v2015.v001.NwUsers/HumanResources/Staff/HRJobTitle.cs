@@ -8,6 +8,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml;
 using System.Xml.Serialization;
 
+using LCPS.v2015.v001.NwUsers.Infrastructure;
+using System.Web.Mvc;
+
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
 
@@ -21,41 +24,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [Key]
         [Display(Name = "Record ID", Description = "GUID for indexing the record")]
         public Guid JobTitleKey  { get; set; }
-
-        [Display(Name = "Employee Type Link ID", Description = "GUID that links the job title to an employee type")]
-        [Index("IX_JobTitleName", IsUnique = true, Order = 1)]
-        public virtual Guid EmployeeTypeLinkId { get; set; }
-
-        [Required]
-        [ForeignKey("EmployeeTypeLinkId")]
-        [XmlIgnore]
-        HREmployeeType HREmployeeType { get; set; }
-
-        public string EmployeeTypeId
-        {
-            get 
-            {
-                if (HREmployeeType == null)
-                    HREmployeeType = db.EmployeeTypes.First(x => x.EmployeeTypeLinkId.Equals(this.EmployeeTypeLinkId));
-
-                return this.HREmployeeType.EmployeeTypeId;
-            }
-        }
-
-        public string EmployeeTypeName
-        {
-            get
-            {
-                if (HREmployeeType == null)
-                    HREmployeeType = db.EmployeeTypes.First(x => x.EmployeeTypeLinkId.Equals(this.EmployeeTypeLinkId));
-
-                return this.HREmployeeType.EmployeeTypeName;
-            }
-        }
-
+        
         [Display(Name = "ID", Description = "An ID that uniquely identifies the job title in the division")]
         [Required]
-        [Index("IX_JobTitleName", IsUnique = true, Order = 2)]
+        [Index("IX_JobTitleName", IsUnique = true)]
         [MaxLength(30)]
         public string JobTitleId  { get; set; }
 
@@ -67,7 +39,16 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
 
 
+        public static IEnumerable<SelectListItem> GetJobTitleList()
+        {
+            LcpsDbContext db = new LcpsDbContext();
 
+            List<SelectListItem> items = (from HRJobTitle x in db.JobTitles.OrderBy(b => b.JobTitleName)
+                                          select new SelectListItem() { Text = x.JobTitleName, Value = x.JobTitleKey.ToString() }).ToList();
+
+            return items;
+
+        }
 
 
 

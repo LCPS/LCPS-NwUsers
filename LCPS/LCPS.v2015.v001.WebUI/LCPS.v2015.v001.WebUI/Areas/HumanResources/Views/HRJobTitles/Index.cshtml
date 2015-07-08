@@ -19,8 +19,6 @@
 
 <div class="navbar navbar">
     <div class="navbar-collapse collapse">
-        @Html.Partial("_JobTitleFilterByEmployeeType", new HRJobTitleFilterModel())
-
         <ul class="nav navbar-nav">
             <li>
                 @Html.ActionLink("Create New", "Create")
@@ -35,9 +33,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.EmployeeTypeName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.JobTitleId)
         </th>
         <th>
@@ -49,9 +44,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td id="@item.JobTitleKey">
-                @Html.DisplayFor(modelItem => item.EmployeeTypeName)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.JobTitleId)
             </td>

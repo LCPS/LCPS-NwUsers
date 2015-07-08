@@ -1,0 +1,25 @@
+﻿@model LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups.DynamicStaffGroup
+
+@using (Html.BeginForm("CreateStaffGroup", "DynamicStaffGroup", new { @area = "HumanResources" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+        @Html.ValidationSummary(false)
+
+        <div class="form-group">
+            <strong>Create Group:</strong>
+            @Html.TextBoxFor(model => model.GroupName, new { @class = "form-control input-sm" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Description, new { @class = "form-control input-sm", @style = "width: 400px;" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-success btn-xs" />
+        </div>
+    </div>
+}
+

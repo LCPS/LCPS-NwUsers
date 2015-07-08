@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+using LCPS.v2015.v001.NwUsers.Infrastructure;
 using Anvil.v2015.v001.Domain.Exceptions;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers

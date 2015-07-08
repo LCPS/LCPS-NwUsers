@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxDropDownList, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\LCPS\packages\Bonnet.Mvc.AjaxDropDownList.1.0.3\lib\net45\AjaxDropDownList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -160,6 +164,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\DynamicStaffGroupController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
@@ -167,6 +172,7 @@
     <Compile Include="Areas\HumanResources\Controllers\HRStaffPositionsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HumanResourcesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
+    <Compile Include="Areas\HumanResources\Models\DynamicStaffGroupModel.cs" />
     <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
     <Compile Include="Areas\Import\Controllers\ImportSessionController.cs" />
@@ -181,25 +187,9 @@
     </Compile>
     <Compile Include="Infrastructure\LcpsRoleManager.cs" />
     <Compile Include="Infrastructure\LcpsUserManager.cs" />
-    <Compile Include="Migrations\201507060228340_INIT-001.cs" />
-    <Compile Include="Migrations\201507060228340_INIT-001.Designer.cs">
-      <DependentUpon>201507060228340_INIT-001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507061836433_JobTitle-001.cs" />
-    <Compile Include="Migrations\201507061836433_JobTitle-001.Designer.cs">
-      <DependentUpon>201507061836433_JobTitle-001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507071040050_Building-001.cs" />
-    <Compile Include="Migrations\201507071040050_Building-001.Designer.cs">
-      <DependentUpon>201507071040050_Building-001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507071453083_HRStaff-01.cs" />
-    <Compile Include="Migrations\201507071453083_HRStaff-01.Designer.cs">
-      <DependentUpon>201507071453083_HRStaff-01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507071916152_HRStaffPosition-01.cs" />
-    <Compile Include="Migrations\201507071916152_HRStaffPosition-01.Designer.cs">
-      <DependentUpon>201507071916152_HRStaffPosition-01.cs</DependentUpon>
+    <Compile Include="Migrations\201507081926114_INIT-001.cs" />
+    <Compile Include="Migrations\201507081926114_INIT-001.Designer.cs">
+      <DependentUpon>201507081926114_INIT-001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -229,6 +219,8 @@
     <Content Include="Areas\Public\Views\Home\Login.cshtml" />
     <Content Include="Content\lcps-theme.less" />
     <Content Include="Content\lcps-variables.less" />
+    <Content Include="Scripts\jquery.bonnet.ajax-dropdownlist.js" />
+    <Content Include="Scripts\jquery.bonnet.ajax-dropdownlist.min.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
@@ -284,6 +276,12 @@
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\Details.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\Edit.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\Index.cshtml" />
+    <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_StaffGroupList.cshtml" />
+    <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\Index.cshtml" />
+    <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_StaffGroupCreate.cshtml" />
+    <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_StaffGroupDetail.cshtml" />
+    <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_staffClauseGroupCreate.cshtml" />
+    <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_StaffClauseList.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -353,20 +351,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507060228340_INIT-001.resx">
-      <DependentUpon>201507060228340_INIT-001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507061836433_JobTitle-001.resx">
-      <DependentUpon>201507061836433_JobTitle-001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507071040050_Building-001.resx">
-      <DependentUpon>201507071040050_Building-001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507071453083_HRStaff-01.resx">
-      <DependentUpon>201507071453083_HRStaff-01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507071916152_HRStaffPosition-01.resx">
-      <DependentUpon>201507071916152_HRStaffPosition-01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507081926114_INIT-001.resx">
+      <DependentUpon>201507081926114_INIT-001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

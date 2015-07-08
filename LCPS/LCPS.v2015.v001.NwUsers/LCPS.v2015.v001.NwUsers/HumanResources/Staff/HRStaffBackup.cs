@@ -25,6 +25,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public List<HRStaffPosition> StaffPositions { get; set; }
 
+        public List<DynamicGroups.DynamicStaffGroup> DynamicStaffGroups { get; set; }
+
+        public List<DynamicGroups.StaffClauseGroup> DynamicStaffClauses { get; set; }
+
 
         public void Backup(string fileName)
         {
@@ -39,6 +43,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
             Staff = db.StaffMembers.ToList();
 
             StaffPositions = db.StaffPositions.ToList();
+
+            DynamicStaffGroups = db.DynamicStaffGroups.ToList();
+
+            DynamicStaffClauses = db.DynamicStaffClauses.ToList();
 
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();

@@ -15,8 +15,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using CompareAttribute = System.Web.Mvc.CompareAttribute;
 using System.Web.Mvc;
+using LCPS.v2015.v001.NwUsers.Infrastructure;
 
 #endregion
+
+
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
@@ -63,6 +66,17 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         public override string ToString()
         {
             return Category + " - " + EmployeeTypeId + " - " + EmployeeTypeName;
-        } 
+        }
+
+        public static IEnumerable<SelectListItem> GetEmployeeTypeList()
+        {
+            LcpsDbContext db = new LcpsDbContext();
+
+            List<SelectListItem> items = (from HREmployeeType x in db.EmployeeTypes.OrderBy(b => b.EmployeeTypeName)
+                                          select new SelectListItem() { Text = x.EmployeeTypeName, Value = x.EmployeeTypeLinkId.ToString() }).ToList();
+
+            return items;
+
+        }
     }
 }

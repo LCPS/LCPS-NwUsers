@@ -1,0 +1,21 @@
+﻿@using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
+
+@model IEnumerable<StaffClauseGroup>
+
+@foreach (StaffClauseGroup g in @Model)
+{
+    <div class="row">
+        <div class="col-md-1 text-warning">
+            @if (@Model.ToList().IndexOf(g) > 0)
+            {
+                @g.GroupConjunction
+            }
+        </div>
+        <div class="col-md-9">
+            <span class="text-warning">@g.ToFriendlyString()</span><br />
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("RemoveStaffClause", "DynamicStaffGroup", new { area = "HumanResources", @id = g.RecordId })" onclick="return confirm('Are you sure you want to remove this clause?');">Delete</a>
+        </div>
+    </div>
+}

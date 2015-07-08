@@ -35,10 +35,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
 
         public Guid JobTitleKey { get; set; }
 
-        public string EmployeeTypeId { get; set; }
-
-        public Guid EmployeeTypeLinkId { get; set; }
-
         public string JobTitleId { get; set; }
 
         public string JobTitleName { get; set; }
@@ -94,10 +90,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
 
         public void Validate()
         {
-            HREmployeeType et = db.EmployeeTypes.FirstOrDefault(x => x.EmployeeTypeId == this.EmployeeTypeId);
-            if (et == null)
-                throw new Exception(string.Format("{0} is not a valid employee type", this.EmployeeTypeId));
-
             ImportFileTSV.ValidateItem(this);
         }
 
@@ -110,7 +102,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
 
         public override string ToString()
         {
-            return EmployeeTypeId + " - " + JobTitleId + " - " + JobTitleName;
+            return JobTitleId + " - " + JobTitleName;
         }
 
         public ImportItem ToImportItem()
@@ -133,12 +125,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
         {
             try
             {
-                HREmployeeType et = db.EmployeeTypes.FirstOrDefault(x => x.EmployeeTypeId == this.EmployeeTypeId);
-                if (et == null)
-                    throw new Exception(string.Format("{0} is not a valid employee type", this.EmployeeTypeId));
-
-                HRJobTitle jt = db.JobTitles.FirstOrDefault(x => x.EmployeeTypeLinkId.Equals(et.EmployeeTypeLinkId) &
-                    x.JobTitleId == this.JobTitleId);
+                HRJobTitle jt = db.JobTitles.FirstOrDefault(x => x.JobTitleId == this.JobTitleId);
 
                 return (jt != null);
             }
@@ -156,7 +143,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
                 HRJobTitle jt = ToJobTitle();
                 LcpsDbContext db = new LcpsDbContext();
                 jt.JobTitleKey = Guid.NewGuid();
-                jt.EmployeeTypeLinkId = db.EmployeeTypes.First(x => x.EmployeeTypeId == this.EmployeeTypeId).EmployeeTypeLinkId;
                 db.JobTitles.Add(jt);
                 db.SaveChanges();
             } 

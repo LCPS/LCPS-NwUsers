@@ -29,6 +29,7 @@ namespace LCPS.v2015.v001.WebUI.Migrations
 
             LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext db = new Infrastructure.LcpsDbContext();
             db.Seed();
+            
         }
     }
 }

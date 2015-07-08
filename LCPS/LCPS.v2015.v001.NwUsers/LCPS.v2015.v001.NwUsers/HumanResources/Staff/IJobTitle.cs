@@ -25,9 +25,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
     public interface IJobTitle
     {
         Guid JobTitleKey { get; set; }
-        Guid EmployeeTypeLinkId { get; set; }
-        string EmployeeTypeId { get; }
-        string EmployeeTypeName { get; }
         string JobTitleId { get; set; }
         string JobTitleName { get; set; }
     }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
+using LCPS.v2015.v001.NwUsers.Infrastructure;
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources
 {
@@ -26,9 +28,23 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
         [MaxLength(128)]
         public string Name { get; set; }
 
+        [MaxLength(256)]
+        public string Description { get; set; }
+
         public override string ToString()
         {
             return BuildingId + " - " + Name;
+        }
+
+        public static IEnumerable<SelectListItem> GetBuildingList()
+        {
+            LcpsDbContext db = new LcpsDbContext();
+
+            List<SelectListItem> items = (from HRBuilding x in db.Buildings.OrderBy(b => b.Name)
+                                          select new SelectListItem() { Text = x.Name, Value = x.BuildingKey.ToString() }).ToList();
+
+            return items;
+                                          
         }
     }
 }

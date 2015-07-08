@@ -15,6 +15,7 @@ using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Linq.Dynamic;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
@@ -98,6 +99,19 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
                 .OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
 
             return View("Index", staff);
+        }
+
+        public ActionResult Active()
+        {
+            List<Guid> ids = db.StaffPositions.Where(x => x.Status == HRStaffPositionQualifier.Active).Select(x => x.StaffMemberId).ToList();
+
+            List<HRStaff> staff = (from Guid x in ids
+                                   select new HRStaff(x)).ToList();
+
+            staff = staff.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
+
+            return View("Index", staff);
+
         }
 
 

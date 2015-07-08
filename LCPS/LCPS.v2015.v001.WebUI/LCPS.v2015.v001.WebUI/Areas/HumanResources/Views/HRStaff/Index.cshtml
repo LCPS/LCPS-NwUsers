@@ -24,6 +24,12 @@
             <li>
                 <a href="@Url.Action("Index", "HRStaff", new { area = "HumanResources" } )"> <i class="fa fa-refresh"></i> Refresh</a>
             </li>
+            <li>
+                <a href="@Url.Action("Active", "HRStaff", new { area = "HumanResources" } )"> <i class="fa fa-exclamation-circle"></i> Active Staff</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "DynamicStaffGroup", new { area = "HumanResources" } )"> <i class="fa fa-group"></i> Dynamic Groups</a>
+            </li>
         </ul>
     </div>
 </div>
@@ -34,13 +40,13 @@
             @Html.DisplayNameFor(model => model.StaffId)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MiddleInitial)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StaffEmail)
@@ -60,13 +66,13 @@
             @Html.DisplayFor(modelItem => item.StaffId)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MiddleInitial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StaffEmail)

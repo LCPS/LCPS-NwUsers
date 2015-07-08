@@ -39,7 +39,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         
         public string JobTitleId { get; set; }
         
-        public bool Active { get; set; }
+        public HRStaffPositionQualifier Status { get; set; }
         
         public string FiscalYear { get; set;}
 
@@ -138,7 +138,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         {
             LcpsDbContext db = new LcpsDbContext();
             HRStaffPosition p = HRStaffPosition.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId, db);
-            p.Active = Active;
+            p.Status = Status;
             p.FiscalYear = FiscalYear;
             return p;
         }
@@ -146,7 +146,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public override string ToString()
         {
-            return StaffId + " - " + BuildingId + " - " + EmployeeTypeId + " - " + JobTitleId + " Active: " + Active.ToString() + " - " + FiscalYear;
+            return StaffId + " - " + BuildingId + " - " + EmployeeTypeId + " - " + JobTitleId + " Active: " + Status.ToString() + " - " + FiscalYear;
         }
 
         #endregion
@@ -176,7 +176,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
                 HRStaffPosition p = HRStaffPosition.Load(StaffId, BuildingId, EmployeeTypeId, JobTitleId, db);
                 p.PositionKey = Guid.NewGuid();
-                p.Active = this.Active;
+                p.Status = this.Status;
                 p.FiscalYear = this.FiscalYear;
 
                 db.StaffPositions.Add(p);
@@ -202,7 +202,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
                     x.EmployeeTypeKey.Equals(p.EmployeeTypeKey) &
                     x.JobTitleKey.Equals(p.JobTitleKey));
 
-                tmp.Active = this.Active;
+                tmp.Status = this.Status;
                 tmp.FiscalYear = this.FiscalYear;
 
                 db.Entry(tmp).State = System.Data.Entity.EntityState.Modified;
@@ -227,7 +227,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
                     x.EmployeeTypeKey.Equals(p.EmployeeTypeKey) &
                     x.JobTitleKey.Equals(p.JobTitleKey));
 
-                if (tmp.Active == this.Active & tmp.FiscalYear == this.FiscalYear)
+                if (tmp.Status == this.Status & tmp.FiscalYear == this.FiscalYear)
                     return false;
                 else
                     return true;

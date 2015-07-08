@@ -1,118 +1,103 @@
-EmployeeTypeId	JobTitleId	JobTitleName
-ADM	AsstPrin	AsstPrin
-ADM	CorAtt	CorAtt
-ADM	CorFood	CorFood
-ADM	Direct Instr	Direct Instr
-ADM	DirFin	DirFin
-ADM	DirInst	DirInst
-ADM	DirSpEd	DirSpEd
-ADM	Disc	Disc
-ADM	ParentInvolvement	ParentInvolvement
-ADM	Prin	Prin
-ADM	Psych	Psych
-ADM	SubAsstPrin	SubAsstPrin
-ADM	Super	Super
-ADM	Superintendent	Superintendent
-ADM	SupTech	SupTech
-ADM	SupTran	SupTran
-ADM	SVCC	SVCC
-BUS	BusDr	BusDr
-CAF	CafeMgr	CafeMgr
-CAF	CafeSub	CafeSub
-CAF	CafeWkr	CafeWkr
-CONSULT	Consultant	Consultant
-COU	Guid	Guid
-CUS	Cust	Cust
-DAT	CSR	CSR
-FAP	FAPT	FAPT
-IA	CSR	CSR
-IA	ISS	ISS
-IA	Math	Math
-IA	PE	PE
-IA	PE Assist	PE Assist
-IA	PK	PK
-IA	SOL	SOL
-IA	SpEd	SpEd
-IA	T1	T1
-IA	TI	TI
-MAN	CompTech	CompTech
-MAN	GrndCrew	GrndCrew
-MAN	MntCrew	MntCrew
-MAN	Painter	Painter
-NETADMIN	CompSys	CompSys
-NETADMIN	CompTech	CompTech
-NON	FamPre	FamPre
-NON	GOVS	GOVS
-NON	Guid	Guid
-NON	KYA	KYA
-NON	OffCampus	OffCampus
-NON	SpEd	SpEd
-NON	SRO	SRO
-NON	SVCC	SVCC
-NON	Vision	Vision
-NUR	Nurse	Nurse
-SBM	Beaver Creek	Beaver Creek
-SBM	Brown's Store	Brown's Store
-SBM	Chr,  Plymouth	Chr,  Plymouth
-SBM	Co Chr, Hound's Creek	Co Chr, Hound's Creek
-SBM	Love's Mill	Love's Mill
-SBM	Meherrin River	Meherrin River
-SBM	Rehoboth	Rehoboth
-SBM	SchBd	SchBd
-SEC	Bookpr	Bookpr
-SEC	FedPgm	FedPgm
-SEC	FinClk	FinClk
-SEC	GuidSec	GuidSec
-SEC	LibAsst	LibAsst
-SEC	OffAsst	OffAsst
-SEC	Recpt	Recpt
-SEC	SchSec	SchSec
-SEC	SecPer	SecPer
-SEC	SecSpEd	SecSpEd
-SEC	SecSuper	SecSuper
-SEC	SecTrns	SecTrns
-SPO	Sup	Sup
-SRO	SRO	SRO
-SUB	PermSub	PermSub
-SUB	Sub	Sub
-TEA	01	01
-TEA	02	02
-TEA	03	03
-TEA	04	04
-TEA	05	05
-TEA	Agri	Agri
-TEA	AltEd	AltEd
-TEA	Art	Art
-TEA	Band	Band
-TEA	BldTrd	BldTrd
-TEA	Business	Business
-TEA	CarDev	CarDev
-TEA	ChildCare	ChildCare
-TEA	Chorus	Chorus
-TEA	CompTech	CompTech
-TEA	Eng	Eng
-TEA	FL	FL
-TEA	GOVS	GOVS
-TEA	ITR	ITR
-TEA	JROTC	JROTC
-TEA	KG	KG
-TEA	LEP	LEP
-TEA	Lib	Lib
-TEA	Math	Math
-TEA	Mrktg	Mrktg
-TEA	Music	Music
-TEA	PE	PE
-TEA	PK	PK
-TEA	Sci	Sci
-TEA	SpEd	SpEd
-TEA	Speech	Speech
-TEA	Spn	Spn
-TEA	SS	SS
-TEA	SupPer	SupPer
-TEA	SVCC	SVCC
-TEA	T1	T1
-TRA	AutoDr	AutoDr
-TRA	Bus Driver Sub	Bus Driver Sub
-TRA	BusDr	BusDr
-TRA	BusDr Sub	BusDr Sub
-TRA	Mech	Mech
+JobTitleId	JobTitleName
+01	01
+02	02
+03	03
+04	04
+05	05
+Agri	Agri
+AltEd	AltEd
+Art	Art
+AsstPrin	AsstPrin
+AutoDr	AutoDr
+Band	Band
+Beaver Creek	Beaver Creek
+BldTrd	BldTrd
+Bookpr	Bookpr
+Brown's Store	Brown's Store
+Bus Driver Sub	Bus Driver Sub
+BusDr	BusDr
+BusDr Sub	BusDr Sub
+Business	Business
+CafeMgr	CafeMgr
+CafeSub	CafeSub
+CafeWkr	CafeWkr
+CarDev	CarDev
+ChildCare	ChildCare
+Chorus	Chorus
+Chr,  Plymouth	Chr,  Plymouth
+Co Chr, Hound's Creek	Co Chr, Hound's Creek
+CompSys	CompSys
+CompTech	CompTech
+Consultant	Consultant
+CorAtt	CorAtt
+CorFood	CorFood
+CSR	CSR
+Cust	Cust
+Direct Instr	Direct Instr
+DirFin	DirFin
+DirInst	DirInst
+DirSpEd	DirSpEd
+Disc	Disc
+Eng	Eng
+FamPre	FamPre
+FAPT	FAPT
+FedPgm	FedPgm
+FinClk	FinClk
+FL	FL
+GOVS	GOVS
+GrndCrew	GrndCrew
+Guid	Guid
+GuidSec	GuidSec
+ISS	ISS
+ITR	ITR
+JROTC	JROTC
+KG	KG
+KYA	KYA
+LEP	LEP
+Lib	Lib
+LibAsst	LibAsst
+Love's Mill	Love's Mill
+Math	Math
+Mech	Mech
+Meherrin River	Meherrin River
+MntCrew	MntCrew
+Mrktg	Mrktg
+Music	Music
+Nurse	Nurse
+OffAsst	OffAsst
+OffCampus	OffCampus
+Painter	Painter
+ParentInvolvement	ParentInvolvement
+PE	PE
+PE Assist	PE Assist
+PermSub	PermSub
+PK	PK
+Prin	Prin
+Psych	Psych
+Recpt	Recpt
+Rehoboth	Rehoboth
+SchBd	SchBd
+SchSec	SchSec
+Sci	Sci
+SecPer	SecPer
+SecSpEd	SecSpEd
+SecSuper	SecSuper
+SecTrns	SecTrns
+SOL	SOL
+SpEd	SpEd
+Speech	Speech
+Spn	Spn
+SRO	SRO
+SS	SS
+Sub	Sub
+SubAsstPrin	SubAsstPrin
+Sup	Sup
+Super	Super
+Superintendent	Superintendent
+SupPer	SupPer
+SupTech	SupTech
+SupTran	SupTran
+SVCC	SVCC
+T1	T1
+TI	TI
+Vision	Vision

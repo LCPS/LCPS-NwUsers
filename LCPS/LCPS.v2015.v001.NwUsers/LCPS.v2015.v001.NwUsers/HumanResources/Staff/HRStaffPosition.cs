@@ -17,6 +17,7 @@ using LCPS.v2015.v001.NwUsers.HumanResources;
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
     [Serializable]
+    [Table("HRStaffPosition", Schema = "HumanResources")]
     public class HRStaffPosition : IStaffPosition
     {
         #region Fields
@@ -131,7 +132,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
             }
         }
 
-        public bool Active { get; set; }
+        public HRStaffPositionQualifier Status { get; set; }
 
         public string FiscalYear { get; set; }
 

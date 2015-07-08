@@ -20,6 +20,23 @@ namespace LCPS.v2015.v001.WebUI
             );
 
             route.DataTokens["Area"] = "Public";
+            /*
+            var route2 = routes.MapRoute(
+                name: "GetJobTitlesByEmployeeType",
+                url: "HumanResources/HumanResources/GetJobTitleByEmployeeType",
+                defaults: new { controller = "HumanResources", action = "GetJobTitlesByEmployeeType"},
+                namespaces: new [] {"Area.HumanResources.HumanResources"}
+                );
+            
+            route2.DataTokens["Area"] = "HumanResources";
+
+
+            
+            routes.MapRoute("GetStatesByCountryId",
+                            "address/getstatesbycountryid/",
+                            new { controller = "Address", action = "GetStatesByCountryId" },
+                            new[] { "CountryStateApplication.Controllers" });
+            */
         }
     }
 }

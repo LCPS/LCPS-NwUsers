@@ -1,0 +1,36 @@
+﻿@using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+@model DynamicStaffGroupModel
+
+<h2>Dynamic Staff Groups</h2>
+<hr />
+@Html.Partial("_StaffGroupCreate", new DynamicStaffGroup())
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        @Html.Partial("_StaffGroupList", @Model.StaffGroups)
+    </div>
+    <div class="col-md-9">
+        @if (Model.CurrentGroup != null)
+        {
+            @Html.Partial("_StaffGroupDetail", @Model.CurrentGroup)
+            <hr />
+            @Html.Partial("_staffClauseGroupCreate", new StaffClauseGroup() { StaffGroupId = Model.CurrentGroup.DynamicGroupId })
+
+            if (Model.Clauses != null)
+            {
+                <hr />
+                <div class="well">
+                    @Html.Partial("_StaffClauseList", Model.Clauses)
+                </div>
+            }
+        }
+    </div>
+</div>
+

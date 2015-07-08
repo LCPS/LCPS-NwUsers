@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
+    public enum HRStaffPositionQualifier
+    {
+        Inactive = 0,
+        Active = 1
+    }
+
     public interface IStaffPosition
     {
         Guid PositionKey { get; set; }
@@ -29,7 +35,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         
         HRJobTitle JobTitle { get; }
 
-        bool Active { get; set; }
+        HRStaffPositionQualifier Status { get; set; }
 
         string FiscalYear { get; set; }
     }

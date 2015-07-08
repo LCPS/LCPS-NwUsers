@@ -19,6 +19,9 @@ namespace LCPS.v2015.v001.WebUI
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bonnet").Include(
+                      "~/Scripts/jquery.bonnet*"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));

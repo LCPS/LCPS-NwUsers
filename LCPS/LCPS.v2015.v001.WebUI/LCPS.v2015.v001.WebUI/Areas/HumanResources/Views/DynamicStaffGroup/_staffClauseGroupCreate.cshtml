@@ -1,0 +1,133 @@
+﻿@using Share.Bonnet.AjaxDropDownList;
+@using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
+@using LCPS.v2015.v001.NwUsers.HumanResources;
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+
+@model StaffClauseGroup
+
+
+@using (Html.BeginForm("CreateStaffClause", "DynamicStaffGroup", new { area = "HumanResources" }, FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.StaffGroupId)
+    
+    <div class="row">
+        <div class="col-xs-2">
+            <strong>Group Clause</strong>
+        </div>
+
+        <table>
+            <tr>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.GroupConjunction, new { @class = "form-control input-sm", @style = "width: 75px;" , id = "ddlGroupClause" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <strong>Building</strong>
+        </div>
+
+        <table>
+            <tr>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.BuildingConjunction, new { @class = "form-control input-sm", @style = "width: 75px;" })
+                </td>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", @style = "width: 85px;" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.Building, HRBuilding.GetBuildingList(), new { @class = "form-control input-sm" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <strong>Type</strong>
+        </div>
+
+        <table>
+            <tr>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.EmployeeTypeConjunction, new { @class = "form-control input-sm", @style = "width: 75px;" })
+                </td>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.EmployeeTypeOperator, new { @class = "form-control input-sm", @style = "width: 85px;" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.EmployeeType, HREmployeeType.GetEmployeeTypeList(), new { @class = "form-control input-sm" }, Ajax.UpdateActionFor(
+                        model => model.EmployeeType,
+                            new AjaxUpdateOptions
+                            {
+                                DisableTargetWhenEmpty = true,
+                                Url = Url.Action("JobTitles", "HumanRresources", new { @area = "HumanResources" })
+                            }
+                        ))
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <strong>Title</strong>
+        </div>
+        <span id="loading-progress" style="display: none;">Loading job titles..</span>
+        <table>
+            <tr>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.JobTitleConjunction, new { @class = "form-control input-sm", @style = "width: 75px;" })
+                </td>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.JobTitleOperator, new { @class = "form-control input-sm", @style = "width: 85px;" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.JobTitle, HRJobTitle.GetJobTitleList(), new { @class = "form-control input-sm" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <strong>Status</strong>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm", @style = "width: 75px;" })
+                </td>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.StatusOperator, new { @class = "form-control input-sm", @style = "width: 85px;" })
+                </td>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.Status, new { @class = "form-control input-sm", @style = "width: 110px;" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <strong>Year</strong>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.YearConjunction, new { @class = "form-control input-sm", @style = "width: 75px;" })
+                </td>
+                <td>
+                    @Html.EnumDropDownListFor(model => model.YearOperator, new { @class = "form-control input-sm", @style = "width: 85px;" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Year, new { @class = "form-control input-sm", @style = "width: 85px;" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row" style="margin-top: 12px;">
+        <div class="col-xs-2">
+            &nbsp;
+        </div>
+        <input type="submit" value="Add Clause" class="btn btn-success btn-xs" />
+    </div>
+}

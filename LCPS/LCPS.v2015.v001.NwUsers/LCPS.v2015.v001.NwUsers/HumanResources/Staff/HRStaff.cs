@@ -14,6 +14,8 @@ using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
 using LCPS.v2015.v001.NwUsers.Security;
 using LCPS.v2015.v001.NwUsers.HumanResources;
+
+using Anvil.v2015.v001.Domain.Entities;
 #endregion
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
@@ -37,21 +39,14 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public HRStaff(Guid staffLinkId)
         {
-            /*
-            HRStaff dbStaff = db.StaffMembers.FirstOrDefault(x => x.StaffLinkId.Equals(staffLinkId));
-            if(dbStaff != null)
+            
+            HRStaff dbStaff = db.StaffMembers.FirstOrDefault(x => x.StaffKey.Equals(staffLinkId));
+            if (dbStaff != null)
             {
-                this.StaffLinkId = staffLinkId;
-                this.StaffId = dbStaff.StaffId;
-                this.FirstName = dbStaff.FirstName;
-                this.MiddleInitial = dbStaff.MiddleInitial;
-                this.LastName = dbStaff.LastName;
-                this.Birthdate = dbStaff.Birthdate;
-                this.Gender = dbStaff.Gender;
-                this.Email = dbStaff.Email;
-                _positions = new HRStaffPositionCollection(staffLinkId);
-             * }
-             */ 
+                AnvilEntity e = new AnvilEntity(dbStaff);
+                e.CopyTo(this);
+            }
+            
             
         }
 

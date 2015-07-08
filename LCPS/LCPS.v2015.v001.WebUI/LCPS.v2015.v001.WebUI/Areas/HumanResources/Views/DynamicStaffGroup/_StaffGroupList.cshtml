@@ -1,0 +1,15 @@
+﻿@using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
+
+@model IEnumerable<DynamicStaffGroup>
+
+
+@foreach (DynamicStaffGroup g in @Model)
+{
+    <div class="row">
+        <a href="@Url.Action("DynamicGroup", "DynamicStaffGroup", new {area = "HumanResources", @id = g.DynamicGroupId})">@g.GroupName</a>
+        <p style="margin-left: 8px;">
+            <small>@g.Description</small>
+        </p>
+    </div>
+}
+

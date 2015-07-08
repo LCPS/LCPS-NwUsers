@@ -87,12 +87,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             return View(db.JobTitles.OrderBy(x => x.JobTitleId).ToList());
         }
 
-        [HttpPost]
-        public ActionResult FilterByEmployeeType(HRJobTitleFilterModel f)
-        {
-            return View("Index", db.JobTitles.Where(x => x.EmployeeTypeLinkId.Equals(f.EmployeeTypeLinkId)).OrderBy(x => x.JobTitleId).ToList());
-        }
-
         // GET: HumanResources/HRJobTitles/Details/5
         public ActionResult Details(Guid? id)
         {
