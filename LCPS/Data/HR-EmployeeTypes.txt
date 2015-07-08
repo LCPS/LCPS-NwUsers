@@ -1,0 +1,21 @@
+EmployeeTypeId	EmployeeTypeName	Category
+ADM	ADM	Unknown
+BUS	BUS	Unknown
+CAF	CAF	Unknown
+COU	COU	Unknown
+CUS	CUS	Unknown
+DAT	DAT	Unknown
+FAP	FAP	Unknown
+Gov Sch	Gov Sch	Unknown
+IA	IA	Unknown
+MAN	MAN	Unknown
+NETADMIN	NETADMIN	Unknown
+NON	NON	Unknown
+NUR	NUR	Unknown
+SBM	SBM	Unknown
+SEC	SEC	Unknown
+SPO	SPO	Unknown
+SRO	SRO	Unknown
+SUB	SUB	Unknown
+TEA	TEA	Unknown
+TRA	TRA	Unknown
