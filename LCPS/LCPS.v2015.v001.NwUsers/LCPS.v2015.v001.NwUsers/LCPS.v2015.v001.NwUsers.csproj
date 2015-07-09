@@ -98,7 +98,7 @@
     <Compile Include="HumanResources\Staff\HRStaffPositionCandidate.cs" />
     <Compile Include="HumanResources\Staff\IStaff.cs" />
     <Compile Include="HumanResources\Staff\IStaffPosition.cs" />
-    <Compile Include="HumanResources\Students\InstructionalLevelSession.cs" />
+    <Compile Include="Students\InstructionalLevelSession.cs" />
     <Compile Include="Importing\IImportEntity.cs" />
     <Compile Include="Importing\IImportSession.cs" />
     <Compile Include="Importing\IImportStatus.cs" />
@@ -117,9 +117,11 @@
     <Compile Include="Security\LcpsEmail.cs" />
     <Compile Include="Security\LcpsStaffEmail.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="HumanResources\Students\IInstructionalLevel.cs" />
-    <Compile Include="HumanResources\Students\InstructionalLevel.cs" />
-    <Compile Include="HumanResources\Students\InstructionalLevelCandidate.cs" />
+    <Compile Include="Students\IInstructionalLevel.cs" />
+    <Compile Include="Students\InstructionalLevel.cs" />
+    <Compile Include="Students\InstructionalLevelCandidate.cs" />
+    <Compile Include="Students\IStudent.cs" />
+    <Compile Include="Students\Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

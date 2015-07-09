@@ -19,14 +19,17 @@ using Anvil.v2015.v001.Domain.Entities;
 
 #endregion
 
-namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
+namespace LCPS.v2015.v001.NwUsers.Students
 {
+    [Serializable]
     public class InstructionalLevelCandidate : IInstructionalLevel, IImportStatus, IImportEntity
     {
 
         #region Fields
 
         byte[] _serialized;
+
+        [NonSerialized]
         LcpsDbContext db = new LcpsDbContext();
 
         #endregion
@@ -79,7 +82,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
 
         public object Deserialize()
         {
-            InstructionalLevel t = (InstructionalLevel)ImportFileTSV.DeserializeItem(this.GetType(), _serialized);
+            InstructionalLevelCandidate t = (InstructionalLevelCandidate)ImportFileTSV.DeserializeItem(this.GetType(), _serialized);
             return t;
         }
 
@@ -120,11 +123,21 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
             return i;
         }
 
+        public LcpsDbContext DbContext
+        {
+            get
+            {
+                if (db == null)
+                    db = new LcpsDbContext();
+                return db;
+            }
+        }
+
         #endregion
 
         public bool TargetExists()
         {
-            int count = db.InstructionalLevels.Where(x => x.InstructionalLevelId == this.InstructionalLevelId).Count();
+            int count = DbContext.InstructionalLevels.Where(x => x.InstructionalLevelId == this.InstructionalLevelId).Count();
             return (count > 0);
         }
 
@@ -132,25 +145,25 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
         {
             InstructionalLevel i = ToInstructionalLevel();
             i.InstructionalLevelKey = Guid.NewGuid();
-            db.InstructionalLevels.Add(i);
-            db.SaveChanges();
+            DbContext.InstructionalLevels.Add(i);
+            DbContext.SaveChanges();
         }
 
         public void Update()
         {
             InstructionalLevel i = ToInstructionalLevel();
-            InstructionalLevel t = db.InstructionalLevels.First(x => x.InstructionalLevelId == this.InstructionalLevelId);
+            InstructionalLevel t = DbContext.InstructionalLevels.First(x => x.InstructionalLevelId == this.InstructionalLevelId);
             AnvilEntity e = new AnvilEntity(i);
             e.CopyTo(t);
 
-            db.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            DbContext.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            DbContext.SaveChanges();
         }
 
         public bool IsSyncJustified()
         {
             InstructionalLevel i = ToInstructionalLevel();
-            InstructionalLevel t = db.InstructionalLevels.First(x => x.InstructionalLevelId == this.InstructionalLevelId);
+            InstructionalLevel t = DbContext.InstructionalLevels.First(x => x.InstructionalLevelId == this.InstructionalLevelId);
             AnvilEntity e = new AnvilEntity(i);
             return (e.Compare(t).Count() > 0);
         }
