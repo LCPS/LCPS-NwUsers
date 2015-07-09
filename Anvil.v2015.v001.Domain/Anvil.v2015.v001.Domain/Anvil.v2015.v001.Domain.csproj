@@ -91,10 +91,11 @@
     <Compile Include="Entities\ApplicationBase.cs" />
     <Compile Include="Entities\ApplicationModels.cs" />
     <Compile Include="Entities\Dynamic.cs" />
+    <Compile Include="Entities\DynamicFilters\DynamicQueryClauseCollection.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryConjunctions.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryOperatorLibrary.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryOperators.cs" />
-    <Compile Include="Entities\DynamicFilters\IDynamicQueryClause.cs" />
+    <Compile Include="Entities\DynamicFilters\DynamicQueryClause.cs" />
     <Compile Include="Entities\DynamicFilters\IDynamicQueryFilter.cs" />
     <Compile Include="Entities\LinqExtensions.cs" />
     <Compile Include="Exceptions\AnvilExceptionModel.cs" />

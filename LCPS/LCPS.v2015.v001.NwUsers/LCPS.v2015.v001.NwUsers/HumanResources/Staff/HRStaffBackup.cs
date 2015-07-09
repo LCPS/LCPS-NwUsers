@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
+using System.Xml.Serialization;
 
 #endregion
 
@@ -48,10 +49,9 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
             DynamicStaffClauses = db.DynamicStaffClauses.ToList();
 
-            BinaryFormatter bf = new BinaryFormatter();
+            XmlSerializer xml = new XmlSerializer(this.GetType());
             MemoryStream ms = new MemoryStream();
-
-            bf.Serialize(ms, this);
+            xml.Serialize(ms, this);
 
             HttpContext.Current.Response.Clear();
             HttpContext.Current.Response.ContentType = "application/force-download";

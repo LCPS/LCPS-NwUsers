@@ -2,20 +2,39 @@
 
 @model IEnumerable<StaffClauseGroup>
 
-@foreach (StaffClauseGroup g in @Model)
-{
-    <div class="row">
-        <div class="col-md-1 text-warning">
-            @if (@Model.ToList().IndexOf(g) > 0)
-            {
-                @g.GroupConjunction
-            }
-        </div>
-        <div class="col-md-9">
-            <span class="text-warning">@g.ToFriendlyString()</span><br />
-        </div>
-        <div class="col-md-2">
-            <a href="@Url.Action("RemoveStaffClause", "DynamicStaffGroup", new { area = "HumanResources", @id = g.RecordId })" onclick="return confirm('Are you sure you want to remove this clause?');">Delete</a>
-        </div>
-    </div>
-}
+<style>
+    #clause-list
+    {
+        border-width: 0;
+        border-collapse: collapse;
+    }
+
+    #clause-list tr td{
+        padding: 0 18px 4px 0;
+    }
+</style>
+
+<table id="clause-list">
+    @foreach (StaffClauseGroup g in @Model)
+    {
+        <tr>
+            <td>
+                @if (@Model.ToList().IndexOf(g) > 0)
+                {
+                    @g.GroupConjunction
+                }
+                else
+                {
+                    <span>&nbsp;</span>
+                }
+            </td>
+            <td style="white-space:nowrap">
+                <span class="text-warning">@g.ToString()</span><br />
+            </td>
+            <td>
+                <a href="@Url.Action("RemoveStaffClause", "DynamicStaffGroup", new { area = "HumanResources", @id = g.RecordId })" onclick="return confirm('Are you sure you want to remove this clause?');">Delete</a>
+            </td>
+        </tr>
+
+    }
+</table>

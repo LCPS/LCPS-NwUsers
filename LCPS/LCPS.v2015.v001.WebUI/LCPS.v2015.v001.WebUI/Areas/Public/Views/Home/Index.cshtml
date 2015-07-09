@@ -18,9 +18,23 @@
     Area = "HumanResources",
     Controller = "HREmployeeTypes",
     Action = "Index",
-    CssClass = "fa fa-group",
-    Text = "Human Resources"
+    CssClass = "fa fa-apple",
+    Text = "Faculty / Staff"
 })
 
 }
+
+@if (User.IsInRole("APP-Admins") | User.IsInRole("HR-Managers"))
+{
+    @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
+{
+    Area = "HumanResources",
+    Controller = "InstructionalLevel",
+    Action = "Index",
+    CssClass = "fa fa-graduation-cap",
+    Text = "Students"
+})
+
+}
+
 

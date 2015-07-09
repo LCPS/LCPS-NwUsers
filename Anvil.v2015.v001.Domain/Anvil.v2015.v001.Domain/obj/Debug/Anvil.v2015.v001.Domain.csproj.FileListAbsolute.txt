@@ -162,3 +162,4 @@ C:\Anvil\LCPS\LCPS-NwUsers\Anvil.v2015.v001.Domain\Anvil.v2015.v001.Domain\bin\D
 C:\Anvil\LCPS\LCPS-NwUsers\Anvil.v2015.v001.Domain\Anvil.v2015.v001.Domain\bin\Debug\Newtonsoft.Json.xml
 C:\Anvil\LCPS\LCPS-NwUsers\Anvil.v2015.v001.Domain\Anvil.v2015.v001.Domain\obj\Debug\anvildom.dll
 C:\Anvil\LCPS\LCPS-NwUsers\Anvil.v2015.v001.Domain\Anvil.v2015.v001.Domain\obj\Debug\anvildom.pdb
+C:\Lcps\NwUsers\LCPS-NwUsers\Anvil.v2015.v001.Domain\Anvil.v2015.v001.Domain\obj\Debug\Anvil.v2015.v001.Domain.csprojResolveAssemblyReference.cache

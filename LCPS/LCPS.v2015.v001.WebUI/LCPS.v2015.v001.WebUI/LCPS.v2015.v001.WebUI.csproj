@@ -172,8 +172,10 @@
     <Compile Include="Areas\HumanResources\Controllers\HRStaffPositionsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HumanResourcesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
+    <Compile Include="Areas\HumanResources\InstructionalLevelController.cs" />
     <Compile Include="Areas\HumanResources\Models\DynamicStaffGroupModel.cs" />
     <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
+    <Compile Include="Areas\HumanResources\Models\HRRestoreModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
     <Compile Include="Areas\Import\Controllers\ImportSessionController.cs" />
     <Compile Include="Areas\Import\ImportAreaRegistration.cs" />
@@ -187,9 +189,13 @@
     </Compile>
     <Compile Include="Infrastructure\LcpsRoleManager.cs" />
     <Compile Include="Infrastructure\LcpsUserManager.cs" />
-    <Compile Include="Migrations\201507081926114_INIT-001.cs" />
-    <Compile Include="Migrations\201507081926114_INIT-001.Designer.cs">
-      <DependentUpon>201507081926114_INIT-001.cs</DependentUpon>
+    <Compile Include="Migrations\201507082203129_Init001.cs" />
+    <Compile Include="Migrations\201507082203129_Init001.Designer.cs">
+      <DependentUpon>201507082203129_Init001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507090324388_Students001.cs" />
+    <Compile Include="Migrations\201507090324388_Students001.Designer.cs">
+      <DependentUpon>201507090324388_Students001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -282,6 +288,15 @@
     <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_StaffGroupDetail.cshtml" />
     <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_staffClauseGroupCreate.cshtml" />
     <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_StaffClauseList.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HumanResources\Restore_org.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HumanResources\Restore.cshtml" />
+    <Content Include="Areas\HumanResources\Views\DynamicStaffGroup\_StaffList.cshtml" />
+    <Content Include="Areas\HumanResources\Views\Shared\_StudentsLayout.cshtml" />
+    <Content Include="Areas\HumanResources\Views\InstructionalLevel\Create.cshtml" />
+    <Content Include="Areas\HumanResources\Views\InstructionalLevel\Delete.cshtml" />
+    <Content Include="Areas\HumanResources\Views\InstructionalLevel\Details.cshtml" />
+    <Content Include="Areas\HumanResources\Views\InstructionalLevel\Edit.cshtml" />
+    <Content Include="Areas\HumanResources\Views\InstructionalLevel\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -327,7 +342,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\HumanResources\Views\HumanResources\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
@@ -351,8 +365,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507081926114_INIT-001.resx">
-      <DependentUpon>201507081926114_INIT-001.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507082203129_Init001.resx">
+      <DependentUpon>201507082203129_Init001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507090324388_Students001.resx">
+      <DependentUpon>201507090324388_Students001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

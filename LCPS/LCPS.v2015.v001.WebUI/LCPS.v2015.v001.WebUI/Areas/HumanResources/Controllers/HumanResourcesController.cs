@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
+
 using System.Web;
 using System.Web.Mvc;
 
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
+
 using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
-using LCPS.v2015.v001.NwUsers.Infrastructure;
+using LCPS.v2015.v001.WebUI.Infrastructure;
+using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+
 using Anvil.v2015.v001.Domain.Exceptions;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
@@ -26,6 +35,45 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             {
                 return View("Error", new AnvilExceptionModel(ex, "backup Human Resources", "HumanResources", "HREmployeeTypes", "Index"));
             }
+        }
+
+        public ActionResult Restore()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Restore(HRRestoreModel m)
+        {
+            
+            MemoryStream ms = new MemoryStream();
+            m.Source.InputStream.CopyTo(ms);
+            ms.Position = 0;
+            XmlSerializer xml = new XmlSerializer(typeof(HRStaffBackup));
+            HRStaffBackup b = xml.Deserialize(ms) as HRStaffBackup;
+            
+            LcpsDbContext db = new LcpsDbContext();
+            db.Buildings.RemoveRange(db.Buildings);
+            db.EmployeeTypes.RemoveRange(db.EmployeeTypes);
+            db.JobTitles.RemoveRange(db.JobTitles);
+            db.StaffMembers.RemoveRange(db.StaffMembers);
+            db.StaffPositions.RemoveRange(db.StaffPositions);
+            db.DynamicStaffGroups.RemoveRange(db.DynamicStaffGroups);
+            db.DynamicStaffClauses.RemoveRange(db.DynamicStaffClauses);
+
+            db.SaveChanges();
+
+            db.Buildings.AddRange(b.Buildings);
+            db.EmployeeTypes.AddRange(b.EmployeeTypes);
+            db.JobTitles.AddRange(b.JobTitles);
+            db.StaffMembers.AddRange(b.Staff);
+            db.StaffPositions.AddRange(b.StaffPositions);
+            db.DynamicStaffGroups.AddRange(b.DynamicStaffGroups);
+            db.DynamicStaffClauses.AddRange(b.DynamicStaffClauses);
+
+            db.SaveChanges();
+
+            return View();
         }
     }
 }

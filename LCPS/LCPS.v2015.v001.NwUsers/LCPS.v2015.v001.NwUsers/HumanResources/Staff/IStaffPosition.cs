@@ -18,22 +18,11 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         Guid StaffMemberId { get; set; }
 
-        HRStaff StaffMember { get; }
-
         Guid BuildingKey { get; set; }
-
-        
-        HRBuilding Building { get; }
 
         Guid EmployeeTypeKey { get; set; }
 
-        
-        HREmployeeType EmployeeType { get; }
-        
         Guid JobTitleKey { get; set; }
-
-        
-        HRJobTitle JobTitle { get; }
 
         HRStaffPositionQualifier Status { get; set; }
 

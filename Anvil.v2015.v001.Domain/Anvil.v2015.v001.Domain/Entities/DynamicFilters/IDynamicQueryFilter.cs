@@ -10,6 +10,6 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
     {
         string Name { get; set; }
 
-        List<IDynamicQueryClause> Clauses { get; set;}
+        List<DynamicQueryClause> Clauses { get; set;}
     }
 }

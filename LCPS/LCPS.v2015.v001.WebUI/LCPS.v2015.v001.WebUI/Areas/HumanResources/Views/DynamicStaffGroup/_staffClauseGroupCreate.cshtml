@@ -10,7 +10,7 @@
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.StaffGroupId)
-    
+
     <div class="row">
         <div class="col-xs-2">
             <strong>Group Clause</strong>
@@ -19,7 +19,7 @@
         <table>
             <tr>
                 <td>
-                    @Html.EnumDropDownListFor(model => model.GroupConjunction, new { @class = "form-control input-sm", @style = "width: 75px;" , id = "ddlGroupClause" })
+                    @Html.EnumDropDownListFor(model => model.GroupConjunction, new { @class = "form-control input-sm", @style = "width: 75px;", id = "ddlGroupClause" })
                 </td>
             </tr>
         </table>

@@ -709,7 +709,8 @@ namespace System.Linq.Dynamic
                 Expression right = ParseAdditive();
                 bool isEquality = op.id == TokenId.Equal || op.id == TokenId.DoubleEqual ||
                     op.id == TokenId.ExclamationEqual || op.id == TokenId.LessGreater;
-                if (isEquality && !left.Type.IsValueType && !right.Type.IsValueType) {
+                //if (isEquality && !left.Type.IsValueType && !right.Type.IsValueType) {
+                if (isEquality && ((!left.Type.IsValueType && !right.Type.IsValueType) || (left.Type == typeof(Guid) && right.Type == typeof(Guid))) ){
                     if (left.Type != right.Type) {
                         if (left.Type.IsAssignableFrom(right.Type)) {
                             right = Expression.Convert(right, left.Type);

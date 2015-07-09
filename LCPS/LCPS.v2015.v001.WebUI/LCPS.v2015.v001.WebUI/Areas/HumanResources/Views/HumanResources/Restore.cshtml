@@ -1,0 +1,40 @@
+﻿@using LCPS.v2015.v001.NwUsers.HumanResources;
+@using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+@using LCPS.v2015.v001.NwUsers.HumanResources;
+
+
+
+@using LCPS.v2015.v001.WebUI.Infrastructure;
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+
+@model HRRestoreModel
+
+@{
+    ViewBag.Title = "Restore";
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+<h2>Restore</h2>
+
+<div class="well">
+    Browse for the restore file. This will erase what data is in the database and replace it with the contents of the source file.
+</div>
+
+@using (Html.BeginForm("Restore", "HumanResources", new { area = "HumanResources" },  FormMethod.Post, new { @enctype = "multipart/form-data"} ))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Source, new { @class = "control-label" })
+            </div>
+            @Html.TextBoxFor(model => model.Source, new {  @class = "form-control", @type = "file" })
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Restore" class="btn btn-success" />
+        </div>
+    </div>
+}

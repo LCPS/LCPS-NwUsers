@@ -17,20 +17,53 @@
         @Html.Partial("_StaffGroupList", @Model.StaffGroups)
     </div>
     <div class="col-md-9">
+        
+
         @if (Model.CurrentGroup != null)
         {
             @Html.Partial("_StaffGroupDetail", @Model.CurrentGroup)
-            <hr />
-            @Html.Partial("_staffClauseGroupCreate", new StaffClauseGroup() { StaffGroupId = Model.CurrentGroup.DynamicGroupId })
+            
+            <ul class="nav nav-tabs" role="tablist" style="margin-top: 18px;">
+                <li class="active">
+                    <a href="#Details" role="tab" data-toggle="tab">
+                        <i class="fa fa-info"></i>
+                        Details
+                    </a>
+                </li>
+                <li>
+                    <a href="#Preview" role="tab" data-toggle="tab">
+                        <i class="fa fa-search"></i>
+                        Preview
+                    </a>
+                </li>
+            </ul>
 
-            if (Model.Clauses != null)
-            {
-                <hr />
-                <div class="well">
-                    @Html.Partial("_StaffClauseList", Model.Clauses)
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="Details">
+                    <div class="container">
+                        
+                        <p></p><p></p>
+                        @Html.Partial("_staffClauseGroupCreate", new StaffClauseGroup() { StaffGroupId = Model.CurrentGroup.DynamicGroupId })
+
+                        @if (Model.Clauses != null)
+                        {
+                            <div class="well" style="display:inline-block; margin-top: 24px;">
+                                @Html.Partial("_StaffClauseList", Model.Clauses)
+                            </div>
+
+                        }
+
+
+                    </div>
                 </div>
-            }
+                <div class="tab-pane fade" id="Preview">
+                    <div class="container">
+                        @Html.Partial("_StaffList", Model.CurrentGroup.GetStaff())
+                    </div>
+                </div>
+            </div>
+
+
         }
     </div>
 </div>
-

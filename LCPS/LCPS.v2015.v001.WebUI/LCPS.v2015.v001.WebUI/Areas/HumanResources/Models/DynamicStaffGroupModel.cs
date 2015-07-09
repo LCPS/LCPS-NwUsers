@@ -31,19 +31,5 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Models
 
         public List<StaffClauseGroup> Clauses { get; set; }
 
-        public List<HRStaffPosition> Staff()
-        {
-            try
-            { 
-                LcpsDbContext db = new LcpsDbContext();
-                List<HRStaffPosition> positions = db.StaffPositions.Where(CurrentGroup.ToString()).ToList();
-                positions = positions.OrderBy(x => x.StaffMember.LastName + x.StaffMember.FirstName + x.StaffMember.MiddleInitial).ToList();
-                return positions;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Could not get related staff", ex);
-            }
-        }
     }
 }

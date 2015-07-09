@@ -7,13 +7,13 @@ namespace LCPS.v2015.v001.WebUI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class INIT001 : IMigrationMetadata
+    public sealed partial class Init001 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(INIT001));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init001));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507081926114_INIT-001"; }
+            get { return "201507082203129_Init001"; }
         }
         
         string IMigrationMetadata.Source

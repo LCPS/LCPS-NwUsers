@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.HumanResources.Students.InstructionalLevel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/HumanResources/Views/Shared/_StudentsLayout.cshtml";
+}
+
+<h2>Grade Levels</h2>
+
+
+<div class="navbar">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("Create", "InstructionalLevel", new { area = "HumanResources" })"><i class="fa fa-plus"></i> Create New</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ImportFile", "InstructionalLevel", new { area = "HumanResources" } )"><i class="fa fa-upload"></i>  Import</a>
+            </li>
+        </ul>
+    </div>
+</div><table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InstructionalLevelId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstructionalLevelName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstructionalLevelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstructionalLevelName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InstructionalLevelKey }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InstructionalLevelKey }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InstructionalLevelKey })
+        </td>
+    </tr>
+}
+
+</table>

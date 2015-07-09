@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaffPosition>
+
+<style>
+    #staff-list{
+        border-collapse: collapse;
+        border-width: 0;
+        margin-top: 24px;
+    }
+
+    #staff-list tr td, #staff-list tr th {
+        padding: 0 18px 3px 0;
+    }
+</style>
+
+<table id="staff-list" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffMember.SortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeType.EmployeeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle.JobTitleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FiscalYear)
+        </th>
+        <th>
+            &nbsp;
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffMember.SortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeType.EmployeeTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle.JobTitleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FiscalYear)
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    }
+
+</table>

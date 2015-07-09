@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,8 +66,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
         [ForeignKey("StaffGroupId")]
         public virtual DynamicStaffGroup StaffGroup { get; set; }
 
-
-        public string ToFriendlyString()
+        public override string ToString()
         {
             LcpsDbContext db = new LcpsDbContext();
 
@@ -74,7 +74,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
             HREmployeeType e = db.EmployeeTypes.First(x => x.EmployeeTypeLinkId.Equals(EmployeeType));
             HRJobTitle j = db.JobTitles.First(x => x.JobTitleKey.Equals(JobTitle));
 
-            string item = "";
             List<string> items = new List<string>();
 
             DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
@@ -124,70 +123,53 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
 
         }
 
-        public override string ToString()
+        public Dictionary<string, object> GetClausesForQuery()
         {
-            string item = "";
-
+            Dictionary<string, object> dic = new Dictionary<string, object>();
             DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
-
-            List<string> items = new List<string>();
 
             if (BuildingConjunction != DynamicQueryConjunctions.None)
             {
-                if (items.Count() == 0)
-                    item += "BuildingKey " + lib.GetOperator(BuildingOperator) + " '" + Building.ToString() + "' ";
+                if (dic.Count == 0)
+                    dic.Add("BuildingKey " + lib.GetOperator(BuildingOperator) + " @{0} ", Building);
                 else
-                    item += BuildingConjunction.ToString() + " BuildingKey " + lib.GetOperator(BuildingOperator) + " '" + Building.ToString() + "' ";
-
-                items.Add(item);
+                    dic.Add(BuildingConjunction.ToString() + " BuildingKey " + lib.GetOperator(BuildingOperator) + " @{0} ", Building);
             }
 
             if (EmployeeTypeConjunction != DynamicQueryConjunctions.None)
             {
-                if (items.Count() == 0)
-                    item += "EmployeeTypeKey " + lib.GetOperator(EmployeeTypeOperator) + " '" + EmployeeType.ToString() + "' ";
+                if (dic.Count == 0)
+                    dic.Add("EmployeeTypeKey " + lib.GetOperator(EmployeeTypeOperator) + " @{0} ", EmployeeType);
                 else
-                    item += EmployeeTypeConjunction.ToString() + " EmployeeTypeKey " + lib.GetOperator(EmployeeTypeOperator) + " '" + EmployeeType.ToString() + "' ";
-
-                items.Add(item);
+                    dic.Add(EmployeeTypeConjunction.ToString() + " EmployeeTypeKey " + lib.GetOperator(EmployeeTypeOperator) + " @{0} ", EmployeeType);
             }
 
             if (JobTitleConjunction != DynamicQueryConjunctions.None)
             {
-                if (items.Count() == 0)
-                    item += "JobTitleKey " + lib.GetOperator(JobTitleOperator) + " '" + JobTitle.ToString() + "' ";
+                if (dic.Count == 0)
+                    dic.Add("JobTitleKey " + lib.GetOperator(JobTitleOperator) + " @{0} ", JobTitle);
                 else
-                    item += JobTitleConjunction.ToString() + " JobTitleKey " + lib.GetOperator(JobTitleOperator) + " '" + JobTitle.ToString() + "' ";
-
-                items.Add(item);
+                    dic.Add(JobTitleConjunction.ToString() + " JobTitleKey " + lib.GetOperator(JobTitleOperator) + " @{0} ", JobTitle);
             }
 
             if (StatusConjunction != DynamicQueryConjunctions.None)
             {
-                if (items.Count() == 0)
-                    item += "Active " + lib.GetOperator(StatusOperator) + " '" + Status.ToString() + "' ";
+                if (dic.Count == 0)
+                    dic.Add("Status " + lib.GetOperator(StatusOperator) + " @{0} ", Status);
                 else
-                    item += StatusConjunction.ToString() + " Status " + lib.GetOperator(StatusOperator) + " '" + Status.ToString() + "' ";
-
-                items.Add(item);
+                    dic.Add(StatusConjunction.ToString() + " Status " + lib.GetOperator(StatusOperator) + " @{0}", Status);
             }
 
             if (YearConjunction != DynamicQueryConjunctions.None)
             {
-                if (items.Count() == 0)
-                    item += "FiscalYear " + lib.GetOperator(YearOperator) + " '" + Year + "' ";
+                if (dic.Count == 0)
+                    dic.Add("FiscalYear " + lib.GetOperator(YearOperator) + " @{0} ", Year);
                 else
-                    item += YearConjunction.ToString() + " FiscalYear " + lib.GetOperator(YearOperator) + " '" + Year + "' ";
-
-                items.Add(item);
+                    dic.Add(YearConjunction.ToString() + " FiscalYear " + lib.GetOperator(YearOperator) + " @{0} ", Year);
             }
 
-            if (GroupConjunction == DynamicQueryConjunctions.None)
-                return " (" + item + ")";
-            else
-                return " " + GroupConjunction.ToString() + " (" + item + ")";
-
-
+            return dic;
         }
+
     }
 }
