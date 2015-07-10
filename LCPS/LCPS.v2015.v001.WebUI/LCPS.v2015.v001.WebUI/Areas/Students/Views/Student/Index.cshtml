@@ -1,0 +1,98 @@
+﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.Students.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Students/Views/Shared/_StudentLayout.cshtml";
+}
+
+<h2>Students</h2>
+
+<div class="navbar">
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("Create", "Student", new { area = "Students" })"><i class="fa fa-plus"></i> Create New</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ImportFile", "Student", new { area = "Students" } )"><i class="fa fa-upload"></i>  Import</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleInitial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstructionalLevelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolYear)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleInitial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstructionalLevelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuildingName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolYear)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StudentKey }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StudentKey }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentKey })
+        </td>
+    </tr>
+}
+
+</table>

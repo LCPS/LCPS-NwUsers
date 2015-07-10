@@ -19,7 +19,7 @@ using Anvil.v2015.v001.Domain.Entities;
 
 #endregion
 
-namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
+namespace LCPS.v2015.v001.NwUsers.Students
 {
     public class InstructionalLevelSession : ImportFileTSV
     {
@@ -31,10 +31,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
                 updateIfExists: false,
                 itemType: typeof(InstructionalLevelCandidate),
                 viewTitle: "Import Instructional Levels",
-                area: "HumanResources",
-                controller: "Students",
+                area: "Students",
+                controller: "InstructionalLevel",
                 action: "Preview",
-                viewLayoutPath: "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml")
+                viewLayoutPath: "~/Areas/Students/Views/Shared/_StudentLayout.cshtml")
         {
             SessionId = Guid.NewGuid();
         }

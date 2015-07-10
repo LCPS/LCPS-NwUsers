@@ -67,8 +67,10 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         public DbSet<HumanResources.DynamicGroups.DynamicStaffGroup> DynamicStaffGroups { get; set; }
         public DbSet<HumanResources.DynamicGroups.StaffClauseGroup> DynamicStaffClauses { get; set; }
 
+        public DbSet<Students.Student> Students { get; set; }
 
-        public DbSet<HumanResources.Students.InstructionalLevel> InstructionalLevels { get; set; }
+
+        public DbSet<Students.InstructionalLevel> InstructionalLevels { get; set; }
 
         /*
         public DbSet<Security.LcpsStaffEmail> StaffEmails { get; set; }

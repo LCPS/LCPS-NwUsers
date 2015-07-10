@@ -20,10 +20,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 
 
-namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
+namespace LCPS.v2015.v001.NwUsers.Students
 {
-
-    [Table("InstructionalLevel", Schema = "HumanResources")]
+    [Serializable]
+    [Table("InstructionalLevel", Schema = "Students")]
     public class InstructionalLevel : IInstructionalLevel
     {
         [Key]
@@ -40,5 +40,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
         [MaxLength(128)]
         [Display(Name = "Grade")]
         public string InstructionalLevelName { get; set; }
+
+        public override string ToString()
+        {
+            return InstructionalLevelId + " - " + InstructionalLevelName;
+        }
     }
 }

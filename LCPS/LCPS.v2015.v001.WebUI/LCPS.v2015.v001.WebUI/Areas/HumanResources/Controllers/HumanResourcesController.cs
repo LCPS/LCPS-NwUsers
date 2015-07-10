@@ -60,6 +60,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             db.StaffPositions.RemoveRange(db.StaffPositions);
             db.DynamicStaffGroups.RemoveRange(db.DynamicStaffGroups);
             db.DynamicStaffClauses.RemoveRange(db.DynamicStaffClauses);
+            db.InstructionalLevels.RemoveRange(db.InstructionalLevels);
+            db.Students.RemoveRange(db.Students);
 
             db.SaveChanges();
 
@@ -70,6 +72,9 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             db.StaffPositions.AddRange(b.StaffPositions);
             db.DynamicStaffGroups.AddRange(b.DynamicStaffGroups);
             db.DynamicStaffClauses.AddRange(b.DynamicStaffClauses);
+            db.InstructionalLevels.AddRange(b.InstructionalLevels);
+            db.Students.AddRange(b.Students);
+
 
             db.SaveChanges();
 

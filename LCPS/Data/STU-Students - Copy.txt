@@ -1,0 +1,6 @@
+StudentId	LastName	FirstName	MiddleInitial	Gender	Birthdate	BuildingId	InstructionalLevelId	SchoolYear	Status
+110776	Abbott	Davante'	R	Male	05/26/2008	KES	PK	2014	Unenrolled
+110424	Abbott	Jenaova	T	Female	04/17/2000	LMS	06	2014	Unenrolled
+501058	Abdul-Aziz	Muhammed	S	Male	08/13/1989	CHS	10	2014	Unenrolled
+110344	Abel	Kyle	C	Male	10/02/2004	VES	01	2014	Unenrolled
+110720	Abernathy	Conner	B	Male	11/17/2006	KES	02	2014	Enrolled

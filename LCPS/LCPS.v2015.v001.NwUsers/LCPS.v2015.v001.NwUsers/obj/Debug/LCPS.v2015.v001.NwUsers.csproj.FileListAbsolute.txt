@@ -56,6 +56,8 @@ C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\LCPS.v2015.v001.NwUsers.csprojResolveAssemblyReference.cache
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\nwuser.dll
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\nwuser.pdb
+C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\LCPS.v2015.v001.NwUsers.csprojResolveAssemblyReference.cache
+C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\nwuser.dll
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\nwuser.dll.config
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\nwuser.dll
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\nwuser.pdb
@@ -82,6 +84,4 @@ C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\Newtonsoft.Json.xml
-C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\LCPS.v2015.v001.NwUsers.csprojResolveAssemblyReference.cache
-C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\nwuser.dll
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\nwuser.pdb

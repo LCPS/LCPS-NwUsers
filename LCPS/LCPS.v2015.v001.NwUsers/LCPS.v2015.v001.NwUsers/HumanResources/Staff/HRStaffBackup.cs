@@ -30,6 +30,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public List<DynamicGroups.StaffClauseGroup> DynamicStaffClauses { get; set; }
 
+        public List<Students.InstructionalLevel> InstructionalLevels { get; set; }
+
+        public List<Students.Student> Students { get; set; }
+
 
         public void Backup(string fileName)
         {
@@ -48,6 +52,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
             DynamicStaffGroups = db.DynamicStaffGroups.ToList();
 
             DynamicStaffClauses = db.DynamicStaffClauses.ToList();
+
+            InstructionalLevels = db.InstructionalLevels.ToList();
+
+            Students = db.Students.ToList();
 
             XmlSerializer xml = new XmlSerializer(this.GetType());
             MemoryStream ms = new MemoryStream();

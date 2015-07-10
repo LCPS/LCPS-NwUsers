@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace LCPS.v2015.v001.NwUsers.HumanResources.Students
+namespace LCPS.v2015.v001.NwUsers.Students
 {
     public interface IInstructionalLevel
     {

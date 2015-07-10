@@ -119,7 +119,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
                 }
                 else
                 {
-                    if(l.Contains("CONSULT"))
+                    if (l.Contains("CONSULT"))
                     {
                         int x = 0;
                         x++;
@@ -150,7 +150,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
                             db.ImportItems.Add(i);
                             db.SaveChanges();
                         }
-                        catch(Exception ex2)
+                        catch (Exception ex2)
                         {
                             AnvilExceptionCollector iEx = new AnvilExceptionCollector(ex2);
                             throw iEx.ToException();
@@ -235,7 +235,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
                     completesync:
                         iis.SerializedData = SerializeItem(iis);
                         iis.Record();
-                        
+
 
                     }
                 }
@@ -243,7 +243,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
 
 
 
-         }
+        }
 
         private object ParseLine(string line)
         {
@@ -261,6 +261,10 @@ namespace LCPS.v2015.v001.NwUsers.Importing
             foreach (string k in dic.Keys)
             {
                 PropertyInfo p = item.GetType().GetProperty(k);
+
+                if (p == null)
+                    throw new Exception(string.Format("{0} could not be set. Make sure the field name is correct", k));
+
                 if (p.CanWrite)
                 {
                     string t = dic[k];
@@ -325,7 +329,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing
 
             ImportSession session = db.ImportSessions.FirstOrDefault(x => x.SessionId.Equals(this.SessionId));
 
-            if(session == null)
+            if (session == null)
             {
                 ImportSession i = this.ToImportSession();
                 db.ImportSessions.Add(i);
