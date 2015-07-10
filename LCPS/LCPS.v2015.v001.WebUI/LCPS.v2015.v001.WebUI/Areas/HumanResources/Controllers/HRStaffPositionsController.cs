@@ -15,6 +15,9 @@ using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
 using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 
+
+using PagedList;
+
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
     public class HRStaffPositionsController : Controller
@@ -83,13 +86,18 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 
 
         // GET: HumanResources/HRStaffPositions
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? pageSize)
         {
 
             List<HRStaffPosition> items = db.StaffPositions.ToList();
 
+            ViewBag.Total = items.Count();
 
-            return View(items.OrderBy(x => x.StaffMember.SortName).ToList());
+            if (pageSize == null)
+                pageSize = 12;
+
+            int pageNumber = (page ?? 1);
+            return View(items.ToPagedList(pageNumber, pageSize.Value));
         }
 
         // GET: HumanResources/HRStaffPositions/Details/5

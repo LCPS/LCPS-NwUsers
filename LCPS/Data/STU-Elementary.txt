@@ -1,0 +1,1250 @@
+StudentId	LastName	FirstName	MiddleInitial	Birthdate	Gender	BuildingId	InstructionalLevelId	Status	SchoolYear
+110776	Abbott	Davante'	R	05/26/2008	Male	KES	PK	Unenrolled	2014
+110344	Abel	Kyle	C	10/02/2004	Male	VES	01	Unenrolled	2014
+110720	Abernathy	Conner	B	11/17/2006	Male	KES	02	Enrolled	2014
+401381	Abernathy	Destiny	M	10/28/2005	Female	VES	PK	Unenrolled	2014
+401262	Abernathy	Kirsten	A	12/23/2004	Female	KES	KG	Unenrolled	2014
+111447	Abernathy	Kristen	E	10/08/2009	Female	KES	PK	Enrolled	2014
+110234	Abernathy	Lawson	J	05/08/2005	Male	VES	04	Enrolled	2014
+401182	Abernathy	Ryan	B	04/17/2002	Male	KES	02	Unenrolled	2014
+110653	Adams	Alexis	C	01/02/2000	Female	KES	05	Unenrolled	2014
+111416	Adams	Luke	T	05/29/2004	Male	KES	05	Unenrolled	2014
+110932	Adams	Raja	E	02/09/2006	Female	KES	03	Enrolled	2014
+110607	Adkins	Colby	M	11/13/2005	Male	VES	03	Enrolled	2014
+111541	Adu	Messiah	M	12/12/2008	Male	VES	KG	Enrolled	2014
+111090	Ageo Perez	Sergio		01/14/2005	Male	KES	03	Enrolled	2014
+111465	Agnew	Da'Sha	A	01/21/2010	Female	KES	PK	Enrolled	2014
+110313	Aguilera	Swendy		03/24/2006	Female	KES	03	Enrolled	2014
+111429	Aguilera Hernandez	Edwin		12/09/2009	Male	KES	PK	Enrolled	2014
+111042	Akau	Kaiakaikulani	R	03/30/2008	Female	VES	01	Enrolled	2014
+110022	Akau	Konapiliahi	T	11/06/2003	Male	VES	05	Enrolled	2014
+111143	Alashmali	Zolfa		09/03/2007	Female	VES	KG	Unenrolled	2014
+400716	Alba Morales	Diana	L	09/21/1998	Female	VES	05	Unenrolled	2014
+110598	Ale	Gustavo	V	08/28/2004	Male	KES	04	Enrolled	2014
+110777	Alexander	A'zaria	C	12/17/2006	Female	KES	02	Enrolled	2014
+110028	Alexander	Fabolous	E	05/31/2005	Male	VES	04	Enrolled	2014
+302001	Alexander	Jamel	L	03/21/2004	Male	VES	04	Enrolled	2014
+111043	Alexander	Kamden	T	07/23/2008	Male	VES	01	Enrolled	2014
+401426	Alexander	Mercedes	S	02/27/2004	Female	VES	04	Enrolled	2014
+110495	Allard	Ryan	K	06/12/2006	Male	KES	03	Enrolled	2014
+111177	Alvarez	Cesar	D	06/21/2007	Male	VES	01	Enrolled	2014
+110278	Alvarez	Maxi	H	07/08/2006	Male	VES	03	Enrolled	2014
+111178	Alvarez	Yuvika	A	03/14/2006	Female	VES	02	Enrolled	2014
+111196	Amaral	Brooke	A	09/14/2009	Female	VES	KG	Enrolled	2014
+110747	Amaral	Cody	J	03/19/2007	Male	VES	02	Enrolled	2014
+110015	Amos	Gage	L	05/14/2002	Male	VES	02	Unenrolled	2014
+110014	Amos	Randall	S	07/07/2000	Male	VES	04	Unenrolled	2014
+110496	Anderson	Aamya	S	08/14/2006	Female	KES	03	Enrolled	2014
+110376	Anderson	Angel	N	09/22/2003	Female	VES	03	Unenrolled	2014
+110013	Anderson	Carlee	A	01/04/2001	Female	VES	04	Unenrolled	2014
+110364	Anderson	Eleanor	R	09/20/2007	Female	KES	02	Enrolled	2014
+110596	Anderson	Lydia	G	09/09/2008	Female	KES	01	Enrolled	2014
+111118	Anderson	Payten	M	05/12/2009	Female	KES	PK	Unenrolled	2014
+401442	Andrews	Malayja	J	10/01/2003	Female	KES	04	Enrolled	2014
+110578	Angel-Martinez	Jazlyn		05/03/2007	Female	KES	01	Enrolled	2014
+110379	Aquilera-Gomez	Jorge		10/06/2003	Male	VES	01	Unenrolled	2014
+110742	Arbitelle	Elizabeth	J	03/30/2006	Female	KES	01	Unenrolled	2014
+110743	Arbitelle	Rebecca	E	12/31/2004	Female	KES	02	Unenrolled	2014
+401284	Armes	Jeremy	W	12/12/2002	Male	VES	05	Unenrolled	2014
+111409	Armstrong	Aedan	B	09/09/2009	Male	VES	KG	Enrolled	2014
+111396	Arnold	Connor	L	07/01/2009	Male	KES	KG	Enrolled	2014
+110797	Arthur	Dameion	A	06/21/2005	Male	KES	04	Unenrolled	2014
+110778	Ashley	Camden	X	11/22/2006	Male	KES	02	Enrolled	2014
+110029	Ashworth	Logan	C	05/27/2005	Male	VES	04	Enrolled	2014
+110497	Ashworth	Mariah	L	05/06/2006	Female	KES	03	Enrolled	2014
+111391	Atkins	Kayleigh	E	04/14/2009	Female	VES	KG	Enrolled	2014
+110071	Aubel	Jarod	D	08/19/2005	Male	KES	04	Enrolled	2014
+301603	Auman	Derek	J	05/20/2003	Male	VES	04	Unenrolled	2014
+110906	Auman	Jaden	A	01/02/2007	Female	VES	KG	Unenrolled	2014
+110865	Austin	Alyla	D	07/22/2009	Female	KES	KG	Enrolled	2014
+110122	Austin	Anthony	A	07/20/2007	Male	KES	01	Enrolled	2014
+110841	Austin	Carly	J	08/08/2008	Female	KES	01	Enrolled	2014
+401528	Austin	David	L	04/03/2006	Male	KES	03	Unenrolled	2014
+111212	Austin	Ember	L	01/13/2009	Female	VES	KG	Unenrolled	2014
+110850	Austin	Jada	R	06/19/2007	Female	VES	01	Unenrolled	2014
+110314	Bagley	Brandon	J	07/15/2006	Male	VES	03	Enrolled	2014
+401388	Bagley	Jayden	L	01/13/2006	Male	KES	PK	Unenrolled	2014
+402008	Bailey	Chloe	L	10/16/2003	Female	KES	05	Enrolled	2014
+110498	Bailey	Claire	E	03/15/2006	Female	KES	03	Enrolled	2014
+110045	Bailey	Eli	B	11/08/2004	Male	KES	04	Enrolled	2014
+111343	Bailey	Kristina	C	06/12/2005	Female	KES	02	Unenrolled	2014
+110802	Bailey	Morgan	H	02/05/2008	Female	KES	01	Enrolled	2014
+111344	Bailey II	Steven	M	02/19/2004	Male	KES	03	Unenrolled	2014
+110748	Ball	Aaron	B	07/14/2007	Male	VES	02	Enrolled	2014
+302002	Ball	Dillon	M	05/13/2004	Male	VES	05	Enrolled	2014
+111567	Banks	Elizabeth	K	02/09/2009	Female	VES	KG	Enrolled	2014
+111566	Banks	Peyton	D	10/25/2006	Female	VES	02	Enrolled	2014
+110218	Barajas	Anderson	M	03/23/2004	Male	KES	01	Unenrolled	2014
+110749	Barksdale	Iyana	C	06/26/2007	Female	VES	02	Enrolled	2014
+301242	Barksdale	Nicholas	A	04/23/2001	Male	VES	03	Unenrolled	2014
+111045	Barnard	Cassidy	D	06/23/2008	Female	VES	01	Enrolled	2014
+111046	Barnard	Madison	L	06/23/2008	Female	VES	01	Enrolled	2014
+111055	Barnes	Ryan	L	09/05/2008	Male	KES	01	Enrolled	2014
+401138	Barnette	Destiny	C	12/09/2001	Female	KES	03	Unenrolled	2014
+111448	Barradas Roblero	Juan	M	12/24/2009	Male	KES	PK	Enrolled	2014
+111466	Barradas-Enriquez	Max	S	07/12/2010	Male	KES	PK	Enrolled	2014
+110046	Barradas-Roblero	Diana		08/03/2005	Female	KES	04	Enrolled	2014
+111095	Barton	Shelby	G	07/16/2007	Female	KES	02	Enrolled	2014
+111559	Baskerville	Christon	N	06/04/2007	Female	VES	02	Enrolled	2014
+400746	Baskerville	Maurice	K	03/04/1999	Male	KES	04	Unenrolled	2014
+110871	Baskerville	Precious	M	10/23/2006	Female	KES	02	Enrolled	2014
+111113	Bass	Kiyah	J	06/25/2007	Female	VES	02	Enrolled	2014
+110231	Bassfield	Jaron	M	02/22/2005	Male	VES	04	Unenrolled	2014
+110688	Battle	Corey	J	05/13/2005	Male	VES	02	Unenrolled	2014
+110687	Battle	Kyah	M	07/07/2006	Female	VES	01	Unenrolled	2014
+111217	Bautista	Amram		12/14/2004	Male	KES	04	Unenrolled	2014
+111467	Bautista	Faith	E	09/18/2010	Female	KES	PK	Unenrolled	2014
+111184	Bautista-Escobar	Bryant		05/27/2009	Male	KES	KG	Enrolled	2014
+302003	Bayne	Caroline	P	10/05/2003	Female	VES	05	Enrolled	2014
+401259	Bayne	John	M	06/29/2004	Male	KES	04	Enrolled	2014
+110480	Beasley	Cameron	A	12/27/2006	Male	VES	01	Unenrolled	2014
+111159	Bell	Issariyahna	M	06/25/2009	Female	KES	KG	Enrolled	2014
+110452	Belle	Makaylia	N	07/26/2005	Female	VES	04	Enrolled	2014
+111127	Beltran-Bordenave	Melany		07/26/2009	Female	KES	KG	Enrolled	2014
+110934	Beltran-Tzompaxtle	Rodolfo		02/27/2008	Male	KES	KG	Enrolled	2014
+111410	Bender	Jack	H	07/08/2009	Male	KES	KG	Enrolled	2014
+110491	Bender	Julianna	G	10/24/2007	Female	KES	02	Enrolled	2014
+111384	Berkley	Cohen	M	08/26/2008	Male	VES	KG	Enrolled	2014
+111419	Berkley	Logan	A	01/11/2010	Male	KES	PK	Enrolled	2014
+111515	Bickford	Lucas	A	07/08/2010	Male	KES	PK	Unenrolled	2014
+110454	Biggers	Madilynn	B	11/19/2004	Female	VES	03	Enrolled	2014
+110691	Biggs	Sophieann	G	05/07/2004	Female	VES	02	Unenrolled	2014
+110552	Birmingham	Adrionna	G	04/29/2004	Female	KES	02	Unenrolled	2014
+110628	Birmingham	Kyler	A	04/01/2007	Male	KES	PK	Unenrolled	2014
+111490	Bishop	Aspen	M	12/03/2009	Female	KES	PK	Enrolled	2014
+110030	Bishop	Collin	M	11/30/2004	Male	KES	04	Enrolled	2014
+401403	Biviano	Sheccid	H	09/25/2003	Female	KES	01	Unenrolled	2014
+110285	Bivins	Isaiah	M	08/14/2006	Male	VES	03	Enrolled	2014
+111232	Black	Audrie	M	02/29/2004	Female	VES	04	Unenrolled	2014
+111231	Black	Laura	D	02/18/2002	Female	VES	05	Unenrolled	2014
+111233	Black	Roger	D	03/04/2006	Male	VES	02	Unenrolled	2014
+401268	Blackwell	Ahmya	A	08/12/2003	Female	VES	02	Unenrolled	2014
+110236	Blake	Makayla	L	11/30/2004	Male	KES	04	Enrolled	2014
+111521	Blalock	Layla	J	11/26/2009	Female	KES	PK	Enrolled	2014
+401427	Blaszkiewicz	Brennen	T	07/18/2004	Male	VES	03	Unenrolled	2014
+301512	Blaszkiewicz	Brooklynn	N	01/06/2003	Female	VES	04	Unenrolled	2014
+110803	Blowers	Ethan	R	05/22/2008	Male	VES	01	Enrolled	2014
+401455	Blowers	Makayla	M	10/16/2003	Female	VES	05	Enrolled	2014
+110590	Bohannon	Amber	S	02/09/2007	Female	VES	01	Enrolled	2014
+401385	Bohannon	Tyler	T	12/16/2004	Male	KES	03	Enrolled	2014
+110385	Bolan	Antonio	L	03/01/2006	Male	VES	03	Enrolled	2014
+111364	Bolan	Micah	E	01/30/2009	Male	VES	KG	Enrolled	2014
+111017	Bolden	Jayla	N	06/02/2006	Female	VES	02	Enrolled	2014
+111016	Bolden	Phillip	A	10/24/2003	Male	VES	04	Enrolled	2014
+111072	Bolling	Mackenzie	L	03/13/2008	Female	VES	01	Enrolled	2014
+111158	Bolter	Lane	B	03/05/2009	Male	KES	KG	Enrolled	2014
+110490	Bonner	Asiante	D	03/29/2004	Female	VES	02	Unenrolled	2014
+110489	Bonner	Indiante'	R	03/15/2005	Female	VES	01	Unenrolled	2014
+110209	Booker	Trenea'		09/08/2000	Female	VES	04	Unenrolled	2014
+111480	Booth Jr	Rudolph	A	03/10/2010	Male	KES	PK	Enrolled	2014
+110447	Bowen	Ethan	J	06/17/2003	Male	VES	02	Unenrolled	2014
+110563	Bowen	Lindsey	M	03/27/2007	Female	KES	02	Enrolled	2014
+111065	Bowler	Ananda	L	01/19/2008	Female	KES	01	Enrolled	2014
+110455	Boyd	Christian	A	08/07/2003	Male	VES	04	Enrolled	2014
+400892	Boyd	Deshiny	L	03/30/2000	Female	KES	04	Unenrolled	2014
+401521	Boyd	James	A	11/12/2003	Male	VES	05	Enrolled	2014
+400744	Boyd	Raheim	J	11/15/1998	Male	KES	05	Unenrolled	2014
+111430	Boyle	Maureen	E	09/30/2010	Female	KES	PK	Enrolled	2014
+301559	Boyle	Nora	L	05/31/2003	Female	VES	05	Enrolled	2014
+401393	Boyle	Vincent	M	08/24/2004	Male	VES	05	Enrolled	2014
+110603	Bracey	Montajah	C	09/09/2005	Female	KES	04	Enrolled	2014
+111224	Bradley	Joni	R	05/11/2005	Female	VES	04	Unenrolled	2014
+111105	Branch	Camren	L	09/22/2005	Male	VES	03	Enrolled	2014
+111041	Breedlove	Jackson	A	10/05/2007	Female	VES	01	Enrolled	2014
+110493	Breedlove	Kayla	C	07/22/2008	Female	VES	01	Enrolled	2014
+302008	Bridge	Franklin	I	08/05/2004	Male	VES	05	Enrolled	2014
+110642	Bridgeforth	Patience	I	10/23/2006	Female	KES	02	Enrolled	2014
+110097	Brinkley	Nathan	L	05/28/2003	Male	KES	01	Unenrolled	2014
+110096	Brinkley	Thomas	G	06/04/2002	Male	KES	03	Unenrolled	2014
+110899	Briscoe	Mallakie	D	01/23/2007	Male	VES	02	Enrolled	2014
+110842	Brockwell	Justin	R	07/02/2008	Male	VES	01	Enrolled	2014
+110822	Brooks	JaKayla	N	10/12/2007	Female	VES	KG	Unenrolled	2014
+301354	Brown	Ah'Saun	L	03/03/2003	Male	VES	KG	Unenrolled	2014
+110970	Brown	Aviana	C	05/24/2008	Female	KES	PK	Unenrolled	2014
+401391	Brown	Izabell		01/11/2006	Female	VES	03	Enrolled	2014
+301355	Brown	Zevyvonta	A	11/06/2002	Female	VES	05	Enrolled	2014
+110446	Brown Jr	Charles	R	12/12/2003	Male	KES	04	Unenrolled	2014
+110237	Bruce	Aamari	D	07/25/2005	Male	VES	04	Enrolled	2014
+110513	Bruce	Shawn	N	11/08/2005	Male	VES	03	Enrolled	2014
+111335	Bruneau	Brodie	J	12/18/2008	Male	KES	KG	Enrolled	2014
+110472	Bryant	Camryn	N	03/21/2003	Female	VES	03	Unenrolled	2014
+110644	Bryant	Grace	A	04/03/2007	Female	KES	PK	Unenrolled	2014
+110201	Bryant	Megan	A	11/08/2002	Female	KES	02	Unenrolled	2014
+110606	Bryant Jr	Raymond	J	04/06/2006	Male	VES	KG	Unenrolled	2014
+401392	Brydie	Nicholas	A	03/23/2005	Male	KES	02	Unenrolled	2014
+401492	Brydie	Nikia	A	05/21/2004	Female	KES	03	Unenrolled	2014
+110905	Buchanan	Gracie	E	11/06/2006	Female	VES	02	Enrolled	2014
+111071	Buchanan Jr	Michael	E	08/29/2008	Male	VES	01	Enrolled	2014
+110584	Bugg	Journei	M	08/29/2007	Female	KES	PK	Unenrolled	2014
+111165	Burch	Lauren	M	06/30/2006	Female	VES	03	Enrolled	2014
+110371	Burcham	Elizabeth	R	08/25/2005	Female	KES	04	Enrolled	2014
+110464	Burkett	Meghan	R	07/28/2006	Female	VES	02	Enrolled	2014
+401092	Burks	Katie	E	10/30/2001	Female	KES	04	Unenrolled	2014
+110300	Burns	Karmia	M	07/13/2006	Female	KES	03	Enrolled	2014
+111358	Burton	Jadeyn	A	06/09/2009	Female	VES	KG	Enrolled	2014
+301546	Burton	Kara	M	04/12/2001	Female	VES	05	Unenrolled	2014
+301557	Burton	Ryan	J	10/10/2002	Male	VES	04	Unenrolled	2014
+111449	Burton	Sophia	G	11/17/2009	Female	KES	PK	Enrolled	2014
+110804	Byrd	Malcolm	I	10/26/2007	Male	KES	01	Enrolled	2014
+110333	Byrd Jr	Marvin	E	12/03/2003	Male	KES	05	Enrolled	2014
+110212	Cabiness	De'Marje	A	06/04/2006	Female	VES	PK	Unenrolled	2014
+110658	Callaghan	William	R	07/08/2003	Male	VES	03	Unenrolled	2014
+110031	Callis	Allie	J	05/21/2005	Female	KES	04	Enrolled	2014
+111420	Callis	Khloe	V	04/01/2010	Female	KES	PK	Enrolled	2014
+110111	Campbell	Alyssa	D	06/29/2004	Female	VES	01	Unenrolled	2014
+111296	Campbell	Brayden	L	06/01/2007	Male	VES	01	Enrolled	2014
+111297	Campbell	Keiley	R	05/31/2006	Female	VES	03	Enrolled	2014
+111119	Campbell-Ghee	Zamiyah	N	07/06/2009	Female	KES	KG	Enrolled	2014
+110996	Campos	Josiah	N	02/20/2006	Male	VES	01	Unenrolled	2014
+300980	Canada	Raquan	M	10/09/1998	Male	VES	05	Unenrolled	2014
+400878	Canada	Tiaa	M	04/19/2000	Female	VES	04	Unenrolled	2014
+110920	Carpenter	Chad	A	07/11/2003	Male	KES	05	Enrolled	2014
+301437	Carraway	Morgan	L	05/29/2001	Female	VES	04	Unenrolled	2014
+111323	Carrington	Breunna	K	05/04/2008	Female	VES	01	Enrolled	2014
+301607	Carrington	Khalil	M	09/24/2003	Male	VES	05	Enrolled	2014
+111540	Carrington	MaKayla	T	06/17/2010	Female	KES	PK	Unenrolled	2014
+111322	Carrington	Omar'eyon	D	01/23/2006	Male	VES	03	Enrolled	2014
+110824	Carter	Austin	E	05/09/2008	Male	KES	01	Enrolled	2014
+110585	Carter	Devion	Z	05/07/2007	Male	KES	02	Enrolled	2014
+111070	Carter	Liam	K	08/15/2008	Male	VES	01	Enrolled	2014
+110897	Carter	NyJae	M	11/06/2004	Male	VES	05	Enrolled	2014
+110572	Carter	Taheem	L	11/06/2006	Male	KES	02	Enrolled	2014
+111548	Case	Ella	D	04/20/2010	Female	KES	PK	Enrolled	2014
+110627	Castaneda	Alex	D	09/27/2004	Male	KES	04	Enrolled	2014
+110499	Castle	Breelyn	N	04/20/2006	Female	VES	03	Enrolled	2014
+401064	Cawthorne	David	J	10/09/2002	Male	KES	05	Enrolled	2014
+111035	Cerasari-Harper	Jennifer		06/14/2010	Female	VES	PK	Unenrolled	2014
+110315	Chaffin	Noah	B	01/26/2006	Male	VES	03	Enrolled	2014
+110162	Chambers	Leah	M	07/01/2004	Female	VES	05	Unenrolled	2014
+111505	Chambers	Madelyn	H	08/11/2007	Female	VES	02	Unenrolled	2014
+302007	Chambers	Te'oma	L	07/14/2004	Female	VES	KG	Unenrolled	2014
+110032	Chambers	Zyaiah	A	01/13/2005	Male	VES	04	Enrolled	2014
+301629	Chambers Felix	Chris	I	03/10/2003	Male	VES	01	Unenrolled	2014
+110514	Chaney	Hokunani	A	01/05/2006	Female	VES	03	Enrolled	2014
+111333	Cheatham	Jasheema	A	02/15/2003	Female	KES	05	Unenrolled	2014
+301660	Cheely	Andrea	S	07/14/2001	Female	VES	04	Unenrolled	2014
+301659	Cheely	Maxxi	S	07/14/2003	Female	VES	02	Unenrolled	2014
+110167	Chen	Dennis		10/02/1998	Male	VES	03	Unenrolled	2014
+302006	Childers	Jackson	A	07/28/2004	Male	VES	05	Enrolled	2014
+110826	Childs	Joseph	S	04/30/2008	Male	KES	PK	Unenrolled	2014
+111415	Childs	Kamden	A	12/07/2008	Male	VES	KG	Unenrolled	2014
+110911	Chism-Dennis	Xavier		06/17/2009	Male	KES	KG	Unenrolled	2014
+111081	Cho	Seenhyeong	J	09/09/2008	Male	VES	01	Enrolled	2014
+301334	Christman	James	R	04/10/2003	Male	VES	04	Enrolled	2014
+110925	Christman	Skylar	G	12/06/2006	Female	VES	02	Enrolled	2014
+401444	Clark	Christopher	T	07/01/2004	Male	VES	05	Enrolled	2014
+301574	Clark III	Ricky	A	12/08/2000	Male	VES	03	Unenrolled	2014
+111569	Clary	Cameron	D	11/17/2005	Male	VES	03	Enrolled	2014
+111403	Clemens	Shianne	B	09/28/2008	Female	VES	KG	Enrolled	2014
+111069	Clement	Kaleb	J	12/20/2007	Male	VES	01	Enrolled	2014
+110555	Clement	Kaytlin	R	03/24/2006	Female	VES	03	Enrolled	2014
+111058	Coffee	Sarah	K	09/10/2008	Female	KES	01	Enrolled	2014
+111451	Cofield	Adrien	D	02/24/2010	Male	KES	PK	Unenrolled	2014
+110989	Cole	Virginia	E	06/30/2005	Female	VES	02	Unenrolled	2014
+111236	Coleman	Angel	S	01/06/2008	Female	VES	KG	Enrolled	2014
+110373	Coleman	Atondalaya	A	05/15/2002	Female	VES	04	Unenrolled	2014
+110586	Coleman	Da'Jaye	A	02/15/2007	Male	VES	02	Enrolled	2014
+111544	Coleman	Dylshawn	T	12/09/2009	Male	KES	PK	Enrolled	2014
+110093	Coleman	Jaz	A	09/25/2000	Male	KES	05	Unenrolled	2014
+110374	Coleman	Pryncess	G	07/02/2004	Female	VES	02	Unenrolled	2014
+110220	Coleman III	Guillermo	A	11/24/2004	Male	KES	01	Unenrolled	2014
+110408	Coleman III	Russell	L	09/26/2006	Male	VES	01	Unenrolled	2014
+401329	Coles	Alexia	N	05/08/2003	Female	KES	05	Enrolled	2014
+111179	Coles	Amir	V	03/04/2008	Male	VES	01	Enrolled	2014
+110301	Coles	Paris	A	03/29/2006	Female	VES	03	Enrolled	2014
+110851	Coles	Velincia	L	10/10/2006	Female	VES	02	Enrolled	2014
+110235	Coles Jr	Marcus	A	12/22/2004	Male	VES	03	Enrolled	2014
+111573	Coley	Langlee	D	03/30/2004	Female	VES	05	Enrolled	2014
+111476	Collins	Zackary	R	08/07/2005	Male	VES	04	Enrolled	2014
+111022	Compton	Brent	A	04/05/2002	Male	KES	05	Unenrolled	2014
+110242	Compton	Connor	J	05/03/2005	Male	VES	04	Enrolled	2014
+110620	Compton	Vivian	F	10/06/2005	Female	VES	03	Enrolled	2014
+302004	Conner	Nathaniel	R	08/28/2004	Male	VES	KG	Unenrolled	2014
+402002	Conti	William	A	06/18/2004	Male	KES	KG	Unenrolled	2014
+111162	Cook	Jamariyon	R	10/20/2004	Male	KES	04	Enrolled	2014
+110515	Cook	Samiyah	Z	11/05/2005	Female	VES	03	Enrolled	2014
+111206	Cook Jr.	Stacey	O	06/08/2009	Male	VES	KG	Enrolled	2014
+302005	Cooper	Shawn	D	02/09/2004	Male	VES	05	Enrolled	2014
+110796	Cordell	Brianna	L	11/19/2006	Female	VES	02	Unenrolled	2014
+401058	Cottrell	Kevin	S	08/09/2001	Male	VES	05	Enrolled	2014
+111369	Cottrell	Tyler	K	08/29/2007	Male	VES	01	Enrolled	2014
+111075	Couch	Ariyonna	J	03/10/2008	Female	VES	01	Enrolled	2014
+110828	Couch	Ra'Janae	T	02/24/2008	Female	VES	01	Enrolled	2014
+111066	Cousins	Saveyon	K	04/16/2008	Male	KES	01	Unenrolled	2014
+401142	Cox	Ma'Kala	R	02/08/2002	Female	KES	05	Unenrolled	2014
+110631	Cox	Melody	R	10/19/2006	Female	KES	KG	Unenrolled	2014
+110017	Craig Jr	Derrick	L	12/06/2002	Male	KES	02	Unenrolled	2014
+110976	Cram	Lily	B	08/18/2003	Female	KES	05	Unenrolled	2014
+111397	Craven	Addison	B	02/02/2009	Female	KES	KG	Enrolled	2014
+110404	Crawford	Arianna	A	12/29/2004	Female	KES	KG	Unenrolled	2014
+110147	Crawley	Debrika	M	09/17/2004	Female	KES	02	Unenrolled	2014
+110426	Crawley	Jaelen	T	04/04/2005	Male	KES	04	Enrolled	2014
+301372	Crawley	Rahiem	D	01/27/2003	Male	VES	04	Unenrolled	2014
+401504	Crenshaw	Emily	P	11/16/2003	Female	VES	05	Enrolled	2014
+110331	Crittendon	Marlea	S	08/04/2003	Female	KES	01	Unenrolled	2014
+110859	Croft	Angelynah	M	08/06/2005	Female	VES	03	Unenrolled	2014
+301637	Croker	Brianne	L	02/04/2000	Female	VES	04	Unenrolled	2014
+301638	Croker	Dymond	M	04/02/2001	Female	VES	04	Unenrolled	2014
+110105	Croker	Elijah		05/08/2004	Male	VES	01	Unenrolled	2014
+110595	Crouse	Elizabeth	J	05/08/2006	Female	VES	03	Enrolled	2014
+110144	Cueto	Jesse		02/22/2005	Male	KES	KG	Unenrolled	2014
+302010	Currin	Benjamin	G	01/05/2004	Male	VES	05	Enrolled	2014
+302009	Currin	Ethan	T	01/05/2004	Male	VES	05	Enrolled	2014
+401428	Currin	Jacob	R	03/09/2004	Male	VES	05	Enrolled	2014
+110347	Currin	Jarrett	R	07/31/2006	Male	VES	03	Enrolled	2014
+302011	Currin	Sterling	C	09/16/2003	Male	VES	05	Enrolled	2014
+401190	Dagles	Mathew	C	09/23/2001	Male	KES	03	Unenrolled	2014
+110604	Dalton	Anna	P	12/06/2006	Female	KES	02	Enrolled	2014
+110605	Dalton	Nora	L	12/06/2006	Female	KES	02	Enrolled	2014
+111509	Daniel	Aliyah	F	01/05/2009	Female	KES	KG	Enrolled	2014
+401245	Daniel	Autumn	R	02/15/2004	Female	VES	05	Enrolled	2014
+110516	Daniel	Cahlil	J	01/03/2006	Male	VES	03	Enrolled	2014
+302012	Daniel	Cameron	E	07/02/2004	Male	KES	05	Enrolled	2014
+110942	Daniel	Holden	N	11/03/2008	Male	KES	KG	Enrolled	2014
+110240	Daniel	Ja'Nyah	A	12/10/2004	Female	VES	04	Enrolled	2014
+111137	Daniel	La'Maan	O	08/31/2009	Male	VES	KG	Enrolled	2014
+111093	Daniel	Riley	M	05/23/2007	Male	KES	01	Unenrolled	2014
+110412	Daniel	Violet	L	01/30/2006	Female	VES	03	Enrolled	2014
+110844	Daniels	Madison	M	05/08/2008	Female	VES	01	Enrolled	2014
+111051	Davis	Alajuwon	A	08/03/2008	Male	VES	01	Unenrolled	2014
+111577	Davis	Alexis	J	01/25/2007	Female	VES	02	Enrolled	2014
+110337	Davis	Bryce	D	12/23/2004	Male	VES	04	Enrolled	2014
+110460	Davis	Jaden	J	08/16/2003	Male	KES	03	Unenrolled	2014
+110458	Davis	Jason	J	07/11/2002	Male	KES	04	Unenrolled	2014
+110461	Davis	Jonathan	M	02/03/2005	Male	KES	01	Unenrolled	2014
+110457	Davis	Justin	A	07/10/2001	Male	KES	04	Unenrolled	2014
+110695	Dayton	Gage	T	01/06/2006	Male	VES	03	Enrolled	2014
+401402	De la Cruz	Magdelyn	C	05/27/2004	Female	KES	05	Enrolled	2014
+111492	Dean	Asa	M	04/25/2009	Male	VES	KG	Enrolled	2014
+301647	Deremer	Erich	A	03/17/1999	Male	VES	04	Unenrolled	2014
+110587	Diaz Perez	Mayco	Y	01/19/2007	Male	KES	02	Enrolled	2014
+110241	Dimitri	Adelina	G	04/16/2005	Female	VES	04	Enrolled	2014
+110500	Dolchan	Cassidy	F	11/29/2005	Female	KES	03	Enrolled	2014
+402007	Dolchan	Emily	K	10/01/2003	Female	KES	05	Enrolled	2014
+401507	Dooley	Autumn	L	09/27/2004	Female	KES	05	Enrolled	2014
+301610	Dooley	Stephanie	P	05/03/2003	Female	VES	05	Enrolled	2014
+301375	Dooley	Whitney	E	11/16/2002	Female	VES	04	Unenrolled	2014
+401457	Dow	Santee	C	12/05/2003	Female	KES	05	Enrolled	2014
+110588	Drinkwater	Logan	R	06/14/2007	Male	VES	01	Unenrolled	2014
+110501	Drummond III	Luther	M	11/08/2005	Male	KES	03	Enrolled	2014
+301528	Duffey	Amber	L	11/04/1998	Female	VES	05	Unenrolled	2014
+110123	Dunbar	Olivia	G	07/24/2006	Female	KES	03	Enrolled	2014
+110443	Duncan	Davonta	N	10/06/2000	Male	KES	05	Unenrolled	2014
+110790	Dunkley	Jalen	E	08/21/2006	Male	KES	01	Unenrolled	2014
+302042	Dunkley	Mylesha	L	12/30/2003	Female	KES	03	Unenrolled	2014
+110075	Dunn	Angelina	L	10/28/2004	Female	VES	04	Unenrolled	2014
+110573	Dunn	Keegan	B	02/20/2007	Male	VES	01	Unenrolled	2014
+111348	Dunnavant	Brendan	L	03/05/2011	Male	KES	PK	Enrolled	2014
+111139	Durocher II	David	A	11/02/2008	Male	VES	KG	Enrolled	2014
+111557	Easter	Allyse	N	07/15/2009	Female	KES	KG	Enrolled	2014
+110517	Easter	Destiny	J	03/22/2006	Female	VES	02	Unenrolled	2014
+110983	Eastwood	Daylin	R	12/01/2008	Male	VES	KG	Enrolled	2014
+110210	Eastwood	Nicolas	L	08/04/2005	Male	VES	03	Enrolled	2014
+110630	Edmonds	Alasia	T	06/13/2007	Female	KES	01	Enrolled	2014
+302013	Edmonds	De'zyha	M	09/29/2004	Female	VES	05	Enrolled	2014
+301358	Edmonds	Jamiah	A	07/14/2003	Female	VES	05	Unenrolled	2014
+302015	Edmonds	Josias	A	07/01/2004	Male	VES	03	Unenrolled	2014
+301550	Edmonds	Shakeem	D	08/26/1999	Male	VES	05	Unenrolled	2014
+111398	Edmonds Jr.	Dennis	S	01/14/2009	Male	KES	KG	Enrolled	2014
+110518	Eggleston	Ty	C	09/19/2006	Male	VES	03	Enrolled	2014
+111431	Eggleston	Tyce	B	08/09/2010	Male	KES	PK	Enrolled	2014
+111440	Elliott	Brandon	B	07/13/2009	Male	VES	KG	Enrolled	2014
+301252	Elliott	Deanna	R	01/16/1999	Female	VES	04	Unenrolled	2014
+301349	Eppes	Javah	L	06/20/2003	Male	KES	03	Unenrolled	2014
+110667	Eppes	Kallana	A	07/25/2004	Female	KES	02	Unenrolled	2014
+301350	Eppes	RaQuan	A	02/18/2002	Male	KES	04	Unenrolled	2014
+110336	Ericksen	Kara	P	01/05/2004	Female	VES	02	Unenrolled	2014
+110077	Espinoza Herrera	Gustavo	A	11/09/2004	Male	KES	04	Enrolled	2014
+110724	Ewing	Jennifer	M	06/26/2004	Female	KES	02	Unenrolled	2014
+110750	Farmer	Aria	S	01/26/2007	Female	VES	01	Unenrolled	2014
+110519	Farmer	Nathan	D	12/13/2005	Male	VES	03	Enrolled	2014
+111068	Farmer	Nicholas	L	11/02/2007	Male	VES	01	Enrolled	2014
+110751	Farnsworth	Elizabeth	M	10/22/2006	Female	VES	01	Unenrolled	2014
+111147	Farrell	Ciara	S	09/27/2007	Female	VES	02	Enrolled	2014
+110957	Featherly	Autumn	E	09/19/2005	Female	KES	01	Unenrolled	2014
+110959	Featherly	Brittany	M	04/24/2002	Female	KES	05	Unenrolled	2014
+110960	Featherly	Crystal	R	04/24/2002	Female	KES	05	Unenrolled	2014
+110958	Featherly	Destiny	G	09/19/2005	Female	KES	01	Unenrolled	2014
+110993	Feller	Alexis	B	07/17/2006	Female	VES	01	Unenrolled	2014
+110334	Fenwick	Jewel	M	04/16/2005	Female	KES	02	Unenrolled	2014
+302016	Field	Nickolas	G	12/03/2003	Male	VES	05	Enrolled	2014
+111128	Field	Tristian	Z	03/09/2009	Male	VES	KG	Enrolled	2014
+111201	Fields	Nohealanie	H	03/05/2008	Female	KES	01	Enrolled	2014
+111202	Fields	Rickie	R	11/24/2006	Female	KES	02	Enrolled	2014
+111512	Fields Jr	Joseph		07/09/2009	Male	KES	KG	Enrolled	2014
+110675	Figueroa Jr	Adrian	R	12/06/2001	Male	VES	04	Unenrolled	2014
+110397	Fitch	Ceniyah	M	02/15/2003	Female	VES	02	Unenrolled	2014
+110396	Fitch	Jaliyah	G	03/03/2004	Female	VES	01	Unenrolled	2014
+110982	Fitts	Amber	R	01/21/2010	Female	KES	PK	Enrolled	2014
+110243	Fitts	Cody	A	09/13/2005	Male	VES	04	Enrolled	2014
+110564	Fitts	Joshua	C	03/29/2007	Male	VES	02	Enrolled	2014
+401458	Foster	Destiny	E	12/16/2003	Female	KES	05	Enrolled	2014
+110302	Foster	Joseph	T	11/01/2005	Male	KES	03	Unenrolled	2014
+110926	Foster	Kayla	D	10/18/2003	Female	VES	05	Enrolled	2014
+401430	Foster	Samuel	K	07/09/2004	Male	KES	05	Unenrolled	2014
+110345	Foster	Taniyah	R	01/22/2005	Female	KES	04	Enrolled	2014
+110316	Foster	Timothy	D	11/01/2005	Male	KES	03	Unenrolled	2014
+301377	Fowlkes	Dakirah	D	10/03/2002	Female	VES	03	Unenrolled	2014
+111080	Fowlkes	Hunter	G	07/08/2008	Male	VES	KG	Enrolled	2014
+111025	Fowlkes	Samarii	M	04/25/2010	Male	KES	PK	Enrolled	2014
+110199	Fowlkes	Trinizai	T	05/09/2004	Female	VES	05	Unenrolled	2014
+110033	Fowlkes-Cox	Jasmine	A	06/13/2005	Female	VES	03	Enrolled	2014
+302017	Francis	Caroline	F	01/18/2004	Female	VES	05	Enrolled	2014
+110825	Francis	Landon	A	03/16/2007	Male	VES	02	Enrolled	2014
+110779	Franklin	AnnaBeth	R	08/11/2007	Female	KES	02	Enrolled	2014
+110715	Franklin	McKinsey	S	07/28/2007	Female	KES	PK	Unenrolled	2014
+401420	Freeman	Trinity	L	12/14/2004	Female	VES	04	Enrolled	2014
+110805	Gabriel Ramirez	Tiffany	Y	10/02/2007	Female	KES	01	Enrolled	2014
+110039	Gabriel Reynoso	Richard	E	03/11/2005	Male	KES	04	Enrolled	2014
+110269	Gallardo	Nahuel	A	04/18/2005	Male	VES	01	Unenrolled	2014
+301487	Garcia	Dakota	M	03/30/2004	Female	VES	05	Enrolled	2014
+111140	Garcia	Mateo	G	11/02/2008	Male	VES	KG	Enrolled	2014
+301493	Garmendia	Itzel	D	10/11/2003	Female	KES	05	Enrolled	2014
+301508	Garner	Marquis	Z	05/15/1999	Male	KES	05	Unenrolled	2014
+111399	Garner	Zi'Yion	A	01/11/2009	Male	KES	KG	Enrolled	2014
+110502	Gary	Hayden	J	07/25/2006	Male	KES	03	Enrolled	2014
+110221	Gary	Hunter	P	01/07/2005	Male	KES	04	Enrolled	2014
+111400	Gary	Lillian Ruth	E	11/14/2008	Female	KES	KG	Enrolled	2014
+110551	Gaskins	Matthew Anthony	G	09/17/2005	Male	KES	02	Unenrolled	2014
+401517	Gaston	Zachary	R	12/20/2001	Male	KES	03	Unenrolled	2014
+110520	Gayeski Jr	Alan	M	09/08/2006	Male	VES	03	Enrolled	2014
+110574	Gee	Carter	C	04/23/2007	Male	KES	02	Enrolled	2014
+301427	Genova	Andrew	T	05/31/2001	Male	KES	04	Unenrolled	2014
+110171	Ghee	Dashaad	D	01/12/2005	Male	KES	03	Enrolled	2014
+111468	Gill	Maddox	R	07/08/2010	Male	KES	PK	Enrolled	2014
+110660	Gilliland	Malachi	C	04/04/2003	Male	VES	03	Unenrolled	2014
+110737	Gilyard	Khya	T	09/03/2007	Female	VES	02	Enrolled	2014
+110753	Gilyard	SaDonni	B	10/05/2006	Female	VES	02	Enrolled	2014
+111524	Giroux	Preston	M	04/22/2009	Male	KES	KG	Enrolled	2014
+111503	Glasgow	JaZia	Z	01/17/2008	Female	VES	01	Enrolled	2014
+111031	Glasgow	Miracle	F	11/22/2005	Female	KES	02	Unenrolled	2014
+110196	Glasgow	Tanzania	Z	11/02/2003	Female	KES	01	Unenrolled	2014
+110286	Godsey	Madison	L	06/22/2006	Female	VES	KG	Unenrolled	2014
+111363	Goin	Camryn	E	05/04/2009	Female	VES	KG	Enrolled	2014
+110755	Goin	MacKenzie	L	05/08/2007	Female	VES	02	Enrolled	2014
+111551	Goode Newsome	Le'Mari	J	06/27/2007	Male	KES	02	Unenrolled	2014
+110973	Goodroe	Malonie	E	03/30/2004	Female	VES	02	Unenrolled	2014
+110245	Graham	Denver	Z	10/21/2004	Male	VES	04	Enrolled	2014
+111414	Graham	Destiny	M	06/29/2008	Female	VES	01	Enrolled	2014
+111377	Gravitte	Allison	P	07/01/2009	Female	VES	KG	Enrolled	2014
+110521	Green	Brigit	C	11/14/2005	Female	KES	03	Enrolled	2014
+111163	Green	Kira	L	03/26/2008	Female	KES	01	Unenrolled	2014
+401459	Green	O'Darius	Y	03/03/2004	Male	VES	05	Enrolled	2014
+110076	Green	Thomas	M	05/13/2005	Male	VES	04	Enrolled	2014
+110599	Greene	Darnell	C	12/22/2005	Male	VES	02	Enrolled	2014
+301561	Greene	Ervin	C	05/21/2003	Male	VES	05	Enrolled	2014
+110027	Gregoric	Alexandria	P	11/08/2003	Female	KES	05	Enrolled	2014
+111111	Gregory	Carmen	L	05/25/2008	Female	VES	01	Enrolled	2014
+110806	Gregory	Diamond	A	03/27/2008	Female	KES	PK	Unenrolled	2014
+110089	Gregory	Tyron	A	12/28/2004	Male	KES	PK	Unenrolled	2014
+110792	Grizzle	Joash	N	06/01/2006	Male	VES	03	Enrolled	2014
+110793	Grizzle	Miykael	A	12/11/2002	Male	VES	05	Enrolled	2014
+111160	Guarino	Benjamin	M	03/24/2009	Male	KES	KG	Enrolled	2014
+110287	Guo	Anna		10/18/2005	Female	VES	01	Unenrolled	2014
+301588	Guo	Owen		09/15/2002	Male	VES	04	Unenrolled	2014
+110288	Hadley	Aidan	B	12/31/2005	Male	KES	03	Enrolled	2014
+401460	Hadley	Cambden	B	02/29/2004	Male	KES	05	Enrolled	2014
+110597	Hall	Alexis	M	08/22/2006	Female	KES	KG	Unenrolled	2014
+110522	Hall	Isabella	M	07/05/2006	Female	VES	03	Enrolled	2014
+110369	Hall	Landon	D	01/19/2007	Male	KES	02	Enrolled	2014
+111381	Hall	Leah	A	06/01/2009	Female	VES	KG	Enrolled	2014
+110867	Hall	Logan	B	02/17/2009	Male	KES	KG	Enrolled	2014
+111422	Hamlett III	James	R	11/25/2009	Male	KES	PK	Enrolled	2014
+110800	Hamm	Alaina	E	07/28/2004	Female	KES	05	Enrolled	2014
+110801	Hamm	Logan	T	02/13/2006	Male	KES	03	Enrolled	2014
+110799	Hamm	Tristan	D	01/21/2007	Male	KES	02	Enrolled	2014
+111519	Hancock	Kenlie	M	10/16/2009	Female	KES	PK	Enrolled	2014
+110377	Hancock	Nickolas	W	02/21/2005	Male	VES	KG	Unenrolled	2014
+111408	Handy	Skyler	J	06/05/2008	Female	VES	KG	Enrolled	2014
+110441	Hanks	Cambrie	M	04/11/2005	Female	VES	01	Unenrolled	2014
+111099	Hanks	Kaya	M	08/28/2007	Female	VES	02	Enrolled	2014
+110035	Hanks	Logan	C	08/04/2005	Male	VES	02	Enrolled	2014
+111542	Hardy	Delshon	J	11/25/2009	Male	KES	PK	Enrolled	2014
+110681	Hardy	Karma	N	05/18/2005	Female	VES	01	Unenrolled	2014
+401529	Hardy	Lionell	L	08/24/2005	Male	VES	02	Unenrolled	2014
+110047	Hardy	Nej Yasharie	Z	12/02/2004	Female	VES	04	Enrolled	2014
+111394	Hardy	Shawna	M	11/24/2008	Female	VES	KG	Unenrolled	2014
+301503	Hargrove	Kashanti	N	02/08/2003	Female	KES	05	Enrolled	2014
+111355	Harper Jr	Tony	A	05/28/2011	Male	KES	PK	Enrolled	2014
+110355	Harris	Amy	L	01/28/2005	Female	KES	KG	Unenrolled	2014
+111511	Harris	Devin	D	04/16/2008	Male	KES	01	Enrolled	2014
+401497	Harris	Olivia	R	08/30/2004	Female	KES	05	Enrolled	2014
+111141	Harris	Raleigh	Q	08/26/2009	Female	KES	KG	Enrolled	2014
+110222	Harris	Regan	L	01/20/2005	Female	KES	04	Enrolled	2014
+400741	Harris	Travis	L	03/26/1999	Male	KES	05	Unenrolled	2014
+301598	Harris	Tre'kuan	M	11/03/1999	Male	VES	04	Unenrolled	2014
+111098	Hart	Reece	S	12/06/2007	Male	KES	01	Enrolled	2014
+300948	Hartman	Elecia	M	07/27/1999	Female	VES	05	Unenrolled	2014
+111513	Harvey	Keleese	E	09/01/2008	Female	KES	01	Unenrolled	2014
+111510	Harvey	Khaleel	E	01/12/2007	Male	KES	02	Unenrolled	2014
+110807	Harvey	Kristian	M	12/25/2007	Male	KES	01	Enrolled	2014
+110246	Hash	Trinity	E	02/24/2005	Female	VES	04	Enrolled	2014
+110268	Hatcher	Chance	N	01/15/2005	Male	VES	02	Unenrolled	2014
+110602	Havens	Serenity	R	10/07/2004	Female	VES	04	Unenrolled	2014
+110809	Hawthorne	Riley	H	11/26/2007	Male	VES	01	Enrolled	2014
+111432	Hawthorne	Ryder	L	07/06/2010	Male	KES	PK	Enrolled	2014
+111079	Hayer	Austin	A	11/23/2007	Male	VES	01	Enrolled	2014
+111365	Hayer	Brooklyn	P	07/03/2009	Female	VES	KG	Enrolled	2014
+110247	Hayer	Jacob	A	12/31/2004	Male	VES	04	Enrolled	2014
+110685	Hazelwood	Amanda	K	06/16/2004	Female	VES	05	Unenrolled	2014
+111412	Hazelwood	Christian	K	06/09/2010	Male	VES	PK	Enrolled	2014
+110487	Hazelwood	Damerious	O	11/05/2004	Male	KES	03	Unenrolled	2014
+111110	Hazelwood	DeMeyah	M	12/28/2007	Female	VES	01	Enrolled	2014
+402005	Hazelwood	Derriyana	N	09/20/2004	Female	VES	05	Enrolled	2014
+400754	Hazelwood	Jalonnie	C	09/27/1999	Female	KES	03	Unenrolled	2014
+401386	Hazelwood	Trevor	S	07/08/2004	Male	VES	05	Enrolled	2014
+111030	Hazelwood-Quarles	Javian	M	02/05/2007	Male	VES	01	Unenrolled	2014
+401471	Hendrick	Breanne	N	04/09/2003	Female	KES	01	Unenrolled	2014
+110523	Hendricks	Callie	G	12/09/2005	Female	VES	03	Enrolled	2014
+110009	Hendricks	Jaylen	A	06/23/2004	Male	KES	05	Enrolled	2014
+110524	Hendricks	Shaniya	F	06/16/2006	Female	VES	03	Enrolled	2014
+111060	Hendricks	Zamaria	Z	10/09/2007	Female	KES	01	Enrolled	2014
+110468	Hernandez	Christopher	S	01/03/2005	Male	VES	01	Unenrolled	2014
+110289	Hernandez	Marilyn	H	01/17/2006	Female	KES	03	Enrolled	2014
+111469	Hernandez Hernandez	Gabriel	Z	02/02/2010	Male	KES	PK	Enrolled	2014
+110467	Hernandez Jr	Alfredo	S	09/07/2003	Male	VES	02	Unenrolled	2014
+110303	Hernandez-Becerra Jr	Ignacio		11/17/2005	Male	KES	03	Enrolled	2014
+110829	Hernandez-Gonzalez	Alondra		04/27/2008	Female	KES	01	Enrolled	2014
+110589	Hernandez-Gonzalez	Mariela	Y	10/26/2006	Female	KES	02	Enrolled	2014
+111120	Hernandez-Leon	Ivan	A	05/26/2009	Male	KES	KG	Enrolled	2014
+110592	Hernandez-Onofre	Ismael		12/19/2006	Male	KES	02	Enrolled	2014
+110913	Herrera	Alex	E	05/20/2002	Male	VES	05	Unenrolled	2014
+110845	Hicks	Amir	M	05/23/2008	Male	KES	01	Enrolled	2014
+110503	Hicks	Karma	L	05/17/2006	Female	KES	03	Enrolled	2014
+110634	Hicks	Tymon	J	08/23/2007	Male	VES	02	Enrolled	2014
+110635	Hicks	Tyshaun	L	08/23/2007	Male	VES	01	Enrolled	2014
+110632	Hickson	Elijah	D	09/28/2007	Male	KES	02	Enrolled	2014
+402001	Hill	AaXanah	I	10/15/2003	Female	KES	05	Enrolled	2014
+110902	Hill	Xavian	B	10/13/2006	Male	KES	02	Enrolled	2014
+111592	Hines	Aleigha	L	05/11/2012	Female	VES	PK	Enrolled	2014
+111129	Hines	Taevyon	T	09/25/2009	Male	VES	KG	Enrolled	2014
+110525	Hines	Tre'Sean	X	05/27/2006	Male	VES	03	Enrolled	2014
+111427	Hite	Edward	R	09/08/2010	Male	KES	PK	Enrolled	2014
+110670	Hite	Janie	Y	09/01/2009	Female	KES	PK	Unenrolled	2014
+111556	Hite	Jemeire	C	03/18/2007	Male	VES	02	Enrolled	2014
+401411	Hite	Karli	R	09/24/2003	Female	KES	05	Enrolled	2014
+111142	Hite	MaKenzie	B	03/09/2009	Female	KES	KG	Enrolled	2014
+110368	Hite	Mary	K	07/09/2007	Female	KES	01	Unenrolled	2014
+401432	Hite	Maurice	C	07/22/2004	Male	VES	05	Enrolled	2014
+111056	Hite	Parker	J	02/18/2008	Male	KES	01	Enrolled	2014
+110780	Hite	Robert	H	10/29/2006	Male	KES	02	Enrolled	2014
+110225	Hite	Robert	T	08/26/2005	Male	KES	04	Enrolled	2014
+110504	Hite Jr	John	B	12/27/2005	Male	KES	02	Unenrolled	2014
+110290	Hofler	Christine	H	04/27/2006	Female	KES	03	Enrolled	2014
+110304	Hofler	Joan	M	04/27/2006	Female	KES	03	Enrolled	2014
+401100	Hofler	Nickolas	P	03/01/2003	Male	KES	04	Enrolled	2014
+111229	Holliday	Karisma	T	06/09/2008	Female	VES	01	Enrolled	2014
+111378	Holliday	Noble	L	08/02/2009	Male	VES	KG	Enrolled	2014
+111213	Holmes	Jameriya	L	11/01/2008	Female	KES	KG	Enrolled	2014
+110848	Holmes	Ladaisa	J	07/16/2003	Female	VES	04	Enrolled	2014
+110267	Hoover	Andrea	V	03/04/2005	Female	VES	04	Enrolled	2014
+302020	Horn	Taylor	M	03/15/2004	Female	VES	05	Enrolled	2014
+110561	Howells	Anastasia	Y	02/28/2004	Female	VES	05	Enrolled	2014
+111156	Hoye	Ryan	G	11/20/2008	Male	VES	KG	Enrolled	2014
+110945	Hubbard	Kemauri	T	02/20/2008	Male	VES	01	Enrolled	2014
+110676	Hubbard	Maliek	I	11/29/2006	Male	VES	02	Enrolled	2014
+110979	Hubbard	Tristan		01/28/2008	Male	VES	KG	Unenrolled	2014
+110866	Hudson	Jordan	T	06/27/2009	Male	KES	KG	Enrolled	2014
+110908	Hughes	Desiree	M	08/24/2007	Female	VES	KG	Unenrolled	2014
+110910	Hughes	Hannah	N	12/22/2004	Female	VES	02	Unenrolled	2014
+110909	Hughes	Johnathon	T	03/11/2002	Male	VES	04	Unenrolled	2014
+401446	Hughes-Moore	Shanitiana	A	04/22/2004	Female	VES	05	Enrolled	2014
+110293	Hunt	Dagan	A	09/19/2000	Male	VES	04	Unenrolled	2014
+110512	Hunt IV	David	C	10/25/2004	Male	VES	04	Enrolled	2014
+110554	Hurt	Ashante	D	10/07/2005	Female	KES	03	Unenrolled	2014
+401260	Hurt	Branden	M	01/27/2005	Male	VES	03	Unenrolled	2014
+110526	Hurt	Brayden	M	05/23/2006	Male	KES	01	Unenrolled	2014
+110830	Hurt	Darius	L	09/30/2008	Male	KES	01	Enrolled	2014
+110284	Hurt	Dasjohn	M	05/27/2005	Male	VES	04	Enrolled	2014
+110810	Hurt	Jakiah	M	11/23/2007	Female	VES	01	Enrolled	2014
+111575	Hurt	Keyala	E	08/19/2007	Female	VES	02	Enrolled	2014
+111574	Hurt	NyJae	C	08/09/2004	Female	VES	05	Enrolled	2014
+110154	Hurt	Sarissa	L	08/21/2006	Female	KES	03	Enrolled	2014
+111517	Hurtt	Kendelle	S	12/31/2009	Female	KES	PK	Enrolled	2014
+401433	Hurtt	Trinity	J	02/10/2004	Female	VES	05	Enrolled	2014
+401447	Hurt-Wilson	Amarieon	D	04/13/2004	Male	VES	KG	Unenrolled	2014
+401273	Hurt-Wilson	Kyra	M	03/31/2003	Female	VES	01	Unenrolled	2014
+110576	Ingram	Thomas	A	01/05/2007	Male	VES	02	Unenrolled	2014
+111376	Inman	Chasity	N	03/22/2009	Female	VES	KG	Enrolled	2014
+110929	Inman	Trey	M	06/20/2005	Male	VES	04	Enrolled	2014
+111442	Inzeo	Alyssa	F	06/19/2005	Female	KES	04	Enrolled	2014
+111444	Inzeo	Angelo	S	03/12/2008	Male	KES	01	Enrolled	2014
+111443	Inzeo	Anna	M	06/19/2005	Female	KES	04	Enrolled	2014
+111445	Inzeo	Anthony	G	09/21/2006	Male	KES	03	Enrolled	2014
+110248	Irby	Emily	N	11/02/2004	Female	VES	04	Enrolled	2014
+110527	Irby	Tiffany	A	03/06/2006	Female	VES	02	Unenrolled	2014
+301628	Italiano	Alexis	N	03/22/2000	Female	VES	04	Unenrolled	2014
+301627	Italiano	Emily	R	08/04/2001	Female	VES	02	Unenrolled	2014
+110049	Jackson	Destiny	L	11/30/2004	Female	KES	04	Enrolled	2014
+110262	Jackson	Faith	A	10/22/2004	Female	VES	01	Unenrolled	2014
+110361	Jackson	Isreal	L	01/30/2006	Male	KES	03	Enrolled	2014
+111395	Jackson	Jayden	J	09/21/2009	Male	VES	KG	Enrolled	2014
+110353	Jackson	Kirsten	R	08/01/2004	Female	VES	03	Unenrolled	2014
+401461	Jackson	Rashawn	E	05/13/2004	Male	KES	03	Enrolled	2014
+110481	Jackson	Shamina	T	07/31/2006	Female	VES	02	Unenrolled	2014
+402003	Jackson	Tavion	E	11/06/2003	Male	VES	04	Unenrolled	2014
+110629	Jackson	Titus	T	10/31/2006	Male	VES	KG	Unenrolled	2014
+110847	Jackson Jr	Roderick	L	12/31/2007	Male	KES	01	Enrolled	2014
+110151	Jadwin	Ethan	N	08/23/2006	Male	VES	KG	Unenrolled	2014
+110953	James	DeLearh	M	07/16/2008	Female	KES	PK	Unenrolled	2014
+110947	James	Donisha	M	03/14/2006	Female	VES	01	Unenrolled	2014
+111526	Jarratt	Dakota	W	11/21/2003	Male	KES	05	Enrolled	2014
+110611	Jefferson	Aniyah	L	04/10/2005	Female	VES	02	Unenrolled	2014
+110609	Jefferson	Mariyana	K	01/12/2002	Female	VES	05	Unenrolled	2014
+110180	Jenkins	Carrie	L	05/08/2003	Female	VES	01	Unenrolled	2014
+110852	Jenkins	James	L	11/06/2004	Male	KES	04	Enrolled	2014
+110214	Jenkins	Noah	C	09/08/2006	Male	VES	KG	Unenrolled	2014
+401274	Jennings	Dasani	R	01/18/2003	Male	VES	03	Unenrolled	2014
+110756	Jennings	Kamyah	Z	05/18/2007	Female	VES	KG	Unenrolled	2014
+110961	Jerread Jr	Emile	R	07/26/2001	Male	KES	05	Unenrolled	2014
+110697	Jimenez	Katherine		10/06/2004	Female	KES	05	Enrolled	2014
+301517	Johnson	Alexander	E	08/15/2001	Male	VES	03	Unenrolled	2014
+111518	Johnson	Elijah	J	03/13/2010	Male	KES	PK	Enrolled	2014
+301631	Johnson	James	W	06/07/2000	Male	VES	03	Unenrolled	2014
+111481	Johnson	Jayla	K	07/11/2010	Female	KES	PK	Enrolled	2014
+110138	Johnson	Jayvaris	D	06/21/2000	Male	VES	04	Unenrolled	2014
+111478	Johnson	Joseph	T	04/01/2010	Male	KES	PK	Unenrolled	2014
+111470	Johnson	Kamarion	A	11/12/2009	Male	KES	PK	Enrolled	2014
+110036	Johnson	Latrell	D	09/19/2005	Male	VES	04	Enrolled	2014
+301632	Johnson	Lexes	M	04/14/1998	Female	VES	05	Unenrolled	2014
+110528	Johnson	Nadia	J	05/08/2006	Female	VES	KG	Unenrolled	2014
+301620	Johnson	Preet	M	12/21/1999	Male	VES	05	Unenrolled	2014
+301604	Johnson	Ronel	W	10/19/1998	Male	VES	05	Unenrolled	2014
+111453	Johnson	Sha'Niiyah	A	06/08/2010	Female	KES	PK	Enrolled	2014
+110466	Johnson	Shyliik	S	05/03/2001	Male	VES	05	Unenrolled	2014
+111501	Johnston	Kayleigh	A	05/01/2008	Female	KES	01	Enrolled	2014
+111500	Johnston	Matthew	T	11/15/2005	Male	KES	03	Enrolled	2014
+111101	Jones	Aamira	Y	11/06/2007	Female	VES	KG	Unenrolled	2014
+111144	Jones	Amarae	J	09/18/2009	Male	KES	KG	Enrolled	2014
+111228	Jones	Aveonah	A	06/05/2008	Female	KES	KG	Unenrolled	2014
+110646	Jones	Bryanna	L	05/18/2006	Female	VES	KG	Unenrolled	2014
+401275	Jones	Dailyn	M	08/26/2003	Male	VES	04	Unenrolled	2014
+111360	Jones	Ebony	C	10/19/2008	Female	VES	KG	Unenrolled	2014
+111059	Jones	Ja'Kayln	M	07/30/2008	Female	VES	01	Unenrolled	2014
+401091	Jones	Jyahrah	R	09/24/2003	Female	VES	05	Enrolled	2014
+110050	Jones	Naphtali	D	12/09/2004	Male	VES	03	Enrolled	2014
+110846	Jones	Richard	G	11/11/2007	Male	VES	01	Enrolled	2014
+111061	Jones	Sanai	A	02/06/2008	Female	VES	01	Enrolled	2014
+111207	Jones	Tyrese	A	11/21/2008	Male	VES	KG	Enrolled	2014
+110216	Jones	Xavier	D	04/29/2004	Male	KES	01	Unenrolled	2014
+110416	Jones Jr	Uyless	A	11/02/2001	Male	VES	03	Unenrolled	2014
+110663	Jordan	Edwin	L	01/05/2006	Male	VES	03	Enrolled	2014
+401354	Jordan	Ma'Kiyah	Q	07/29/2003	Female	VES	05	Enrolled	2014
+111198	Joyce	Robert	A	08/04/2009	Male	VES	KG	Enrolled	2014
+110365	Joyner	Grace	N	05/30/2007	Female	KES	02	Enrolled	2014
+110855	Joyner	Lacey	M	12/08/2007	Female	VES	01	Enrolled	2014
+110616	Keaton	JaKayla Kan'iya	M	03/09/2008	Female	KES	01	Enrolled	2014
+110359	Keaton	Jakhia	B	09/14/2006	Female	KES	03	Enrolled	2014
+302021	Keaton	Ja'Leyia	O	10/14/2003	Female	KES	05	Enrolled	2014
+110279	Kenney	Devin	C	07/30/2004	Male	VES	05	Enrolled	2014
+110529	Kesterson	Samuel	J	04/20/2006	Male	VES	03	Enrolled	2014
+110530	Key	Donivan	L	04/21/2006	Male	VES	03	Enrolled	2014
+110726	Key	Samayah	Y	11/05/2007	Female	VES	01	Enrolled	2014
+110972	Kidd	Christopher	I	09/23/2006	Male	VES	03	Enrolled	2014
+111303	Kidd	Kaili	R	07/27/2005	Female	VES	04	Enrolled	2014
+401366	Kidd	MaKyleigh	A	11/24/2004	Female	KES	04	Enrolled	2014
+110078	Kidd	Savannah	N	09/02/2005	Female	VES	04	Enrolled	2014
+110757	King	Logan	C	06/29/2007	Male	VES	02	Enrolled	2014
+110669	King	Walter	R	07/14/2007	Male	VES	02	Enrolled	2014
+111582	Kinker	Cameron	L	11/06/2003	Male	VES	05	Enrolled	2014
+301360	Kirby	Adrieana	R	07/09/2002	Female	VES	02	Unenrolled	2014
+110575	Kirkland-Campbell	Keron	Z	08/03/2007	Male	KES	PK	Unenrolled	2014
+111121	Kiser	Jordan	C	01/09/2009	Male	KES	KG	Enrolled	2014
+402010	Knight	Montarious	A	01/07/2004	Male	KES	KG	Unenrolled	2014
+110914	Kornreich	Aorura	A	09/02/2007	Female	VES	01	Enrolled	2014
+110173	Krois	Hailey	M	10/10/2003	Female	VES	01	Unenrolled	2014
+110250	Krois Jr	Steven	A	11/04/2004	Male	VES	KG	Unenrolled	2014
+401531	Kyle-Neely	Jonathan	X	10/15/2003	Male	KES	01	Unenrolled	2014
+401462	Lacks	Hunter	J	02/04/2004	Male	KES	05	Enrolled	2014
+110494	Lacks	Jayden	G	08/26/2008	Male	KES	01	Enrolled	2014
+110775	Lacks	Joseph	L	09/15/2009	Male	VES	KG	Enrolled	2014
+110811	Lacks Jr	Thomas	B	04/21/2008	Male	VES	01	Enrolled	2014
+401449	Lafoon	Abbie	G	11/25/2003	Female	KES	05	Enrolled	2014
+111479	Lafoon	Skyler	P	04/11/2010	Female	KES	PK	Enrolled	2014
+402009	Lambert	James	E	12/17/2003	Male	KES	05	Enrolled	2014
+110781	Langert	Hayden	J	10/12/2006	Male	KES	02	Enrolled	2014
+111298	Lara	Brandon		04/15/2006	Male	KES	03	Unenrolled	2014
+110857	Lara	Juan	L	06/03/2008	Male	VES	01	Enrolled	2014
+110305	Lara-Juarez	Maria	R	01/05/2006	Female	KES	03	Enrolled	2014
+302022	Lawrence	Alexis	I	04/08/2004	Female	VES	04	Enrolled	2014
+111155	Layne	Mary	E	12/30/2008	Female	VES	KG	Enrolled	2014
+110023	Leaman	Caleb	J	01/14/2003	Male	VES	04	Unenrolled	2014
+110335	Leaman	Isaac	B	01/26/2005	Male	VES	02	Unenrolled	2014
+111455	Lee	Day'Zon	T	12/12/2009	Male	KES	PK	Enrolled	2014
+110782	Lee	Jaden	C	05/22/2007	Male	KES	02	Enrolled	2014
+110387	Lee	Jakyia	R	08/25/2005	Female	VES	03	Enrolled	2014
+110531	Lee	Kameron	D	12/19/2005	Male	VES	03	Enrolled	2014
+111367	Lee	Makiya	T	05/10/2009	Female	VES	KG	Enrolled	2014
+111310	Lee	Messiah	T	07/12/2007	Female	KES	02	Enrolled	2014
+301495	Lee	Taijana	A	04/20/2004	Female	VES	05	Enrolled	2014
+111309	Lee	Taivon	K	01/13/2006	Male	KES	03	Enrolled	2014
+110317	Lee II	Raihein	D	04/12/2006	Male	VES	03	Enrolled	2014
+110079	Lee Jr	Maurice	A	12/11/2004	Male	KES	04	Enrolled	2014
+110291	Leftwich	Kashia	J	11/09/2005	Female	KES	03	Enrolled	2014
+400896	Leon	Christopher	C	01/27/1999	Male	KES	05	Unenrolled	2014
+110858	Leon	Sophia	M	04/23/2008	Female	KES	01	Enrolled	2014
+401434	Leon	Wilmer Axel	C	10/24/2003	Male	KES	05	Enrolled	2014
+111454	Levine	Serenity	A	09/15/2010	Female	KES	PK	Enrolled	2014
+401360	Lewis	Amyrika	D	04/14/2004	Female	KES	05	Enrolled	2014
+401340	Lewis	Cody	A	06/01/2003	Male	VES	05	Enrolled	2014
+110299	Lewis	Davyon	J	12/27/2005	Male	KES	PK	Unenrolled	2014
+110395	Lewis	Jazzmin	N	10/06/2004	Female	KES	04	Enrolled	2014
+111471	Lewis	Kendall	G	09/23/2010	Female	KES	PK	Unenrolled	2014
+111545	Lewis	Laurel	N	02/21/2010	Female	VES	PK	Enrolled	2014
+110038	Lewis	Samantha	L	08/05/2005	Female	VES	KG	Unenrolled	2014
+111531	Lewis Jr	Christopher	A	09/06/2011	Male	KES	PK	Enrolled	2014
+111148	LHeureux	Cameron	S	01/20/2009	Male	KES	KG	Unenrolled	2014
+401309	Lifsey	Christian	L	04/01/2003	Male	KES	02	Unenrolled	2014
+401516	Lindsey	Shawn	A	01/06/2004	Male	VES	KG	Unenrolled	2014
+111195	Link	Logan	C	12/22/2008	Male	VES	KG	Enrolled	2014
+110020	Link	Nicholas	H	05/30/2004	Male	VES	05	Enrolled	2014
+111433	Liu	Constance		05/07/2010	Female	KES	PK	Enrolled	2014
+110591	Lloyd	Chace	B	07/06/2007	Male	VES	02	Enrolled	2014
+111078	Loebs	Laney	K	03/24/2008	Female	VES	01	Enrolled	2014
+302023	Loebs	Macey	C	02/10/2004	Female	VES	05	Enrolled	2014
+401465	Logan	Dynasty	A	08/26/2004	Female	VES	05	Enrolled	2014
+111107	Long	Ellie	A	09/30/2005	Female	KES	04	Unenrolled	2014
+111052	Long	Ira	J	07/27/2007	Male	KES	01	Enrolled	2014
+110648	Long	Piper	E	01/11/2008	Female	KES	01	Enrolled	2014
+110332	Long	Rowan	A	06/01/2004	Female	KES	05	Enrolled	2014
+110318	Lopez Santiago	Kimberly	S	02/05/2006	Female	KES	03	Enrolled	2014
+110565	Lorenzo	Eric	R	09/05/2007	Male	KES	02	Enrolled	2014
+110532	Lowery	Sariah	A	02/03/2006	Female	VES	03	Enrolled	2014
+401356	Luchynsky	Sabian	M	01/26/2003	Male	KES	04	Unenrolled	2014
+111087	Mabins	Qur'maine	M	09/18/2007	Male	VES	02	Unenrolled	2014
+111434	Macario Ramirez	Elier	I	11/22/2009	Male	KES	PK	Enrolled	2014
+110562	Maddox	Lachelle	P	12/01/2004	Female	VES	02	Unenrolled	2014
+110306	Maddox Jr	Herbert	L	10/09/2005	Male	KES	03	Enrolled	2014
+111149	Major	Lacey	J	10/13/2008	Female	VES	KG	Enrolled	2014
+110251	Malloy	Sade	G	12/02/2004	Female	VES	01	Unenrolled	2014
+110984	Mansfield	Noah	T	07/30/2009	Male	VES	KG	Enrolled	2014
+111570	Marrero	Montavious		02/11/2008	Male	VES	01	Enrolled	2014
+110399	Marrow	Deshawn	R	08/15/2005	Male	VES	04	Enrolled	2014
+110831	Marshall	Jamya	N	09/15/2008	Female	VES	01	Enrolled	2014
+111183	Marshall	Ke'Darius	Z	04/03/2009	Male	KES	KG	Enrolled	2014
+110577	Marshall	Kelsey	N	09/14/2007	Female	VES	02	Enrolled	2014
+111238	Martin	Dorian	T	04/23/2008	Male	VES	KG	Unenrolled	2014
+302041	Martin	Elijah	K	11/26/2003	Male	VES	KG	Unenrolled	2014
+111371	Martin	Madison	N	07/30/2009	Female	VES	KG	Enrolled	2014
+111150	Martin Lopez	Edizer	T	10/04/2008	Male	KES	KG	Enrolled	2014
+401478	Martinez	Jatae'Ja	L	05/29/2003	Female	KES	05	Enrolled	2014
+110566	Martinez Coronel	Melannie	J	07/06/2007	Female	KES	02	Enrolled	2014
+400903	Mason	Kareem	J	07/19/2000	Male	VES	04	Unenrolled	2014
+110832	Mathis	Elijah	R	08/08/2008	Male	VES	01	Enrolled	2014
+111387	Mattox	Chad	P	05/28/2009	Male	VES	KG	Enrolled	2014
+110533	Mattox	Connor	J	04/28/2006	Male	VES	03	Enrolled	2014
+111386	Mattox	Paige	C	05/28/2009	Female	VES	KG	Enrolled	2014
+401491	Mays	Christopher	L	01/14/2003	Male	VES	02	Unenrolled	2014
+401008	Mays	Michael	R	01/02/2001	Male	VES	04	Unenrolled	2014
+401167	Mayton	Joshua	D	09/13/2002	Male	KES	02	Unenrolled	2014
+111366	McClure	Aubrey	R	03/03/2009	Female	VES	KG	Enrolled	2014
+111076	McCullough	Tylik	C	12/05/2007	Male	VES	01	Enrolled	2014
+111188	McLendon	Xavier	A	04/02/2009	Male	KES	KG	Enrolled	2014
+110988	Meade	General	R	06/04/2005	Male	KES	03	Unenrolled	2014
+110987	Meade	Londyn	C	07/30/2007	Female	KES	01	Unenrolled	2014
+110319	Meadows	Avery	K	04/19/2006	Male	KES	KG	Unenrolled	2014
+111435	Mears	Alijah	K	11/03/2009	Male	KES	PK	Enrolled	2014
+110860	Mears	Destiny	L	08/22/2008	Female	KES	01	Enrolled	2014
+401500	Mears	Xavier	M	01/07/2004	Male	VES	05	Unenrolled	2014
+111499	Mendez de Leon	Yuyim	O	05/10/2009	Male	KES	KG	Enrolled	2014
+401225	Mendez-DeLion	Wagner	F	07/06/2004	Male	KES	03	Enrolled	2014
+110567	Mendoza-Cruz	Luis	R	07/04/2007	Male	KES	01	Enrolled	2014
+111122	Mendoza-Dominguez	Juan		12/11/2008	Male	KES	KG	Enrolled	2014
+110812	Mendoza-Leon	Sherlyn		11/16/2007	Female	KES	01	Enrolled	2014
+110904	Meredith	Ellic	D	04/23/2009	Male	KES	KG	Enrolled	2014
+110579	Meredith	Jamauri	L	03/09/2007	Male	KES	01	Enrolled	2014
+110294	Meredith	Makeyra	Z	06/30/2006	Female	KES	03	Enrolled	2014
+110759	Merkley	Justin	L	03/29/2007	Male	VES	KG	Unenrolled	2014
+301642	Miles	Deyshon	T	11/23/1999	Male	VES	04	Unenrolled	2014
+110760	Moats	Jaden	K	12/27/2006	Male	VES	02	Enrolled	2014
+302025	Mobley	Tyler	M	12/02/2003	Female	VES	02	Unenrolled	2014
+110505	Mojica Manuel	Pedro	A	10/02/2005	Male	KES	04	Enrolled	2014
+110834	Mojica-Manuel	Bryan		12/20/2007	Male	KES	01	Enrolled	2014
+110388	Monroe	Nicholas	S	07/11/2001	Male	KES	04	Unenrolled	2014
+111543	Monroe	Shawnee	G	09/29/2009	Male	KES	KG	Enrolled	2014
+110292	Montes Hernandez	Juan	C	12/01/2005	Male	KES	03	Enrolled	2014
+111362	Montgomery	Elayn	K	09/11/2009	Female	VES	KG	Unenrolled	2014
+111312	Montgomery	Rylee	J	01/03/2008	Male	VES	01	Unenrolled	2014
+111406	Moody	Christian Benjamin	D	03/11/2005	Male	KES	03	Enrolled	2014
+111425	Moody	Kennedy	E	12/28/2005	Female	VES	03	Enrolled	2014
+111214	Moody	Maeco Fatimah	R	01/07/2009	Female	VES	KG	Enrolled	2014
+110580	Moore	Amarion	Z	11/14/2006	Male	KES	02	Enrolled	2014
+111086	Moore	Destiny	L	11/30/2006	Female	VES	01	Unenrolled	2014
+110835	Moore	Emily	P	09/22/2008	Female	VES	01	Enrolled	2014
+111012	Moore	Hakeem	D	06/05/2004	Male	VES	05	Unenrolled	2014
+110465	Moore	Isaiah	T	01/29/2008	Male	KES	01	Enrolled	2014
+302024	Moore	Jamari	A	01/11/2004	Male	KES	05	Enrolled	2014
+401482	Moore	Khanya	N	07/03/2005	Female	KES	04	Enrolled	2014
+401423	Moore	Madison	R	09/12/2005	Female	VES	04	Enrolled	2014
+111034	Moore	Makala	M	05/03/2005	Female	VES	03	Enrolled	2014
+401072	Moore	Miranda	G	01/05/2001	Female	KES	05	Unenrolled	2014
+111011	Moore	Nigeal	N	06/13/2003	Male	VES	05	Enrolled	2014
+110350	Moore	Steven	R	02/16/2005	Male	VES	03	Enrolled	2014
+401435	Moore	Xavier	D	06/28/2004	Male	KES	05	Enrolled	2014
+110080	Morales-Illescas	Christopher		08/15/2005	Male	KES	04	Enrolled	2014
+111197	Morales-Ramirez	Elvis	A	12/31/2008	Male	KES	KG	Enrolled	2014
+111200	Morales-Ramirez	Vetzi	J	09/12/2006	Female	KES	01	Enrolled	2014
+401293	Moreno	Cesar	M	03/08/2003	Male	KES	02	Unenrolled	2014
+110849	Morgan	Kaylee	L	04/06/2007	Female	KES	02	Enrolled	2014
+302026	Morris	Alexis	M	12/30/2003	Female	VES	05	Enrolled	2014
+110252	Morris	Jacob	A	09/16/2005	Male	VES	03	Enrolled	2014
+111552	Morrison	Kaylee	N	03/18/2008	Female	VES	01	Enrolled	2014
+111436	Morrison	Princess	L	06/24/2010	Female	KES	PK	Enrolled	2014
+110534	Morrison	Thomias	J	05/27/2006	Male	VES	03	Enrolled	2014
+110407	Morton	Zy'on	K	08/27/2005	Male	VES	KG	Unenrolled	2014
+111038	Moses	Laniya	M	07/08/2006	Female	KES	03	Unenrolled	2014
+110762	Moses	Olivia	N	02/17/2007	Female	KES	02	Enrolled	2014
+111437	Moses	Roslyn	M	07/12/2010	Female	KES	PK	Enrolled	2014
+111053	Mosher	Dale	C	08/12/2008	Male	KES	01	Enrolled	2014
+110783	Mosher	Kenlee	M	10/09/2006	Female	KES	02	Enrolled	2014
+111054	Mosher	Paul	J	08/12/2008	Male	KES	01	Enrolled	2014
+110409	Mosley	J'Mar	H	09/01/1998	Male	KES	05	Unenrolled	2014
+111094	Myers	Emily	K	10/27/2005	Female	KES	03	Enrolled	2014
+401436	Myers	Jaiden	G	08/31/2004	Male	KES	01	Unenrolled	2014
+111407	Nance	Justin	M	09/30/2004	Male	VES	04	Enrolled	2014
+110253	Napier	Christopher	N	05/24/2005	Male	VES	04	Unenrolled	2014
+110891	Napier	Jaden	A	05/01/2007	Male	VES	01	Enrolled	2014
+110016	Napier	Jazmine	A	12/30/2003	Female	VES	KG	Unenrolled	2014
+301645	Napier	Spencer	A	09/13/2003	Male	VES	01	Unenrolled	2014
+401437	Neblett	Ka'Lazsja	D	10/15/2003	Female	KES	04	Enrolled	2014
+110149	Nelson	Jordan	L	06/04/2004	Male	VES	05	Enrolled	2014
+110558	Nelson	Skylar	C	11/22/2005	Female	VES	03	Enrolled	2014
+111077	Newcomb	Isaac	E	05/25/2008	Male	VES	01	Enrolled	2014
+110261	Newcomb	Jenna	M	04/06/2005	Female	VES	03	Unenrolled	2014
+302027	Newcomb	Zachary	A	12/23/2003	Male	VES	05	Enrolled	2014
+110270	Newton	Emma	P	07/07/2005	Female	KES	04	Enrolled	2014
+110553	Nicholas	Quadajah	S	01/04/2002	Female	KES	04	Unenrolled	2014
+110813	Nilles	Brody	K	08/11/2008	Male	VES	01	Enrolled	2014
+401450	Nilles	Justin	T	07/20/2004	Male	VES	05	Enrolled	2014
+111226	Niz Chilel	Ashly	B	08/06/2009	Female	KES	KG	Enrolled	2014
+111216	Niz-Chilel	Jessica	G	09/28/2005	Female	KES	03	Enrolled	2014
+111215	Niz-Chilel	Kevin	O	07/15/2007	Male	KES	02	Enrolled	2014
+110836	Norment	Marley	V	08/23/2008	Male	KES	01	Enrolled	2014
+302028	Nowlin	Kynzie	R	09/02/2004	Female	VES	05	Enrolled	2014
+111241	Ockimey	Londyn	P	08/31/2010	Female	KES	PK	Enrolled	2014
+111067	Oliver	Treyvon	C	07/15/2008	Male	KES	01	Unenrolled	2014
+110052	Olmeda-Vazquez	Cesar		12/13/2004	Male	KES	04	Enrolled	2014
+401438	Ortiz	Jacob	A	02/05/2004	Male	KES	04	Enrolled	2014
+110223	Ortiz	Rain	E	01/09/2005	Female	KES	04	Enrolled	2014
+110684	Ortiz Ortiz	Jonathan	J	10/25/2005	Male	KES	03	Enrolled	2014
+111562	Osborne	Kannon	X	05/25/2012	Male	KES	PK	Enrolled	2014
+400961	Overholtz	Joshua	L	09/24/1999	Male	KES	05	Unenrolled	2014
+110254	Overton	Brianna	M	12/20/2004	Female	VES	04	Enrolled	2014
+110430	Owen	Kailea	V	01/20/2005	Female	VES	03	Enrolled	2014
+110535	Owen	Riley	A	04/28/2006	Female	VES	03	Enrolled	2014
+110442	Owens II	Willie Kelan	A	05/15/2003	Male	KES	02	Unenrolled	2014
+110657	Page	Arlexcia	K	10/01/2001	Female	KES	05	Unenrolled	2014
+110626	Paler	Alexis	M	05/06/2005	Female	KES	04	Enrolled	2014
+111108	Parker	Alexis	S	05/16/2008	Female	VES	KG	Unenrolled	2014
+110486	Parker	Raekwon Sharrar	L	07/10/2003	Male	KES	05	Unenrolled	2014
+401419	Parks	Abigail	R	11/28/2004	Female	KES	02	Unenrolled	2014
+110124	Parks	Kaitlyn	L	04/16/2006	Female	KES	01	Unenrolled	2014
+401466	Parks	Tanner	J	01/15/2004	Male	KES	05	Enrolled	2014
+110784	Parks	Trevor	A	10/17/2006	Male	KES	02	Enrolled	2014
+111374	Parrish	Aidan	A	03/26/2009	Male	VES	KG	Enrolled	2014
+302029	Parrish	Kenizjah	M	10/13/2003	Female	VES	02	Unenrolled	2014
+110593	Parsons	Ahman	X	10/25/2006	Male	VES	KG	Unenrolled	2014
+111205	Parsons	Cohyn	W	08/20/2009	Male	KES	KG	Enrolled	2014
+110559	Patterson	Damion	L	05/29/2004	Male	KES	05	Enrolled	2014
+111044	Peacock	Emory	C	01/16/2009	Male	KES	KG	Enrolled	2014
+111210	Peacock	Levi	P	01/16/2009	Male	KES	KG	Enrolled	2014
+110880	Pearson	Shy'Dymond	S	04/02/2004	Female	KES	04	Unenrolled	2014
+110150	Pendergast	Anthony	T	05/19/2006	Male	VES	03	Unenrolled	2014
+302030	Pendergast	Dion	F	03/27/2004	Male	VES	05	Unenrolled	2014
+110351	Pendley	Grace	A	03/11/2004	Female	VES	02	Unenrolled	2014
+111393	Penland	Cole	B	02/06/2009	Male	VES	KG	Enrolled	2014
+111074	Penland	Emily	M	01/30/2008	Female	VES	01	Enrolled	2014
+110473	Perdue	Hailie	E	07/18/2001	Female	VES	05	Unenrolled	2014
+401508	Peres-Mendes	Griselda		08/16/2004	Female	KES	05	Enrolled	2014
+110815	Perez Mendez	Selvin	A	07/31/2008	Male	KES	01	Enrolled	2014
+110321	Perez-Tomas	Hedbin	H	05/12/2006	Male	KES	02	Enrolled	2014
+111123	Perez-Tomas	Liset		04/21/2009	Female	KES	KG	Unenrolled	2014
+301564	Perry	Antionette	M	09/17/2003	Female	VES	05	Enrolled	2014
+110814	Pettis	DeTrinae	U	01/09/2008	Female	VES	01	Enrolled	2014
+110723	Phillips	James	R	10/02/2006	Male	KES	02	Enrolled	2014
+110081	Phillips	Jaylen	E	03/18/2005	Female	KES	04	Enrolled	2014
+110431	Phillips	Jon-Luke	A	12/12/2006	Male	VES	02	Enrolled	2014
+110226	Phillips	Leigh	A	06/19/2005	Female	KES	04	Enrolled	2014
+110601	Phillips	Sherrard	L	09/24/2007	Male	KES	02	Unenrolled	2014
+301385	Phillips-McNeil	Aniya	K	10/13/2002	Female	VES	01	Unenrolled	2014
+301386	Phillips-McNeil	Jakayla	M	09/04/2003	Female	VES	01	Unenrolled	2014
+401242	Pierotti	Shawn	Z	10/28/2004	Male	VES	KG	Unenrolled	2014
+110837	Pineda-Vazquez	Aylin	D	07/15/2008	Female	KES	01	Enrolled	2014
+401499	Pinto	Jaden	M	05/10/2004	Male	VES	04	Enrolled	2014
+111482	Ponce'	Logan	M	08/04/2010	Male	KES	PK	Enrolled	2014
+111186	Porter	Breanna	L	08/12/2009	Female	VES	KG	Unenrolled	2014
+110633	Porter	Nathan	D	08/17/2007	Male	VES	02	Unenrolled	2014
+110928	Porter	Te'sjion	A	11/30/2004	Male	KES	04	Enrolled	2014
+110954	Porter	TreVon	A	06/09/2008	Male	KES	01	Enrolled	2014
+110469	Porter Loftin	Jada	E	07/19/2004	Female	KES	02	Unenrolled	2014
+110470	Porter-Loftin	Jamison	N	08/20/2002	Male	KES	04	Unenrolled	2014
+111349	Powell	Evan	J	01/06/2010	Male	KES	PK	Enrolled	2014
+110322	Powell	Madison	N	02/14/2006	Female	VES	03	Enrolled	2014
+110213	Powell	Victor	D	05/24/2007	Male	VES	02	Enrolled	2014
+110798	Powers	Hailey	M	02/17/2007	Female	KES	02	Enrolled	2014
+111456	Powers	Kolby	P	04/02/2010	Male	KES	PK	Enrolled	2014
+302031	Pratt	William	A	02/26/2002	Male	VES	03	Unenrolled	2014
+110346	Price	Brent	D	10/02/2004	Male	VES	02	Unenrolled	2014
+110057	Price	Jason	A	02/16/2005	Male	KES	04	Enrolled	2014
+111097	Price	Kathleen	E	03/09/2008	Female	VES	KG	Unenrolled	2014
+110296	Price Jr	Gregory	A	09/18/2006	Male	VES	02	Unenrolled	2014
+110594	Price Jr	Robert	S	02/04/2007	Male	VES	01	Unenrolled	2014
+110217	Prophet	Naire	A	08/17/2007	Female	VES	02	Enrolled	2014
+110955	Prue	Cannon	A	10/30/2003	Male	KES	04	Enrolled	2014
+110838	Pryor	Aaliyah	M	01/04/2008	Female	VES	01	Enrolled	2014
+110568	Pryor	Jayden	R	02/01/2007	Male	VES	02	Enrolled	2014
+401451	Pryor	Kinda	A	02/02/2004	Female	VES	05	Enrolled	2014
+401107	Pulley	James	H	01/28/2001	Male	KES	05	Unenrolled	2014
+401278	Pulley	Taylor	R	12/04/2002	Female	KES	03	Unenrolled	2014
+110536	Pulliam	Presley	M	08/17/2006	Female	VES	03	Enrolled	2014
+110352	Purser	Bret	A	11/06/2000	Male	VES	04	Unenrolled	2014
+111091	Puryear	Jameson	E	04/07/2006	Male	KES	03	Enrolled	2014
+111092	Puryear Jr	James	E	12/04/2003	Male	KES	05	Enrolled	2014
+111130	Qiu	Jia	Y	05/21/2009	Female	VES	KG	Enrolled	2014
+111032	Qiu	Yu	X	01/27/2006	Male	VES	02	Enrolled	2014
+111495	Quarles	Darshanna	A	11/17/2003	Female	VES	04	Enrolled	2014
+111089	Quinn	Mackenzie	K	09/04/2008	Female	VES	01	Enrolled	2014
+110537	Quinn	Skyler	S	04/28/2006	Female	VES	KG	Unenrolled	2014
+111157	Ragsdale	Camina	I	09/25/2007	Female	KES	02	Enrolled	2014
+111138	Ragsdale	Destiny	S	11/19/2008	Female	KES	KG	Enrolled	2014
+111063	Ragsdale	Janysia	K	12/22/2007	Female	VES	01	Enrolled	2014
+111529	Ragsdale	J'Niya	R	12/02/2005	Female	KES	02	Enrolled	2014
+110198	Ragsdale	Tai	D	06/15/2005	Male	KES	03	Enrolled	2014
+110061	Ragsdale	Zikiya	A	09/27/2005	Female	VES	04	Enrolled	2014
+110764	Ramirez	Aaliyah	J	01/04/2007	Female	VES	02	Enrolled	2014
+110581	Ramirez	Hendro	V	07/27/2007	Male	KES	01	Enrolled	2014
+110843	Ramirez Chavez	Cleyma	Y	09/22/2008	Female	KES	01	Enrolled	2014
+111458	Ramirez Diaz	Alex	D	12/08/2009	Male	KES	PK	Enrolled	2014
+111190	Ramirez Diaz	Dina	B	11/21/2008	Female	KES	KG	Enrolled	2014
+110862	Ramirez Juarez	John	I	05/03/2008	Male	KES	KG	Unenrolled	2014
+111464	Ramirez Macario	Leandro	H	07/28/2009	Male	KES	KG	Enrolled	2014
+111405	Ramirez Morales	Ricky		09/13/2007	Male	KES	KG	Enrolled	2014
+111459	Ramirez Perez	Darwin	J	10/24/2009	Male	KES	PK	Enrolled	2014
+110255	Ramirez-Hernandez	Adela	I	03/11/2005	Female	VES	04	Enrolled	2014
+111327	Ramirez-Luke	Jocelyn		03/16/2008	Female	KES	KG	Unenrolled	2014
+110307	Ramirez-Sandoval	Robert	A	07/20/2006	Male	KES	02	Enrolled	2014
+110063	Ramos-Montes	Julixa		09/02/2005	Female	KES	03	Enrolled	2014
+110538	Randolph	Ke'Naeshia	S	07/07/2006	Female	VES	03	Enrolled	2014
+110506	Raney	Lincoln	P	09/04/2006	Male	KES	03	Enrolled	2014
+111379	Rankin	Justin	B	03/17/2009	Male	VES	KG	Enrolled	2014
+111586	Raper	Jayden	C	09/13/2007	Male	VES	02	Enrolled	2014
+110249	Ray	Mikayla	J	09/17/2005	Female	VES	04	Enrolled	2014
+401487	Rayburn	Joshua	E	12/21/2002	Male	KES	01	Unenrolled	2014
+401316	Rayburn	Noah	R	06/17/2000	Male	KES	04	Unenrolled	2014
+111489	Reaves	Jaden	J	05/28/2005	Male	KES	03	Unenrolled	2014
+111561	Reavis	Damiyah	I	09/30/2008	Female	VES	01	Enrolled	2014
+110612	Reavis	Dessiah	I	06/14/2007	Female	VES	02	Enrolled	2014
+110610	Reavis	Diamony	I	06/14/2007	Female	VES	01	Enrolled	2014
+111008	Reese	Jordan	X	03/30/2007	Male	KES	02	Enrolled	2014
+111073	Reese	Kailey	E	11/13/2007	Female	VES	01	Enrolled	2014
+111359	Reese	Kaziya	A	07/14/2009	Female	VES	KG	Enrolled	2014
+111308	Reese	Logan	M	11/05/2010	Male	KES	PK	Enrolled	2014
+111007	Reese	Makayla	I	11/24/2003	Female	KES	05	Enrolled	2014
+111438	Reese	Marquez	E	10/07/2009	Male	KES	PK	Enrolled	2014
+401422	Reese	Mekhi	D	08/14/2005	Male	KES	04	Enrolled	2014
+110890	Reeves	Nevaeh	A	08/15/2007	Female	VES	02	Enrolled	2014
+111151	Reiser	Caleb	D	09/09/2009	Male	VES	KG	Unenrolled	2014
+110678	Reiver	Ayden	C	01/14/2004	Male	KES	04	Unenrolled	2014
+110887	Reynoso Perez	Eber	R	08/28/2006	Male	KES	02	Enrolled	2014
+110736	Rhoades	Darci	J	08/20/2004	Female	VES	03	Unenrolled	2014
+111100	Richardson	Darvis	M	03/09/2008	Male	KES	KG	Enrolled	2014
+110539	Richmond	Charlotte	R	04/30/2006	Female	VES	03	Enrolled	2014
+302018	Richmond	Savannah	G	08/24/2004	Female	VES	05	Enrolled	2014
+110794	Riggan	Austin	S	04/09/2005	Female	VES	02	Unenrolled	2014
+110349	Rincon-Osorio	Roni	S	11/24/2005	Male	VES	KG	Unenrolled	2014
+402012	Rivera	Aryanna	M	11/01/2003	Female	KES	02	Unenrolled	2014
+110082	Rivera	Julian	G	07/18/2005	Male	KES	01	Unenrolled	2014
+110654	Rivers	Jasmine	L	02/05/2004	Female	KES	02	Unenrolled	2014
+110655	Rivers	Xavier	R	05/17/2002	Male	KES	04	Unenrolled	2014
+111132	Robbins	Mason	D	09/28/2007	Male	VES	01	Unenrolled	2014
+111472	Roberts	Deonna	L	04/19/2010	Female	KES	PK	Unenrolled	2014
+111568	Roberts	DeQuavious	N	07/25/2011	Male	VES	PK	Enrolled	2014
+110728	Roberts	Jaden	S	04/28/2005	Male	VES	03	Unenrolled	2014
+110083	Roberts	Saniyah	R	10/25/2004	Female	VES	02	Unenrolled	2014
+110785	Robertson	Alyssa	J	03/13/2007	Female	KES	02	Enrolled	2014
+110348	Robertson	Ethan	A	11/15/2004	Male	KES	04	Enrolled	2014
+110540	Robertson	Kiana	D	09/28/2006	Female	VES	03	Unenrolled	2014
+401009	Robertson	LaDasha	E	08/24/2001	Female	VES	05	Unenrolled	2014
+301500	Robertson	Nyonna	D	08/11/2003	Female	VES	03	Unenrolled	2014
+302032	Robinette	Emilee	A	07/09/2004	Female	VES	03	Unenrolled	2014
+110256	Robinson	Cheyenne	M	04/19/2005	Female	VES	04	Enrolled	2014
+111019	Robinson	Dakota	D	04/26/2007	Female	KES	KG	Unenrolled	2014
+111300	Robinson	Dashaun	J	05/24/2011	Male	KES	PK	Enrolled	2014
+111048	Robinson	Elizabeth	R	07/30/2008	Female	VES	01	Enrolled	2014
+111514	Robinson	Jaylin	B	09/22/2008	Female	KES	KG	Unenrolled	2014
+110323	Rock	Aaron	N	12/08/2005	Male	VES	01	Unenrolled	2014
+110064	Rodriguez	Alejandro	J	12/08/2004	Male	KES	03	Enrolled	2014
+110034	Rodriguez	Lesli	R	06/27/2005	Female	KES	03	Enrolled	2014
+111356	Rose	Amari	D	02/01/2005	Female	KES	04	Unenrolled	2014
+110869	Ross	Brandon	H	02/24/2005	Male	VES	03	Enrolled	2014
+400918	Ross	Jaelin	T	09/24/2000	Male	KES	03	Unenrolled	2014
+111350	Ross	Kyle	A	08/13/2010	Male	KES	PK	Enrolled	2014
+111463	Routt	Hailey	E	08/05/2006	Female	KES	03	Enrolled	2014
+401112	Ryals	Rebecca	L	07/01/2001	Female	KES	04	Unenrolled	2014
+111474	Ryder	Chassity	L	10/09/2009	Female	KES	PK	Enrolled	2014
+110816	Ryder	Trinity	M	09/14/2008	Female	VES	01	Enrolled	2014
+301577	Sacra	David	E	07/24/2000	Male	VES	04	Unenrolled	2014
+301575	Sacra	Kenya	R	04/17/2003	Female	VES	01	Unenrolled	2014
+401439	Sadler	Paige	D	10/24/2003	Female	VES	04	Enrolled	2014
+111426	Salazar	Gage	M	12/25/2007	Male	KES	01	Unenrolled	2014
+401199	Sanchez	Ignacio	T	05/20/2002	Male	VES	04	Unenrolled	2014
+401495	Sanchez	Jennifer		05/08/2001	Female	KES	03	Unenrolled	2014
+400788	Sanchez	Jesenia	H	06/03/1999	Female	KES	05	Unenrolled	2014
+111152	Sanchez-Ortiz	Jazmin		02/07/2009	Female	KES	KG	Enrolled	2014
+110040	Sanchez-Tzompaxtle	Hugo		10/27/2004	Male	VES	02	Unenrolled	2014
+111439	Santos Beltran	Luis	E	06/24/2010	Male	KES	PK	Enrolled	2014
+110821	Saunders	Kaiden	D	08/04/2005	Male	VES	02	Unenrolled	2014
+401523	Saunders	Maurice	A	11/05/2001	Male	KES	02	Unenrolled	2014
+110823	Schultz	Trever	E	12/08/2004	Male	VES	03	Enrolled	2014
+401421	Scott	Arnicia	J	11/12/2004	Female	KES	04	Enrolled	2014
+111036	Scott	Jada	J	07/07/2008	Female	KES	01	Enrolled	2014
+110645	Scott	Malachi	C	08/26/2006	Male	KES	01	Enrolled	2014
+110569	Scott	Ta'Davian	T	09/25/2007	Male	KES	01	Enrolled	2014
+110041	Seamster	Chase	R	06/22/2005	Male	KES	04	Enrolled	2014
+111166	Seamster	Chloe	B	06/30/2008	Female	KES	01	Enrolled	2014
+301651	Seamster	Christina	K	02/15/2002	Female	VES	03	Unenrolled	2014
+301650	Seamster	Eric	N	08/12/2003	Male	VES	01	Unenrolled	2014
+401187	Seamster	Koty	S	01/25/2002	Male	KES	05	Unenrolled	2014
+301529	Seay	Clara	L	12/02/1998	Female	VES	05	Unenrolled	2014
+110690	Settle	David	E	11/04/2008	Male	KES	KG	Unenrolled	2014
+401296	Settle	Emilee	M	05/09/2003	Female	KES	05	Unenrolled	2014
+111135	Seward	Areanna	L	12/20/2008	Female	KES	KG	Enrolled	2014
+301565	Seward	Jon'ay	N	03/15/2003	Female	VES	01	Unenrolled	2014
+111227	Seward	Taegeon	L	12/09/2007	Male	KES	01	Enrolled	2014
+110227	Shaffer	Hunter	B	07/12/2005	Male	KES	01	Unenrolled	2014
+111428	Sharpe	Jonathan	W	12/10/2009	Male	KES	PK	Enrolled	2014
+302034	Sharpe	Nathaniel	T	11/18/2003	Male	VES	02	Unenrolled	2014
+110175	Shaw	Kadin	T	08/10/2006	Male	VES	03	Enrolled	2014
+110478	Shaw	Kayla	A	08/24/2008	Female	KES	KG	Unenrolled	2014
+110951	Shaw	Ricky	L	07/10/2009	Male	KES	PK	Unenrolled	2014
+110357	Shaw	Sariah	N	11/15/2005	Female	KES	02	Enrolled	2014
+111082	Sheets	Jacob	H	01/29/2006	Male	VES	03	Enrolled	2014
+111083	Sheets	Jesse	C	07/18/2007	Male	VES	02	Enrolled	2014
+111483	Sheldon	Acho	B	12/04/2009	Female	KES	PK	Unenrolled	2014
+110324	Shell	Adrianna	E	02/02/2006	Female	KES	03	Enrolled	2014
+110125	Shell	Daniel	T	07/14/2006	Male	KES	PK	Unenrolled	2014
+110439	Shelton	Claire	P	01/18/2008	Female	VES	01	Enrolled	2014
+401522	Shelton	Salena	D	11/30/2005	Female	KES	PK	Unenrolled	2014
+110817	Shook	Blair	A	03/07/2008	Female	VES	01	Enrolled	2014
+110084	Shook	Jonathan	R	06/10/2005	Male	VES	04	Enrolled	2014
+110308	Shook III	James	G	07/25/2006	Male	VES	03	Enrolled	2014
+110950	Short	Shafyuh	A	07/01/2003	Female	VES	04	Unenrolled	2014
+110066	Shortridge	Cohen	X	06/20/2005	Male	VES	04	Enrolled	2014
+111304	Shortridge	Ellington	L	04/22/2011	Female	KES	PK	Enrolled	2014
+110903	Shortridge	Trevor	D	05/29/2009	Male	VES	KG	Enrolled	2014
+110731	Simmons	Alexander	D	09/11/2005	Male	KES	03	Enrolled	2014
+110228	Simmons	Dustin	W	10/14/2004	Male	KES	04	Enrolled	2014
+401341	Simmons	Raheem	J	06/18/2002	Male	KES	03	Unenrolled	2014
+110507	Simon-Ramirez	Lendi	Y	09/18/2006	Female	KES	02	Enrolled	2014
+111131	Simpson	Zachary	D	12/10/2007	Male	KES	01	Enrolled	2014
+301447	Singletary	Avietta	M	02/15/2001	Female	VES	04	Unenrolled	2014
+401311	Singletary	Isaac	C	06/02/2003	Male	VES	02	Unenrolled	2014
+401389	Singletary	Tevin	L	09/02/2004	Male	VES	01	Unenrolled	2014
+110839	Skelton	Charles	M	04/08/2008	Male	VES	01	Enrolled	2014
+110818	Skelton	Jayden	G	02/27/2008	Male	VES	01	Enrolled	2014
+110639	Smith	Amber	N	01/21/2008	Female	VES	01	Enrolled	2014
+111106	Smith	Branden	L	09/30/2008	Male	VES	01	Enrolled	2014
+402006	Smith	Hayden	A	05/20/2004	Female	KES	05	Enrolled	2014
+110704	Smith	Ja'shyah	L	09/13/2008	Female	KES	01	Enrolled	2014
+111558	Smith	Jayla	A	01/02/2005	Female	VES	04	Enrolled	2014
+110840	Smith	Juliyan Courdee	R	01/14/2008	Male	VES	01	Enrolled	2014
+110944	Smith	Kylie	L	07/30/2007	Female	VES	KG	Unenrolled	2014
+110541	Smith	Lily	M	10/21/2005	Female	VES	03	Enrolled	2014
+111136	Smith	Nathanael	A	12/01/2008	Male	VES	KG	Enrolled	2014
+110309	Smith	Ronteyvien	V	01/26/2006	Male	VES	03	Enrolled	2014
+301366	Smith	Sha'Terrah	K	09/04/2003	Female	VES	05	Enrolled	2014
+111134	Smith	Taylor	L	09/03/2009	Female	VES	KG	Enrolled	2014
+110207	Smith	Zion		11/07/2002	Male	VES	03	Unenrolled	2014
+111124	Smith II	Ronteyvous	V	05/31/2009	Male	VES	KG	Enrolled	2014
+111520	Smith III	Leland	D	01/06/2005	Male	VES	04	Enrolled	2014
+110067	Snead	Bodiezepha	J	03/03/2005	Male	KES	01	Unenrolled	2014
+111516	Snead	Madison	R	11/22/2009	Female	KES	PK	Enrolled	2014
+111154	Snyder	Melayla	A	10/01/2008	Female	VES	KG	Enrolled	2014
+111096	Solberg	Kelly	J	11/05/2003	Female	VES	05	Enrolled	2014
+110274	Solomon	Cameron	B	12/23/2000	Male	KES	04	Unenrolled	2014
+110085	Spence	Robert	K	10/04/2004	Male	KES	04	Enrolled	2014
+110542	Spence	Selah	M	12/18/2005	Female	KES	03	Enrolled	2014
+401173	Spencer	Da'Mari	A	09/25/2002	Male	VES	03	Unenrolled	2014
+110508	Spencer	Ellie	E	05/12/2006	Female	KES	03	Enrolled	2014
+111404	Spencer	Emily	K	04/02/2009	Female	KES	KG	Enrolled	2014
+110366	Spencer	Katherine	P	02/21/2007	Female	KES	02	Enrolled	2014
+110042	Spencer	Lailah	A	08/31/2005	Female	VES	01	Unenrolled	2014
+301259	Spencer	Timothy	D	04/05/2000	Male	VES	03	Unenrolled	2014
+110985	Spencer	Treydin	J	03/28/2007	Male	KES	KG	Unenrolled	2014
+110152	Sprague	Justin	M	11/21/2001	Male	VES	04	Unenrolled	2014
+110153	Sprague	Maya	K	01/09/2003	Female	VES	03	Unenrolled	2014
+110068	Stearnes	Anthony	B	02/15/2005	Male	VES	04	Enrolled	2014
+111373	Stegall	Brayson	A	08/03/2009	Male	VES	KG	Enrolled	2014
+302035	Stegall	Brittany	M	09/14/2004	Female	VES	04	Enrolled	2014
+110258	Stephens	Breanna	H	01/11/2005	Female	VES	03	Enrolled	2014
+111392	Stephens	Jayln	R	06/03/2009	Female	VES	KG	Enrolled	2014
+110765	Stephens	Savannah	S	02/26/2007	Female	VES	01	Enrolled	2014
+111390	Stevens	Alilyana	A	01/21/2009	Female	VES	KG	Enrolled	2014
+401467	Stewart	Christopher	D	04/30/2004	Male	VES	03	Unenrolled	2014
+110325	Stokes	Cayley	A	05/16/2006	Female	KES	03	Enrolled	2014
+111345	Stokes	Rihanna		06/06/2009	Female	VES	KG	Enrolled	2014
+110115	Stone	Bryson	K	06/07/2004	Male	VES	05	Unenrolled	2014
+110543	Stone	Drew	E	05/19/2006	Male	VES	03	Enrolled	2014
+401468	Stone	Sarah	N	05/14/2004	Female	VES	05	Enrolled	2014
+110116	Story	Natalyia	D	07/19/2002	Female	VES	05	Unenrolled	2014
+111088	Streat	Kaliyah	M	06/28/2007	Female	VES	01	Enrolled	2014
+302036	Streat	Keona	N	07/27/2004	Female	VES	04	Enrolled	2014
+110766	Streat	Rhiona	A	06/12/2007	Female	VES	02	Enrolled	2014
+110229	Strigel	Anna	M	09/27/2005	Female	KES	04	Enrolled	2014
+301417	Surratt	Jeremiah	A	03/17/2001	Male	VES	04	Unenrolled	2014
+110863	Swann	Tahlia	T	11/08/2007	Female	VES	01	Enrolled	2014
+110544	Sweitzer	Adrian	J	01/19/2006	Male	VES	03	Enrolled	2014
+401469	Swick	Jacob	K	01/02/2004	Male	KES	05	Enrolled	2014
+110556	Swindell	Bailee	R	10/28/2004	Female	VES	04	Enrolled	2014
+110557	Swindell	Dakota	M	12/16/2003	Male	VES	04	Enrolled	2014
+110570	Swope	Hana	R	04/17/2007	Female	KES	PK	Unenrolled	2014
+110232	Swope	Tanner	R	10/02/2004	Male	KES	01	Unenrolled	2014
+111537	Talbert	Christopher	J	07/12/2005	Male	VES	04	Enrolled	2014
+111057	Tanner	Kara	M	01/25/2008	Female	KES	01	Enrolled	2014
+111170	Tarry	Ashanti	D	06/18/2005	Female	VES	05	Enrolled	2014
+111167	Tarry	Sharell	N	12/29/2005	Female	VES	02	Enrolled	2014
+111477	Taylor	Akiyrah	L	06/10/2010	Female	KES	PK	Enrolled	2014
+401524	Taylor	Amaroin	D	01/17/2002	Male	KES	01	Unenrolled	2014
+111340	Taylor	Camryn	R	02/02/2007	Female	KES	02	Unenrolled	2014
+110126	Taylor	Jeremiah	L	06/16/2006	Male	VES	02	Enrolled	2014
+110968	Taylor	Makhiysa	J	07/03/2007	Female	VES	01	Enrolled	2014
+110582	Taylor	Shaniya	A	10/31/2006	Female	VES	02	Enrolled	2014
+110012	Taylor Jr	El	L	10/17/2003	Male	KES	05	Enrolled	2014
+110132	Tejada	Nolia	M	05/25/2000	Female	VES	04	Unenrolled	2014
+110265	Tenney	Brooke	E	12/05/2003	Female	VES	02	Unenrolled	2014
+110266	Tenney	Paige	E	09/16/2002	Female	VES	04	Unenrolled	2014
+111209	Tennyson	Ma'Kayla	R	12/12/2007	Female	VES	01	Enrolled	2014
+111240	Terrones-Lara	Daniel		10/11/2004	Male	VES	04	Unenrolled	2014
+111239	Terrones-Lara	David		07/14/2007	Male	VES	01	Unenrolled	2014
+110259	Tharpe	Caleb	B	04/08/2005	Male	VES	04	Enrolled	2014
+111368	Tharpe	Lola	R	03/03/2009	Male	VES	KG	Enrolled	2014
+301589	Thomas	D'andrea	I	03/18/2002	Female	VES	02	Unenrolled	2014
+110938	Thompson	Joseph	L	06/20/2002	Male	VES	03	Unenrolled	2014
+110937	Thompson	Joshua	L	06/20/2005	Male	VES	03	Unenrolled	2014
+111460	Thompson	Kaylee	R	09/01/2010	Female	KES	PK	Enrolled	2014
+401488	Thompson	Susanna	K	03/14/2003	Female	KES	02	Unenrolled	2014
+401490	Thorne	Nikijsha	B	10/05/1998	Female	KES	05	Unenrolled	2014
+110864	Thornton	Elijah	M	03/25/2008	Male	KES	KG	Unenrolled	2014
+110545	Thornton	Kaniyah	A	12/28/2005	Female	VES	03	Enrolled	2014
+110789	Tinsley Jr	Clarence	E	02/07/2005	Male	KES	04	Enrolled	2014
+110767	Tisdale	Dorian	G	03/09/2007	Male	VES	02	Unenrolled	2014
+110509	Tisdale	Sabriya	T	01/24/2006	Female	KES	03	Enrolled	2014
+111204	Tomas-Perez	Brenda		04/10/2004	Female	KES	04	Enrolled	2014
+111203	Tomas-Perez	Ingrid		12/18/2005	Female	KES	02	Enrolled	2014
+110546	Tomlinson Jr	Christopher	C	07/19/2006	Male	VES	03	Enrolled	2014
+111553	Townsend	Ainsley	A	04/18/2007	Female	VES	02	Enrolled	2014
+110127	True	Reagan	E	03/30/2006	Female	KES	PK	Unenrolled	2014
+110233	Trujillo	Brianna	E	12/30/2004	Female	KES	04	Enrolled	2014
+110164	Tuck	Dylan	J	09/22/2006	Male	KES	PK	Unenrolled	2014
+110510	Tucker	India	I	01/20/2006	Female	KES	03	Enrolled	2014
+110432	Tucker	Jontera	K	10/31/2002	Female	VES	03	Unenrolled	2014
+110362	Tucker	Kieonna Marie	E	12/29/1999	Female	KES	05	Unenrolled	2014
+110043	Tucker	Maki	N	08/13/2005	Male	KES	04	Enrolled	2014
+401295	Tucker	Mya	N	06/20/2003	Female	KES	05	Enrolled	2014
+401453	Tucker	Tony	L	03/23/2004	Male	VES	05	Enrolled	2014
+111015	Turpin	Cherish	M	02/09/2010	Female	KES	PK	Unenrolled	2014
+401153	Underwood	Phenix	L	11/29/2001	Male	VES	02	Unenrolled	2014
+111172	Urban	Caroline	E	09/22/2006	Female	VES	02	Enrolled	2014
+111174	Urban	Corinne	E	12/20/2004	Female	VES	04	Enrolled	2014
+110098	Usry	Lane	A	02/10/2004	Male	KES	05	Enrolled	2014
+111528	Vaughan	Janae'	L	08/17/2005	Female	KES	04	Enrolled	2014
+110547	Vazquez	Angela	V	06/28/2006	Female	VES	03	Enrolled	2014
+110310	Vazquez	Leslie	G	09/21/2006	Female	KES	03	Enrolled	2014
+301224	Vazquez	Marleni	C	08/01/2001	Female	VES	05	Unenrolled	2014
+111153	Wade	Kayla	S	04/24/2009	Female	KES	KG	Enrolled	2014
+110990	Wade Jr	Cordaro	T	03/29/2007	Male	KES	01	Enrolled	2014
+111413	Walker	De'Monta	O	06/14/2006	Male	KES	03	Enrolled	2014
+110861	Walker	Eian	A	10/20/2006	Male	KES	02	Enrolled	2014
+111370	Walker Jr	Dennis	A	01/29/2009	Male	KES	KG	Enrolled	2014
+111461	Wallace	Colton	A	04/12/2010	Male	KES	PK	Enrolled	2014
+302037	Wallace	Janeria	S	10/01/2003	Female	KES	04	Enrolled	2014
+110571	Wallace	Jonathan	L	09/19/2007	Male	KES	01	Enrolled	2014
+111125	Wallace	Lilianna	R	06/19/2009	Female	VES	KG	Enrolled	2014
+111484	Wallace	Mariah	A	06/20/2010	Female	KES	PK	Enrolled	2014
+111047	Wallace	Remington	L	07/04/2008	Male	VES	01	Enrolled	2014
+110311	Wallace	Ty'rien	D	06/07/2006	Male	KES	03	Enrolled	2014
+110174	Walsh	Lashanti	M	02/18/2004	Female	VES	04	Enrolled	2014
+111441	Walters	Mackenzie	N	01/01/2010	Female	KES	PK	Enrolled	2014
+111361	Walton	Janiyah	C	04/25/2009	Female	VES	KG	Unenrolled	2014
+111062	Walton	J'onah	C	03/09/2008	Female	VES	01	Unenrolled	2014
+302038	Walton	Tianya	Q	07/05/2004	Female	VES	04	Unenrolled	2014
+301368	Walton	Traveon	Q	11/14/2001	Male	VES	05	Unenrolled	2014
+110312	Ware	Lacey	A	05/10/2006	Female	VES	03	Enrolled	2014
+111316	Washburn	Alexis	N	05/09/2003	Female	VES	05	Unenrolled	2014
+401371	Watkins	Alexis	R	02/15/2003	Female	VES	KG	Unenrolled	2014
+301537	Watkins	Haley	M	08/28/2001	Female	VES	02	Unenrolled	2014
+110548	Watson	Amyra	S	12/29/2005	Female	VES	03	Enrolled	2014
+302039	Watson	Antonio	J	08/02/2004	Male	VES	04	Enrolled	2014
+110326	Watson	Chelsee	F	08/10/2006	Female	VES	03	Enrolled	2014
+110770	Watson	Daheim	J	02/02/2007	Male	VES	02	Enrolled	2014
+110069	Watson	Erika	E	09/01/2005	Female	VES	04	Enrolled	2014
+110139	Watson	Jalen	S	02/04/2003	Male	VES	01	Unenrolled	2014
+110338	Watson	Jesse	L	12/29/2004	Female	VES	04	Enrolled	2014
+110070	Watson	Kemarion	J	12/29/2004	Male	VES	04	Enrolled	2014
+110771	Watson	Shaheim	D	02/02/2007	Male	VES	02	Enrolled	2014
+111576	Watson	Xzavien	S	04/23/2009	Male	VES	KG	Enrolled	2014
+110176	Watson Jr	Jimmy	J	08/21/2007	Male	VES	01	Enrolled	2014
+110820	Webb	Caleb	J	04/11/2008	Male	VES	01	Enrolled	2014
+110260	Webb Jr	Jeremiah	D	08/25/2005	Male	VES	03	Enrolled	2014
+111230	Webster	Niah	A	03/04/2005	Female	VES	04	Enrolled	2014
+110006	Weidemann	Paige	E	12/27/2004	Female	KES	03	Unenrolled	2014
+110997	Wells	Caroline	G	09/13/2007	Female	KES	KG	Unenrolled	2014
+111208	Wells	Kaiden	L	04/21/2009	Male	KES	KG	Unenrolled	2014
+110638	Wells	Kailey	L	03/18/2008	Female	KES	01	Unenrolled	2014
+110998	Wells	Riley	J	09/13/2007	Male	KES	KG	Unenrolled	2014
+111538	West	Maleia	J	09/19/2010	Female	KES	PK	Enrolled	2014
+111103	White	Amiyah	S	04/11/2006	Female	VES	03	Enrolled	2014
+110356	White	Lyric	A	06/10/2005	Female	VES	04	Enrolled	2014
+110277	White	Michael	M	10/01/2000	Male	KES	04	Unenrolled	2014
+110549	White Freeman	AnGeLeKa	K	10/20/2005	Female	VES	03	Enrolled	2014
+110327	Whitehead	Joshua	M	06/01/2006	Male	VES	03	Enrolled	2014
+110583	Whitehead	Kaleya	R	09/30/2007	Female	VES	02	Enrolled	2014
+110087	Whitehead	Kyiron	R	02/02/2005	Male	VES	04	Enrolled	2014
+111389	Whitehead	Zyasia	Y	07/15/2009	Female	VES	KG	Enrolled	2014
+110328	Whitehurst	Russell	N	12/12/2005	Male	VES	03	Enrolled	2014
+111383	Whittaker	Ocean	R	09/30/2009	Male	VES	KG	Enrolled	2014
+110297	Whittle	Chris	O	04/01/2006	Male	KES	03	Unenrolled	2014
+110298	Wilkerson	Elijah	N	08/01/2006	Male	VES	03	Enrolled	2014
+401441	Wilkerson	Vaughan	J	11/08/2003	Female	KES	05	Enrolled	2014
+111146	Willey	Gage	T	10/21/2003	Male	VES	05	Enrolled	2014
+110791	Williams	Chanel	A	10/07/2005	Female	VES	02	Unenrolled	2014
+401454	Williams	Chelsey	D	01/01/2004	Female	VES	05	Enrolled	2014
+110382	Williams	Claire	L	07/26/2007	Female	KES	02	Enrolled	2014
+110330	Williams	Dominick	A	09/02/2005	Male	KES	KG	Unenrolled	2014
+110637	Williams	Elisabeth	C	06/21/2008	Female	KES	01	Unenrolled	2014
+110772	Williams	Jaden	J	02/23/2007	Female	VES	02	Enrolled	2014
+111237	Williams	Khazavion	D	12/06/2005	Male	VES	03	Enrolled	2014
+110550	Williams	Kyle	W	01/26/2006	Male	VES	03	Enrolled	2014
+110007	Williams	Reginald	G	06/24/2004	Male	KES	05	Unenrolled	2014
+110329	Williams	Ryan	C	02/01/2006	Male	VES	03	Enrolled	2014
+111421	Willis	Darcy	L	04/19/2010	Female	KES	PK	Enrolled	2014
+110271	Willis	Madyson	B	03/08/2005	Female	KES	04	Enrolled	2014
+110230	Wilson	Jacob	C	07/17/2004	Male	KES	04	Enrolled	2014
+111411	Wilson	Ja'Kiya	M	12/14/2006	Female	KES	02	Enrolled	2014
+111211	Wilson	My'Yonna	L	12/01/2008	Female	KES	KG	Enrolled	2014
+110964	Wimmer	Logan	J	02/23/2002	Male	KES	05	Unenrolled	2014
+110088	Winn	Asia	R	04/11/2005	Female	KES	03	Enrolled	2014
+111462	Winn	Mya	O	03/03/2010	Female	KES	PK	Enrolled	2014
+111508	Winters	Iroquois	C	05/08/2007	Male	KES	02	Enrolled	2014
+111507	Winters	Wiyot	O	08/04/2004	Male	KES	04	Enrolled	2014
+111401	Womack	Landon	A	03/07/2009	Male	KES	KG	Enrolled	2014
+110413	Woodley	Deveyone	C	01/07/2005	Male	KES	04	Enrolled	2014
+110774	Woods	Kamaron	J	02/25/2010	Male	KES	PK	Unenrolled	2014
+110092	Woody	Abigail	F	02/24/2003	Female	KES	05	Unenrolled	2014
+110275	Woody	Penelope	L	08/15/2005	Female	KES	03	Unenrolled	2014
+111388	Word	Caleb	T	11/18/2008	Male	VES	KG	Enrolled	2014
+110511	Word	Hunter	N	11/24/2005	Male	VES	03	Enrolled	2014
+401470	Worsham	Destiny	K	12/03/2003	Female	KES	05	Enrolled	2014
+110044	Worsham	Omari	K	04/26/2005	Male	KES	04	Enrolled	2014
+110133	Wright	Dalante	R	08/23/2003	Male	VES	02	Unenrolled	2014
+111536	Wright	Darrell	C	07/15/2009	Male	KES	KG	Enrolled	2014
+111475	Wright	Destiny	A	10/19/2009	Female	KES	PK	Enrolled	2014
+110142	Wright	Noah	C	05/31/2000	Male	VES	05	Unenrolled	2014
+110094	Wyatt	Jamiee	H	10/07/2003	Male	KES	04	Enrolled	2014
+110280	Yang	Kenny		08/17/2005	Male	VES	KG	Unenrolled	2014
+111199	Yeatts	Caleb	T	08/07/2008	Male	KES	KG	Unenrolled	2014
+110661	Yeatts	Nicholas	L	05/09/2006	Male	KES	03	Unenrolled	2014
+110386	Zellers	Zavian	M	11/26/2005	Male	KES	03	Unenrolled	2014
+110282	Zengel	Cameron	D	06/21/2004	Male	VES	05	Enrolled	2014
+110295	Zengel	Kyle	J	07/04/2006	Male	VES	03	Enrolled	2014
+111319	Zuniga-Leon	Fernando	J	05/06/2005	Male	KES	04	Enrolled	2014

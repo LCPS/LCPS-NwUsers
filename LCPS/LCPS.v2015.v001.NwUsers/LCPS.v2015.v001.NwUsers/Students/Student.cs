@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using System.Web.Mvc;
+
 using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
 
@@ -101,7 +103,7 @@ namespace LCPS.v2015.v001.NwUsers.Students
 
         public StudentEnrollmentStatus Status { get; set; }
 
-        [Display(Name = "Cohort")]
+        [Display(Name = "Year")]
         [Required]
         [MaxLength(4)]
         public string SchoolYear { get; set; }
@@ -112,5 +114,45 @@ namespace LCPS.v2015.v001.NwUsers.Students
             return "(" + StudentId + ") " + SortName + ", " + Gender.ToString() + " - " + Birthdate.ToShortDateString() + ", " + BuildingName + " " + InstructionalLevelName;
         }
 
+
+        #region Filter
+
+        public static IEnumerable<SelectListItem> GetFilterList()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            SelectListItem noFilter = new SelectListItem() { Text = "No Filter", Value = "" };
+
+            items.Add(noFilter);
+            
+            
+            LcpsDbContext db = new LcpsDbContext();
+            
+            List<SelectListItem> buildings = (from HRBuilding b in db.Buildings
+                                              orderby b.Name
+                                              select new SelectListItem() { Text = "Building: " + b.Name, Value = "BuildingKey:" + b.BuildingKey.ToString()}).ToList();
+
+            items.AddRange(buildings);
+
+            List<SelectListItem> grades = (from InstructionalLevel x in db.InstructionalLevels
+                                           orderby x.InstructionalLevelName
+                                           select new SelectListItem() { Text = "Grade: " + x.InstructionalLevelName, Value = "InstructionalLevelKey:" + x.InstructionalLevelKey.ToString()}).ToList();
+
+            items.AddRange(grades);
+
+            List<SelectListItem> bg = (from Student stu in db.Students
+                                       join bld in db.Buildings on stu.BuildingKey equals bld.BuildingKey
+                                       join il in db.InstructionalLevels on stu.InstructionalLevelKey equals il.InstructionalLevelKey
+                                       orderby bld.Name + il.InstructionalLevelName
+                                       select new SelectListItem() { Text = "Building: " + bld.Name + " - " + il.InstructionalLevelName, Value = "BuildingKey:" + bld.BuildingKey.ToString() + ",InstructionalLevelKey:" + il.InstructionalLevelKey.ToString() }
+                                      ).Distinct().ToList();
+
+            items.AddRange(bg);
+
+            return items;
+
+        }
+
+        #endregion
     }
 }

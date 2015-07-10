@@ -16,6 +16,8 @@ using LCPS.v2015.v001.WebUI.Infrastructure;
 using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 
+using PagedList;
+
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
     [Authorize(Roles = "APP-Admins,HR-Admins")]
@@ -82,9 +84,17 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         #region Crud
 
         // GET: HumanResources/HRJobTitles
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? pageSize)
         {
-            return View(db.JobTitles.OrderBy(x => x.JobTitleId).ToList());
+            List<HRJobTitle> jtt = db.JobTitles.OrderBy(x => x.JobTitleId).ToList();
+
+            ViewBag.Total = jtt.Count();
+
+            if (pageSize == null)
+                pageSize = 12;
+
+            int pageNumber = (page ?? 1);
+            return View(jtt.ToPagedList(pageNumber, pageSize.Value));
         }
 
         // GET: HumanResources/HRJobTitles/Details/5
@@ -127,7 +137,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         }
 
         // GET: HumanResources/HRJobTitles/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid? id, int? page)
         {
             if (id == null)
             {
@@ -138,8 +148,9 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             {
                 return HttpNotFound();
             }
-            
-            
+
+            ViewBag.Page = page;
+
             return View(hRJobTitle);
 
 
@@ -150,16 +161,18 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "JobTitleKey,EmployeeTypeLinkId,JobTitleId,JobTitleName")] HRJobTitle hRJobTitle)
+        public ActionResult Edit([Bind(Include = "JobTitleKey,EmployeeTypeLinkId,JobTitleId,JobTitleName")] HRJobTitle hRJobTitle, int? page)
         {
+            ViewBag.Page = page;
+
             if (ModelState.IsValid)
             {
                 db.Entry(hRJobTitle).State = EntityState.Modified;
                 db.SaveChanges();
-                return Redirect(String.Format("{0}#{1}", Url.RouteUrl(new { area = "HumanResources", controller = "HRJobTitles", action = "Index" }), hRJobTitle.JobTitleKey.ToString()));
+                return RedirectToAction("Index", "HRJobTitles", new { @area = "HumanResources", @page = page });
             }
 
-            
+
             return View(hRJobTitle);
         }
 

@@ -1,15 +1,15 @@
 ﻿@using LCPS.v2015.v001.NwUsers.Infrastructure
 @using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+@using PagedList;
+@using PagedList.Mvc;
 
-@model IEnumerable<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRJobTitle>
+
+@model PagedList<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRJobTitle>
 
 @{
     ViewBag.Title = "Job Titles";
-    ViewBag.EmployeeTypes = (new LcpsDbContext()).EmployeeTypes.Select(m => new SelectListItem()
-        {
-            Text = m.EmployeeTypeName,
-            Value = m.EmployeeTypeLinkId.ToString()
-        });
+
+    ViewBag.Page = Request.QueryString["page"];
         
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
 }
@@ -30,13 +30,17 @@
     </div>
 </div>
 
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.JobTitleId)
+            @Html.DisplayNameFor(model => model.First().JobTitleId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.JobTitleName)
+            @Html.DisplayNameFor(model => model.First().JobTitleName)
         </th>
         <th></th>
     </tr>
@@ -51,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.JobTitleName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.JobTitleKey }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.JobTitleKey, page = Request.QueryString["page"] }) |
                 @Html.ActionLink("Details", "Details", new { id = item.JobTitleKey }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.JobTitleKey })
             </td>

@@ -1,7 +1,11 @@
-﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaffPosition>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaffPosition>
 
 @{
     ViewBag.Title = "Index";
+    ViewBag.Page = Request.QueryString["page"];
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
 }
 
@@ -20,26 +24,29 @@
     </div>
 </div>
 
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StaffMember.SortName)
+            @Html.DisplayNameFor(model => model.First().StaffMember.SortName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Building.Name)
+            @Html.DisplayNameFor(model => model.First().Building.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmployeeType.EmployeeTypeName)
+            @Html.DisplayNameFor(model => model.First().EmployeeType.EmployeeTypeName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.JobTitle.JobTitleName)
+            @Html.DisplayNameFor(model => model.First().JobTitle.JobTitleName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.First().Status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FiscalYear)
+            @Html.DisplayNameFor(model => model.First().FiscalYear)
         </th>
         <th></th>
     </tr>

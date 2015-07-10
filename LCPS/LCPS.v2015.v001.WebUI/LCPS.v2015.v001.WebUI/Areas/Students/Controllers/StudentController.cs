@@ -11,7 +11,9 @@ using LCPS.v2015.v001.WebUI.Infrastructure;
 using LCPS.v2015.v001.NwUsers.Importing;
 using System.IO;
 using LCPS.v2015.v001.WebUI.Areas.Import.Models;
-
+using PagedList;
+using Anvil.v2015.v001.Domain.Entities;
+using System.Linq.Dynamic;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 {
@@ -75,9 +77,60 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         #region Crud
 
         // GET: /Students/Student/
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? pageSize, string currentSearch, string searchString, string filter)
         {
-            return View(db.Students.ToList());
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentSearch;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            List<Student> students;
+            if (String.IsNullOrEmpty(searchString))
+                students = db.Students.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
+            else
+                students = db.Students.
+                    Where
+                    (
+                        x => x.FirstName.Contains(searchString) |
+                            x.LastName.Contains(searchString) |
+                            x.StudentId.Contains(searchString)
+                    ).ToList();
+
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                List<object> parms = new List<object>();
+                List<string> qry = new List<string>();
+                foreach (string pr in filter.Split(','))
+                {
+                    string n = pr.Split(':')[0];
+                    Guid g = new Guid(pr.Split(':')[1]);
+
+                    string q = n + " = @" + parms.Count().ToString();
+                    qry.Add(q);
+                    parms.Add(g);
+                }
+
+                string qs = string.Join(" AND ", qry.ToArray());
+
+                students = students.AsQueryable().Where(qs, parms.ToArray()).ToList();
+            }
+
+            students = students.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
+
+            ViewBag.Total = students.Count();
+
+            if (pageSize == null)
+                pageSize = 12;
+
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize.Value));
         }
 
         // GET: /Students/Student/Details/5
@@ -106,7 +159,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="StudentKey,FirstName,MiddleInitial,LastName,Gender,Birthdate,StudentId,InstructionalLevelKey,BuildingKey,Status,SchoolYear")] Student student)
+        public ActionResult Create([Bind(Include = "StudentKey,FirstName,MiddleInitial,LastName,Gender,Birthdate,StudentId,InstructionalLevelKey,BuildingKey,Status,SchoolYear")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -139,7 +192,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="StudentKey,FirstName,MiddleInitial,LastName,Gender,Birthdate,StudentId,InstructionalLevelKey,BuildingKey,Status,SchoolYear")] Student student)
+        public ActionResult Edit([Bind(Include = "StudentKey,FirstName,MiddleInitial,LastName,Gender,Birthdate,StudentId,InstructionalLevelKey,BuildingKey,Status,SchoolYear")] Student student)
         {
             if (ModelState.IsValid)
             {

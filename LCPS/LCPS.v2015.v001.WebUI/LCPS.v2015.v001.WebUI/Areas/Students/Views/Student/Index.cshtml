@@ -1,14 +1,20 @@
-﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.Students.Student>
+﻿@using LCPS.v2015.v001.NwUsers.Students;
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@model PagedList<LCPS.v2015.v001.NwUsers.Students.Student>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Students/Views/Shared/_StudentLayout.cshtml";
 }
 
-<h2>Students</h2>
+<h2>Students &nbsp; <span class="badge">@ViewBag.Total</span></h2>
 
 <div class="navbar">
-    <div class="navbar-collapse collapse">
+    <div class="navbar-collapse collapse col-md-4">
+
         <ul class="nav navbar-nav">
             <li>
                 <a href="@Url.Action("Create", "Student", new { area = "Students" })"><i class="fa fa-plus"></i> Create New</a>
@@ -17,82 +23,146 @@
                 <a href="@Url.Action("ImportFile", "Student", new { area = "Students" } )"><i class="fa fa-upload"></i>  Import</a>
             </li>
         </ul>
+
+        @using (Html.BeginForm("Index", "Student", new { area = "Students" }, FormMethod.Get))
+        {
+            <div class="col-sm-3 col-md-3 pull-right">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        Search:
+                    </div>
+                    @Html.TextBox("currentSearch", null, new { @class = "form-control" })
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="fa fa-refresh"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2 pull-right">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        Page Size:
+                    </div>
+                    @Html.TextBox("pageSize", null, new { @class = "form-control", @style = "width:90px;" })
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 pull-right">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        Filter:
+                    </div>
+                    @Html.DropDownList("filter", Student.GetFilterList(), null, new { @class = "form-control"})
+                </div>
+            </div>
+
+        }
+
+
+
     </div>
 </div>
 
-<table class="table">
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+
+<table class="table table-hover table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.First().SortName)
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MiddleInitial)
+            @Html.DisplayNameFor(model => model.First().Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.First().Birthdate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gender)
+            @Html.DisplayNameFor(model => model.First().StudentId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Birthdate)
+            @Html.DisplayNameFor(model => model.First().InstructionalLevelName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StudentId)
+            @Html.DisplayNameFor(model => model.First().BuildingName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InstructionalLevelName)
+            @Html.DisplayNameFor(model => model.First().Status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BuildingName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SchoolYear)
+            @Html.DisplayNameFor(model => model.First().SchoolYear)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MiddleInitial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birthdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstructionalLevelName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BuildingName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SchoolYear)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StudentKey }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StudentKey }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StudentKey })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortName)
+            </td>
+            <td>
+                @if (item.Gender == LCPS.v2015.v001.NwUsers.HumanResources.HRGenders.Female)
+                {
+                    <i class="fa fa-female" style="color: pink"></i>
+                }
+                else
+                {
+                    <i class="fa fa-male" style="color: powderblue"></i>
+                }
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstructionalLevelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingName)
+            </td>
+            <td>
+
+                @if (item.Status == LCPS.v2015.v001.NwUsers.Students.StudentEnrollmentStatus.Enrolled)
+                {
+                    <span class="text-success">
+                        <i class="fa fa-check"></i>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </span>
+                }
+
+
+                @if (item.Status == LCPS.v2015.v001.NwUsers.Students.StudentEnrollmentStatus.None)
+                {
+                    <span class="text-danger">
+                        <i class="fa fa-ban"></i>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </span>
+                }
+
+                @if (item.Status == LCPS.v2015.v001.NwUsers.Students.StudentEnrollmentStatus.Unenrolled)
+                {
+                    <span class="text-warning">
+                        <i class="fa fa-remove"></i>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </span>
+                }
+
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolYear)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentKey }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentKey }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentKey })
+            </td>
+        </tr>
+    }
 
 </table>

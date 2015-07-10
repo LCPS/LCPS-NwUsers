@@ -4,16 +4,11 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
-    ViewBag.EmployeeTypes = (new LcpsDbContext()).EmployeeTypes.Select(m => new SelectListItem()
-    {
-        Text = m.EmployeeTypeName,
-        Value = m.EmployeeTypeLinkId.ToString()
-    });
 }
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "HRJobTitles", new { area = "HumanResources", page = Request.QueryString["page"] }))
 {
     @Html.AntiForgeryToken()
     
@@ -22,14 +17,6 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.JobTitleKey)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmployeeTypeLinkId, "EmployeeTypeLinkId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.EmployeeTypeLinkId, ViewBag.EmployeeTypes as IEnumerable<SelectListItem>, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EmployeeTypeLinkId, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.JobTitleId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -56,12 +43,5 @@
 }
 
 <div>
-    @Html.ActionLink(linkText: "Back to List", 
-        actionName: "Index", 
-        routeValues: new {area = "HumanResources"}, 
-        controllerName: "HRJobTitles",
-        htmlAttributes: null,
-        protocol: null,
-        hostName: null,
-        fragment: Model.JobTitleKey.ToString())
+    <a href="@Url.Action("Index", "HRJobTitles", new { @area = "HumanResources", page = ViewBag.Page })">Back to List</a>
 </div>
