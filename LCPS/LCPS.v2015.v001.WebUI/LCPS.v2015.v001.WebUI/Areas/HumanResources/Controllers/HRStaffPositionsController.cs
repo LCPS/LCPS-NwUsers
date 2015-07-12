@@ -12,6 +12,7 @@ using System.IO;
 
 using LCPS.v2015.v001.NwUsers.Importing;
 using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
+using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
 using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 
@@ -75,7 +76,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
                 return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Import Job Titles", "HumanResources", "HRJobTitles", "Preview"));
             }
         }
-        
+
 
 
         #endregion
@@ -89,15 +90,51 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         public ActionResult Index(int? page, int? pageSize)
         {
 
-            List<HRStaffPosition> items = db.StaffPositions.ToList();
+            if (pageSize == null)
+                pageSize = 12;
 
-            ViewBag.Total = items.Count();
+            StaffPositionModel m = new StaffPositionModel(page, pageSize);
+
+            ViewBag.Total = m.Positions.Count();
+
+
+            int pageNumber = (page ?? 1);
+            return View(m);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Filter(HRStaffPositionFilter filter, int? page, int? pageSize)
+        {
+            Session["staffFilter"] = filter;
+
+            if (pageSize == null)
+                pageSize = 12;
+            
+            StaffPositionModel m = new StaffPositionModel(page, pageSize, filter);
+
+            ViewBag.Total = m.Positions.Count();
+
+
+            int pageNumber = (page ?? 1);
+            return View(m);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Filter(int? page, int? pageSize)
+        {
+
+            HRStaffPositionFilter filter = (HRStaffPositionFilter)Session["StaffFilter"];
 
             if (pageSize == null)
                 pageSize = 12;
 
-            int pageNumber = (page ?? 1);
-            return View(items.ToPagedList(pageNumber, pageSize.Value));
+            StaffPositionModel m = new StaffPositionModel(page, pageSize, filter);
+
+            
+            return View(m);
+
         }
 
         // GET: HumanResources/HRStaffPositions/Details/5

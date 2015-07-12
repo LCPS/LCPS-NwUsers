@@ -12,6 +12,8 @@ using LCPS.v2015.v001.NwUsers.Infrastructure;
 using LCPS.v2015.v001.NwUsers.Security;
 using LCPS.v2015.v001.NwUsers.HumanResources;
 
+using System.Web.Mvc;
+
 
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
@@ -170,6 +172,23 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
                 throw new Exception("Could not load position", ex);
             }
 
+        }
+
+        public static IEnumerable<SelectListItem> StaffQualifierList()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            string[] names = System.Enum.GetNames(typeof(HRStaffPositionQualifier));
+            foreach(string name in names)
+            {
+                int value = Convert.ToInt32(System.Enum.Parse(typeof(HRStaffPositionQualifier), name));
+                SelectListItem si = new SelectListItem()
+                {
+                    Text = name,
+                    Value = value.ToString()
+                };
+                items.Add(si);
+            }
+            return items;
         }
     }
 }

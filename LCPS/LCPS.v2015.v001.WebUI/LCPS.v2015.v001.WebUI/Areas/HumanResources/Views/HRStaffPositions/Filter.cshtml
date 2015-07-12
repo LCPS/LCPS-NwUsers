@@ -1,0 +1,53 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+
+@model StaffPositionModel
+
+
+
+@{
+    ViewBag.Title = "Staff Search";
+    ViewBag.ReturnTo = "Filter";
+    Session["staffFilter"] = Model.Filter;
+    ViewBag.Page = Request.QueryString["page"];
+    Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+
+        var x = document.getElementsByClassName("cb");
+        var i;
+        
+        /*
+        for (i = 0; i < x.length; i++) {
+            cbId = x[i].id;
+
+            f = cbId.replace('Filter', '');
+
+            eleId = f + 'Value';
+
+            ele = document.getElementById(eleId);
+
+            ele.disabled = true;
+        }
+        */
+
+    });
+</script>
+
+<h2>Staff Positions &nbsp; <span class="badge">@ViewBag.Total</span></h2>
+<hr />
+
+@Html.Partial("_StaffPositionFilter", Model.Filter)
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model.Positions, page => Url.Action("Filter",
+    new { page }))
+
+
+
+
+@Html.Partial("_StaffPositionList", Model.Positions)

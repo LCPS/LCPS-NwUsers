@@ -1,0 +1,56 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using LCPS.v2015.v001.NwUsers.HumanResources;
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+
+@model PagedList<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaffPosition>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().StaffMember.SortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Building.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().EmployeeType.EmployeeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().JobTitle.JobTitleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FiscalYear)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffMember.SortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeType.EmployeeTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle.JobTitleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FiscalYear)
+            </td>
+        </tr>
+    }
+
+</table>

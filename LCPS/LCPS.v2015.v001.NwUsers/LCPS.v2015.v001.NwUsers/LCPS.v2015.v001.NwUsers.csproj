@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HumanResources\DynamicGroups\DynamicStaffGroup.cs" />
+    <Compile Include="HumanResources\DynamicGroups\HRStaffPositionFilter.cs" />
     <Compile Include="HumanResources\DynamicGroups\StaffClauseGroup.cs" />
     <Compile Include="HumanResources\HRBuildingCandidate.cs" />
     <Compile Include="HumanResources\HRBuildingSession.cs" />

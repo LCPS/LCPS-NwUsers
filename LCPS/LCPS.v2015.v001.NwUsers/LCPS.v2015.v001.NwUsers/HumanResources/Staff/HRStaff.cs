@@ -110,6 +110,8 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [DataType(DataType.Date)]
         public DateTime Birthdate { get; set; }
 
+
+
         #endregion
 
         

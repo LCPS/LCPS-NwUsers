@@ -1,82 +1,48 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
+@using LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups;
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 
-@model PagedList<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaffPosition>
+@model StaffPositionModel
 
 @{
     ViewBag.Title = "Index";
+    ViewBag.ReturnTo = "Index";
     ViewBag.Page = Request.QueryString["page"];
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
 }
 
-<h2>Staff Positions <span class="badge">@Model.Count()</span></h2>
+<script>
+    $(document).ready(function () {
 
-<div class="navbar">
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>
-                <a href="@Url.Action("Create", "HRStaffPositions", new { area = "HumanResources" })"><i class="fa fa-plus"></i> Create New</a>
-            </li>
-            <li>
-                <a href="@Url.Action("ImportFile", "HRStaffPositions", new { area = "HumanResources" } )"><i class="fa fa-upload"></i>  Import</a>
-            </li>
-        </ul>
-    </div>
-</div>
+        var x = document.getElementsByClassName("cb");
+        var i;
+
+        /*
+        for (i = 0; i < x.length; i++) {
+            cbId = x[i].id;
+
+            f = cbId.replace('Filter', '');
+
+            eleId = f + 'Value';
+
+            ele = document.getElementById(eleId);
+
+            ele.disabled = true;
+        }
+        */
+    });
+</script>
+
+<h2>Staff Positions &nbsp; <span class="badge">@ViewBag.Total</span></h2>
+<hr />
+
+@Html.Partial("_StaffPositionFilter", Model.Filter)
 
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Index",
+
+
+@Html.PagedListPager(Model.Positions, page => Url.Action(ViewBag.ReturnTo,
     new { page }))
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.First().StaffMember.SortName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().Building.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().EmployeeType.EmployeeTypeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().JobTitle.JobTitleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().FiscalYear)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StaffMember.SortName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Building.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeType.EmployeeTypeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.JobTitle.JobTitleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FiscalYear)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PositionKey }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PositionKey }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PositionKey })
-        </td>
-    </tr>
-}
-
-</table>
+@Html.Partial("_StaffPositionList", Model.Positions)

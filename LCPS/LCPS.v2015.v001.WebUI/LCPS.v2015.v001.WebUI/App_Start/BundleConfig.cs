@@ -9,7 +9,8 @@ namespace LCPS.v2015.v001.WebUI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/bootstrap-switch.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -31,7 +32,8 @@ namespace LCPS.v2015.v001.WebUI
                       "~/Content/font-awesome.min.css",
                       "~/Content/site.css",
                       "~/Content/lcps-aux.css",
-                      "~/Content/lcps-theme.min.css"));
+                      "~/Content/lcps-theme.min.css"
+                      ));
         }
     }
 }
