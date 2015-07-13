@@ -80,7 +80,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 
         public ActionResult Students()
         {
-            StudentListModel m = new StudentListModel();
+            StudentViewModel m = new StudentViewModel();
 
             List<HRBuilding> bb = Student.GetBuildings();
 

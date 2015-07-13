@@ -14,10 +14,10 @@ using LCPS.v2015.v001.NwUsers.Students;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Models
 {
-    public class StudentListModel
+    public class StudentViewModel
     {
 
-        public StudentListModel()
+        public StudentViewModel()
         {
             Buildings = new List<SelectListItem>();
             InstructionalLevels = new List<SelectListItem>();

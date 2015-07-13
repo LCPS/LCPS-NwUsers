@@ -191,7 +191,7 @@
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Students\Controllers\InstructionalLevelController.cs" />
     <Compile Include="Areas\Students\Controllers\StudentController.cs" />
-    <Compile Include="Areas\Students\Models\StudentListModel.cs" />
+    <Compile Include="Areas\Students\Models\StudentViewModel.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Infrastructure\LcpsDbContext.cs" />
     <Compile Include="Global.asax.cs">

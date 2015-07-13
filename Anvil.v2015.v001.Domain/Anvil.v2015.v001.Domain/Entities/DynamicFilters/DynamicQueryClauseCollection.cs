@@ -17,22 +17,22 @@ using System.Threading.Tasks;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    public class DynamicQueryClauseCollection : IList<DynamicQueryClause>
+    public class DynamicQueryClauseCollection : IList<IDynamicQueryClause>
     {
 
         DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
 
-        List<DynamicQueryClause> _list = new List<DynamicQueryClause>();
+        List<IDynamicQueryClause> _list = new List<IDynamicQueryClause>();
 
         string query = "";
         List<object> parms;
 
-        public int IndexOf(DynamicQueryClause item)
+        public int IndexOf(IDynamicQueryClause item)
         {
             return _list.IndexOf(item);
         }
 
-        public void Insert(int index, DynamicQueryClause item)
+        public void Insert(int index, IDynamicQueryClause item)
         {
             _list.Insert(index, item);
         }
@@ -42,7 +42,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             _list.RemoveAt(index);
         }
 
-        public DynamicQueryClause this[int index]
+        public IDynamicQueryClause this[int index]
         {
             get
             {
@@ -54,7 +54,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             }
         }
 
-        public void Add(DynamicQueryClause item)
+        public void Add(IDynamicQueryClause item)
         {
             _list.Add(item);
             if (parms.Count() == 0)
@@ -74,12 +74,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             _list.Clear();
         }
 
-        public bool Contains(DynamicQueryClause item)
+        public bool Contains(IDynamicQueryClause item)
         {
             return _list.Contains(item);
         }
 
-        public void CopyTo(DynamicQueryClause[] array, int arrayIndex)
+        public void CopyTo(IDynamicQueryClause[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
@@ -94,12 +94,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             get { return _list.ToArray().IsReadOnly; }
         }
 
-        public bool Remove(DynamicQueryClause item)
+        public bool Remove(IDynamicQueryClause item)
         {
             return _list.Remove(item);
         }
 
-        public IEnumerator<DynamicQueryClause> GetEnumerator()
+        public IEnumerator<IDynamicQueryClause> GetEnumerator()
         {
             return _list.GetEnumerator();
         }

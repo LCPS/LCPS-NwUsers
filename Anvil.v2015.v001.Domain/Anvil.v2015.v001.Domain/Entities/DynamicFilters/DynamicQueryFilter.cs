@@ -1,0 +1,30 @@
+﻿#region Using
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.IO;
+using System.Data.SqlClient;
+using System.Reflection;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+#endregion
+
+namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
+{
+    public abstract class DynamicQueryFilter  : IDynamicQueryFilter
+    {
+
+        public virtual string Name { get; set; }
+
+        public virtual string Description { get; set; }
+
+        public virtual List<IDynamicQueryClause> Clauses { get; set; }
+
+    }
+}
