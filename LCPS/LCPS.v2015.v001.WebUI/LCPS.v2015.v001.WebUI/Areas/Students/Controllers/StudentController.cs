@@ -14,6 +14,8 @@ using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 using PagedList;
 using Anvil.v2015.v001.Domain.Entities;
 using System.Linq.Dynamic;
+using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+using LCPS.v2015.v001.NwUsers.HumanResources;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 {
@@ -70,6 +72,61 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
             {
                 return View("Error", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Import Staff", "Students", "InstructionalLevel", "ImportFile"));
             }
+        }
+
+        #endregion
+
+        #region Filter
+
+        public ActionResult Students()
+        {
+            StudentListModel m = new StudentListModel();
+
+            List<HRBuilding> bb = Student.GetBuildings();
+
+
+            List<SelectListItem> bli = (from HRBuilding b in bb
+                                        select new SelectListItem()
+                                        {
+                                            Text = b.Name,
+                                            Value = b.BuildingKey.ToString()
+                                        }).ToList();
+                
+            Guid bId = Guid.NewGuid();
+
+            if (bb.Count() > 0)
+                bId = new Guid(bli[0].Value);
+
+            m.Buildings.AddRange(bli);
+
+            List<InstructionalLevel> jt = Student.GetInstructionalLevels(bId);
+
+            List<SelectListItem> jli = (from InstructionalLevel j in jt
+                                        select new SelectListItem()
+                                        {
+                                            Text = j.InstructionalLevelName,
+                                            Value = j.InstructionalLevelKey.ToString()
+                                        }).ToList();
+
+            m.InstructionalLevels.AddRange(jli);
+
+            return View(m);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetInstructionalLevels(Guid buildingId)
+        {
+            List<InstructionalLevel> jt = Student.GetInstructionalLevels(buildingId);
+
+            var result = (from j in jt
+                          select new
+                          {
+                              id = j.InstructionalLevelKey.ToString(),
+                              name = j.InstructionalLevelName
+                          }).ToList();
+
+            
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

@@ -1,0 +1,54 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+
+@model StudentListModel
+
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Areas/Students/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+
+<script type="text/javascript">
+   
+
+        $(function () {
+            $("#BuildingId").change(function () {
+
+                
+
+                var selectedItem = $(this).val();
+                var ddlChild = $("#InstructionalLevelId");
+                var statesProgress = $("#states-loading-progress");
+                statesProgress.show();
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: "/Students/Student/GetInstructionalLevels",
+                    data: { "buildingId": selectedItem },
+                    success: function (data) {
+                        ddlChild.html('');
+                        $.each(data, function (id, option) {
+                            ddlChild.append($('<option></option>').val(option.id).html(option.name));
+                        });
+                        statesProgress.hide();
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Failed to retrieve levels.');
+                        statesProgress.hide();
+                    }
+                });
+            });
+        });
+
+</script>
+
+
+<h2>Students</h2>
+
+
+@Html.DropDownListFor(model => model.BuildingId, Model.Buildings, new { @class = "form-control" })
+
+@Html.DropDownListFor(model => model.InstructionalLevelId, Model.InstructionalLevels, new { @class = "form-control" })
+
+<span id="states-loading-progress" style="display: none;">Please wait..</span>

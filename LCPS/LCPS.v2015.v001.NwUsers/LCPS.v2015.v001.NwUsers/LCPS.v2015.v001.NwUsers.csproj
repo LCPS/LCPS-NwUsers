@@ -73,6 +73,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\FilterGroup.cs" />
+    <Compile Include="Filters\FilterGroupCollection.cs" />
     <Compile Include="HumanResources\DynamicGroups\DynamicStaffGroup.cs" />
     <Compile Include="HumanResources\DynamicGroups\HRStaffPositionFilter.cs" />
     <Compile Include="HumanResources\DynamicGroups\StaffClauseGroup.cs" />

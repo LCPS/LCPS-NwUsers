@@ -72,6 +72,8 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
         public DbSet<Students.InstructionalLevel> InstructionalLevels { get; set; }
 
+        public DbSet<Filters.FilterGroup> FilterGrouops { get; set; }
+
         /*
         public DbSet<Security.LcpsStaffEmail> StaffEmails { get; set; }
         */

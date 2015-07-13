@@ -191,6 +191,7 @@
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Students\Controllers\InstructionalLevelController.cs" />
     <Compile Include="Areas\Students\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Students\Models\StudentListModel.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Infrastructure\LcpsDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,6 +214,10 @@
     <Compile Include="Migrations\201507091256191_STU-001.cs" />
     <Compile Include="Migrations\201507091256191_STU-001.Designer.cs">
       <DependentUpon>201507091256191_STU-001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507122353373_FilterNew_001.cs" />
+    <Compile Include="Migrations\201507122353373_FilterNew_001.Designer.cs">
+      <DependentUpon>201507122353373_FilterNew_001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -283,6 +288,7 @@
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\_StaffMenu.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\Index.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\Filter.cshtml" />
+    <Content Include="Areas\Students\Views\Student\Students.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -402,16 +408,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\ddl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
-    <Folder Include="Areas\Students\Models\" />
     <Folder Include="Assets\" />
     <Folder Include="Models\Importing\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Import\" />
   </ItemGroup>
   <ItemGroup>
@@ -440,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507091256191_STU-001.resx">
       <DependentUpon>201507091256191_STU-001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507122353373_FilterNew_001.resx">
+      <DependentUpon>201507122353373_FilterNew_001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

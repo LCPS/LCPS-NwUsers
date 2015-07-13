@@ -10,13 +10,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
 using LCPS.v2015.v001.NwUsers.HumanResources;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
 
 namespace LCPS.v2015.v001.NwUsers.Students
 {
     public class Student : IPerson, IStudent
     {
+
+        #region Fields
+
         LcpsDbContext db;
+
+        #endregion
+
+        #region Properties
 
         [Key]
         public Guid StudentKey { get; set; }
@@ -108,6 +116,7 @@ namespace LCPS.v2015.v001.NwUsers.Students
         [MaxLength(4)]
         public string SchoolYear { get; set; }
 
+        #endregion
 
         public override string ToString()
         {
@@ -152,6 +161,52 @@ namespace LCPS.v2015.v001.NwUsers.Students
             return items;
 
         }
+
+        #endregion
+
+        #region Categorizing
+
+        public static List<HRBuilding> GetBuildings()
+        {
+            try
+            {
+                LcpsDbContext DbContext = new LcpsDbContext();
+
+                List<HRBuilding> bb = (from HRBuilding b in DbContext.Buildings
+                                       join Student s in DbContext.Students on
+                                       b.BuildingKey equals s.BuildingKey
+                                       orderby b.Name
+                                       select b).Distinct().ToList();
+                return bb;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error getting buildings for students", ex);
+            }
+        }
+
+        public static  List<InstructionalLevel> GetInstructionalLevels(Guid buildingId)
+        {
+            try
+            {
+                LcpsDbContext DbContext = new LcpsDbContext();
+
+                List<InstructionalLevel> lvl = (from InstructionalLevel i in DbContext.InstructionalLevels
+                                                join Student s in DbContext.Students on i.InstructionalLevelKey equals s.InstructionalLevelKey
+                                                where s.BuildingKey.Equals(buildingId)
+                                                orderby i.InstructionalLevelId
+                                                select i).Distinct().ToList();
+
+
+                return lvl;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error getting instructional levels for students", ex);
+            }
+
+        }
+
 
         #endregion
     }
