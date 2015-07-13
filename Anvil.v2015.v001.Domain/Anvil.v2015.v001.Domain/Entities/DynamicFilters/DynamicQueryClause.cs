@@ -11,31 +11,24 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #endregion
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    public class DynamicQueryClause : IDynamicQueryClause
+    [Table("DynamicQueryClause", Schema = "Filtering")]
+    public class DynamicQueryClause
     {
+        [Key]
+        [Index("IX_QueryClause", IsUnique = true, Order = 1)]
+        public Guid ClauseId { get; set; }
 
-        #region "Fields"
+        [Index("IX_QueryClause", IsUnique = true, Order = 2)]
+        public Guid QueryId { get; set; }
 
-        private DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
-
-        #endregion
-
-
-        public bool Include { get; set; }
-
-        public DynamicQueryConjunctions Conjunction { get; set; }
-
-        public string FieldName { get; set; }
-
-        public DynamicQueryOperators Operator { get; set; }
-
-        public string Value { get; set; }
+        public DynamicQueryConjunctions ClauseConjunction { get; set; }
 
     }
 }

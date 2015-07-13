@@ -17,22 +17,83 @@ using System.Threading.Tasks;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    public class DynamicQueryClauseCollection : IList<IDynamicQueryClause>
+    public class DynamicQueryClauseCollection : IList<DynamicQueryClauseField>
     {
+        #region Fields
 
-        DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
+        private List<string> _elements = new List<string>();
+        
+        private List<object> _parms = new List<object>();
 
-        List<IDynamicQueryClause> _list = new List<IDynamicQueryClause>();
+        private List<DynamicQueryClauseField> _list = new List<DynamicQueryClauseField>();
 
-        string query = "";
-        List<object> parms;
+        private DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
 
-        public int IndexOf(IDynamicQueryClause item)
+        #endregion
+
+
+        #region Properties
+
+        public List<object> Parms
+        {
+            get { return _parms; }
+        }
+
+        public List<string> Elements
+        {
+            get { return _elements; }
+        }
+
+        #endregion
+
+        #region Elements
+
+        public void AddElement(DynamicQueryConjunctions conjunction, string fieldName, DynamicQueryOperators op, object value)
+        {
+            string element = "";
+            if (conjunction != DynamicQueryConjunctions.None)
+                element += conjunction.ToString();
+
+            if(op == DynamicQueryOperators.Contains)
+            {
+                element += fieldName + ".Contains(\"" + value.ToString() + "\") ";
+            }
+            else
+            {
+                element += fieldName + " " + lib.GetOperator(op) + " @" + Parms.Count().ToString();
+                Parms.Add(value);
+            }
+            
+            
+
+            Elements.Add(element);
+
+            
+        }
+
+        #endregion
+
+        public virtual DynamicQueryStatement ToDynamicQuery()
+        {
+            DynamicQueryStatement dq = new DynamicQueryStatement()
+                {
+                    Query = string.Join(" ", _elements.ToArray()),
+                    Parms = _parms.ToArray()
+                };
+
+            return dq;
+        }
+
+
+        #region List
+
+
+        public int IndexOf(DynamicQueryClauseField item)
         {
             return _list.IndexOf(item);
         }
 
-        public void Insert(int index, IDynamicQueryClause item)
+        public void Insert(int index, DynamicQueryClauseField item)
         {
             _list.Insert(index, item);
         }
@@ -42,7 +103,13 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             _list.RemoveAt(index);
         }
 
-        public IDynamicQueryClause this[int index]
+        public DynamicQueryClauseField Get(string fieldName)
+        {
+            DynamicQueryClauseField item = _list.FirstOrDefault(x => x.FieldName.ToLower() == fieldName.ToLower());
+            return item;
+        }
+
+        public DynamicQueryClauseField this[int index]
         {
             get
             {
@@ -54,19 +121,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             }
         }
 
-        public void Add(IDynamicQueryClause item)
+        public void Add(DynamicQueryClauseField item)
         {
+            if(item.Include)
+                AddElement(item.Conjunction, item.FieldName, item.Operator, item.Value);
+
             _list.Add(item);
-            if (parms.Count() == 0)
-            {
-                query = item.FieldName + " " + lib.GetOperator(item.Operator) + " @" + parms.Count().ToString();
-                parms.Add(item.Value);
-            }
-            else
-            {
-                query = item.Conjunction.ToString() + " " +  item.FieldName + " " + lib.GetOperator(item.Operator) + " @" + parms.Count().ToString();
-                parms.Add(item.Value);
-            }
         }
 
         public void Clear()
@@ -74,19 +134,19 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             _list.Clear();
         }
 
-        public bool Contains(IDynamicQueryClause item)
+        public bool Contains(DynamicQueryClauseField item)
         {
             return _list.Contains(item);
         }
 
-        public void CopyTo(IDynamicQueryClause[] array, int arrayIndex)
+        public void CopyTo(DynamicQueryClauseField[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            _list.CopyTo(array, arrayIndex);
         }
 
         public int Count
         {
-            get { return _list.Count(); }
+            get { return _list.Count; }
         }
 
         public bool IsReadOnly
@@ -94,12 +154,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             get { return _list.ToArray().IsReadOnly; }
         }
 
-        public bool Remove(IDynamicQueryClause item)
+        public bool Remove(DynamicQueryClauseField item)
         {
             return _list.Remove(item);
         }
 
-        public IEnumerator<IDynamicQueryClause> GetEnumerator()
+        public IEnumerator<DynamicQueryClauseField> GetEnumerator()
         {
             return _list.GetEnumerator();
         }
@@ -108,5 +168,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
         {
             return _list.GetEnumerator();
         }
+
+#endregion
     }
 }

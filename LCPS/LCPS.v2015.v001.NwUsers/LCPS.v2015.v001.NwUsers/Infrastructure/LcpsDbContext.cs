@@ -30,6 +30,9 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         #endregion
 
         #region Constants
+
+        public static Guid ADSStudentQueriesAntecedentId = new Guid("A59C22AB-A44B-48E2-8A39-B864D373BCDC");
+
         #endregion
 
         #region Fields
@@ -68,6 +71,11 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         public DbSet<HumanResources.DynamicGroups.StaffClauseGroup> DynamicStaffClauses { get; set; }
 
         public DbSet<Students.Student> Students { get; set; }
+
+        public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQuery> DynamicQueries { get; set; }
+        public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryClause> DynamicQueryClauses { get; set; }
+        public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryClauseField> DynamicQueryClauseFields { get; set; }
+
 
 
         public DbSet<Students.InstructionalLevel> InstructionalLevels { get; set; }

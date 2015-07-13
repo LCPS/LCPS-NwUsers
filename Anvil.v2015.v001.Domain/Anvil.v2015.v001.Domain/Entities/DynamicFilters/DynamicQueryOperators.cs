@@ -13,6 +13,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
         Less = 2,
         LessOrEqual = 3,
         Greater = 4,
-        GreaterOrEqual = 5
+        GreaterOrEqual = 5,
+        Contains = 6
     }
 }

@@ -170,6 +170,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Filters\Controllers\StudentFilterController.cs" />
+    <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
     <Compile Include="Areas\HumanResources\Controllers\DynamicStaffGroupController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
@@ -289,6 +291,8 @@
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\Index.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRStaffPositions\Filter.cshtml" />
     <Content Include="Areas\Students\Views\Student\Students.cshtml" />
+    <Content Include="Areas\Filters\Views\web.config" />
+    <Content Include="Areas\Filters\Views\Shared\_QueryList.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -412,12 +416,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Filters\Models\" />
+    <Folder Include="Areas\Filters\Views\StudentFilter\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
     <Folder Include="Assets\" />
     <Folder Include="Models\Importing\" />
     <Folder Include="Views\Import\" />
+    <Folder Include="Views\Shared\EditorFor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
