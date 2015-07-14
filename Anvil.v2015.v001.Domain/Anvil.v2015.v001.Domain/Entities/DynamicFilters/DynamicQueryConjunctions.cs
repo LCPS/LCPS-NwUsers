@@ -8,8 +8,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
     public enum DynamicQueryConjunctions
     {
-        None = 0,
-        And = 1,
-        Or = 2
+        And = 0,
+        Or = 1
     }
 }

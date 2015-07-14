@@ -3,7 +3,7 @@ namespace LCPS.v2015.v001.WebUI.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init001 : DbMigration
+    public partial class INIT001 : DbMigration
     {
         public override void Up()
         {
@@ -47,6 +47,47 @@ namespace LCPS.v2015.v001.WebUI.Migrations
                     })
                 .PrimaryKey(t => t.BuildingKey)
                 .Index(t => t.BuildingId, unique: true);
+            
+            CreateTable(
+                "Filters.DynamicQuery",
+                c => new
+                    {
+                        QueryId = c.Guid(nullable: false),
+                        AntecedentId = c.Guid(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 75),
+                        Description = c.String(nullable: false, maxLength: 2048),
+                    })
+                .PrimaryKey(t => t.QueryId)
+                .Index(t => new { t.AntecedentId, t.Name }, unique: true, name: "IX_QueryName");
+            
+            CreateTable(
+                "Filters.DynamicQueryClauseField",
+                c => new
+                    {
+                        FieldId = c.Guid(nullable: false),
+                        QueryId = c.Guid(nullable: false),
+                        ClauseId = c.Guid(nullable: false),
+                        Include = c.Boolean(nullable: false),
+                        Conjunction = c.Int(nullable: false),
+                        FieldName = c.String(nullable: false, maxLength: 75),
+                        Operator = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.FieldId)
+                .ForeignKey("Filters.DynamicQueryClause", t => t.ClauseId, cascadeDelete: true)
+                .Index(t => new { t.FieldId, t.QueryId, t.FieldName }, unique: true, name: "IX_QueryClauseField")
+                .Index(t => t.ClauseId);
+            
+            CreateTable(
+                "Filters.DynamicQueryClause",
+                c => new
+                    {
+                        ClauseId = c.Guid(nullable: false),
+                        QueryId = c.Guid(nullable: false),
+                        ClauseConjunction = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ClauseId)
+                .ForeignKey("Filters.DynamicQuery", t => t.QueryId, cascadeDelete: true)
+                .Index(t => new { t.ClauseId, t.QueryId }, unique: true, name: "IX_QueryClause");
             
             CreateTable(
                 "HumanResources.StaffClauseGroup",
@@ -104,6 +145,18 @@ namespace LCPS.v2015.v001.WebUI.Migrations
                 .Index(t => t.EmployeeTypeName, unique: true, name: "EmployeeTypeName_IX");
             
             CreateTable(
+                "dbo.FilterGroups",
+                c => new
+                    {
+                        FilterId = c.Guid(nullable: false),
+                        AntecedentId = c.Guid(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 75),
+                        Description = c.String(nullable: false, maxLength: 2048),
+                    })
+                .PrimaryKey(t => t.FilterId)
+                .Index(t => t.Name, unique: true, name: "IX_FilterName");
+            
+            CreateTable(
                 "Importing.ImportItem",
                 c => new
                     {
@@ -140,6 +193,18 @@ namespace LCPS.v2015.v001.WebUI.Migrations
                         Action = c.String(),
                     })
                 .PrimaryKey(t => t.SessionId);
+            
+            CreateTable(
+                "Students.InstructionalLevel",
+                c => new
+                    {
+                        InstructionalLevelKey = c.Guid(nullable: false),
+                        InstructionalLevelId = c.String(nullable: false, maxLength: 25),
+                        InstructionalLevelName = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.InstructionalLevelKey)
+                .Index(t => t.InstructionalLevelId, unique: true, name: "IX_ILevelId")
+                .Index(t => t.InstructionalLevelName, unique: true, name: "IX_ILevelName");
             
             CreateTable(
                 "HumanResources.HRJobTitle",
@@ -210,6 +275,25 @@ namespace LCPS.v2015.v001.WebUI.Migrations
                 .Index(t => new { t.StaffMemberId, t.BuildingKey, t.EmployeeTypeKey, t.JobTitleKey }, unique: true, name: "IX_Position");
             
             CreateTable(
+                "Students.Student",
+                c => new
+                    {
+                        StudentKey = c.Guid(nullable: false),
+                        FirstName = c.String(nullable: false, maxLength: 75),
+                        MiddleInitial = c.String(nullable: false, maxLength: 10),
+                        LastName = c.String(nullable: false, maxLength: 75),
+                        Gender = c.Int(nullable: false),
+                        Birthdate = c.DateTime(nullable: false),
+                        StudentId = c.String(nullable: false, maxLength: 50),
+                        InstructionalLevelKey = c.Guid(nullable: false),
+                        BuildingKey = c.Guid(nullable: false),
+                        Status = c.Int(nullable: false),
+                        SchoolYear = c.String(nullable: false, maxLength: 4),
+                    })
+                .PrimaryKey(t => t.StudentKey)
+                .Index(t => new { t.StudentId, t.InstructionalLevelKey }, unique: true, name: "IX_StudentUnique");
+            
+            CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
@@ -275,35 +359,51 @@ namespace LCPS.v2015.v001.WebUI.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("Importing.ImportItem", "SessionId", "Importing.ImportSession");
             DropForeignKey("HumanResources.StaffClauseGroup", "StaffGroupId", "HumanResources.DynamicStaffGroup");
+            DropForeignKey("Filters.DynamicQueryClauseField", "ClauseId", "Filters.DynamicQueryClause");
+            DropForeignKey("Filters.DynamicQueryClause", "QueryId", "Filters.DynamicQuery");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("Students.Student", "IX_StudentUnique");
             DropIndex("HumanResources.HRStaffPosition", "IX_Position");
             DropIndex("HumanResources.HRStaff", "IX_StaffID");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("HumanResources.HRJobTitle", "IX_JobTitleName");
+            DropIndex("Students.InstructionalLevel", "IX_ILevelName");
+            DropIndex("Students.InstructionalLevel", "IX_ILevelId");
             DropIndex("Importing.ImportItem", new[] { "SessionId" });
+            DropIndex("dbo.FilterGroups", "IX_FilterName");
             DropIndex("HumanResources.HREmployeeType", "EmployeeTypeName_IX");
             DropIndex("HumanResources.HREmployeeType", "EmployeeTypeId_IX");
             DropIndex("HumanResources.DynamicStaffGroup", "IX_DynamicGroupName");
             DropIndex("HumanResources.StaffClauseGroup", "IX_StaffClause");
+            DropIndex("Filters.DynamicQueryClause", "IX_QueryClause");
+            DropIndex("Filters.DynamicQueryClauseField", new[] { "ClauseId" });
+            DropIndex("Filters.DynamicQueryClauseField", "IX_QueryClauseField");
+            DropIndex("Filters.DynamicQuery", "IX_QueryName");
             DropIndex("HumanResources.HRBuilding", new[] { "BuildingId" });
             DropIndex("Anvil.ApplicationBase", "ApplicationName_IX");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("Students.Student");
             DropTable("HumanResources.HRStaffPosition");
             DropTable("HumanResources.HRStaff");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("HumanResources.HRJobTitle");
+            DropTable("Students.InstructionalLevel");
             DropTable("Importing.ImportSession");
             DropTable("Importing.ImportItem");
+            DropTable("dbo.FilterGroups");
             DropTable("HumanResources.HREmployeeType");
             DropTable("HumanResources.DynamicStaffGroup");
             DropTable("HumanResources.StaffClauseGroup");
+            DropTable("Filters.DynamicQueryClause");
+            DropTable("Filters.DynamicQueryClauseField");
+            DropTable("Filters.DynamicQuery");
             DropTable("HumanResources.HRBuilding");
             DropTable("Anvil.ApplicationBase");
         }

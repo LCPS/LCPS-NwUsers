@@ -5,29 +5,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Data.SqlClient;
 using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Anvil.v2015.v001.Domain.Entities;
 using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
-
+using LCPS.v2015.v001.NwUsers.Infrastructure;
 
 #endregion
 
 namespace LCPS.v2015.v001.NwUsers.Students
 {
-    public class StudentFilter : DynamicQueryClauseCollection
+    public class StudentFilter : DynamicQueryClauseFilterCollection
     {
+        #region Constructors
 
-        #region Constructors 
-
-        public StudentFilter(Guid antecedentId)
+        public StudentFilter()
         {
             Add(new DynamicQueryClauseField()
                 {
-                    ClauseId = antecedentId,
                     Include = false,
                     Conjunction = DynamicQueryConjunctions.And,
                     FieldName = "BuildingKey",
@@ -37,7 +37,6 @@ namespace LCPS.v2015.v001.NwUsers.Students
 
             Add(new DynamicQueryClauseField()
             {
-                ClauseId = antecedentId,
                 Include = false,
                 Conjunction = DynamicQueryConjunctions.And,
                 FieldName = "InstructionalLevelKey",
@@ -47,7 +46,6 @@ namespace LCPS.v2015.v001.NwUsers.Students
 
             Add(new DynamicQueryClauseField()
             {
-                ClauseId = antecedentId,
                 Include = false,
                 Conjunction = DynamicQueryConjunctions.And,
                 FieldName = "Status",
@@ -57,7 +55,6 @@ namespace LCPS.v2015.v001.NwUsers.Students
 
             Add(new DynamicQueryClauseField()
             {
-                ClauseId = antecedentId,
                 Include = false,
                 Conjunction = DynamicQueryConjunctions.And,
                 FieldName = "Name",
@@ -67,7 +64,6 @@ namespace LCPS.v2015.v001.NwUsers.Students
 
             Add(new DynamicQueryClauseField()
             {
-                ClauseId = antecedentId,
                 Include = false,
                 Conjunction = DynamicQueryConjunctions.And,
                 FieldName = "StudentId",
@@ -85,6 +81,7 @@ namespace LCPS.v2015.v001.NwUsers.Students
             get { return Get("BuildingKey"); }
         }
 
+        [Display(Name = "Level")]
         public DynamicQueryClauseField InstructionalLevel
         {
             get { return Get("InstructionalLevelKey"); }
@@ -107,5 +104,21 @@ namespace LCPS.v2015.v001.NwUsers.Students
 
         #endregion
 
+        #region Seed
+
+        public void Seed(LcpsDbContext db)
+        {
+            var props = from p in this.GetType().GetProperties()
+                        let attr = p.GetCustomAttributes(typeof(DynamicQueryAttribute), true)
+                        where attr.Length == 1
+                        select new { Property = p, Attribute = attr.First() as DynamicQueryAttribute };
+
+            foreach(var p in props)
+            {
+
+            }
+        }
+
+        #endregion
     }
 }

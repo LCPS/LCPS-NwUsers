@@ -1,0 +1,38 @@
+﻿@model Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryClauseField
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-inline">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.FieldId)
+        @Html.HiddenFor(model => model.QueryId)
+        @Html.HiddenFor(model => model.ClauseId)
+
+
+        <div class="form-group">
+            @Html.DisplayFor(model => model.FieldName, new { @class = "control-label col-md-3" })
+                @Html.CheckBoxFor(model => model.Include, new { @class = "cb" })
+                @Html.ValidationMessageFor(model => model.Include)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Conjunction, new { @class = "control-label col-md-2" })
+                @Html.EnumDropDownListFor(model => model.Conjunction, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Conjunction)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Operator, new { @class = "control-label col-md-2" })
+                @Html.EnumDropDownListFor(model => model.Operator, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Operator)
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

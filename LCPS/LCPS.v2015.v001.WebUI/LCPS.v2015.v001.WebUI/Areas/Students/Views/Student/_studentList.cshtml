@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.Students.Student>
+
+@{
+    ViewBag.Page = Request.QueryString["page"];
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstructionalLevelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolYear)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SortName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstructionalLevelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuildingName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolYear)
+        </td>
+    </tr>
+}
+
+</table>

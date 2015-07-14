@@ -129,6 +129,7 @@
     <Compile Include="Students\Student.cs" />
     <Compile Include="Students\StudentCandidate.cs" />
     <Compile Include="Students\StudentFilter.cs" />
+    <Compile Include="Students\StudentFilterClause.cs" />
     <Compile Include="Students\StudentSession.cs" />
   </ItemGroup>
   <ItemGroup>

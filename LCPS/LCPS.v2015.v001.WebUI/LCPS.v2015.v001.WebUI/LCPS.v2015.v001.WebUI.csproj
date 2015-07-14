@@ -172,6 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Filters\Controllers\StudentFilterController.cs" />
     <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
+    <Compile Include="Areas\Filters\Models\FilterViewModel.cs" />
     <Compile Include="Areas\HumanResources\Controllers\DynamicStaffGroupController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Students\Controllers\InstructionalLevelController.cs" />
     <Compile Include="Areas\Students\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Students\Models\StudentFilterModel.cs" />
     <Compile Include="Areas\Students\Models\StudentViewModel.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Infrastructure\LcpsDbContext.cs" />
@@ -201,45 +203,9 @@
     </Compile>
     <Compile Include="Infrastructure\LcpsRoleManager.cs" />
     <Compile Include="Infrastructure\LcpsUserManager.cs" />
-    <Compile Include="Migrations\201507082203129_Init001.cs" />
-    <Compile Include="Migrations\201507082203129_Init001.Designer.cs">
-      <DependentUpon>201507082203129_Init001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507090324388_Students001.cs" />
-    <Compile Include="Migrations\201507090324388_Students001.Designer.cs">
-      <DependentUpon>201507090324388_Students001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507091139580_INS-LVL-001.cs" />
-    <Compile Include="Migrations\201507091139580_INS-LVL-001.Designer.cs">
-      <DependentUpon>201507091139580_INS-LVL-001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507091256191_STU-001.cs" />
-    <Compile Include="Migrations\201507091256191_STU-001.Designer.cs">
-      <DependentUpon>201507091256191_STU-001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507122353373_FilterNew_001.cs" />
-    <Compile Include="Migrations\201507122353373_FilterNew_001.Designer.cs">
-      <DependentUpon>201507122353373_FilterNew_001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507131943346_DynamicQueryClauseField001.cs" />
-    <Compile Include="Migrations\201507131943346_DynamicQueryClauseField001.Designer.cs">
-      <DependentUpon>201507131943346_DynamicQueryClauseField001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507131945360_DynamicQueryClauseField002.cs" />
-    <Compile Include="Migrations\201507131945360_DynamicQueryClauseField002.Designer.cs">
-      <DependentUpon>201507131945360_DynamicQueryClauseField002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507132015161_DynamicQuery003.cs" />
-    <Compile Include="Migrations\201507132015161_DynamicQuery003.Designer.cs">
-      <DependentUpon>201507132015161_DynamicQuery003.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507132101198_DynamicQuery001.cs" />
-    <Compile Include="Migrations\201507132101198_DynamicQuery001.Designer.cs">
-      <DependentUpon>201507132101198_DynamicQuery001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507132102116_DynamicQuery002.cs" />
-    <Compile Include="Migrations\201507132102116_DynamicQuery002.Designer.cs">
-      <DependentUpon>201507132102116_DynamicQuery002.cs</DependentUpon>
+    <Compile Include="Migrations\201507141201140_INIT-001.cs" />
+    <Compile Include="Migrations\201507141201140_INIT-001.Designer.cs">
+      <DependentUpon>201507141201140_INIT-001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -313,6 +279,10 @@
     <Content Include="Areas\Students\Views\Student\Students.cshtml" />
     <Content Include="Areas\Filters\Views\web.config" />
     <Content Include="Areas\Filters\Views\Shared\_QueryList.cshtml" />
+    <Content Include="Areas\Filters\Views\_DynamicQueryClauseField.cshtml" />
+    <Content Include="Areas\Filters\Views\_DynamicQueryClauseForm.cshtml" />
+    <Content Include="Areas\Students\Views\Student\_studentFilterClause.cshtml" />
+    <Content Include="Areas\Students\Views\Student\_studentList.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -436,7 +406,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Filters\Models\" />
     <Folder Include="Areas\Filters\Views\StudentFilter\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\Public\Models\" />
@@ -461,32 +430,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507082203129_Init001.resx">
-      <DependentUpon>201507082203129_Init001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507090324388_Students001.resx">
-      <DependentUpon>201507090324388_Students001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507091139580_INS-LVL-001.resx">
-      <DependentUpon>201507091139580_INS-LVL-001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507091256191_STU-001.resx">
-      <DependentUpon>201507091256191_STU-001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507122353373_FilterNew_001.resx">
-      <DependentUpon>201507122353373_FilterNew_001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507131943346_DynamicQueryClauseField001.resx">
-      <DependentUpon>201507131943346_DynamicQueryClauseField001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507131945360_DynamicQueryClauseField002.resx">
-      <DependentUpon>201507131945360_DynamicQueryClauseField002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507132101198_DynamicQuery001.resx">
-      <DependentUpon>201507132101198_DynamicQuery001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507132102116_DynamicQuery002.resx">
-      <DependentUpon>201507132102116_DynamicQuery002.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507141201140_INIT-001.resx">
+      <DependentUpon>201507141201140_INIT-001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

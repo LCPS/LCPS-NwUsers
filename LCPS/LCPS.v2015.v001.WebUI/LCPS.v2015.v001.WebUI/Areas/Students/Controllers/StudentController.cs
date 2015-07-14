@@ -15,6 +15,7 @@ using PagedList;
 using Anvil.v2015.v001.Domain.Entities;
 using System.Linq.Dynamic;
 using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
 using LCPS.v2015.v001.NwUsers.HumanResources;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
@@ -22,7 +23,90 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
     public class StudentController : Controller
     {
         private LcpsDbContext db = new LcpsDbContext();
+        //public static StudentViewModel  _studentmodel;
 
+
+        public List<SelectListItem> BuildingList
+        {
+            get
+            {
+                if (Session["buildings"] == null)
+                {
+                    List<HRBuilding> bb = Student.GetBuildings();
+
+
+                    Session["buildings"] = (from HRBuilding b in bb
+                                                     select new SelectListItem()
+                                                     {
+                                                         Text = b.Name,
+                                                         Value = b.BuildingKey.ToString()
+                                                     }).ToList();
+                }
+
+                return Session["buildings"] as List<SelectListItem>;
+            }
+        }
+
+        public StudentFilterModel StudentFilterModel
+        {
+            get
+            {
+                if (Session["sf"] == null)
+                {
+                    StudentFilterModel f = new StudentFilterModel()
+                    {
+                        FormArea = "Students",
+                        FormController = "Student",
+                        FormAction = "StudentFilter",
+                        Buildings = this.BuildingList,
+                    };
+
+                    if (f.Buildings.Count() > 0)
+                        f.InstructionalLevels = GetLevelList(new Guid(f.Buildings[0].Value));
+
+                    Session["sf"] = f;
+                }
+                return (StudentFilterModel) Session["sf"];
+            }
+            set
+            {
+                Session["sf"] = value;
+            }
+        }
+
+        private List<SelectListItem> GetLevelList(Guid bId)
+        {
+
+            List<InstructionalLevel> il = Student.GetInstructionalLevels(bId);
+
+            return (from InstructionalLevel j in il
+                    select new SelectListItem()
+                    {
+                        Text = j.InstructionalLevelName,
+                        Value = j.InstructionalLevelKey.ToString()
+                    }).ToList();
+
+        }
+
+        public StudentViewModel StudentModel
+        {
+            get
+            {
+                if (Session["studentModel"] == null)
+                {
+                    StudentViewModel _model = new StudentViewModel();
+                    _model.FilterClause = StudentFilterModel;
+                    
+                    Session["studentmodel"] = _model;
+                }
+
+                return (StudentViewModel)Session["studentModel"];
+            }
+            set
+            {
+                Session["studentModel"] = value;
+            }
+        }
 
         #region Import
 
@@ -78,39 +162,39 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 
         #region Filter
 
+
         public ActionResult Students()
         {
-            StudentViewModel m = new StudentViewModel();
+            StudentViewModel m = this.StudentModel;
+            if(m.FilterClause == null)
+                m.FilterClause = this.StudentFilterModel;
 
-            List<HRBuilding> bb = Student.GetBuildings();
 
 
-            List<SelectListItem> bli = (from HRBuilding b in bb
-                                        select new SelectListItem()
-                                        {
-                                            Text = b.Name,
-                                            Value = b.BuildingKey.ToString()
-                                        }).ToList();
-                
-            Guid bId = Guid.NewGuid();
+            return View(StudentModel);
+        }
 
-            if (bb.Count() > 0)
-                bId = new Guid(bli[0].Value);
+        [HttpPost]
+        public ActionResult StudentFilter(StudentFilterModel f)
+        {
+            StudentViewModel _model = this.StudentModel;
 
-            m.Buildings.AddRange(bli);
+            if (f.Buildings == null)
+            {
+                f.Buildings = this.BuildingList;
+                if (!f.BuildingValue.Equals(Guid.Empty))
+                    f.InstructionalLevels = this.GetLevelList(f.BuildingValue);
+                else
+                    f.InstructionalLevels = this.GetLevelList(new Guid(f.Buildings[0].Value));
+            }
 
-            List<InstructionalLevel> jt = Student.GetInstructionalLevels(bId);
 
-            List<SelectListItem> jli = (from InstructionalLevel j in jt
-                                        select new SelectListItem()
-                                        {
-                                            Text = j.InstructionalLevelName,
-                                            Value = j.InstructionalLevelKey.ToString()
-                                        }).ToList();
+            _model.FilterClause = f;
 
-            m.InstructionalLevels.AddRange(jli);
+            this.StudentModel = _model;
 
-            return View(m);
+
+            return View("Students", StudentModel);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -125,7 +209,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
                               name = j.InstructionalLevelName
                           }).ToList();
 
-            
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

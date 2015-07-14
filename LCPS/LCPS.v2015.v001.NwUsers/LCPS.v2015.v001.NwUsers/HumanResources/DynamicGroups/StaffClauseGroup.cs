@@ -78,7 +78,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
 
             DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
 
-
+            /*
             if (BuildingConjunction != DynamicQueryConjunctions.None)
             {
                 if (items.Count == 0)
@@ -118,6 +118,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
                 else
                     items.Add(YearConjunction.ToString() + " FiscalYear " + lib.GetOperator(YearOperator) + " '" + Year + "'");
             }
+            */
 
             return "( " + string.Join(" ", items.ToArray()) + " )";
 
@@ -126,6 +127,8 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
         public Dictionary<string, object> GetClausesForQuery()
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
+            /*
+            
             DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
 
             if (BuildingConjunction != DynamicQueryConjunctions.None)
@@ -167,6 +170,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
                 else
                     dic.Add(YearConjunction.ToString() + " FiscalYear " + lib.GetOperator(YearOperator) + " @{0} ", Year);
             }
+             * */
 
             return dic;
         }

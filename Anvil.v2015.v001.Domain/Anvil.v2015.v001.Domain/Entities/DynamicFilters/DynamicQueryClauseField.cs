@@ -19,7 +19,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    [Table("DynamicQueryClauseField", Schema = "Filtering")]
+    [Table("DynamicQueryClauseField", Schema = "Filters")]
     public class DynamicQueryClauseField
     {
         [Key]
@@ -46,14 +46,9 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         public object Value { get; set; }
 
-        /*
-        [ForeignKey("QueryId")]
-        [Required]
-        public virtual DynamicQuery Query { get; set; }
-
         [ForeignKey("ClauseId")]
         [Required]
         public virtual DynamicQueryClause Clause { get; set; }
-         * */
+        
     }
 }

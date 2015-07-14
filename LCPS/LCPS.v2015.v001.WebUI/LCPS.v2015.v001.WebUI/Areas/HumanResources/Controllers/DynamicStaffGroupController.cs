@@ -81,10 +81,12 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         {
             try
             {
+                
                 DynamicStaffGroupModel m = new DynamicStaffGroupModel();
                 m.StaffGroups = db.DynamicStaffGroups.OrderBy(x => x.GroupName).ToList();
                 m.CurrentGroup = db.DynamicStaffGroups.First(x => x.DynamicGroupId.Equals(g.StaffGroupId));
 
+                /*
                 if (g.GroupConjunction == Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryConjunctions.None)
                     ModelState.AddModelError("", "The Group Conjunction must be 'AND' or 'OR'");
 
@@ -96,7 +98,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 
                     ModelState.AddModelError("", "At least one item must have a conjuction that is not set to 'None'");
 
-
+                */
                 if (ModelState.IsValid)
                 {
 

@@ -15,6 +15,7 @@ using LCPS.v2015.v001.NwUsers.Infrastructure;
 
 namespace LCPS.v2015.v001.NwUsers.Students
 {
+    [Table("Student", Schema = "Students")]
     public class Student : IPerson, IStudent
     {
 

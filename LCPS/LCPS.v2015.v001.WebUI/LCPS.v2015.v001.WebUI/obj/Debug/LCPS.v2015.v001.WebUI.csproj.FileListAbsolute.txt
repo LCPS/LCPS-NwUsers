@@ -56,12 +56,8 @@ C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.csprojResolveAssemblyReference.cache
-C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Init001.resources
-C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Students001.resources
-C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.csproj.GenerateResource.Cache
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.dll
 C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.pdb
-C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.INSLVL001.resources
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\LCPS.v2015.v001.WebUI.dll.config
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\LCPS.v2015.v001.WebUI.dll
 C:\GitHub\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\LCPS.v2015.v001.WebUI.pdb
@@ -201,3 +197,9 @@ C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\ob
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.DynamicQuery002.resources
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.DynamicQueryClauseField001.resources
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.DynamicQueryClauseField002.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\PagedList.dll
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\PagedList.Mvc.dll
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\PagedList.xml
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\PagedList.Mvc.xml
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.INIT001.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.csproj.GenerateResource.Cache

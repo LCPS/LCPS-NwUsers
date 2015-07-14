@@ -7,13 +7,13 @@ namespace LCPS.v2015.v001.WebUI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class DynamicQueryClauseField001 : IMigrationMetadata
+    public sealed partial class INIT001 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DynamicQueryClauseField001));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(INIT001));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507131943346_DynamicQueryClauseField001"; }
+            get { return "201507141201140_INIT-001"; }
         }
         
         string IMigrationMetadata.Source

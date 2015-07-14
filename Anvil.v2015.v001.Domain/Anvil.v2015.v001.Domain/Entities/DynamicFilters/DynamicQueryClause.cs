@@ -18,7 +18,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    [Table("DynamicQueryClause", Schema = "Filtering")]
+    [Table("DynamicQueryClause", Schema = "Filters")]
     public class DynamicQueryClause
     {
         [Key]

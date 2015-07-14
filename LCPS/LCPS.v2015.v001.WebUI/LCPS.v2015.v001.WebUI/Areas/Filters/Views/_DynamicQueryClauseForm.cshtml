@@ -1,0 +1,9 @@
+﻿@using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
+@using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
+
+@model FilterViewModel
+
+@foreach(DynamicQueryClauseField f in Model.Filter)
+{
+    @Html.Partial("~/Areas/Filters/Views/_DynamicQueryClauseField.cshtml", f)
+}

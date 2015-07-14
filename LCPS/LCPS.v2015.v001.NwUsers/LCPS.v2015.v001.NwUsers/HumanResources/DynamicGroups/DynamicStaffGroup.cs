@@ -41,7 +41,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
             
             if(clauses.Count() > 0)
             {
-                clauses[0].GroupConjunction = Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryConjunctions.None;
+                //clauses[0].;
             }
 
             query = "";
@@ -63,7 +63,7 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
 
             if (clauses.Count() > 0)
             {
-                clauses[0].GroupConjunction = Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryConjunctions.None;
+                //clauses[0].GroupConjunction = Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryConjunctions.None;
             }
 
             string query = "(";
@@ -71,9 +71,10 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.DynamicGroups
 
             foreach(StaffClauseGroup c in clauses)
             {
+                /*
                 if (c.GroupConjunction != Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryConjunctions.None)
                     query += c.GroupConjunction.ToString() + " (";
-
+                */
                 Dictionary<string, object> dic = c.GetClausesForQuery();
                 foreach (string k in dic.Keys)
                 {

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    public class DynamicQueryClauseCollection : IList<DynamicQueryClauseField>
+    public class DynamicQueryClauseFilterCollection : IList<DynamicQueryClauseField>
     {
         #region Fields
 
@@ -51,18 +51,20 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
         public void AddElement(DynamicQueryConjunctions conjunction, string fieldName, DynamicQueryOperators op, object value)
         {
             string element = "";
-            if (conjunction != DynamicQueryConjunctions.None)
-                element += conjunction.ToString();
+
+            if(Parms.Count > 0)
+                element = conjunction.ToString() ;
 
             if(op == DynamicQueryOperators.Contains)
             {
-                element += fieldName + ".Contains(\"" + value.ToString() + "\") ";
+                element += " " + fieldName + ".Contains(@" + Parms.Count().ToString() + ") ";
             }
             else
             {
-                element += fieldName + " " + lib.GetOperator(op) + " @" + Parms.Count().ToString();
-                Parms.Add(value);
+                element += " " + fieldName + " " + lib.GetOperator(op) + " @" + Parms.Count().ToString();
             }
+
+            Parms.Add(value);
             
             
 
@@ -75,6 +77,11 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         public virtual DynamicQueryStatement ToDynamicQuery()
         {
+            int count = _list.Where(x => x.Include = true).Count();
+
+            if (count == 0)
+                return null;
+
             DynamicQueryStatement dq = new DynamicQueryStatement()
                 {
                     Query = string.Join(" ", _elements.ToArray()),
@@ -119,6 +126,20 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             {
                 _list[index] = value;
             }
+        }
+
+        public void Add(bool include, DynamicQueryConjunctions conjunction,
+            string fieldName, DynamicQueryOperators op, object value)
+        {
+            DynamicQueryClauseField i = new DynamicQueryClauseField()
+            {
+                Include = include,
+                Conjunction = conjunction,
+                FieldName = fieldName,
+                Operator = op,
+                Value = value
+            };
+            Add(i);
         }
 
         public void Add(DynamicQueryClauseField item)
