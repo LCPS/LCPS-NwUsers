@@ -1,0 +1,1 @@
+949e45e7-4185-434e-bb85-67dca13a1231	APP-Admins	Add, edit, and delete roles and users	0	ApplicationRole
