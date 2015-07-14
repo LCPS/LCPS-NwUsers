@@ -197,3 +197,7 @@ C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\ob
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.dll
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.pdb
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.FilterNew_001.resources
+C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.DynamicQuery001.resources
+C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.DynamicQuery002.resources
+C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.DynamicQueryClauseField001.resources
+C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.DynamicQueryClauseField002.resources

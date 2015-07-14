@@ -31,7 +31,7 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
             :base(ConfigurationManager.ConnectionStrings["LcpsDbContext"].ConnectionString)
         {
             this.Configuration.ProxyCreationEnabled = false;
-            // helloe world
+            
         }
 
         #region Properties

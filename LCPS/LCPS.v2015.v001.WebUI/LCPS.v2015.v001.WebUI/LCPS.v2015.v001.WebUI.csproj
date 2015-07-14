@@ -221,6 +221,26 @@
     <Compile Include="Migrations\201507122353373_FilterNew_001.Designer.cs">
       <DependentUpon>201507122353373_FilterNew_001.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507131943346_DynamicQueryClauseField001.cs" />
+    <Compile Include="Migrations\201507131943346_DynamicQueryClauseField001.Designer.cs">
+      <DependentUpon>201507131943346_DynamicQueryClauseField001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507131945360_DynamicQueryClauseField002.cs" />
+    <Compile Include="Migrations\201507131945360_DynamicQueryClauseField002.Designer.cs">
+      <DependentUpon>201507131945360_DynamicQueryClauseField002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507132015161_DynamicQuery003.cs" />
+    <Compile Include="Migrations\201507132015161_DynamicQuery003.Designer.cs">
+      <DependentUpon>201507132015161_DynamicQuery003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507132101198_DynamicQuery001.cs" />
+    <Compile Include="Migrations\201507132101198_DynamicQuery001.Designer.cs">
+      <DependentUpon>201507132101198_DynamicQuery001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507132102116_DynamicQuery002.cs" />
+    <Compile Include="Migrations\201507132102116_DynamicQuery002.Designer.cs">
+      <DependentUpon>201507132102116_DynamicQuery002.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Models\LcpsMvcActionTarget.cs" />
@@ -455,6 +475,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507122353373_FilterNew_001.resx">
       <DependentUpon>201507122353373_FilterNew_001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507131943346_DynamicQueryClauseField001.resx">
+      <DependentUpon>201507131943346_DynamicQueryClauseField001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507131945360_DynamicQueryClauseField002.resx">
+      <DependentUpon>201507131945360_DynamicQueryClauseField002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507132101198_DynamicQuery001.resx">
+      <DependentUpon>201507132101198_DynamicQuery001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507132102116_DynamicQuery002.resx">
+      <DependentUpon>201507132102116_DynamicQuery002.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

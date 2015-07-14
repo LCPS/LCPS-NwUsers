@@ -29,6 +29,11 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
         public Guid QueryId { get; set; }
 
         public DynamicQueryConjunctions ClauseConjunction { get; set; }
-
+        
+        
+        [ForeignKey("QueryId")]
+        [Required]
+        public virtual DynamicQuery Query { get; set; }
+        
     }
 }
