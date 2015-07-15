@@ -84,7 +84,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
             DynamicQueryStatement dq = new DynamicQueryStatement()
                 {
-                    Query = string.Join(" ", _elements.ToArray()),
+                    Query = "(" + string.Join(" ", _elements.ToArray()) + ")",
                     Parms = _parms.ToArray()
                 };
 

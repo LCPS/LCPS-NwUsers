@@ -54,6 +54,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\..\LCPS\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\..\LCPS\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -96,8 +102,10 @@
     <Compile Include="HumanResources\Staff\HRJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaff.cs" />
     <Compile Include="HumanResources\Staff\HRStaffBackup.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffFilter.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionSession.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffRecord.cs" />
     <Compile Include="HumanResources\Staff\IEmployeeType.cs" />
     <Compile Include="HumanResources\Staff\IJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionCandidate.cs" />
@@ -145,6 +153,9 @@
       <Project>{2b899c72-863d-40e7-a807-a388cb50f483}</Project>
       <Name>Anvil.v2015.v001.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
