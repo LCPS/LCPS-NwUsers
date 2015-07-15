@@ -15,7 +15,7 @@ using PagedList;
 using Anvil.v2015.v001.Domain.Entities;
 using System.Linq.Dynamic;
 using LCPS.v2015.v001.WebUI.Areas.Students.Models;
-using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
+//using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
 using LCPS.v2015.v001.NwUsers.HumanResources;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers

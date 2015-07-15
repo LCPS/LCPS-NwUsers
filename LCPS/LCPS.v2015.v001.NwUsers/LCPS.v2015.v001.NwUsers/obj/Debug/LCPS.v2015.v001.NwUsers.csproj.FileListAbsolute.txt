@@ -85,3 +85,7 @@ C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUser
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\LCPS.v2015.v001.NwUsers.csprojResolveAssemblyReference.cache
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\nwuser.dll
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\nwuser.pdb
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\PagedList.dll
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\PagedList.Mvc.dll
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\PagedList.xml
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\PagedList.Mvc.xml

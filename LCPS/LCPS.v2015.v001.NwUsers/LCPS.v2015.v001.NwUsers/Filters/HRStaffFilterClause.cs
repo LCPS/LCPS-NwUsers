@@ -12,14 +12,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
-
-
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 #endregion
 
-namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
+namespace LCPS.v2015.v001.NwUsers.Filters
 {
-    public class HRStaffFilter
+    [Table("HRStaffFilterClause", Schema = "HumanResources")]
+    public class HRStaffFilterClause
     {
+        [Key]
+        public Guid StaffFilterClauseId { get; set; }
+
+        public Guid StaffFilterId { get; set; }
+
+        [ForeignKey("StaffFilterId")]
+        [Required]
+        public StaffFilter StaffFilter { get; set; }
 
         public bool BuildingInclude { get; set; }
         public DynamicQueryConjunctions BuildingConjunction { get; set; }

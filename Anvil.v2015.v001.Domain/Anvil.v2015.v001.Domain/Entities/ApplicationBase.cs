@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-
+using System.DirectoryServices;
 
 #endregion
 
@@ -146,6 +146,31 @@ namespace Anvil.v2015.v001.Domain.Entities
         public string LDAPPassword { get; set; }
 
         #endregion
+
+        public System.Net.NetworkCredential GetLdapCredential()
+        {
+            System.Net.NetworkCredential c = new System.Net.NetworkCredential(LDAPUserName, LDAPPassword, LDAPDomainFQN);
+            return c;
+        }
+
+        public DirectoryEntry LdapDomainEntry
+        {
+            get 
+            {
+                try
+                {
+                    string p = string.Format("LDAP://{0}", LDAPDomainFQN);
+                    DirectoryEntry d = new DirectoryEntry(p, LDAPUserName, LDAPPassword);
+                    string v = d.InvokeGet("dc").ToString();
+                    return d;
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception("Could not get domain entry from LDAP Path", ex);
+                }
+            }
+        }
+
 
     }
 }

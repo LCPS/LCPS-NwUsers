@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -172,7 +173,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Filters\Controllers\StudentFilterController.cs" />
     <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
-    <Compile Include="Areas\Filters\Models\FilterViewModel.cs" />
     <Compile Include="Areas\HumanResources\Controllers\DynamicStaffGroupController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
@@ -190,6 +190,11 @@
     <Compile Include="Areas\Import\ImportAreaRegistration.cs" />
     <Compile Include="Areas\Import\Models\ImportPreviewModel.cs" />
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapObjectsController.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapStaffGroupController.cs" />
+    <Compile Include="Areas\LcpsLdap\LcpsLdapAreaRegistration.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\LDAPStaffGroupsModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\OUTreeModel.cs" />
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Students\Controllers\InstructionalLevelController.cs" />
@@ -207,6 +212,10 @@
     <Compile Include="Migrations\201507141201140_INIT-001.Designer.cs">
       <DependentUpon>201507141201140_INIT-001.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507151805377_ADS-001.cs" />
+    <Compile Include="Migrations\201507151805377_ADS-001.Designer.cs">
+      <DependentUpon>201507151805377_ADS-001.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Models\LcpsMvcActionTarget.cs" />
@@ -220,9 +229,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\lcps-ads.css" />
     <Content Include="Content\lcps-aux.css" />
     <Content Include="Content\lcps-theme.css" />
     <Content Include="Content\lcps-theme.min.css" />
+    <Content Include="Content\LcpsAds.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -283,6 +294,12 @@
     <Content Include="Areas\Filters\Views\_DynamicQueryClauseForm.cshtml" />
     <Content Include="Areas\Students\Views\Student\_studentFilterClause.cshtml" />
     <Content Include="Areas\Students\Views\Student\_studentList.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\web.config" />
+    <Content Include="Areas\LcpsLdap\Views\Shared\_StaffLdapLayout.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapObjects\_OUTree.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapObjects\_OUTreeChildren.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapObjects\OUs.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapObjects\_OUDetail.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -406,8 +423,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Filters\Models\" />
     <Folder Include="Areas\Filters\Views\StudentFilter\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
+    <Folder Include="Areas\LcpsLdap\Views\LdapStaffGroup\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
     <Folder Include="Assets\" />
@@ -432,6 +451,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201507141201140_INIT-001.resx">
       <DependentUpon>201507141201140_INIT-001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507151805377_ADS-001.resx">
+      <DependentUpon>201507151805377_ADS-001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

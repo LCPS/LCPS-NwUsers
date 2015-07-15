@@ -19,6 +19,8 @@ using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
 
+using LCPS.v2015.v001.NwUsers.Filters;
+
 
 #endregion
 
@@ -61,6 +63,8 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         
         public DbSet<HRStaff> StaffMembers { get; set; }
         public DbSet<HRStaffPosition> StaffPositions { get; set; }
+        public DbSet<StaffFilter> StaffFilters { get; set; }
+        public DbSet<HRStaffFilterClause> StaffFilterClauses { get; set; }
         
 
 
@@ -71,16 +75,18 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         public DbSet<HumanResources.DynamicGroups.StaffClauseGroup> DynamicStaffClauses { get; set; }
 
         public DbSet<Students.Student> Students { get; set; }
+        public DbSet<Students.InstructionalLevel> InstructionalLevels { get; set; }
 
+        /*
         public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQuery> DynamicQueries { get; set; }
         public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryClause> DynamicQueryClauses { get; set; }
         public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryClauseField> DynamicQueryClauseFields { get; set; }
+        */
 
 
+        
 
-        public DbSet<Students.InstructionalLevel> InstructionalLevels { get; set; }
-
-        public DbSet<Filters.FilterGroup> FilterGrouops { get; set; }
+        //public DbSet<Filters.FilterGroup> FilterGrouops { get; set; }
 
         /*
         public DbSet<Security.LcpsStaffEmail> StaffEmails { get; set; }
@@ -88,6 +94,30 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
 
         #endregion
+
+        #region Methods
+
+        public static ApplicationBase DefaultApp
+        {
+            get
+            {
+                try
+                {
+                    LcpsDbContext db = new LcpsDbContext();
+                    ApplicationBase a = db.Applications.FirstOrDefault();
+                    if (a == null)
+                        throw new Exception("There was no application base record found in the database");
+
+                    return a;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Could not get default application from the database", ex);
+                }
+            }
+        }
+
+        #endregion 
 
 
         /*

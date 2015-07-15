@@ -1,0 +1,14 @@
+﻿#lcps-ads-tree
+{
+    list-style-type: none;
+}
+
+#lcps-ads-tree ul li {
+    list-style-type: none;
+}
+
+#lcps-ads-tree a
+{
+    cursor: pointer;
+}
+

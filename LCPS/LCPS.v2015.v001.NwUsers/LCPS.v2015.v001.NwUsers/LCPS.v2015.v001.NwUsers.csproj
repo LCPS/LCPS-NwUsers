@@ -63,6 +63,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -81,8 +83,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filters\FilterGroup.cs" />
-    <Compile Include="Filters\FilterGroupCollection.cs" />
+    <Compile Include="Filters\FilterCategories.cs" />
+    <Compile Include="Filters\StaffFilter.cs" />
     <Compile Include="HumanResources\DynamicGroups\DynamicStaffGroup.cs" />
     <Compile Include="HumanResources\DynamicGroups\HRStaffPositionFilter.cs" />
     <Compile Include="HumanResources\DynamicGroups\StaffClauseGroup.cs" />
@@ -102,7 +104,7 @@
     <Compile Include="HumanResources\Staff\HRJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaff.cs" />
     <Compile Include="HumanResources\Staff\HRStaffBackup.cs" />
-    <Compile Include="HumanResources\Staff\HRStaffFilter.cs" />
+    <Compile Include="Filters\HRStaffFilterClause.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionSession.cs" />
     <Compile Include="HumanResources\Staff\HRStaffRecord.cs" />
@@ -111,6 +113,19 @@
     <Compile Include="HumanResources\Staff\HRStaffPositionCandidate.cs" />
     <Compile Include="HumanResources\Staff\IStaff.cs" />
     <Compile Include="HumanResources\Staff\IStaffPosition.cs" />
+    <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategory.cs" />
+    <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategoryType.cs" />
+    <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserGroupAssignment.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\AdsLcpsTree.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsContainer.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsObjectTypes.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsDomain.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsGroup.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsObject.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsOu.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsTreeNode.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUser.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUserAccountControl.cs" />
     <Compile Include="Students\InstructionalLevelSession.cs" />
     <Compile Include="Importing\IImportEntity.cs" />
     <Compile Include="Importing\IImportSession.cs" />
