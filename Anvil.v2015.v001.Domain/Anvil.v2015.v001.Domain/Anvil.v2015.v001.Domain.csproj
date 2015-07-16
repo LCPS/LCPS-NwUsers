@@ -105,6 +105,7 @@
     <Compile Include="Entities\LinqExtensions.cs" />
     <Compile Include="Exceptions\AnvilExceptionModel.cs" />
     <Compile Include="Exceptions\AnvilExceptionCollector.cs" />
+    <Compile Include="Html\AnvilTreeNode.cs" />
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
     <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Infrastructure\ApplicationRoleManager.cs" />

@@ -171,30 +171,26 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\Filters\Controllers\StudentFilterController.cs" />
     <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
-    <Compile Include="Areas\HumanResources\Controllers\DynamicStaffGroupController.cs" />
+    <Compile Include="Areas\Filters\Models\MemberFilterModel.cs" />
+    <Compile Include="Areas\Filters\Models\StaffFilterClauseModel.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRStaffController.cs" />
-    <Compile Include="Areas\HumanResources\Controllers\HRStaffPositionsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HumanResourcesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
-    <Compile Include="Areas\HumanResources\Models\DynamicStaffGroupModel.cs" />
     <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
     <Compile Include="Areas\HumanResources\Models\HRRestoreModel.cs" />
-    <Compile Include="Areas\HumanResources\Models\StaffPositionModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
     <Compile Include="Areas\Import\Controllers\ImportSessionController.cs" />
     <Compile Include="Areas\Import\ImportAreaRegistration.cs" />
     <Compile Include="Areas\Import\Models\ImportPreviewModel.cs" />
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
-    <Compile Include="Areas\LcpsLdap\Controllers\LdapObjectsController.cs" />
-    <Compile Include="Areas\LcpsLdap\Controllers\LdapStaffGroupController.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapOuTemplateController.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\LcpsLdapAreaRegistration.cs" />
-    <Compile Include="Areas\LcpsLdap\Models\LDAPStaffGroupsModel.cs" />
-    <Compile Include="Areas\LcpsLdap\Models\OUTreeModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\OUTemplateViewModel.cs" />
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Students\Controllers\InstructionalLevelController.cs" />
@@ -215,6 +211,54 @@
     <Compile Include="Migrations\201507151805377_ADS-001.cs" />
     <Compile Include="Migrations\201507151805377_ADS-001.Designer.cs">
       <DependentUpon>201507151805377_ADS-001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161312205_Filters001.cs" />
+    <Compile Include="Migrations\201507161312205_Filters001.Designer.cs">
+      <DependentUpon>201507161312205_Filters001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161317272_Filters002.cs" />
+    <Compile Include="Migrations\201507161317272_Filters002.Designer.cs">
+      <DependentUpon>201507161317272_Filters002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161338177_Filters003.cs" />
+    <Compile Include="Migrations\201507161338177_Filters003.Designer.cs">
+      <DependentUpon>201507161338177_Filters003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161414038_LdapTemplates001.cs" />
+    <Compile Include="Migrations\201507161414038_LdapTemplates001.Designer.cs">
+      <DependentUpon>201507161414038_LdapTemplates001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161828126_LdapTemplates002.cs" />
+    <Compile Include="Migrations\201507161828126_LdapTemplates002.Designer.cs">
+      <DependentUpon>201507161828126_LdapTemplates002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161834498_LdapTemplates003.cs" />
+    <Compile Include="Migrations\201507161834498_LdapTemplates003.Designer.cs">
+      <DependentUpon>201507161834498_LdapTemplates003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161838201_LdapTemplates004.cs" />
+    <Compile Include="Migrations\201507161838201_LdapTemplates004.Designer.cs">
+      <DependentUpon>201507161838201_LdapTemplates004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161922407_LdapTemplates005.cs" />
+    <Compile Include="Migrations\201507161922407_LdapTemplates005.Designer.cs">
+      <DependentUpon>201507161922407_LdapTemplates005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161932379_LdapTemplates006.cs" />
+    <Compile Include="Migrations\201507161932379_LdapTemplates006.Designer.cs">
+      <DependentUpon>201507161932379_LdapTemplates006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161933331_LdapTemplates007.cs" />
+    <Compile Include="Migrations\201507161933331_LdapTemplates007.Designer.cs">
+      <DependentUpon>201507161933331_LdapTemplates007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161937378_LdapTemplates009.cs" />
+    <Compile Include="Migrations\201507161937378_LdapTemplates009.Designer.cs">
+      <DependentUpon>201507161937378_LdapTemplates009.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507161947229_LdapTemplates010.cs" />
+    <Compile Include="Migrations\201507161947229_LdapTemplates010.Designer.cs">
+      <DependentUpon>201507161947229_LdapTemplates010.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -290,16 +334,16 @@
     <Content Include="Areas\Students\Views\Student\Students.cshtml" />
     <Content Include="Areas\Filters\Views\web.config" />
     <Content Include="Areas\Filters\Views\Shared\_QueryList.cshtml" />
-    <Content Include="Areas\Filters\Views\_DynamicQueryClauseField.cshtml" />
-    <Content Include="Areas\Filters\Views\_DynamicQueryClauseForm.cshtml" />
     <Content Include="Areas\Students\Views\Student\_studentFilterClause.cshtml" />
     <Content Include="Areas\Students\Views\Student\_studentList.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\web.config" />
-    <Content Include="Areas\LcpsLdap\Views\Shared\_StaffLdapLayout.cshtml" />
-    <Content Include="Areas\LcpsLdap\Views\LdapObjects\_OUTree.cshtml" />
-    <Content Include="Areas\LcpsLdap\Views\LdapObjects\_OUTreeChildren.cshtml" />
-    <Content Include="Areas\LcpsLdap\Views\LdapObjects\OUs.cshtml" />
-    <Content Include="Areas\LcpsLdap\Views\LdapObjects\_OUDetail.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapTemplate\Filters.cshtml" />
+    <Content Include="Areas\Filters\Views\_MemberFilterDetail.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapTemplate\_LdapTemplateLayout.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Index.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Create.cshtml" />
+    <Content Include="Areas\Filters\Views\_StaffFilterClause.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -423,10 +467,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Filters\Models\" />
-    <Folder Include="Areas\Filters\Views\StudentFilter\" />
+    <Folder Include="Areas\Filters\Controllers\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
-    <Folder Include="Areas\LcpsLdap\Views\LdapStaffGroup\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
     <Folder Include="Assets\" />
@@ -454,6 +496,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507151805377_ADS-001.resx">
       <DependentUpon>201507151805377_ADS-001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161312205_Filters001.resx">
+      <DependentUpon>201507161312205_Filters001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161317272_Filters002.resx">
+      <DependentUpon>201507161317272_Filters002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161338177_Filters003.resx">
+      <DependentUpon>201507161338177_Filters003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161414038_LdapTemplates001.resx">
+      <DependentUpon>201507161414038_LdapTemplates001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161828126_LdapTemplates002.resx">
+      <DependentUpon>201507161828126_LdapTemplates002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161834498_LdapTemplates003.resx">
+      <DependentUpon>201507161834498_LdapTemplates003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161838201_LdapTemplates004.resx">
+      <DependentUpon>201507161838201_LdapTemplates004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161922407_LdapTemplates005.resx">
+      <DependentUpon>201507161922407_LdapTemplates005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161932379_LdapTemplates006.resx">
+      <DependentUpon>201507161932379_LdapTemplates006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161933331_LdapTemplates007.resx">
+      <DependentUpon>201507161933331_LdapTemplates007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161937378_LdapTemplates009.resx">
+      <DependentUpon>201507161937378_LdapTemplates009.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507161947229_LdapTemplates010.resx">
+      <DependentUpon>201507161947229_LdapTemplates010.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

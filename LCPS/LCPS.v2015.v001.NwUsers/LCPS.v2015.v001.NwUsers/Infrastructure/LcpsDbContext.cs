@@ -57,40 +57,35 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
         #region Properties
 
+        // ----------------------------- Staff
+
         public DbSet<HREmployeeType> EmployeeTypes { get; set; }
         public DbSet<HRJobTitle> JobTitles { get; set; }
         public DbSet<HRBuilding> Buildings { get; set; }
         
         public DbSet<HRStaff> StaffMembers { get; set; }
         public DbSet<HRStaffPosition> StaffPositions { get; set; }
-        public DbSet<StaffFilter> StaffFilters { get; set; }
-        public DbSet<HRStaffFilterClause> StaffFilterClauses { get; set; }
-        
 
 
-        public DbSet<Importing.ImportItem> ImportItems { get; set; }
-        public DbSet<Importing.ImportSession> ImportSessions { get; set; }
-
-        public DbSet<HumanResources.DynamicGroups.DynamicStaffGroup> DynamicStaffGroups { get; set; }
-        public DbSet<HumanResources.DynamicGroups.StaffClauseGroup> DynamicStaffClauses { get; set; }
+        // ----------------------------- Students
 
         public DbSet<Students.Student> Students { get; set; }
         public DbSet<Students.InstructionalLevel> InstructionalLevels { get; set; }
 
-        /*
-        public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQuery> DynamicQueries { get; set; }
-        public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryClause> DynamicQueryClauses { get; set; }
-        public DbSet<Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryClauseField> DynamicQueryClauseFields { get; set; }
-        */
+
+        // ----------------------------- LDAP
+        public DbSet<LcpsLdap.LdapTemplates.OUTemplate> OUTemplates { get; set; }
+        //public DbSet<LcpsLdap.LdapTemplates.OUTemplateFilterLink> OUTemplateFilterLinks { get; set; }
+
+        // ----------------------------- Importing
+
+        public DbSet<Importing.ImportItem> ImportItems { get; set; }
+        public DbSet<Importing.ImportSession> ImportSessions { get; set; }
 
 
-        
-
-        //public DbSet<Filters.FilterGroup> FilterGrouops { get; set; }
-
-        /*
-        public DbSet<Security.LcpsStaffEmail> StaffEmails { get; set; }
-        */
+        // ----------------------------- Filtering
+        public DbSet<Filters.MemberFilter> MemberFilters { get; set; }
+        public DbSet<Filters.StaffFilterClause> StaffFilterClauses { get; set; }
 
 
         #endregion
@@ -119,14 +114,6 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
         #endregion 
 
-
-        /*
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Ignore<HREmployeeTypeCandidate>();
-            base.OnModelCreating(modelBuilder);
-        }
-        */
 
 
 

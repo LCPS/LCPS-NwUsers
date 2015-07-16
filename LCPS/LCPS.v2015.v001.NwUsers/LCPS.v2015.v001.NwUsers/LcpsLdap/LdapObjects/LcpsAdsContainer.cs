@@ -61,6 +61,8 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
             AddFieldMap("Description", "description");
             if (DirectoryEntry.SchemaClassName == "organizationalUnit")
                 AddFieldMap("Name", "ou");
+            if (DirectoryEntry.SchemaClassName == "domainDNS")
+                AddFieldMap("Name", "dc");
             if (DirectoryEntry.SchemaClassName == "group")
                 AddFieldMap("Name", "cn");
 

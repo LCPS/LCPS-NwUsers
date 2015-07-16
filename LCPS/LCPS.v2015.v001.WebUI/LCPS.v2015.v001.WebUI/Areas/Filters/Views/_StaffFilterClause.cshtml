@@ -1,0 +1,22 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.Filters.Models
+
+
+@model StaffFilterClauseModel
+
+@using (Html.BeginForm(Model.FormAction, Model.FormController, new { area = Model.FormArea }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Clause.StaffFilterClauseId)
+
+    <div class="form-inline">
+        <p>
+            @Html.CheckBoxFor(model => model.Clause.BuildingInclude, new { @class = "cb" })
+            @Html.LabelFor(model => model.Clause.BuildingValue)
+        </p>
+        <p>
+            @Html.EnumDropDownListFor(model => model.Clause.BuildingOperator)
+            @Html.DropDownListFor(model => model.Clause.BuildingValue, Model.GetBuildingList())
+        </p>
+    </div>
+
+}

@@ -84,10 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filters\FilterCategories.cs" />
-    <Compile Include="Filters\StaffFilter.cs" />
-    <Compile Include="HumanResources\DynamicGroups\DynamicStaffGroup.cs" />
-    <Compile Include="HumanResources\DynamicGroups\HRStaffPositionFilter.cs" />
-    <Compile Include="HumanResources\DynamicGroups\StaffClauseGroup.cs" />
+    <Compile Include="Filters\MemberFilter.cs" />
+    <Compile Include="Filters\MemberFilterClass.cs" />
     <Compile Include="HumanResources\HRBuildingCandidate.cs" />
     <Compile Include="HumanResources\HRBuildingSession.cs" />
     <Compile Include="HumanResources\HRGenders.cs" />
@@ -104,7 +102,7 @@
     <Compile Include="HumanResources\Staff\HRJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaff.cs" />
     <Compile Include="HumanResources\Staff\HRStaffBackup.cs" />
-    <Compile Include="Filters\HRStaffFilterClause.cs" />
+    <Compile Include="Filters\StaffFilterClause.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionSession.cs" />
     <Compile Include="HumanResources\Staff\HRStaffRecord.cs" />
@@ -116,16 +114,16 @@
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategory.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategoryType.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserGroupAssignment.cs" />
-    <Compile Include="LcpsLdap\LdapObjects\AdsLcpsTree.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsContainer.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsObjectTypes.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsDomain.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsGroup.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsObject.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsOu.cs" />
-    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsTreeNode.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsOuTree.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUser.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUserAccountControl.cs" />
+    <Compile Include="LcpsLdap\LdapTemplates\OUTemplate.cs" />
     <Compile Include="Students\InstructionalLevelSession.cs" />
     <Compile Include="Importing\IImportEntity.cs" />
     <Compile Include="Importing\IImportSession.cs" />
@@ -151,8 +149,7 @@
     <Compile Include="Students\IStudent.cs" />
     <Compile Include="Students\Student.cs" />
     <Compile Include="Students\StudentCandidate.cs" />
-    <Compile Include="Students\StudentFilter.cs" />
-    <Compile Include="Students\StudentFilterClause.cs" />
+    <Compile Include="Filters\StudentFilterClause.cs" />
     <Compile Include="Students\StudentSession.cs" />
   </ItemGroup>
   <ItemGroup>

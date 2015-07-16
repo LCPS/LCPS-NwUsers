@@ -1,0 +1,23 @@
+﻿@using LCPS.v2015.v001.WebUI.Infrastructure;
+
+@{
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<div class="navbar">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="@Url.Action("Index", "LdapOuTemplate", new { area = "LcpsLdap"})">Organizational Units</a></li>
+        </ul>
+    </div>
+</div>
+
+
+@RenderBody()
