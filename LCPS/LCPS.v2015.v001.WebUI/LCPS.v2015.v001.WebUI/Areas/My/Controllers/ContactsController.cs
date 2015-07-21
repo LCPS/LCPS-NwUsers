@@ -2,8 +2,10 @@
 using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
 using Anvil.v2015.v001.Domain.Exceptions;
 using LCPS.v2015.v001.NwUsers.Filters;
+using LCPS.v2015.v001.NwUsers.Students;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
 using LCPS.v2015.v001.WebUI.Areas.My.Models;
+using LCPS.v2015.v001.WebUI.Areas.Students.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -168,7 +170,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
                 ViewBag.FilterId = id;
                 ViewBag.FilterTitle = f.Title;
-                ViewBag.FilterDescription = f.Description;
 
                 List<StaffFilterClause> cc = DbContext.StaffFilterClauses
                     .Where(x => x.FilterId.Equals(id))
@@ -304,7 +305,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
             int idx = 1;
             List<StaffFilterClause> cc = DbContext.StaffFilterClauses.Where(x => x.FilterId.Equals(fid) & !x.StaffFilterClauseId.Equals(cf.StaffFilterClauseId)).OrderBy(x => x.SortIndex).ToList();
-            foreach(StaffFilterClause ci in cc)
+            foreach (StaffFilterClause ci in cc)
             {
                 ci.SortIndex = idx;
                 DbContext.Entry(ci).State = System.Data.Entity.EntityState.Modified;
@@ -313,7 +314,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
             }
 
 
-            return RedirectToAction("EditStaffFilter", new { id = fid } );
+            return RedirectToAction("EditStaffFilter", new { id = fid });
         }
 
         #endregion
@@ -322,11 +323,26 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
         public ActionResult EditStudentFilter(Guid id)
         {
-            MemberFilter f = DbContext.MemberFilters.Find(id);
-            MyContactModel m = this.Model;
-            m.CurrentFilter = f;
-            this.Model = m;
-            return View(new MemberFilterModel(f));
+            StudentFilterModel m = new StudentFilterModel(id, "My", "Contacts", "CreateStudentClause", "Add Clause", "Index");
+            return View(m);
+        }
+
+        public ActionResult CreateStudentClause(StudentClauseFilterModel m)
+        {
+            try
+            {
+                DynamicStudentFilter f = new DynamicStudentFilter(m.FilterId);
+                f.CreateClause(m.ToFilterClause());
+                f.Refresh();
+
+                return RedirectToAction("EditStudentFilter", new { id = m.FilterId });
+            }
+            catch (Exception ex)
+            {
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Create Student Clause", m.FormArea, m.FormController, "Index");
+
+                return View("Error", em);
+            }
         }
 
         #endregion
@@ -400,6 +416,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
         }
 
         #endregion
-    
+
     }
 }

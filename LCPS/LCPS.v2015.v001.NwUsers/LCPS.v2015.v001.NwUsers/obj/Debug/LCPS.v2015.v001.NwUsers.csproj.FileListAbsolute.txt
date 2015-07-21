@@ -97,3 +97,7 @@ C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUser
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\LCPS.v2015.v001.NwUsers.csproj.GenerateResource.Cache
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\Seed\Sql\Views\HumanResources.HRStaffRecord.sql
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\Seed\Sql\Views\Students.StudentRecord.sql
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\Seed\Sql\Views\Students.StudentRecord.sql
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\bin\Debug\Seed\Sql\Views\HumanResources.HRStaffRecord.sql
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\LCPS.v2015.v001.NwUsers.Properties.Resources.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.NwUsers\LCPS.v2015.v001.NwUsers\obj\Debug\LCPS.v2015.v001.NwUsers.csproj.GenerateResource.Cache

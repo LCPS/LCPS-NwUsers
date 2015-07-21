@@ -17,9 +17,11 @@ using System.Threading.Tasks;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    public class DynamicQueryClause : IList<DynamicQueryClauseField>
+    public class DynamicQueryClause : IDynamicFilterClause //: IList<DynamicQueryClauseField>
     {
         #region Fields
+
+
 
         private List<string> _elements = new List<string>();
         
@@ -33,6 +35,10 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
 
         #region Properties
+
+        public Guid FilterId { get; set; }
+
+        public Guid ClauseId { get; set; }
 
         public List<object> Parms
         {
@@ -249,6 +255,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
                 Parms = this.Parms.ToArray(),
                 Query = string.Join("", this.Elements.ToArray())
             };
+        }
+
+
+        public string ToFriendlyString()
+        {
+            return ToString();
         }
     }
 }

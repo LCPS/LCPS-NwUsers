@@ -22,12 +22,46 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
     public class DynamicQuery : IList<DynamicQueryClause>
     {
+        #region Fields
 
-        public List<DynamicQueryClause> _list = new List<DynamicQueryClause>();
+        private List<DynamicQueryClause> _list = new List<DynamicQueryClause>();
         private List<object> _parms = new List<object>();
         private List<string> _elements = new List<string>();
         private DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
 
+        #endregion
+
+
+        #region Properties
+
+        public Guid FilterId { get; set; }
+
+        public List<object> Parms
+        {
+            get { return _parms; }
+        }
+
+        public List<String> Elements
+        {
+            get { return _elements; }
+        }
+
+        #endregion
+
+        #region List
+
+        public void Add(IDynamicFilterClause item)
+        {
+            AnvilEntity e = new AnvilEntity(item);
+            DynamicQueryClause c = new DynamicQueryClause();
+            e.CopyTo(c);
+            Add(c);
+        }
+
+        public void Add(DynamicQueryClause item)
+        {
+            _list.Add(item);
+        }
 
         public int IndexOf(DynamicQueryClause item)
         {
@@ -56,10 +90,6 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             }
         }
 
-        public void Add(DynamicQueryClause item)
-        {
-            _list.Add(item);
-        }
 
         public void Clear()
         {
@@ -100,6 +130,10 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
         {
             return _list.GetEnumerator();
         }
+
+        #endregion
+
+        #region Conversions
 
         public override string ToString()
         {
@@ -158,5 +192,6 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         }
 
+        #endregion
     }
 }

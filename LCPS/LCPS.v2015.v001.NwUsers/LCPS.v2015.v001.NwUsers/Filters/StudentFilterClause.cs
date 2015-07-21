@@ -16,34 +16,19 @@ using LCPS.v2015.v001.NwUsers.Students;
 namespace LCPS.v2015.v001.NwUsers.Filters
 {
     [Table("StudentFilterClause", Schema = "Filters")]
-    public class StudentFilterClause
+    public class StudentFilterClause 
     {
         private LcpsDbContext _dbContext;
 
         [Key]
-        public Guid StaffFilterClauseId { get; set; }
+        public Guid StudentFilterClauseId { get; set; }
 
         public Guid FilterId { get; set; }
 
         public int SortIndex { get; set; }
 
-        [ForeignKey("FilterId")]
-        public virtual MemberFilter Filter { get; set; }
-
         public DynamicQueryConjunctions ClauseConjunction { get; set; }
 
-        public LcpsDbContext DbContext
-        {
-            get
-            {
-                if (_dbContext == null)
-                    _dbContext = new LcpsDbContext();
-
-                return _dbContext;
-            }
-        }
-
-       
         public bool BuildingInclude { get; set; }
         public DynamicQueryConjunctions BuildingConjunction { get; set; }
         public DynamicQueryOperators BuildingOperator { get; set; }
@@ -73,34 +58,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         public DynamicQueryOperators StudentIdOperator { get; set; }
         [Display(Name = "ID")]
         public string StudentIdValue { get; set; }
-
-
-        public DynamicQueryClause ToDynamicQueryClause()
-        {
-            DynamicQueryClause _list = new DynamicQueryClause();
-
-            _list.Add(BuildingInclude, BuildingConjunction, "BuildingKey", BuildingOperator, BuildingValue);
-            _list.Add(InstructionalLevelInclude, InstructionalLevelConjunction, "InstructionalLevelKey", InstructionalLevelOperator, InstructionalLevelValue);
-            _list.Add(StatusInclude, StatusConjunction, "Status", StatusOperator, StatusValue);
-            _list.Add(NameInclude, NameConjunction, "LastName", NameOperator, NameValue);
-            _list.Add(StudentIdInclude, StudentIdConjunction, "StudentId", StudentIdOperator, StudentIdValue);
-
-            return _list;
-
-        }
-
-        public List<Student> GetStudents()
-        {
-            DynamicQueryClause _list = ToDynamicQueryClause();
-
-            DynamicQueryStatement _statement = _list.ToDynamicQuery();
-
-            if (_statement.Parms.Count() == 0)
-                return DbContext.Students.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
-            else
-                return DbContext.Students.Where(_statement.Query, _statement.Parms).ToList().OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
-        }
-
 
     }
 }

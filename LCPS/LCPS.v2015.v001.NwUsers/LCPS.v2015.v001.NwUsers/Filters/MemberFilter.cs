@@ -26,11 +26,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         [Required]
         public string Title { get; set; }
 
-        [Display(Name = "Description", Description = "A detailed description for the filter")]
-        [MaxLength(128)]
-        [Required]
-        public string Description { get; set; }
-
         [Display(Name = "Category")]
         public FilterCategories Category { get; set; }
 
@@ -51,7 +46,8 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         public DynamicQuery ToDynamicQuery()
         {
             if (FilterClass == MemberFilterClass.Student)
-                return ToStudentQuery();
+                //return ToStudentQuery();
+                return null;
             else
                 return ToStaffQuery();
         }
@@ -75,6 +71,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             return q;
         }
 
+        /*
         private DynamicQuery ToStudentQuery()
         {
             DynamicQuery q = new DynamicQuery();
@@ -93,5 +90,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
             return q;
         }
+         * */
     }
 }

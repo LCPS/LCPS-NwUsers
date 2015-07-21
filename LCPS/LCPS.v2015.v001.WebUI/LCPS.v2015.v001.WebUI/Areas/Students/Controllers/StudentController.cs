@@ -47,13 +47,14 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
             }
         }
 
-        public StudentFilterModel StudentFilterModel
+        /*
+        public StudentClauseFilterModel StudentFilterModel
         {
             get
             {
                 if (Session["sf"] == null)
                 {
-                    StudentFilterModel f = new StudentFilterModel()
+                    StudentClauseFilterModel f = new StudentClauseFilterModel()
                     {
                         FormArea = "Students",
                         FormController = "Student",
@@ -66,13 +67,14 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 
                     Session["sf"] = f;
                 }
-                return (StudentFilterModel) Session["sf"];
+                return (StudentClauseFilterModel) Session["sf"];
             }
             set
             {
                 Session["sf"] = value;
             }
         }
+         * */
 
         private List<SelectListItem> GetLevelList(Guid bId)
         {
@@ -88,6 +90,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 
         }
 
+        /*
         public StudentViewModel StudentModel
         {
             get
@@ -107,6 +110,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
                 Session["studentModel"] = value;
             }
         }
+         * */
 
         #region Import
 
@@ -162,7 +166,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 
         #region Filter
 
-
+        /*
         public ActionResult Students()
         {
             StudentViewModel m = this.StudentModel;
@@ -196,6 +200,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 
             return View("Students", StudentModel);
         }
+        */
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult GetInstructionalLevels(Guid buildingId)

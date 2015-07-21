@@ -25,13 +25,13 @@
 
 <h2>Edit Staff Filter</h2>
 <div style="margin: 14px 0;">
-    <a href="@Url.Action("Index", "Contacts", new { area = "MY" })"><i class="fa fa-list-alt"></i> Index</a> &nbsp; &nbsp; <a href="@Url.Action("StaffList", "Contacts", new { area = "My", id=Model.FilterId })" class="cmd"><i class="fa fa-eye"></i> &nbsp; Preview</a>
+    <a href="@Url.Action("Index", "Contacts", new { area = "MY", c = MemberFilterClass.Staff })"><i class="fa fa-list-alt"></i> Index</a> &nbsp; &nbsp; <a href="@Url.Action("StaffList", "Contacts", new { area = "My", id=Model.FilterId })" class="cmd"><i class="fa fa-eye"></i> &nbsp; Preview</a>
 </div>
 
 
 <div class="container">
     <h3>
-        @Model.Title, <small>@Model.Description</small>
+        @Model.Title
         <a id="toggle-button" href="#" data-toggle="collapse" data-target="#demo"> <i class="fa fa-angle-double-down"></i></a>
     </h3>
     <div id="demo" class="collapse">

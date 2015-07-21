@@ -228,3 +228,12 @@ C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\ob
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter0041.resources
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\Seed\Sql\Views\HumanResources.HRStaffRecord.sql
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\Seed\Sql\Views\Students.StudentRecord.sql
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\Seed\Sql\Views\Students.StudentRecord.sql
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\bin\Seed\Sql\Views\HumanResources.HRStaffRecord.sql
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filters004.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter004.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter005.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter006.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter0041.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter007.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter008.resources

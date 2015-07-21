@@ -44,9 +44,6 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.FilterClass)
         </th>
         <th></th>
@@ -57,9 +54,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
                 <div>
                     @if (item.FilterClass == MemberFilterClass.Staff)
                     {

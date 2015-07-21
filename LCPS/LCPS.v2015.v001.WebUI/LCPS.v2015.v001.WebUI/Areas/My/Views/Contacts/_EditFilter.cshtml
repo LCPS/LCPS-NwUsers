@@ -20,13 +20,6 @@
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group form-group-sm">
-            @Html.LabelFor(model => model.Description, new { @class = "col-md-3 control-label" })
-            <div class="col-md-9">
-                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group form-group-sm">
             @Html.LabelFor(model => model.FilterClass, new { @class = "col-md-3 control-label" })

@@ -1,10 +1,11 @@
 ﻿@using LCPS.v2015.v001.NwUsers.Filters;
 @using LCPS.v2015.v001.WebUI.Areas.My.Models;
+@using LCPS.v2015.v001.WebUI.Areas.Students.Models;
 @using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 @using PagedList;
 @using PagedList.Mvc;
 
-@model MemberFilterModel
+@model StudentFilterModel
 
 @{
     ViewBag.Title = "EditStudentFilter";
@@ -24,27 +25,29 @@
 
 <h2>Edit Student Filter</h2>
 <div style="margin: 14px 0;">
-    <a href="@Url.Action("Index", "Contacts", new { area = "MY" })"><i class="fa fa-list-alt"></i> Index</a> &nbsp; &nbsp; <a href="@Url.Action("StudentList", "Contacts", new { area = "My", id=Model.FilterId })" class="cmd"><i class="fa fa-eye"></i> &nbsp; Preview</a>
+    <a href="@Url.Action("Index", "Contacts", new { area = "MY", c = MemberFilterClass.Student })"><i class="fa fa-list-alt"></i> Index</a> &nbsp; &nbsp; <a href="@Url.Action("StudentList", "Contacts", new { area = "My", id=Model.FilterId })" class="cmd"><i class="fa fa-eye"></i> &nbsp; Preview</a>
 </div>
 
 
 <div class="container">
     <h3>
-        @Model.Title, <small>@Model.Description</small>
+        @Model.MemberFilter.Title
         <a id="toggle-button" href="#" data-toggle="collapse" data-target="#demo"> <i class="fa fa-angle-double-down"></i></a>
     </h3>
     <div id="demo" class="collapse">
-        @Html.Partial("_EditFilter", Model)
+        @Html.Partial("_EditFilter", Model.MemberFilter)
     </div>
 </div>
 <hr />
 
 <div class="container">
+    @Html.Partial("~/Areas/Students/Views/Student/_studentFilterClause.cshtml", Model.GetClauseModel(Model.FilterId))
+</div>
 
-    @Html.Partial("_StudentClause",
-                    new StudentClauseModel() { FilterId = @Model.FilterId })
+<hr />
 
-   
+<div class="container">
+    @Html.Partial("~/Areas/My/Views/Contacts/_studentClauseList.cshtml", Model.StudentFilter )
 </div>
 
 

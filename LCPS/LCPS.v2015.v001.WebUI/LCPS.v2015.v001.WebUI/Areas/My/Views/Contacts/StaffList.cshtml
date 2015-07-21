@@ -16,7 +16,7 @@
 @ViewBag.FilterDescription
 
 <div style="margin: 14px 0;">
-    <a href="@Url.Action("Index", "Contacts", new { area = "MY" })"><i class="fa fa-list-alt"></i> Index</a> &nbsp; &nbsp; <a href="@Url.Action("EditStaffFilter", "Contacts", new { area = "MY", id = ViewBag.FilterId })"><i class="fa fa fa-pencil-square-o"></i> Edit</a>
+    <a href="@Url.Action("Index", "Contacts", new { area = "MY", c = MemberFilterClass.Staff })"><i class="fa fa-list-alt"></i> Index</a> &nbsp; &nbsp; <a href="@Url.Action("EditStaffFilter", "Contacts", new { area = "MY", id = ViewBag.FilterId })"><i class="fa fa fa-pencil-square-o"></i> Edit</a>
 </div>
 
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
