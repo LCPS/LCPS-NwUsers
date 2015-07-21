@@ -1,0 +1,44 @@
+﻿@using LCPS.v2015.v001.NwUsers.Filters;
+
+@model MemberFilter
+
+
+
+@using (Html.BeginForm("EditFilter", "Contacts", new { @area = "My" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.FilterId)
+    @Html.HiddenFor(model => model.Category)
+    @Html.HiddenFor(model => model.AntecedentId)
+
+    <div class="form-horizontal">
+        <div class="form-group form-group-sm">
+            @Html.LabelFor(model => model.Title, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            @Html.LabelFor(model => model.Description, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group form-group-sm">
+            @Html.LabelFor(model => model.FilterClass, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.EnumDropDownListFor(model => model.FilterClass, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group form-group-sm">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-info btn-sm" value="Submit" />
+            </div>
+        </div>
+    </div>
+}

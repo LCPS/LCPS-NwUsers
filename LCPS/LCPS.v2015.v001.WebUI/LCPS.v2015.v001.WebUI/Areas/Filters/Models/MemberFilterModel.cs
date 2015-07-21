@@ -13,6 +13,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.Filters.Models
         public string FormController { get; set; }
         public string FormArea { get; set; }
 
+        public bool ForModal {  get; set;}
+
         public MemberFilter Filter { get; set; }
     }
 }

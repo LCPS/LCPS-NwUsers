@@ -21,20 +21,6 @@ namespace System.Web.Mvc.Html
 {
     public static class AnvilHtmlHelper
     {
-        #region Events
-        #endregion
-
-        #region Constants
-        #endregion
-
-        #region Fields
-        #endregion
-
-
-
-        #region Properties
-        #endregion
-
         public static MvcHtmlString DescriptionFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression)
         {
             return DescriptionFor<TModel, TValue>(helper, expression, null);

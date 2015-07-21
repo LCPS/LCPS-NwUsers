@@ -20,15 +20,17 @@ namespace LCPS.v2015.v001.NwUsers.Filters
     {
         private LcpsDbContext _dbContext;
 
+        [Key]
+        public Guid StaffFilterClauseId { get; set; }
+
         public Guid FilterId { get; set; }
 
-        [ForeignKey("FilterId")]
-        [Required]
-        public virtual MemberFilter ParentFilter { get; set;}
-
-        public Guid ClauseId { get; set; }
-
         public int SortIndex { get; set; }
+
+        [ForeignKey("FilterId")]
+        public virtual MemberFilter Filter { get; set; }
+
+        public DynamicQueryConjunctions ClauseConjunction { get; set; }
 
         public LcpsDbContext DbContext
         {
@@ -40,8 +42,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
                 return _dbContext;
             }
         }
-
-        public DynamicQueryConjunctions ClauseConjunction { get; set; }
 
        
         public bool BuildingInclude { get; set; }
@@ -75,9 +75,9 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         public string StudentIdValue { get; set; }
 
 
-        public DynamicQueryClauseFilterCollection ToFilterCollection()
+        public DynamicQueryClause ToDynamicQueryClause()
         {
-            DynamicQueryClauseFilterCollection _list = new DynamicQueryClauseFilterCollection();
+            DynamicQueryClause _list = new DynamicQueryClause();
 
             _list.Add(BuildingInclude, BuildingConjunction, "BuildingKey", BuildingOperator, BuildingValue);
             _list.Add(InstructionalLevelInclude, InstructionalLevelConjunction, "InstructionalLevelKey", InstructionalLevelOperator, InstructionalLevelValue);
@@ -91,7 +91,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         public List<Student> GetStudents()
         {
-            DynamicQueryClauseFilterCollection _list = ToFilterCollection();
+            DynamicQueryClause _list = ToDynamicQueryClause();
 
             DynamicQueryStatement _statement = _list.ToDynamicQuery();
 

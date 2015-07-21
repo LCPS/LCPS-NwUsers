@@ -1,0 +1,162 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.My.Models;
+@using LCPS.v2015.v001.NwUsers.Filters;
+
+@model MyContactModel
+
+@{
+    ViewBag.Title = "Contacts";
+    Layout = "~/Areas/My/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .selected {
+        padding: 8px;
+        border-radius: 12px;
+        background-color: white;
+    }
+
+    .f-carat {
+        cursor: pointer;
+    }
+
+    <!--
+    .collapsible {
+        margin-bottom: 20px;
+        padding: 10px;
+        width: 300px;
+        color: #333333;
+    }
+
+        .collapsible > button {
+            height: 100%;
+            float: right;
+            border: 1px solid #999999;
+            background: #999999;
+            color: #CECECE;
+            margin-left: 10px;
+        }
+
+            .collapsible > button:hover {
+                background: #990000;
+                border: 1px solid #990000;
+            }
+    -->
+</style>
+
+<h2>Contacts</h2>
+
+<hr />
+
+<script>
+    $(document).ready(function () {
+        $("#filter-edit-well").on("hide.bs.collapse", function () {
+            $(".f-carat").html('<span class="glyphicon glyphicon-collapse-down"></span>');
+        });
+        $("#filter-edit-well").on("show.bs.collapse", function () {
+            $(".f-carat").html('<span class="glyphicon glyphicon-collapse-up"></span>');
+        });
+    });
+
+
+    $(document).ready(function () {
+        var hideWidth = '-290px'; //width that will be hidden
+        var collapsibleEl = $('.collapsible'); //collapsible element
+        var buttonEl = $(".collapsible > button"); //button inside element
+
+        collapsibleEl.css({ 'margin-left': "0" }); //on page load we'll move and hide part of elements
+
+        $(buttonEl).click(function () {
+            var curwidth = $(this).parent().offset(); //get offset value of the parent element
+
+
+            if (curwidth.left < 55) //compare margin-left value
+            {
+                //animate margin-left value to -490px
+                $(this).parent().animate({ marginLeft: "0" }, 300);
+                $(this).html('&laquo;'); //change text of button
+            } else {
+                //animate margin-left value 0px
+                $(this).parent().animate({ marginLeft: hideWidth }, 300);
+                $(this).html('&raquo;'); //change text of button
+            }
+        });
+    });
+</script>
+
+
+
+
+<div class="row">
+    <div class="col-md-4 collapsible">
+        <button>&raquo;</button>
+
+        <div class="well">
+            <h4>Filters</h4>
+            <p>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                        Create Filter
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Staff })">Student Filter</a></li>
+                        <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Staff })">Staff Filter</a></li>
+                    </ul>
+                </div>
+            </p>
+
+
+            <ul style="padding: 0; margin: 0;">
+
+                @foreach (MemberFilter f in Model.GetFilters())
+                {
+                    <li style="list-style-type: none; margin-top: 18px;">
+                        @if (Model.CurrentFilter != null && f.FilterId.Equals(Model.CurrentFilter.FilterId))
+                        {
+                            @Html.Raw("<div class=\"text-success selected\">");
+                        }
+
+                        @f.Title<br />
+                        <small>@f.Description ( <span class="text-info">@f.FilterClass.ToString() </span> )</small>
+                        <p>
+                            <a href="@Url.Action("EditFilter", "Contacts", new { area = "My", id = f.FilterId })" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                            <a href="@Url.Action("Delete", "Contacts", new { area = "My" })" class="btn btn-info btn-xs"><i class="fa fa-remove"></i></a>
+                        </p>
+                        @if (Model.CurrentFilter != null && f.FilterId.Equals(Model.CurrentFilter.FilterId))
+                        {
+                            @Html.Raw("</div>");
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8">
+        @if (Model.CurrentFilter == null)
+        {
+            <div class="well">
+                Select a filter from the list
+            </div>
+        }
+        else
+        {
+            <div class="well">
+                <fieldset>
+                    <legend>
+                        Filter Details &nbsp; <a class="f-carat" data-toggle="collapse" data-target="#filter-edit-well">
+                            <span class="glyphicon glyphicon-collapse-up"></span>
+                        </a>
+                    </legend>
+                </fieldset>
+                <div id="filter-edit-well">
+                    @Html.Partial("_EditFilter", Model.CurrentFilter)
+                </div>
+            </div>
+            <hr />
+            if(Model.CurrentFilter.FilterClass == MemberFilterClass.Staff)
+            {
+                @Html.Partial("_StaffFilter", new StaffFilterClauseModel() { FilterId = Model.CurrentFilter.FilterId })
+            }
+        }
+    </div>
+</div>

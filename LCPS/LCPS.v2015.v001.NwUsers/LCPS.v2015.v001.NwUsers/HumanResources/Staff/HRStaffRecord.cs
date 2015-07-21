@@ -1,59 +1,53 @@
-﻿#region Using
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.IO;
-using System.Data.SqlClient;
-using System.Reflection;
-using System.Linq;
-using System.Linq.Dynamic;
-using System.Text;
-using System.Threading.Tasks;
 
-using PagedList;
-
-using LCPS.v2015.v001.NwUsers.Infrastructure;
 using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
 
-#endregion
+using LCPS.v2015.v001.NwUsers.Infrastructure;
+using LCPS.v2015.v001.NwUsers.HumanResources;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+
+using System.Data.Linq;
+using System.Linq;
+using System.Linq.Dynamic;
+
+using System.ComponentModel.DataAnnotations;
 
 namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 {
-    public class HRStaffRecord : IPerson, IStaff, IStaffPosition
+
+
+    [MetadataType(typeof(HRStaffRecordMetaData))]
+    partial class HRStaffRecord
     {
 
         public HRStaffRecord(HRStaff staff, HRStaffPosition position, HRBuilding building, HREmployeeType employeeType, HRJobTitle jobTitle)
         {
-            FirstName = staff.FirstName;
-            MiddleInitial = staff.MiddleInitial;
-            LastName = staff.LastName;
-            Gender = staff.Gender;
-            Birthdate = staff.Birthdate;
-            StaffKey = staff.StaffKey;
-            StaffId = staff.StaffId;
-            StaffEmail = staff.StaffEmail;
-            PositionKey = position.PositionKey;
-            StaffMemberId = position.StaffMemberId;
-            BuildingKey = position.BuildingKey;
-            EmployeeTypeKey = position.EmployeeTypeKey;
-            JobTitleKey = position.JobTitleKey;
-            Status = position.Status;
-            FiscalYear = position.FiscalYear;
-            Building = building;
-            EmployeeType = employeeType;
-            JobTitle = jobTitle;
+            if (staff != null)
+            {
+                FirstName = staff.FirstName;
+                MiddleInitial = staff.MiddleInitial;
+                LastName = staff.LastName;
+                Gender = staff.Gender;
+                Birthdate = staff.Birthdate;
+                StaffKey = staff.StaffKey;
+                StaffId = staff.StaffId;
+                StaffEmail = staff.StaffEmail;
+            }
+
+            if (position != null)
+            {
+
+                PositionKey = position.PositionKey;
+                StaffKey = position.StaffMemberId;
+                BuildingKey = position.BuildingKey;
+                EmployeeTypeKey = position.EmployeeTypeKey;
+                JobTitleKey = position.JobTitleKey;
+                Status = position.Status;
+                FiscalYear = position.FiscalYear;
+            }
         }
-
-        #region Person
-
-        public string FirstName { get; set; }
-
-        public string MiddleInitial { get; set; }
-
-        public string LastName { get; set; }
 
         public string SortName
         {
@@ -65,52 +59,32 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
             get { return FirstName + " " + LastName; }
         }
 
-        public HRGenders Gender { get; set; }
-
-        public DateTime Birthdate { get; set; }
-
-        #endregion
-
-
-        #region Staff
-
-        public Guid StaffKey { get; set; }
-
-        public string StaffId { get; set; }
-
-        public string StaffEmail { get; set; }
-
-        #endregion
-
-
-        #region Position
-
-        public HRBuilding Building { get; set; }
-
-        public HREmployeeType EmployeeType { get; set; }
-
-        public HRJobTitle JobTitle { get; set; }
-
-        public Guid PositionKey { get; set; }
-
-        public Guid StaffMemberId { get; set; }
-
-        public Guid BuildingKey { get; set; }
-
-        public Guid EmployeeTypeKey { get; set; }
-
-        public Guid JobTitleKey { get; set; }
-
-        public HRStaffPositionQualifier Status { get; set; }
-
-        public string FiscalYear { get; set; }
-
-        #endregion
-
-        public static IPagedList<HRStaffRecord> GetPagedList(DynamicQueryStatement statement, int pageNumber, int pageSize)
+        public HRGenders Gender
         {
-            List<HRStaffRecord> items = GetList(statement);
-            return items.ToPagedList(pageNumber, pageSize);
+            get { return (HRGenders)this.GenderVal; }
+            set { this.GenderVal = Convert.ToInt32(value); }
+        }
+
+        public HRStaffPositionQualifier Status
+        {
+            get { return (HRStaffPositionQualifier)this.StatusVal; }
+            set { this.StatusVal = Convert.ToInt32(value); }
+        }
+
+
+        public static HRStaffRecord Get(Guid building, Guid employeeType, Guid jobTitle)
+        {
+            LcpsDbContext db = new LcpsDbContext();
+
+            HRStaffRecord item = new HRStaffRecord(null,
+                                                   null,
+                                                   db.Buildings.FirstOrDefault(x => x.BuildingKey.Equals(building)),
+                                                   db.EmployeeTypes.FirstOrDefault(x => x.EmployeeTypeLinkId.Equals(employeeType)),
+                                                   db.JobTitles.FirstOrDefault(x => x.JobTitleKey.Equals(jobTitle)));
+
+            return item;
+
+
         }
 
         public static List<HRStaffRecord> GetList(DynamicQueryStatement statement)
@@ -120,32 +94,53 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public static List<HRStaffRecord> GetList(string query, object[] parms)
         {
-            try
-            { 
-                LcpsDbContext db = new LcpsDbContext();
+            if (parms == null)
+                return new List<HRStaffRecord>();
 
-                List<HRStaffRecord> items = (from HRStaff staff in db.StaffMembers
-                                             join HRStaffPosition pos in db.StaffPositions
-                                                on staff.StaffKey equals pos.StaffMemberId
-                                             join HRBuilding b in db.Buildings 
-                                                on pos.BuildingKey equals b.BuildingKey 
-                                             join HREmployeeType et in db.EmployeeTypes 
-                                                on pos.EmployeeTypeKey equals et.EmployeeTypeLinkId
-                                             join HRJobTitle jt in db.JobTitles 
-                                                on pos.JobTitleKey equals jt.JobTitleKey
-                                             select new HRStaffRecord(staff, pos, b, et, jt))
-                                             .Where(query, parms)
-                                             .OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial)
-                                             .ToList();
+            if (parms.Count() == 0)
+                return new List<HRStaffRecord>();
+
+            try
+            {
+                HRStaffContext db = new HRStaffContext(Properties.Settings.Default.ConnectionString);
+
+                List<HRStaffRecord> items = db.HRStaffRecords.Where(query, parms)
+                    .OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial)
+                    .ToList();
+
                 return items;
-                             
             }
             catch (Exception ex)
             {
-                throw new Exception("Could not get a list of staff records", ex);
+                Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionCollector ec = new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionCollector("Error getting staff members");
+                ec.Add(query);
+                ec.Add(ex);
+                throw ec.ToException();
+
             }
         }
 
+
+
+    }
+
+    public class HRStaffRecordMetaData
+    {
+        [Display(Name = "Name")]
+        public string SortName { get; set; }
+
+        [Display(Name = "Building")]
+        public string BuildingName { get; set; }
+
+
+        [Display(Name = "Type")]
+        public string EmployeeTypeName { get; set; }
+
+        [Display(Name = "Title")]
+        public string JobTitleName { get; set; }
+
+        [Display(Name = "Year")]
+        public string FiscalYear { get; set; }
 
     }
 }

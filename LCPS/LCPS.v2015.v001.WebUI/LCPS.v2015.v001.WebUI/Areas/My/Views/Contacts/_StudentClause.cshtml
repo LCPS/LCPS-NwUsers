@@ -1,0 +1,205 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.My.Models;
+@using LCPS.v2015.v001.NwUsers.Students;
+@using LCPS.v2015.v001.NwUsers.Filters;
+
+@model StudentClauseModel
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+<script>
+    $(window).load(function () {
+        var cb = document.getElementsByClassName('cb');
+
+
+        for(i = 0; i < cb.length; i++)
+        {
+
+            f = cb[i].id.replace('Include', '');
+
+            var checked = cb[i].checked
+
+            op = document.getElementById(f + 'Operator');
+
+            op.disabled = (!checked);
+
+            v = document.getElementById(f + 'Value');
+            v.disabled = (!checked);
+
+            con = document.getElementById(f + 'Conjunction');
+
+            if (con != null)
+                con.disabled = (!checked);
+        }
+    });
+
+    $(function () {
+        $('.cb').bootstrapToggle({
+            on: 'Filter On',
+            off: 'Filter Off',
+            onstyle: 'success',
+            offstyle: 'danger',
+            size: 'mini'
+        });
+    })
+
+    $(function () {
+        $('.cb').change(function () {
+
+            cbId = $(this).prop('id');
+            f = cbId.replace('Include', '');
+
+            op = document.getElementById(f + 'Operator');
+            op.disabled = (!$(this).prop('checked'));
+
+            v = document.getElementById(f + 'Value');
+            v.disabled = (!$(this).prop('checked'));
+
+            con = document.getElementById(f + 'Conjunction');
+            con.disabled = (!$(this).prop('checked'));
+        });
+    })
+
+    $(function () {
+        $("#BuildingValue").change(function () {
+            var selectedItem = $(this).val();
+            var ddlChild = $("#InstructionalLevelValue");
+            var statesProgress = $("#states-loading-progress");
+            statesProgress.show();
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "/Students/Student/GetInstructionalLevels",
+                data: { "buildingId": selectedItem },
+                success: function (data) {
+                    ddlChild.html('');
+                    $.each(data, function (id, option) {
+                        ddlChild.append($('<option></option>').val(option.id).html(option.name));
+                    });
+                    statesProgress.hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Failed to retrieve levels.');
+                    statesProgress.hide();
+                }
+            });
+        });
+    });
+
+</script>
+
+@using (Html.BeginForm("CreateStudentFilter", "Contacts", new { area = "My" }, FormMethod.Post))
+{
+
+    <div class="row" style="margin-bottom: 2px;">
+        <div class="form-group">
+            <span class="col-md-1">
+                @Html.CheckBoxFor(model => model.BuildingInclude, new { @class = "checkbox cb form-control dq" })
+            </span>
+            <span class="col-md-2 control-label">
+                <strong>@Html.LabelFor(model => model.BuildingValue, new { @class = "control-label dq" })</strong>
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm dq", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-4">
+                @Html.DropDownListFor(model => model.BuildingValue, Model.GetBuildings(), new { @class = "form-control input-sm", @disabled = "disabled" })
+            </span>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 2px;">
+        <div class="form-group">
+            <span class="col-md-1">
+                @Html.CheckBoxFor(model => model.InstructionalLevelInclude, new { @class = "checkbox cb form-control" })
+            </span>
+            <span class="col-md-2 control-label">
+                <strong>@Html.LabelFor(model => model.InstructionalLevelValue, new { @class = "control-label dq" })</strong>
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.InstructionalLevelConjunction, new { @class = "form-control input-sm dq", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.InstructionalLevelOperator, new { @class = "form-control input-sm dq", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-4">
+                @Html.DropDownListFor(model => model.InstructionalLevelValue, Model.GetInstructionalLevels(null), new { @class = "form-control input-sm dq", @disabled = "disabled" })
+            </span>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 2px;">
+        <div class="form-group">
+            <span class="col-md-1">
+                @Html.CheckBoxFor(model => model.StatusInclude, new { @class = "checkbox cb form-control" })
+            </span>
+            <span class="col-md-2 control-label">
+                <strong>@Html.LabelFor(model => model.StatusValue, new { @class = "control-label" })</strong>
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StatusOperator, new { @class = "form-control input-sm", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-4">
+                @Html.EnumDropDownListFor(model => model.StatusValue, new { @class = "form-control input-sm", @style = "width:120px;", @disabled = "disabled" })
+            </span>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 2px;">
+        <div class="form-group">
+            <span class="col-md-1">
+                @Html.CheckBoxFor(model => model.NameInclude, new { @class = "checkbox cb form-control" })
+            </span>
+            <span class="col-md-2 control-label">
+                <strong>@Html.LabelFor(model => model.NameValue, new { @class = "control-label" })</strong>
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.NameConjunction, new { @class = "form-control input-sm", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.NameOperator, new { @class = "form-control input-sm", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-4">
+                @Html.TextBoxFor(model => model.NameValue, new { @class = "form-control input-sm", @style = "width:220px;", @disabled = "disabled" })
+            </span>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 2px;">
+        <div class="form-group">
+            <span class="col-md-1">
+                @Html.CheckBoxFor(model => model.StudentIdInclude, new { @class = "checkbox cb form-control" })
+            </span>
+            <span class="col-md-2 control-label">
+                <strong>@Html.LabelFor(model => model.StudentIdValue, new { @class = "control-label" })</strong>
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StudentIdConjunction, new { @class = "form-control input-sm", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StudentIdOperator, new { @class = "form-control input-sm", @style = "width:90px;", @disabled = "disabled" })
+            </span>
+            <span class="col-md-4">
+                @Html.TextBoxFor(model => model.StudentIdValue, new { @class = "form-control input-sm", @style = "width:220px;", @disabled = "disabled" })
+            </span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 4px;">
+        <div class="form-group">
+            <span class="col-md-1">
+                &nbsp;
+            </span>
+            <span class="col-md-2 control-label">
+                &nbsp;
+            </span>
+            <span class="col-md-1">
+                <input type="submit" value="Fetch Students" class="btn btn-info">
+            </span>
+            <span class="col-md-1">
+                &nbsp;
+            </span>
+            <span class="col-md-4">
+                &nbsp;
+            </span>
+        </div>
+    </div>
+}

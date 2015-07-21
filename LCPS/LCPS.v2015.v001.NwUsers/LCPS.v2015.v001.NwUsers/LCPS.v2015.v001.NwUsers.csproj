@@ -63,6 +63,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
@@ -103,6 +104,14 @@
     <Compile Include="HumanResources\Staff\HRStaff.cs" />
     <Compile Include="HumanResources\Staff\HRStaffBackup.cs" />
     <Compile Include="Filters\StaffFilterClause.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffContext.cs">
+      <DependentUpon>HRStaffContext.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\Staff\HRStaffContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRStaffContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionSession.cs" />
     <Compile Include="HumanResources\Staff\HRStaffRecord.cs" />
@@ -124,6 +133,11 @@
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUser.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUserAccountControl.cs" />
     <Compile Include="LcpsLdap\LdapTemplates\OUTemplate.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Students\InstructionalLevelSession.cs" />
     <Compile Include="Importing\IImportEntity.cs" />
     <Compile Include="Importing\IImportSession.cs" />
@@ -150,14 +164,33 @@
     <Compile Include="Students\Student.cs" />
     <Compile Include="Students\StudentCandidate.cs" />
     <Compile Include="Filters\StudentFilterClause.cs" />
+    <Compile Include="Students\StudentRecord.cs" />
+    <Compile Include="Students\StudentsContext.cs">
+      <DependentUpon>StudentsContext.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentsContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentsContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Students\StudentSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="HumanResources\Staff\HRStaffContext.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>HRStaffContext.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Students\StudentsContext.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>StudentsContext.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +201,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+    <EmbeddedResource Include="Seed\Sql\Views\Students.StudentRecord.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Students\StudentsContext.dbml.layout">
+      <DependentUpon>StudentsContext.dbml</DependentUpon>
+    </None>
+    <None Include="HumanResources\Staff\HRStaffContext.dbml.layout">
+      <DependentUpon>HRStaffContext.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Seed\Sql\Views\HumanResources.HRStaffRecord.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,50 @@
+﻿@using LCPS.v2015.v001.NwUsers.Filters;
+
+@model MemberFilter
+
+@{
+    ViewBag.Title = "CreateFilter";
+    Layout = "~/Areas/My/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.FilterClass.ToString() Filter</h2>
+
+@using (Html.BeginForm("CreateFilter", "Contacts", new { @area = "My" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.FilterId)
+    @Html.HiddenFor(model => model.Category)
+    @Html.HiddenFor(model => model.AntecedentId)
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FilterClass, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.EnumDropDownListFor(model => model.FilterClass, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-info" value="Create" />
+            <a href="@Url.Action("Index", "Contacts", new { area = "My"})" class="btn btn-default">Cancel</a>
+        </div>
+
+    </div>
+}
+

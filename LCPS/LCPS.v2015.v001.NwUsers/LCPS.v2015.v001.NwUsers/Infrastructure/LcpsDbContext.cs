@@ -20,7 +20,7 @@ using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
 
 using LCPS.v2015.v001.NwUsers.Filters;
-
+using System.Web;
 
 #endregion
 
@@ -43,12 +43,12 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         #region Constructors
 
         public LcpsDbContext()
-            :base(Properties.Settings.Default.ConnectionString)
+            : base(Properties.Settings.Default.ConnectionString)
         {
         }
 
         public LcpsDbContext(string connectionString)
-            :base(connectionString)
+            : base(connectionString)
         {
             Properties.Settings.Default.ConnectionString = connectionString;
         }
@@ -62,7 +62,7 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         public DbSet<HREmployeeType> EmployeeTypes { get; set; }
         public DbSet<HRJobTitle> JobTitles { get; set; }
         public DbSet<HRBuilding> Buildings { get; set; }
-        
+
         public DbSet<HRStaff> StaffMembers { get; set; }
         public DbSet<HRStaffPosition> StaffPositions { get; set; }
 
@@ -86,6 +86,8 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         // ----------------------------- Filtering
         public DbSet<Filters.MemberFilter> MemberFilters { get; set; }
         public DbSet<Filters.StaffFilterClause> StaffFilterClauses { get; set; }
+        public DbSet<Filters.StudentFilterClause> StudentFilterClauses { get; set; }
+
 
 
         #endregion
@@ -112,7 +114,31 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
             }
         }
 
-        #endregion 
+        #endregion
+
+        #region Seed
+
+        public void SeedSql()
+        {
+            try 
+            {
+                Assembly _assembly = typeof(LCPS.v2015.v001.NwUsers.Infrastructure.LcpsDbContext).Assembly;
+                string[] names = _assembly.GetManifestResourceNames();
+                string[] views = names.Where(x => x.StartsWith("LCPS.v2015.v001.NwUsers.Seed.Sql.Views")).ToArray();
+                foreach(string v in views)
+                {
+                    StreamReader _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream(v));
+                    string sql = _textStreamReader.ReadToEnd();
+                    this.Database.ExecuteSqlCommand(sql, new object[0]);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Could notr create SQL objects during seed", ex);
+            }
+        }
+
+        #endregion
 
 
 

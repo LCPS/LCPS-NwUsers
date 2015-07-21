@@ -1,0 +1,78 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
+@model MemberFilterModel
+
+<script>
+    $(document).on('click', '#btn-filter-submit', function () {
+        alert('Here we go!');
+        var self = $(this);
+        $.ajax({
+            url: '/My/Contacts/Create',
+            type: 'POST',
+            data: self.closest('form').serialize(),
+            success: function (data) {
+                if (data.success == true) {
+                    $('#filterModal').modal('hide');
+                    location.reload(false)
+                } else {
+                    alert('Woops!');
+                    $('#filterModal').modal('show');
+                    
+                }
+            }
+        });
+    });
+</script>
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#filterModal">New Filter</button>
+
+<!-- Modal -->
+<div id="filterModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Member Filter</h4>
+            </div>
+            <div class="modal-body">
+                @using (Ajax.BeginForm(Model.FormAction, Model.FormController, new { @area = Model.FormArea }, new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "POST",
+                    UpdateTargetId = "list-of-people"
+                }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.Filter.FilterId)
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Filter.Title, new { @class = "col-md-3 control-label" })
+                            @Html.TextBoxFor(model => model.Filter.Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Filter.Title)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Filter.Description, new { @class = "col-md-3 control-label" })
+                            @Html.TextBoxFor(model => model.Filter.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Filter.Description)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Filter.FilterClass, new { @class = "col-md-3 control-label" })
+                            @Html.EnumDropDownListFor(model => model.Filter.FilterClass, new { @class = "form-control" })
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-info" id="btn-filter-submit">Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+

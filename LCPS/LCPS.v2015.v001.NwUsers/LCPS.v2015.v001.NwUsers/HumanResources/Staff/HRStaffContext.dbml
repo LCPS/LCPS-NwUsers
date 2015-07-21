@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NWUsers.Lcps.v2015.v004" EntityNamespace="LCPS.v2015.v001.NwUsers.HumanResources.Staff" ContextNamespace="LCPS.v2015.v001.NwUsers.HumanResources.Staff" Class="HRStaffContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="HumanResources.HRStaffRecord" Member="HRStaffRecords">
+    <Type Name="HRStaffRecord">
+      <Column Name="PositionKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StatusVal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FiscalYear" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BuildingKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="EmployeeTypeKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeTypeId" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeTypeName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StaffKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StaffId" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="MiddleInitial" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="StaffEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="GenderVal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Birthdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="JobTitleKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobTitleId" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="JobTitleName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

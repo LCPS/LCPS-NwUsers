@@ -92,16 +92,13 @@
     <Compile Include="Entities\ApplicationBase.cs" />
     <Compile Include="Entities\ApplicationModels.cs" />
     <Compile Include="Entities\Dynamic.cs" />
-    <Compile Include="Entities\DynamicFilters\DynamicQueryAttribute.cs" />
-    <Compile Include="Entities\DynamicFilters\DynamicQueryClause.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryStatement.cs" />
-    <Compile Include="Entities\DynamicFilters\DynamicQueryAttributes.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryClauseField.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryConjunctions.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQuery.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryOperatorLibrary.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryOperators.cs" />
-    <Compile Include="Entities\DynamicFilters\DynamicQueryClauseFilterCollection.cs" />
+    <Compile Include="Entities\DynamicFilters\DynamicQueryClause.cs" />
     <Compile Include="Entities\LinqExtensions.cs" />
     <Compile Include="Exceptions\AnvilExceptionModel.cs" />
     <Compile Include="Exceptions\AnvilExceptionCollector.cs" />

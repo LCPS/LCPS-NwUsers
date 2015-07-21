@@ -1,0 +1,63 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+
+@{
+    ViewBag.Page = Request.QueryString["page"];
+}
+
+@model PagedList<HRStaffRecord>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+
+@Html.PagedListPager(Model, page => Url.Action(ViewBag.ReturnTo,
+    new { page }))
+
+<table class="table table-hover table-striped table-condensed table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().EmployeeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().JobTitleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FiscalYear)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FiscalYear)
+            </td>
+        </tr>
+    }
+</table>

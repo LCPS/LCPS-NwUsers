@@ -1,0 +1,33 @@
+﻿@using Anvil.v2015.v001.Domain.Exceptions;
+
+@model AnvilExceptionModel
+
+<script>
+
+    $(function () {
+        $("#error-panel").fadeIn();
+    });
+
+    $(function () {
+        $('#close-button').click(function () {
+            $("#error-panel").toggle('slow');
+        });
+    })
+
+</script>
+
+<div id="error-panel" class="alert fade in danger">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            @Model.Title
+        </div>
+        <div class="panel-body">
+            @foreach (string e in Model)
+            {
+                <span class="text-danger">@e</span><br />
+            }
+
+            <a id="close-button" href="#"><i class="fa fa-remove"></i> &nbsp; Close</a>
+        </div>
+    </div>
+</div>

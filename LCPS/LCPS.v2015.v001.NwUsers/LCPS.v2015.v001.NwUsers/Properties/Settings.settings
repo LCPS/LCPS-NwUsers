@@ -3,8 +3,27 @@
   <Profiles />
   <Settings>
     <Setting Name="_connectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)" />
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString /&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="NWUsers_Lcps_v2015_v004ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Security=False;User ID=Sa&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Security=False;User ID=Sa</Value>
+    </Setting>
+    <Setting Name="NWUsers_Lcps_v2015_v004ConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Security=False;User ID=Sa;Password=Sql-pw1&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Security=False;User ID=Sa;Password=Sql-pw1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

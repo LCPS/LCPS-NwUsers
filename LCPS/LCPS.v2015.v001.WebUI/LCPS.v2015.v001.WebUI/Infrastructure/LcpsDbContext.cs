@@ -116,6 +116,8 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
                     Applications.Add(app);
                     SaveChanges();
                 }
+
+                this.SeedSql();
  
             }
             catch (Exception ex)

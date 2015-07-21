@@ -1,0 +1,73 @@
+﻿@using LCPS.v2015.v001.NwUsers.Filters;
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList<HRStaffRecord>
+
+@{
+    ViewBag.Title = "StaffList";
+    Layout = "~/Areas/My/Views/Shared/_Layout.cshtml";
+    ViewBag.Page = Request.QueryString["page"];
+}
+
+
+<h2>@ViewBag.FilterTitle</h2>
+@ViewBag.FilterDescription
+
+<div style="margin: 14px 0;">
+    <a href="@Url.Action("Index", "Contacts", new { area = "MY" })"><i class="fa fa-list-alt"></i> Index</a> &nbsp; &nbsp; <a href="@Url.Action("EditStaffFilter", "Contacts", new { area = "MY", id = ViewBag.FilterId })"><i class="fa fa fa-pencil-square-o"></i> Edit</a>
+</div>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+
+@Html.PagedListPager(Model, page => Url.Action(ViewBag.ReturnTo,
+    new { page }))
+
+
+<table class="table table-hover table-striped table-condensed table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().EmployeeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().JobTitleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FiscalYear)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FiscalYear)
+            </td>
+        </tr>
+    }
+</table>

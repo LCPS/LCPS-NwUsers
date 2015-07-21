@@ -1,0 +1,35 @@
+﻿@using LCPS.v2015.v001.NwUsers.Filters;
+
+@model IEnumerable<MemberFilter>
+
+
+<div class="well" style="margin-top: 18px;">
+    <h4>Filters</h4>
+    <p>
+        <div class="dropdown">
+            <button class="btn btn-sm btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                Create Filter
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Staff })">Student Filter</a></li>
+                <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Staff })">Staff Filter</a></li>
+            </ul>
+        </div>
+    </p>
+
+
+    <ul style="padding: 0; margin: 0;">
+        @foreach (MemberFilter f in Model)
+        {
+            <li style="list-style-type: none; margin-top: 18px;">
+                @f.Title<br />
+                <small>@f.Description ( <span class="text-info">@f.FilterClass.ToString() </span> )</small>
+                <p>
+                    <a href="@Url.Action("Edit", "Contacts", new { area = "My" })" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                    <a href="@Url.Action("Delete", "Contacts", new { area = "My" })" class="btn btn-info btn-xs"><i class="fa fa-remove"></i></a>
+                </p>
+            </li>
+        }
+    </ul>
+</div>

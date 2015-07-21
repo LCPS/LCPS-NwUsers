@@ -38,3 +38,17 @@
 }
 
 
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
+{
+    Area = "My",
+    Controller = "Profile",
+    Action = "Index",
+    CssClass = "fa fa-smile-o",
+    Text = "My LCPS"
+})
+
+}
+
+

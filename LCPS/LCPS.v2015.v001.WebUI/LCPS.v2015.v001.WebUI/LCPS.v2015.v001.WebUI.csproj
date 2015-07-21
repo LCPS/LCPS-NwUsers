@@ -172,8 +172,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
-    <Compile Include="Areas\Filters\Models\MemberFilterModel.cs" />
-    <Compile Include="Areas\Filters\Models\StaffFilterClauseModel.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
@@ -191,6 +189,13 @@
     <Compile Include="Areas\LcpsLdap\Controllers\LdapTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\LcpsLdapAreaRegistration.cs" />
     <Compile Include="Areas\LcpsLdap\Models\OUTemplateViewModel.cs" />
+    <Compile Include="Areas\My\Controllers\ContactsController.cs" />
+    <Compile Include="Areas\My\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\My\Models\MemberFilterModel.cs" />
+    <Compile Include="Areas\My\Models\MyContactModel.cs" />
+    <Compile Include="Areas\My\Models\StaffFilterClauseModel.cs" />
+    <Compile Include="Areas\My\Models\StudentClauseModel.cs" />
+    <Compile Include="Areas\My\MyAreaRegistration.cs" />
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Students\Controllers\InstructionalLevelController.cs" />
@@ -260,6 +265,26 @@
     <Compile Include="Migrations\201507161947229_LdapTemplates010.Designer.cs">
       <DependentUpon>201507161947229_LdapTemplates010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507171405184_Filters004.cs" />
+    <Compile Include="Migrations\201507171405184_Filters004.Designer.cs">
+      <DependentUpon>201507171405184_Filters004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507190102551_Filter004.cs" />
+    <Compile Include="Migrations\201507190102551_Filter004.Designer.cs">
+      <DependentUpon>201507190102551_Filter004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507190223317_Filter005.cs" />
+    <Compile Include="Migrations\201507190223317_Filter005.Designer.cs">
+      <DependentUpon>201507190223317_Filter005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507190304099_Filter006.cs" />
+    <Compile Include="Migrations\201507190304099_Filter006.Designer.cs">
+      <DependentUpon>201507190304099_Filter006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507192143307_Filter0041.cs" />
+    <Compile Include="Migrations\201507192143307_Filter0041.Designer.cs">
+      <DependentUpon>201507192143307_Filter0041.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Models\LcpsMvcActionTarget.cs" />
@@ -267,12 +292,25 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\addons\jquery.mmenu.counters.css" />
+    <Content Include="Content\addons\jquery.mmenu.dragopen.css" />
+    <Content Include="Content\addons\jquery.mmenu.header.css" />
+    <Content Include="Content\addons\jquery.mmenu.labels.css" />
+    <Content Include="Content\addons\jquery.mmenu.searchfield.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\extensions\jquery.mmenu.effects.css" />
+    <Content Include="Content\extensions\jquery.mmenu.fullscreen.css" />
+    <Content Include="Content\extensions\jquery.mmenu.ie8.css" />
+    <Content Include="Content\extensions\jquery.mmenu.positioning.css" />
+    <Content Include="Content\extensions\jquery.mmenu.themes.css" />
+    <Content Include="Content\extensions\jquery.mmenu.widescreen.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jquery.mmenu.all.css" />
+    <Content Include="Content\jquery.mmenu.css" />
     <Content Include="Content\lcps-ads.css" />
     <Content Include="Content\lcps-aux.css" />
     <Content Include="Content\lcps-theme.css" />
@@ -318,6 +356,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Icon.png" />
+    <Content Include="Scripts\addons\jquery.mmenu.counters.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.counters.min.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.dragopen.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.dragopen.min.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.header.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.header.min.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.labels.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.labels.min.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.searchfield.js" />
+    <Content Include="Scripts\addons\jquery.mmenu.searchfield.min.js" />
     <Content Include="Scripts\bootstrap-toggle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -339,11 +387,28 @@
     <Content Include="Areas\LcpsLdap\Views\web.config" />
     <Content Include="Areas\LcpsLdap\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapTemplate\Filters.cshtml" />
-    <Content Include="Areas\Filters\Views\_MemberFilterDetail.cshtml" />
+    <Content Include="Areas\Filters\Views\_MemberFilterDetail_org.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapTemplate\_LdapTemplateLayout.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Index.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Create.cshtml" />
     <Content Include="Areas\Filters\Views\_StaffFilterClause.cshtml" />
+    <Content Include="Areas\My\Views\web.config" />
+    <Content Include="Areas\My\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\My\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\Index_org.cshtml" />
+    <Content Include="Areas\Filters\Views\_MemberFilterModal.cshtml" />
+    <Content Include="Areas\Filters\Views\_MemberFilterList.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\CreateFilter.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\_FilterList.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\_EditFilter.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\_StaffFilter.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\Index.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\EditStaffFilter.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\_StaffList.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\StaffList.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\_StaffClauseList.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\EditStudentFilter.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\_StudentClause.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -351,6 +416,9 @@
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery.bonnet.ajax-dropdownlist.js" />
     <Content Include="Scripts\jquery.bonnet.ajax-dropdownlist.min.js" />
+    <Content Include="Scripts\jquery.mmenu.js" />
+    <Content Include="Scripts\jquery.mmenu.min.all.js" />
+    <Content Include="Scripts\jquery.mmenu.min.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
@@ -464,10 +532,13 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\ddl.cshtml" />
+    <Content Include="Views\Shared\_ExceptionModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Filters\Controllers\" />
+    <Folder Include="Areas\Filters\Models\" />
+    <Folder Include="Areas\Filters\Views\StudentFilter\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
@@ -532,6 +603,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507161947229_LdapTemplates010.resx">
       <DependentUpon>201507161947229_LdapTemplates010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507171405184_Filters004.resx">
+      <DependentUpon>201507171405184_Filters004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507190102551_Filter004.resx">
+      <DependentUpon>201507190102551_Filter004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507190223317_Filter005.resx">
+      <DependentUpon>201507190223317_Filter005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507190304099_Filter006.resx">
+      <DependentUpon>201507190304099_Filter006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507192143307_Filter0041.resx">
+      <DependentUpon>201507192143307_Filter0041.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,8 +17,10 @@ namespace LCPS.v2015.v001.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext db = new WebUI.Infrastructure.LcpsDbContext();
-            //db.Seed();
+            
+
+            LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext db = new WebUI.Infrastructure.LcpsDbContext();
+            db.SeedSql();
         }
     }
 }

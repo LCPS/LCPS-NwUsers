@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-
+using Anvil.v2015.v001.Domain.Exceptions;
+using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
 using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
 using LCPS.v2015.v001.WebUI.Infrastructure;
 using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
@@ -58,7 +59,17 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Controllers
         // GET: /LcpsLdap/LdapOuTemplate/
         public ActionResult Create()
         {
-            return View(Model);
+            try 
+            {
+                OUTemplateViewModel m = Model;
+                LcpsAdsContainer c = m.OuTree.Domain;
+                return View(Model);
+            }
+            catch(Exception ex)
+            {
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Error loading create page", "LcpsLdap", "LdapOuTemplate", "Index");
+                return View("~/Views/Shared/Error.cshtml", em);
+            }
         }
 
         [HttpPost]
@@ -66,6 +77,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Controllers
         {
             if (model.OUTemplate.OUId.Equals(Guid.Empty))
                 ModelState.AddModelError(null, "Please select a valid OU");
+
+
 
             if(ModelState.IsValid)
             {

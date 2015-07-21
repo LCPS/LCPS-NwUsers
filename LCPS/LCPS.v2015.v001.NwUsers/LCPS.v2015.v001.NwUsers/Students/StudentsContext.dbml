@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NWUsers.Lcps.v2015.v004" EntityNamespace="LCPS.v2015.v001.NwUsers.Students" ContextNamespace="LCPS.v2015.v001.NwUsers.Students" Class="StudentsContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Security=False;User ID=Sa" SettingsObjectName="LCPS.v2015.v001.NwUsers.Properties.Settings" SettingsPropertyName="NWUsers_Lcps_v2015_v004ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="Students.StudentRecord" Member="StudentRecords">
+    <Type Name="StudentRecord">
+      <Column Name="StudentKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="MiddleInitial" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Member="GenderVal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Birthdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StudentId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InstructionalLevelKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="InstructionalLevelId" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="InstructionalLevelName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Status" Member="StatusVal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SchoolYear" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

@@ -13,7 +13,7 @@ namespace LCPS.v2015.v001.NwUsers.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -29,6 +29,28 @@ namespace LCPS.v2015.v001.NwUsers.Properties {
         public string _connectionString {
             get {
                 return ((string)(this["_connectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Secur" +
+            "ity=False;User ID=Sa")]
+        public string NWUsers_Lcps_v2015_v004ConnectionString {
+            get {
+                return ((string)(this["NWUsers_Lcps_v2015_v004ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Secur" +
+            "ity=False;User ID=Sa;Password=Sql-pw1")]
+        public string NWUsers_Lcps_v2015_v004ConnectionString1 {
+            get {
+                return ((string)(this["NWUsers_Lcps_v2015_v004ConnectionString1"]));
             }
         }
     }

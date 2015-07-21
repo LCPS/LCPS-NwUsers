@@ -1,0 +1,400 @@
+﻿@using LCPS.v2015.v001.NwUsers.Infrastructure;
+@using LCPS.v2015.v001.NwUsers.Filters;
+@using LCPS.v2015.v001.WebUI.Areas.My.Models;
+
+@model StaffFilterClauseModel
+
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+<script>
+    $(window).load(function () {
+        var cb = document.getElementsByClassName('cb');
+
+
+        for (i = 0; i < cb.length; i++) {
+
+            f = cb[i].id.replace('Include', '');
+
+            var checked = cb[i].checked
+
+            op = document.getElementById(f + 'Operator');
+
+            op.disabled = (!checked);
+
+            v = document.getElementById(f + 'Value');
+            v.disabled = (!checked);
+
+            con = document.getElementById(f + 'Conjunction');
+
+            if (con != null)
+                con.disabled = (!checked);
+        }
+
+        GetEmployeeTypes();
+        GetJobTitles();
+    });
+
+    $(function () {
+        $("#BuildingInclude").bootstrapToggle({
+            size: 'small',
+            on: 'Building On',
+            off: 'Building Off',
+            onstyle: 'success',
+            offstyle: 'danger'
+        });
+
+        $("#EmployeeTypeInclude").bootstrapToggle({
+            size: 'small',
+            on: 'Type On',
+            off: 'Type Off',
+            onstyle: 'success',
+            offstyle: 'danger'
+
+        });
+
+        $("#JobTitleInclude").bootstrapToggle({
+            size: 'small',
+            on: 'Title On',
+            off: 'Title Off',
+            onstyle: 'success',
+            offstyle: 'danger'
+
+        });
+
+        $("#StatusInclude").bootstrapToggle({
+            size: 'small',
+            on: 'Status On',
+            off: 'Status Off',
+            onstyle: 'success',
+            offstyle: 'danger'
+
+        });
+
+        $("#StaffIdInclude").bootstrapToggle({
+            size: 'small',
+            on: 'ID On',
+            off: 'ID Off',
+            onstyle: 'success',
+            offstyle: 'danger'
+
+        });
+
+        $("#LastNameInclude").bootstrapToggle({
+            size: 'small',
+            on: 'Name On',
+            off: 'Name Off',
+            onstyle: 'success',
+            offstyle: 'danger'
+
+        });
+
+        $('.cb').bootstrapToggle({
+            onstyle: 'success',
+            offstyle: 'danger',
+            size: 'mini'
+        });
+    })
+
+    $(function () {
+        $('.cb').change(function () {
+
+
+            GetEmployeeTypes();
+            GetJobTitles();
+            enableConjunctions();
+
+            cbId = $(this).prop('id');
+
+            f = cbId.replace('Include', '');
+
+            op = document.getElementById(f + 'Operator');
+            op.disabled = (!$(this).prop('checked'));
+
+            v = document.getElementById(f + 'Value');
+            v.disabled = (!$(this).prop('checked'));
+
+            con = document.getElementById(f + 'Conjunction');
+            con.disabled = (!$(this).prop('checked'));
+
+        });
+    });
+
+
+    $(function () {
+        $("#BuildingValue").change(function () {
+            GetEmployeeTypes();
+            GetJobTitles();
+        });
+    });
+
+    $(function () {
+        $("#EmployeeTypeValue").change(function () {
+            GetJobTitles();
+        });
+    });
+
+
+    function GetEmployeeTypes() {
+
+        bddl = document.getElementById("BuildingValue");
+        bcb = document.getElementById("BuildingInclude");
+        bchk = $('#BuildingInclude').prop('checked');
+
+        etdl = $('#EmployeeTypeValue');
+
+        etcb = $('#EmployeeTypeInclude');
+
+        etcn = $('#EmployeeTypeConjunction');
+
+        var bid = null;
+
+        if (bchk)
+            bid = $("#BuildingValue").val();
+
+
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: "/My/Contacts/GetEmployeeTypes",
+            data: { "buildingId": bid },
+            success: function (data) {
+                etdl.html('');
+                $.each(data, function (id, option) {
+                    etdl.append($('<option></option>').val(option.id).html(option.name));
+                });
+                statesProgress.hide();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('Failed to retrieve levels.');
+                statesProgress.hide();
+            }
+        });
+
+        GetJobTitles();
+    }
+
+    function GetJobTitles() {
+        var bid = null;
+        var bchk = $('#BuildingInclude').prop('checked');
+        if (bchk)
+            bid = $("#BuildingValue").val();
+
+        var eid = null;
+        var echk = $('#EmployeeTypeInclude').prop('checked');
+        if (echk)
+            eid = $("#EmployeeTypeValue").val();
+
+
+        var jtdl = $("#JobTitleValue");
+
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: "/My/Contacts/GetJobTitles",
+            data: { "buildingId": bid, "employeeTypeId": eid },
+            success: function (data) {
+                jtdl.html('');
+                $.each(data, function (id, option) {
+                    jtdl.append($('<option></option>').val(option.id).html(option.name));
+                });
+                statesProgress.hide();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('Failed to retrieve levels.');
+                statesProgress.hide();
+            }
+        });
+
+    }
+
+    function enableConjunctions() {
+        var bchk = $('#BuildingInclude').prop('checked');
+        var echk = $('#EmployeeTypeInclude').prop('checked');
+        var jchk = $('#JobTitleInclude').prop('checked');
+        var schk = $('#StatusInclude').prop('checked');
+        var ichk = $('#StaffIdInclude').prop('checked');
+        var nchk = $('#LastNameInclude').prop('checked');
+
+        var ecnj = $('#ETConj');
+        var jcnj = $('#JTConj');
+        var scnj = $('#STConj');
+        var icnj = $('#IDConj');
+        var ncnj = $('#NMConj');
+
+        var c = new Array();
+
+        var a = new Array(ecnj, jcnj, scnj, icnj, ncnj);
+
+        if (bchk) {
+            c.push(ecnj);
+            c.push(jcnj);
+            c.push(scnj);
+            c.push(icnj);
+            c.push(ncnj);
+        }
+
+        if (bchk | echk) {
+            var j = jQuery.inArray(jcnj, c);
+
+            if (j = -1)
+                c.push(jcnj);
+        }
+
+        if (bchk | echk | jchk) {
+            var s = jQuery.inArray(scnj, c);
+
+            if (s = -1)
+                c.push(scnj);
+        }
+
+        if (bchk | echk | jchk | schk) {
+            var i = jQuery.inArray(icnj, c);
+
+            if (i = -1)
+                c.push(icnj);
+        }
+
+        if (bchk | echk | jchk | schk | ichk) {
+            var n = jQuery.inArray(ncnj, c);
+
+            if (n = -1)
+                c.push(ncnj);
+        }
+
+
+
+        for (i = 0; i < a.length; i++) {
+            cntrl = a[i];
+
+            var x = jQuery.inArray(cntrl, c);
+            var b = (x != -1);
+
+            if (b)
+                cntrl.show('slow');
+            else
+                cntrl.hide('slow');
+        }
+    }
+</script>
+
+@using (Html.BeginForm("AddStaffClause", "Contacts", new { area = "My" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.FilterId)
+    @Html.HiddenFor(model => model.StaffFilterClauseId)
+
+    <div class="form-horizontal">
+        <div class="text-danger">
+            @Html.ValidationSummary(false)
+        </div>
+
+        @{
+    LcpsDbContext db = new LcpsDbContext();
+    int count = db.StaffFilterClauses.Where(x => x.FilterId.Equals(Model.FilterId)).Count();
+    if (count > 0)
+    {
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+
+                @Html.EnumDropDownListFor(model => model.ClauseConjunction, new { @class = "@form-control input-sm" })
+            </div>
+        </div>
+    }
+        }
+
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.BuildingInclude, new { @class = "cb" })
+            </div>
+
+            <div class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.BuildingValue, Model.GetBuildingList(), new { @class = "form-control input-sm" })
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.EmployeeTypeInclude, new { @class = "cb" })
+            </div>
+            <div id="ETConj" style="display: none;" class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.EmployeeTypeConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.EmployeeTypeOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.EmployeeTypeValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.JobTitleInclude, new { @class = "cb" })
+            </div>
+            <div id="JTConj" style="display: none;" class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.JobTitleConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.JobTitleOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.JobTitleValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.StatusInclude, new { @class = "cb" })
+            </div>
+            <div id="STConj" style="display: none;" class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.StatusOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-4">
+                @Html.EnumDropDownListFor(model => model.StatusValue, new { @class = "form-control input-sm" })
+            </div>
+        </div>
+
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.StaffIdInclude, new { @class = "cb" })
+            </div>
+            <div id="IDConj" style="display: none;" class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.StaffIdConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.StaffIdOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.StaffIdValue, new { @class = "form-control input-sm" })
+            </div>
+        </div>
+
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.LastNameInclude, new { @class = "cb" })
+            </div>
+            <div id="NMConj" style="display: none;" class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.LastNameConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-2">
+                @Html.EnumDropDownListFor(model => model.LastNameOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.LastNameValue, new { @class = "form-control input-sm" })
+            </div>
+        </div>
+
+        <div class="form-group form-group-sm">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Add Filter" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
