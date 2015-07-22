@@ -40,12 +40,22 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Models
         public StudentFilterClauseModel GetDefaultStudentClause()
         {
             StudentFilterClauseModel m = new StudentFilterClauseModel(DynamicStudentClause.GetDefaultStudentClause(FilterId));
+            m.FormArea = "My";
+            m.FormController = "Contacts";
+            m.FormAction = "AddStudentClause";
+            m.SubmitText = "Add Clause";
+
             return m;
         }
 
         public StaffFilterClauseModel GetDefaultStaffClause()
         {
             StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefault(FilterId));
+
+            m.FormArea = "My";
+            m.FormController = "Contacts";
+            m.FormAction = "AddStaffClause";
+            m.SubmitText = "Add Clause";
 
             return m;
         }

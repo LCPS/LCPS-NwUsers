@@ -131,6 +131,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
             MemberFilter f = DbContext.MemberFilters.Find(id);
 
             MemberFilterModel m = new MemberFilterModel(f);
+            
 
             return View(m);
         }
@@ -148,7 +149,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
                 }
                 catch (Exception ex)
                 {
-                    AnvilExceptionModel em = new AnvilExceptionModel(ex, "Edit Staff Filter", "My", "Contacts", "Index");
+                    AnvilExceptionModel em = new AnvilExceptionModel(ex, "Edit Filter", "My", "Contacts", "Index");
                     return View("Error", em);
                 }
             }
@@ -286,10 +287,10 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
                 fm.Exception = em;
 
-                return View("EditStaffFilter", fm);
+                return View("EditFilter", fm);
             }
 
-            return RedirectToAction("EditStaffFilter", new { id = m.FilterId });
+            return RedirectToAction("EditFilter", new { id = m.FilterId });
 
         }
 
@@ -319,7 +320,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
             }
 
 
-            return RedirectToAction("EditStaffFilter", new { id = fid });
+            return RedirectToAction("EditFilter", new { id = fid });
         }
 
         #endregion
@@ -327,7 +328,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
         #region Students
 
 
-        public ActionResult CreateStudentClause(StudentFilterClauseModel m)
+        public ActionResult AddStudentClause(StudentFilterClauseModel m)
         {
             try
             {
@@ -335,7 +336,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
                 f.CreateClause(m.ToFilterClause());
                 f.Refresh();
 
-                return RedirectToAction("EditStudentFilter", new { id = m.FilterId });
+                return RedirectToAction("StudentFilter", new { id = m.FilterId });
             }
             catch (Exception ex)
             {
@@ -353,7 +354,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
                 Guid fid = c.FilterId;
                 DbContext.StudentFilterClauses.Remove(c);
                 DbContext.SaveChanges();
-                return RedirectToAction("EditStudentFilter", new { id = fid });
+                return RedirectToAction("EditFilter", new { id = fid });
             }
             catch (Exception ex)
             {

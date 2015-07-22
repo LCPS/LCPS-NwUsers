@@ -269,7 +269,7 @@
         @if (Model.GetClauseCount(Model.FilterId) > 0)
         {
             <div class="form-group form-group-sm">
-                <div class="col-md-2">
+                <div class="col-md-1">
                     @Html.EnumDropDownListFor(model => model.ClauseConjunction, new { @class = "@form-control input-sm" })
                 </div>
             </div>
@@ -280,22 +280,22 @@
             <div class="col-md-2">
                 @Html.LabelFor(model => model.BuildingValue)
             </div>
-                <div class="col-md-2">
-                    @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+                <div class="col-md-1">
+                    @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", style = "width: 90px" })
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     @Html.DropDownListFor(model => model.BuildingValue, DynamicStaffClause.GetBuildings(), new { @class = "form-control input-sm" })
                 </div>
             </div>
         <div class="form-group form-group-sm EmployeeType">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 @Html.LabelFor(model => model.EmployeeTypeValue)
             </div>
-            <div id="ETConj" style="display: none;" class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.EmployeeTypeConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.EmployeeTypeConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
-            <div class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.EmployeeTypeOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.EmployeeTypeOperator, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
             <div class="col-md-4">
                 @Html.DropDownListFor(model => model.EmployeeTypeValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
@@ -303,29 +303,29 @@
         </div>
         <div class="form-group form-group-sm JobTitle">
 
-            <div class="col-md-2">
+            <div class="col-md-1">
                 @Html.LabelFor(model => model.JobTitleValue)
             </div>
-            <div id="JTConj" style="display: none;" class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.JobTitleConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.JobTitleConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
-            <div class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.JobTitleOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.JobTitleOperator, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
             <div class="col-md-4">
                 @Html.DropDownListFor(model => model.JobTitleValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
             </div>
         </div>
         <div class="form-group form-group-sm Status">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 @Html.LabelFor(model => model.StatusValue)
             </div>
 
-            <div id="STConj" style="display: none;" class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
-            <div class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.StatusOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StatusOperator, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
             <div class="col-md-4">
                 @Html.EnumDropDownListFor(model => model.StatusValue, new { @class = "form-control input-sm" })
@@ -333,15 +333,15 @@
         </div>
 
         <div class="form-group form-group-sm StaffId">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 @Html.LabelFor(model => model.StaffIdValue)
             </div>
 
-            <div id="IDConj" style="display: none;" class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.StaffIdConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StaffIdConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
-            <div class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.StaffIdOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.StaffIdOperator, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
             <div class="col-md-4">
                 @Html.TextBoxFor(model => model.StaffIdValue, new { @class = "form-control input-sm" })
@@ -349,14 +349,14 @@
         </div>
 
         <div class="form-group form-group-sm LastName">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 @Html.LabelFor(model => model.LastNameValue)
             </div>
-            <div id="NMConj" style="display: none;" class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.LastNameConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.LastNameConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
-            <div class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.LastNameOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.LastNameOperator, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
             <div class="col-md-4">
                 @Html.TextBoxFor(model => model.LastNameValue, new { @class = "form-control input-sm" })
@@ -364,7 +364,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <div class="col-md-offset-2">
+            <div class="col-md-offset-1">
                 <input type="submit" value="@Model.SubmitText" class="btn btn-success" />
             </div>
         </div>

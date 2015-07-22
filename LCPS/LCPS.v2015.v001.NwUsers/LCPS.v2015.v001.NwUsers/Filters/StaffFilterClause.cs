@@ -43,37 +43,44 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         public bool BuildingInclude { get; set; }
         public DynamicQueryConjunctions BuildingConjunction { get; set; }
         public DynamicQueryOperators BuildingOperator { get; set; }
+
         [Display(Name = "Building")]
         public Guid BuildingValue { get; set; }
 
         public bool EmployeeTypeInclude { get; set; }
         public DynamicQueryConjunctions EmployeeTypeConjunction { get; set; }
         public DynamicQueryOperators EmployeeTypeOperator { get; set; }
+        [Display(Name = "Type")]
         public Guid EmployeeTypeValue { get; set; }
 
         public bool JobTitleInclude { get; set; }
         public DynamicQueryConjunctions JobTitleConjunction { get; set; }
         public DynamicQueryOperators JobTitleOperator { get; set; }
+        [Display(Name = "Title")]
         public Guid JobTitleValue { get; set; }
 
         public bool StatusInclude { get; set; }
         public DynamicQueryConjunctions StatusConjunction { get; set; }
         public DynamicQueryOperators StatusOperator { get; set; }
+        [Display(Name = "Status")]
         public HRStaffPositionQualifier StatusValue { get; set; }
 
         public bool LastNameInclude { get; set; }
         public DynamicQueryConjunctions LastNameConjunction { get; set; }
         public DynamicQueryOperators LastNameOperator { get; set; }
+        [Display(Name = "Surname")]
         public string LastNameValue { get; set; }
 
         public bool StaffIdInclude { get; set; }
         public DynamicQueryConjunctions StaffIdConjunction { get; set; }
         public DynamicQueryOperators StaffIdOperator { get; set; }
+        [Display(Name = "ID")]
         public string StaffIdValue { get; set; }
 
         public bool FiscalYearInclude { get; set; }
         public DynamicQueryConjunctions FiscalYearConjunction { get; set; }
         public DynamicQueryOperators FiscalYearOperator { get; set; }
+        [Display(Name = "Year")]
         public string FiscalYearValue { get; set; }
 
     }

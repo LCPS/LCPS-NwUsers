@@ -21,8 +21,6 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
     {
         #region Fields
 
-
-
         private List<string> _elements = new List<string>();
 
         private List<object> _parms = new List<object>();
@@ -92,7 +90,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
                 Value = value
             };
 
-            _list.Add(f);
+            Add(f);
         }
 
         #endregion
@@ -149,9 +147,6 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         public void Add(DynamicQueryClauseField item)
         {
-
-            AddElement(item.Conjunction, item.FieldName, item.Operator, item.Value);
-
             _list.Add(item);
         }
 

@@ -38,6 +38,22 @@
 }
 
 
+@if (User.IsInRole("APP-Admins") | User.IsInRole("HR-Managers"))
+{
+    @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
+{
+    Area = "LcpsLdap",
+    Controller = "LdapDashboard",
+    Action = "Index",
+    CssClass = "fa fa-sitemap",
+    Text = "LDAP Network"
+})
+
+}
+
+
+
+
 @if (User.Identity.IsAuthenticated)
 {
     @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
@@ -45,7 +61,7 @@
     Area = "My",
     Controller = "Profile",
     Action = "Index",
-    CssClass = "fa fa-smile-o",
+    CssClass = "fa fa-bell-o",
     Text = "My LCPS"
 })
 

@@ -13,8 +13,8 @@
     @foreach (IDynamicQueryClause c in Model)
     {
         <tr>
-            <td>@c. ()</td>
-            <th><a href="@Url.Action("DeleteStaffClause", "Contacts", new { area = "My", id = c.ClauseId })" onclick="return confirm('Are you sure you want to delete this clause?');"><i class="fa fa-remove"></i> &nbsp; Delete </a></th>
+            <td>@c.ToFriendlyString()</td>
+            <th style="white-space:nowrap;"><a href="@Url.Action("DeleteStaffClause", "Contacts", new { area = "My", id = c.ClauseId })" onclick="return confirm('Are you sure you want to delete this clause?');"><i class="fa fa-remove"></i> &nbsp; Delete </a></th>
         </tr>
     }
 </table>

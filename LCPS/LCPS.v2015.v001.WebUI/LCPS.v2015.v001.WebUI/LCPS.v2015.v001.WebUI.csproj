@@ -186,10 +186,12 @@
     <Compile Include="Areas\Import\ImportAreaRegistration.cs" />
     <Compile Include="Areas\Import\Models\ImportPreviewModel.cs" />
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapDashboardController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapOuTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\LcpsLdapAreaRegistration.cs" />
     <Compile Include="Areas\LcpsLdap\Models\OUTemplateViewModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\OuTreeModel.cs" />
     <Compile Include="Areas\My\Controllers\ContactsController.cs" />
     <Compile Include="Areas\My\Controllers\ProfileController.cs" />
     <Compile Include="Areas\My\Models\FilterPreviewModel.cs" />
@@ -415,6 +417,8 @@
     <Content Include="Areas\HumanResources\Views\Shared\_staffFilterClauseList.cshtml" />
     <Content Include="Areas\My\Views\Contacts\Preview.cshtml" />
     <Content Include="Areas\Students\Views\Shared\_studentList.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapDashboard\Index.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\Shared\_OuTree.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
