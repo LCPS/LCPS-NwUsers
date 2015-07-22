@@ -13,15 +13,15 @@ using LCPS.v2015.v001.NwUsers.Filters;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Models
 {
-    public class StudentClauseFilterModel : StudentFilterClause, IAnvilFormHandler
+    public class StudentFilterClauseModel : StudentFilterClause, IAnvilFormHandler
     {
         #region Constructors
 
-        public StudentClauseFilterModel()
+        public StudentFilterClauseModel()
         {
         }
 
-        public StudentClauseFilterModel(StudentFilterClause c)
+        public StudentFilterClauseModel(StudentFilterClause c)
         {
             AnvilEntity e = new AnvilEntity(c);
             e.CopyTo(this);
