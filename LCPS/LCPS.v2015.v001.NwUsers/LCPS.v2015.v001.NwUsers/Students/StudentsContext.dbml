@@ -14,7 +14,7 @@
       <Column Name="InstructionalLevelName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
       <Column Name="BuildingKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="BuildingId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Member="BuildingName" Storage="_Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
       <Column Name="Status" Member="StatusVal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SchoolYear" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />

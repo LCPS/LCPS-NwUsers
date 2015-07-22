@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Anvil.v2015.v001.Domain.Entities;
+using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
 using Anvil.v2015.v001.Domain.Html;
 using LCPS.v2015.v001.NwUsers.Students;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
@@ -36,6 +37,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Models
         public string SubmitText { get; set; }
         public string OnErrorActionName { get; set; }
 
+
+
         #endregion
 
         #region Conversions
@@ -46,6 +49,19 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Models
             StudentFilterClause c = new StudentFilterClause();
             e.CopyTo(c);
             return c;
+        }
+
+        public int GetClauseCount(Guid filterId)
+        {
+            LcpsDbContext db = new LcpsDbContext();
+            List<StudentFilterClause> cc = db.StudentFilterClauses
+                .Where(x => x.FilterId.Equals(filterId))
+                .OrderBy(x => x.SortIndex)
+                .ToList();
+
+            int count = cc.Count();
+
+            return count;
         }
 
         #endregion

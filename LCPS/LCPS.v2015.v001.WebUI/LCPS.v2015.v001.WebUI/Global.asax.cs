@@ -20,7 +20,8 @@ namespace LCPS.v2015.v001.WebUI
             
 
             LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext db = new WebUI.Infrastructure.LcpsDbContext();
-            db.SeedSql();
+            LCPS.v2015.v001.NwUsers.Properties.Settings.Default.ConnectionString = db.Database.Connection.ConnectionString;
+            
         }
     }
 }

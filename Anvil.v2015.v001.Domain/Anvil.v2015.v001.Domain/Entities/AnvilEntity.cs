@@ -12,6 +12,7 @@ namespace Anvil.v2015.v001.Domain.Entities
         #region Fields
 
         private Object _source;
+        private List<String> _ignoreFields = new List<string>();
 
         #endregion
 
@@ -30,7 +31,10 @@ namespace Anvil.v2015.v001.Domain.Entities
         #region Properties
 
         public String[] Fields { get; set; }
-        public String[] IgnoreFields { get; set; }
+        public List<string> IgnoreFields
+        {
+            get { return _ignoreFields;  }
+        }
 
         #endregion
 
@@ -38,8 +42,6 @@ namespace Anvil.v2015.v001.Domain.Entities
 
         public Object CopyTo(Object target)
         {
-            if (IgnoreFields == null) { IgnoreFields = new String[] { }; }
-
             if (Fields == null)
             {
                 List<String> names = new List<String>();
@@ -70,12 +72,18 @@ namespace Anvil.v2015.v001.Domain.Entities
                                    x.CanRead & x.CanWrite
                                    select x).SingleOrDefault();
 
-                
 
                 if ((tp != null) & (sp != null))
                 {
+                    try
+                    {
                         object src = sp.GetValue(_source, null);
                         tp.SetValue(target, src, null);
+                    }
+                    catch(Exception ex)
+                    {
+                        throw new Exception(string.Format("Error copying property {0}", tp.Name), ex);
+                    }
                 }
             }
 
@@ -90,8 +98,6 @@ namespace Anvil.v2015.v001.Domain.Entities
         public string[] Compare(object target)
         {
             List<string> different = new List<string>();
-
-            if (IgnoreFields == null) { IgnoreFields = new String[] { }; }
 
             if (Fields == null)
             {

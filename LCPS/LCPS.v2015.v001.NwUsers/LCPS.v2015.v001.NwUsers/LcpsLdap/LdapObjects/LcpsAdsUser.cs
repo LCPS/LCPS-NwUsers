@@ -34,7 +34,6 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 
         #region Fields
 
-        private ApplicationBase _defaultApp;
 
         private string _userName;
         private string _employeeId;
@@ -92,16 +91,6 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 
         #region Properties
 
-        public ApplicationBase DefaultApp
-        {
-            get
-            {
-                if (_defaultApp == null)
-                    _defaultApp = LcpsDbContext.DefaultApp;
-
-                return _defaultApp;
-            }
-        }
 
         public String UserName
         {

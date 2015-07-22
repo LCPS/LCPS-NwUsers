@@ -321,6 +321,39 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
         #region Students
 
+        public ActionResult StudentList(Guid id, int? page, int? pageSize)
+        {
+            try
+            {
+                DynamicStudentFilter f = new DynamicStudentFilter(id);
+
+                MemberFilter mf = DbContext.MemberFilters.Find(id);
+
+                ViewBag.FilterTitle = mf.Title;
+
+                f.Refresh();
+                List<StudentRecord> ss = f.Execute();
+
+                ViewBag.Total = ss.Count().ToString();
+
+                if (page == null)
+                    page = 1;
+
+                if (pageSize == null)
+                    pageSize = 12;
+
+                PagedList<StudentRecord> pl = new PagedList<StudentRecord>(ss, page.Value, pageSize.Value);
+
+                return View(pl);
+            }
+            catch(Exception ex)
+            {
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Create Student Clause", "Index", "Contacts", "Index");
+
+                return View("Error", em);
+            }
+        }
+
         public ActionResult EditStudentFilter(Guid id)
         {
             StudentFilterModel m = new StudentFilterModel(id, "My", "Contacts", "CreateStudentClause", "Add Clause", "Index");
@@ -341,6 +374,51 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
             {
                 AnvilExceptionModel em = new AnvilExceptionModel(ex, "Create Student Clause", m.FormArea, m.FormController, "Index");
 
+                return View("Error", em);
+            }
+        }
+
+        public ActionResult DeleteStudentClause(Guid id)
+        {
+            try
+            {
+                StudentFilterClause c = DbContext.StudentFilterClauses.Find(id);
+                Guid fid = c.FilterId;
+                DbContext.StudentFilterClauses.Remove(c);
+                DbContext.SaveChanges();
+                return RedirectToAction("EditStudentFilter", new { id = fid});
+            }
+            catch (Exception ex)
+            {
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Create Student Clause", "Index" , "Contacts", "Index");
+
+                return View("Error", em);
+            }
+        }
+
+        public ActionResult DeleteStudentFilter(Guid id)
+        {
+            try 
+            {
+                MemberFilter f = DbContext.MemberFilters.Find(id);
+
+                MemberFilterClass fc = f.FilterClass;
+
+                List<StudentFilterClause> cc = DbContext.StudentFilterClauses
+                    .Where(x => x.FilterId.Equals(id))
+                    .ToList();
+
+                DbContext.StudentFilterClauses.RemoveRange(cc);
+                DbContext.SaveChanges();
+
+                DbContext.MemberFilters.Remove(f);
+                DbContext.SaveChanges();
+
+                return RedirectToRoute("Index", new { c = fc });
+            }
+            catch(Exception ex)
+            {
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Delete Student Filter", "My", "Contacts", "Index");
                 return View("Error", em);
             }
         }

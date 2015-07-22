@@ -24,12 +24,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
 
         private List<string> _elements = new List<string>();
-        
+
         private List<object> _parms = new List<object>();
 
         private List<DynamicQueryClauseField> _list = new List<DynamicQueryClauseField>();
 
-        private DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
+        private DynamicQueryOperatorLibrary _lib = new DynamicQueryOperatorLibrary();
 
         #endregion
 
@@ -50,35 +50,49 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             get { return _elements; }
         }
 
+        public DynamicQueryOperatorLibrary OperatorLibrary
+        {
+            get { return _lib; }
+        }
+
         public DynamicQueryConjunctions ClauseConjunction { get; set; }
 
         #endregion
 
         #region Elements
 
-        public void AddElement(DynamicQueryConjunctions conjunction, string fieldName, DynamicQueryOperators op, object value)
+        public virtual void AddElement(DynamicQueryConjunctions conjunction, string fieldName, DynamicQueryOperators op, object value)
         {
             string element = "";
 
-            if(Parms.Count > 0)
-                element = conjunction.ToString() ;
+            if (Parms.Count > 0)
+                element = conjunction.ToString();
 
-            if(op == DynamicQueryOperators.Contains)
+            if (op == DynamicQueryOperators.Contains)
             {
                 element += " " + fieldName + ".Contains(@" + Parms.Count().ToString() + ") ";
             }
             else
             {
-                element += " " + fieldName + " " + lib.GetOperator(op) + " @" + Parms.Count().ToString();
+                element += " " + fieldName + " " + OperatorLibrary.GetOperator(op) + " @" + Parms.Count().ToString();
             }
 
             Parms.Add(value);
-            
-            
+
+
 
             Elements.Add(element);
 
-            
+            DynamicQueryClauseField f = new DynamicQueryClauseField()
+            {
+                Include = true,
+                Conjunction = conjunction,
+                FieldName = fieldName,
+                Operator = op,
+                Value = value
+            };
+
+            _list.Add(f);
         }
 
         #endregion
@@ -152,10 +166,18 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         public void Add(DynamicQueryClauseField item)
         {
-            if(item.Include)
-                AddElement(item.Conjunction, item.FieldName, item.Operator, item.Value);
+
+            AddElement(item.Conjunction, item.FieldName, item.Operator, item.Value);
 
             _list.Add(item);
+        }
+
+        public void AddRange(DynamicQueryClauseField[] items)
+        {
+            foreach (DynamicQueryClauseField f in items)
+            {
+                Add(f);
+            }
         }
 
         public void Clear()
@@ -198,7 +220,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             return _list.GetEnumerator();
         }
 
-#endregion
+        #endregion
 
         public override string ToString()
         {
@@ -209,12 +231,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             if (ClauseConjunction != DynamicQueryConjunctions.None)
                 q = ClauseConjunction.ToString() + " (";
 
-            foreach(DynamicQueryClauseField f in _list)
+            foreach (DynamicQueryClauseField f in _list)
             {
                 if (f.Include)
                 {
                     if (_list.IndexOf(f) > 0)
-                        if(f.Conjunction != DynamicQueryConjunctions.None)
+                        if (f.Conjunction != DynamicQueryConjunctions.None)
                             q += f.Conjunction.ToString() + " ";
 
                     string v = f.Value.ToString();
@@ -222,7 +244,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
                     if (f.Operator == DynamicQueryOperators.Contains)
                         q += "[" + f.FieldName + "] Contains \"" + v + "\" ";
                     else
-                        q += "[" + f.FieldName + "] " + lib.GetOperator(f.Operator) + " \"" + v + " \" ";
+                        q += "[" + f.FieldName + "] " + OperatorLibrary.GetOperator(f.Operator) + " \"" + v + " \" ";
                 }
             }
 
@@ -231,7 +253,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         public DynamicQueryStatement ToDynamicQueryStatement()
         {
-                        
+
 
             foreach (DynamicQueryClauseField f in _list)
             {
@@ -243,7 +265,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
                 if (f.Operator == DynamicQueryOperators.Contains)
                     q += f.FieldName + ".Contains(@" + Parms.Count().ToString() + ")";
                 else
-                    q += f.FieldName + " " + lib.GetOperator(f.Operator) + " @" + Parms.Count().ToString();
+                    q += f.FieldName + " " + OperatorLibrary.GetOperator(f.Operator) + " @" + Parms.Count().ToString();
 
                 Parms.Add(f.Value);
 
@@ -258,7 +280,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
         }
 
 
-        public string ToFriendlyString()
+        public virtual string ToFriendlyString()
         {
             return ToString();
         }

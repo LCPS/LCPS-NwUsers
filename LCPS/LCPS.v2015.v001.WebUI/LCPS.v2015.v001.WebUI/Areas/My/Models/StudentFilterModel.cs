@@ -70,15 +70,16 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Models
                 if (_studentFilter == null)
                 {
                     _studentFilter = new DynamicStudentFilter(FilterId);
+                    _studentFilter.Refresh();
                 }
                 return _studentFilter;
             }
         }
 
-        public StudentClauseFilterModel GetClauseModel(Guid clauseId)
+        public StudentClauseFilterModel GetClauseModel(Guid filterId)
         {
             if (_clauseModel == null)
-                _clauseModel = new StudentClauseFilterModel(DynamicStudentClause.GetDefaultStudentClause(clauseId));
+                _clauseModel = new StudentClauseFilterModel(DynamicStudentClause.GetDefaultStudentClause(filterId));
 
             _clauseModel.FormArea = this.FormArea;
             _clauseModel.FormController = this.FormController;

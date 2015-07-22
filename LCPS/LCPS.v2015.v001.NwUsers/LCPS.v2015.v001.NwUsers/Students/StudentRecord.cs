@@ -21,8 +21,11 @@ using LCPS.v2015.v001.NwUsers.Infrastructure;
 
 #endregion
 
+using System.ComponentModel.DataAnnotations;
+
 namespace LCPS.v2015.v001.NwUsers.Students
 {
+    [MetadataType(typeof(StudentMetaData))]
     partial class StudentRecord
     {
 
@@ -36,6 +39,11 @@ namespace LCPS.v2015.v001.NwUsers.Students
         {
             get { return (StudentEnrollmentStatus)this.StatusVal; }
             set { this.StatusVal = Convert.ToInt32(value); }
+        }
+
+        public string SortName
+        {
+            get { return LastName + ", " + FirstName; }
         }
 
 
@@ -55,6 +63,26 @@ namespace LCPS.v2015.v001.NwUsers.Students
             }
         }
 
+
+    }
+
+    public class StudentMetaData
+    {
+        [Display(Name = "Name")]
+        public string SortName { get; set; }
+
+        [Display(Name = "Birthdate")]
+        [DataType(DataType.Date)]
+        public DateTime Birthdate { get; set; }
+
+        [Display(Name = "Building")]
+        public string BuildingName { get; set; }
+
+        [Display(Name = "Grade / Level")]
+        public string InstructionalLevelName { get; set; }
+
+        [Display(Name = "School Year")]
+        public string SchoolYear { get; set; }
 
     }
 }

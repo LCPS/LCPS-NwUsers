@@ -18,7 +18,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         #region Fields
 
         private LcpsDbContext _dbContext;
-       
+
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             {
                 if (_dbContext == null)
                     _dbContext = new LcpsDbContext();
-                
+
                 return _dbContext;
             }
         }
@@ -56,14 +56,14 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             {
                 List<StudentFilterClause> _clauses = DbContext.StudentFilterClauses
                     .Where(x => x.FilterId.Equals(FilterId))
-                    .OrderBy( x => x.SortIndex)
+                    .OrderBy(x => x.SortIndex)
                     .ToList();
 
-                foreach(StudentFilterClause c in _clauses)
+                foreach (StudentFilterClause c in _clauses)
                 {
                     DynamicStudentClause dsc = new DynamicStudentClause(c);
                     Add(dsc);
-               }
+                }
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         #region Database
 
-        #region Database
+
 
         public void CreateClause(StudentFilterClause c)
         {
@@ -105,10 +105,15 @@ namespace LCPS.v2015.v001.NwUsers.Filters
                 if (c.FilterId == Guid.Empty)
                     c.FilterId = this.FilterId;
 
+                int count = DbContext.StudentFilterClauses.Where(x => x.FilterId.Equals(c.FilterId)).Count();
+
+                c.SortIndex = count;
                 DbContext.StudentFilterClauses.Add(c);
                 DbContext.SaveChanges();
 
-                //AddClause(c);
+
+
+                Add(new DynamicStudentClause(c));
             }
             catch (Exception ex)
             {
@@ -152,11 +157,11 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         public List<StudentRecord> Execute()
         {
+            DynamicQueryStatement dqs = ToDynamicQueryStatement();
+
             try
             {
                 StudentsContext context = new StudentsContext();
-                DynamicQueryStatement dqs = ToDynamicQueryStatement();
-
                 if (Parms.Count() == 0)
                     return context.StudentRecords.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
                 else
@@ -168,12 +173,20 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             }
             catch (Exception ex)
             {
-                throw new Exception("Could not get student records from the database", ex);
+                AnvilExceptionCollector ec = new AnvilExceptionCollector("Could not get student records from the database");
+                ec.Add(ex);
+                ec.Add(dqs.Query);
+                throw ec.ToException();
             }
         }
 
-        #endregion
+        
+
+            
+
 
         #endregion
+
+
     }
 }

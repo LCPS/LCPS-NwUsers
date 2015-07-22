@@ -52,14 +52,19 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         public void Add(IDynamicFilterClause item)
         {
-            AnvilEntity e = new AnvilEntity(item);
             DynamicQueryClause c = new DynamicQueryClause();
+            AnvilEntity e = new AnvilEntity(item);
+            e.IgnoreFields.Add("Item");
             e.CopyTo(c);
+            c.AddRange(item.ToArray());
+
             Add(c);
         }
 
         public void Add(DynamicQueryClause item)
         {
+
+
             _list.Add(item);
         }
 
@@ -153,7 +158,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             return q;
         }
 
-        public DynamicQueryStatement ToDynamicQueryStatement()
+        public virtual DynamicQueryStatement ToDynamicQueryStatement()
         {
 
             foreach (DynamicQueryClause c in _list)

@@ -16,13 +16,13 @@ using LCPS.v2015.v001.NwUsers.HumanResources;
 
 namespace LCPS.v2015.v001.NwUsers.Filters
 {
-    public class DynamicStudentClause : IDynamicFilterClause
+    public class DynamicStudentClause : DynamicQueryClause
     {
         #region Constants
 
         public const string fBuildingKey = "BuildingKey";
         public const string fInstructionalLevelKey = "InstructionalLevelKey";
-        public const string fStatus = "Status";
+        public const string fStatus = "StatusVal";
         public const string fLastName = "LastName";
         public const string fStudentId = "Studentid";
 
@@ -30,10 +30,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         #region Fields
 
-        private DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
-        private List<DynamicQueryClauseField> _fields = new List<DynamicQueryClauseField>();
-        private List<object> _parms = new List<object>();
-        private List<string> _elements = new List<string>();
         private LcpsDbContext _dbContext = new LcpsDbContext();
 
         #endregion
@@ -56,8 +52,8 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         public void FromStudentClause(StudentFilterClause c)
         {
-            ClauseConjunction = c.ClauseConjunction;
-            ClauseId = c.StudentFilterClauseId;
+            base.ClauseConjunction = c.ClauseConjunction;
+            base.ClauseId = c.StudentFilterClauseId;
 
             if (c.BuildingInclude)
                 AddElement(c.BuildingConjunction, fBuildingKey, c.BuildingOperator, c.BuildingValue);
@@ -66,46 +62,14 @@ namespace LCPS.v2015.v001.NwUsers.Filters
                 AddElement(c.InstructionalLevelConjunction, fInstructionalLevelKey, c.InstructionalLevelOperator, c.InstructionalLevelValue);
 
             if (c.StatusInclude)
-                AddElement(c.StatusConjunction, fStatus, c.StatusOperator, c.StatusValue);
+                AddElement(c.StatusConjunction, fStatus, c.StatusOperator, Convert.ToInt32( c.StatusValue));
 
-            if (c.StudentIdInclude)
+            if (c.NameInclude)
                 AddElement(c.NameConjunction, fLastName, c.NameOperator, c.NameValue);
 
             if (c.StudentIdInclude)
                 AddElement(c.StudentIdConjunction, fStudentId, c.StudentIdOperator, c.StudentIdValue);
         }
-
-        public void AddElement(DynamicQueryConjunctions conjunction, string fieldName, DynamicQueryOperators op, object value)
-        {
-            string element = "";
-
-            if (Parms.Count > 0)
-                element = conjunction.ToString();
-
-            if (op == DynamicQueryOperators.Contains)
-            {
-                element += " " + fieldName + ".Contains(@" + Parms.Count().ToString() + ") ";
-            }
-            else
-            {
-                element += " " + fieldName + " " + lib.GetOperator(op) + " @" + Parms.Count().ToString();
-            }
-
-            Parms.Add(value);
-
-
-
-            Elements.Add(element);
-
-            Add(new DynamicQueryClauseField()
-                {
-                    Conjunction = conjunction,
-                    FieldName = fieldName,
-                    Operator = op,
-                    Value = value
-                });
-        }
-
 
         #endregion
 
@@ -122,23 +86,9 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             }
         }
 
-        public DynamicQueryConjunctions ClauseConjunction { get; set; }
-
-        public Guid FilterId { get; set; }
-
-        public Guid ClauseId { get; set; }
-
-        public List<object> Parms
-        {
-            get { return _parms; }
-        }
-
-        public List<string> Elements
-        {
-            get { return _elements; }
-        }
-
         #endregion
+
+
 
         #region Defaults
 
@@ -158,97 +108,17 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         #endregion
 
-        #region List
-
-        public int IndexOf(DynamicQueryClauseField item)
-        {
-            return _fields.IndexOf(item);
-        }
-
-        public void Insert(int index, DynamicQueryClauseField item)
-        {
-            _fields.Insert(index, item);
-        }
-
-        public void RemoveAt(int index)
-        {
-            _fields.RemoveAt(index);
-        }
-
-        public DynamicQueryClauseField this[int index]
-        {
-            get { return _fields[index]; }
-            set { _fields[index] = value; }
-        }
-
-        public void Add(DynamicQueryClauseField item)
-        {
-            _fields.Add(item);
-        }
-
-        public void Clear()
-        {
-            _fields.Clear();
-        }
-
-        public bool Contains(DynamicQueryClauseField item)
-        {
-            return _fields.Contains(item);
-        }
-
-        public void CopyTo(DynamicQueryClauseField[] array, int arrayIndex)
-        {
-            _fields.CopyTo(array, arrayIndex);
-        }
-
-        public int Count
-        {
-            get { return _fields.Count; }
-        }
-
-        public bool IsReadOnly
-        {
-            get { return _fields.ToArray().IsReadOnly; }
-        }
-
-        public bool Remove(DynamicQueryClauseField item)
-        {
-            return _fields.Remove(item);
-        }
-
-        public IEnumerator<DynamicQueryClauseField> GetEnumerator()
-        {
-            return _fields.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _fields.GetEnumerator();
-        }
-
-        #endregion
-
-
         #region Conversions
 
-        public DynamicQueryStatement ToDynamicQueryStatement()
+        
+
+        public override string ToString()
         {
-            int count = _fields.Where(x => x.Include = true).Count();
-
-            if (count == 0)
-                return null;
-
-            DynamicQueryStatement dq = new DynamicQueryStatement()
-            {
-                Query = "(" + string.Join(" ", _elements.ToArray()) + ")",
-                Parms = _parms.ToArray()
-            };
-
-            return dq;
+            return ToFriendlyString();
         }
 
 
-        public string ToFriendlyString()
+        public override string ToFriendlyString()
         {
             string q = "(";
 
@@ -259,19 +129,27 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             {
                 if (f.Include)
                 {
-
+                    string fn = f.FieldName;
                     string v = f.Value.ToString();
 
                     if (f.FieldName == fBuildingKey)
                     {
                         Guid bk = new Guid(f.Value.ToString());
                         v = DbContext.Buildings.First(x => x.BuildingKey.Equals(bk)).Name;
+                        fn = "Building";
                     }
 
                     if (f.FieldName == fInstructionalLevelKey)
                     {
                         Guid ik = new Guid(f.Value.ToString());
                         v = DbContext.InstructionalLevels.First(x => x.InstructionalLevelKey.Equals(ik)).InstructionalLevelName;
+                        fn = "Grade";
+                    }
+
+                    if(f.FieldName == fStatus)
+                    {
+                        v = System.Enum.Parse(typeof(StudentEnrollmentStatus), f.Value.ToString()).ToString();
+                        fn = "Status";
                     }
 
                     if (IndexOf(f) > 0)
@@ -280,9 +158,9 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
 
                     if (f.Operator == DynamicQueryOperators.Contains)
-                        q += "[" + f.FieldName + "] Contains \"" + v + "\" ";
+                        q += "[" + fn + "] Contains \"" + v + "\" ";
                     else
-                        q += "[" + f.FieldName + "] " + lib.GetOperator(f.Operator) + " \"" + v + " \" ";
+                        q += "[" + fn + "] " + OperatorLibrary.GetOperator(f.Operator) + " \"" + v + " \" ";
                 }
             }
 
@@ -291,8 +169,10 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
 
         #endregion
+        
 
         #region Lists
+
 
         public static List<SelectListItem> GetBuildings()
         {

@@ -33,7 +33,7 @@ namespace LCPS.v2015.v001.NwUsers.Students
     #endregion
 		
 		public StudentsContext() : 
-				base(global::LCPS.v2015.v001.NwUsers.Properties.Settings.Default.NWUsers_Lcps_v2015_v004ConnectionString, mappingSource)
+				base(global::LCPS.v2015.v001.NwUsers.Properties.Settings.Default.ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -303,8 +303,8 @@ namespace LCPS.v2015.v001.NwUsers.Students
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string Name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Name", Storage="_Name", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
+		public string BuildingName
 		{
 			get
 			{

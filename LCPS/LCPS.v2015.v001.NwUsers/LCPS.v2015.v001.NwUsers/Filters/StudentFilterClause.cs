@@ -18,8 +18,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
     [Table("StudentFilterClause", Schema = "Filters")]
     public class StudentFilterClause 
     {
-        private LcpsDbContext _dbContext;
-
         [Key]
         public Guid StudentFilterClauseId { get; set; }
 
