@@ -32,6 +32,12 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
     partial void OnCreated();
     #endregion
 		
+		public HRStaffContext() : 
+				base(global::LCPS.v2015.v001.NwUsers.Properties.Settings.Default._connectionString, mappingSource)
+		{
+			OnCreated();
+		}
+		
 		public HRStaffContext(string connection) : 
 				base(connection, mappingSource)
 		{

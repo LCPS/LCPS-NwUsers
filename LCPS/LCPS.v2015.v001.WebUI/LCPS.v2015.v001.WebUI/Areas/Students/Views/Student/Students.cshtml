@@ -1,9 +1,8 @@
 ﻿@using LCPS.v2015.v001.WebUI.Areas.Students.Models;
-@using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
 @using PagedList;
 @using PagedList.Mvc;
 
-@model StudentViewModel
+@model StudentClauseFilterModel
 
 @{
     ViewBag.Title = "Students";
@@ -13,14 +12,9 @@
 
 <h2>Students</h2>
 
-@Html.Partial("_studentFilterClause", Model.FilterClause)
-
-@Html.PagedListPager(Model.GetStudents(Convert.ToInt16(Request.QueryString["page"]), null), page => Url.Action("Students",
-    new { page }))
-
-<small>
-    <strong>Total: </strong> @Model.StudentCount.ToString()
-</small>
+@Html.Partial("_studentFilterClause", Model)
 
 
-@Html.Partial("_studentList", Model.GetStudents(Convert.ToInt16(Request.QueryString["page"]), 10))
+
+
+<p>Total: @ViewBag.Total</p>

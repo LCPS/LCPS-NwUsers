@@ -2,17 +2,17 @@
 using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
 using Anvil.v2015.v001.Domain.Exceptions;
 using LCPS.v2015.v001.NwUsers.Filters;
-using LCPS.v2015.v001.NwUsers.Students;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
+using LCPS.v2015.v001.NwUsers.Students;
 using LCPS.v2015.v001.WebUI.Areas.My.Models;
+using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
-using PagedList;
 
 namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 {
@@ -126,6 +126,15 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
             return View(m);
         }
 
+        public ActionResult EditFilter(Guid id)
+        {
+            MemberFilter f = DbContext.MemberFilters.Find(id);
+
+            MemberFilterModel m = new MemberFilterModel(f);
+
+            return View(m);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditFilter(MemberFilter f)
@@ -144,70 +153,78 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
                 }
             }
 
-            if (f.FilterClass == MemberFilterClass.Staff)
-                return RedirectToAction("EditStaffFilter", new { id = f.FilterId });
-            else
-                return RedirectToAction("EditStudentFilter", new { id = f.FilterId });
+            return RedirectToAction("EditFilter", new { id = f.FilterId });
         }
 
         #endregion
 
         #region Staff
 
-        public ActionResult DeleteStaffFilter(Guid id)
+        public ActionResult DeleteFilter(Guid id)
         {
             MemberFilter mf = DbContext.MemberFilters.Find(id);
+
+            List<StudentFilterClause> sfc = DbContext.StudentFilterClauses.Where(x => x.FilterId.Equals(id)).ToList();
+
+            List<StaffFilterClause> stf = DbContext.StaffFilterClauses.Where(x => x.FilterId.Equals(id)).ToList();
+
+            DbContext.StaffFilterClauses.RemoveRange(stf);
+            DbContext.SaveChanges();
+
+            DbContext.StudentFilterClauses.RemoveRange(sfc);
+
             DbContext.MemberFilters.Remove(mf);
             DbContext.SaveChanges();
+
+
             return RedirectToAction("Index", new { c = MemberFilterClass.Staff });
         }
 
-        public ActionResult StaffList(Guid id, int? page, int? pageSize)
-        {
-            try
-            {
-                MemberFilter f = DbContext.MemberFilters.Find(id);
-
-                ViewBag.FilterId = id;
-                ViewBag.FilterTitle = f.Title;
-
-                List<StaffFilterClause> cc = DbContext.StaffFilterClauses
-                    .Where(x => x.FilterId.Equals(id))
-                    .OrderBy(x => x.SortIndex)
-                    .ToList();
-
-                if (page == null)
-                    page = 1;
-
-                if (pageSize == null)
-                    pageSize = 12;
-
-                DynamicQueryStatement dqs = f.ToDynamicQueryStatement();
-
-                List<HRStaffRecord> rr = HRStaffRecord.GetList(dqs);
-
-                PagedList<HRStaffRecord> pl = new PagedList<HRStaffRecord>(rr, page.Value, pageSize.Value);
-
-                return View(pl);
-            }
-            catch (Exception ex)
-            {
-                AnvilExceptionModel errM = new AnvilExceptionModel(ex, "Get Staff Filter List", "My", "Contacts", "Index");
-                return View("Error", errM);
-            }
-
-
-
-        }
-
-        public ActionResult EditStaffFilter(Guid id)
+        public ActionResult Preview(Guid id, int? page, int? pageSize)
         {
             MemberFilter f = DbContext.MemberFilters.Find(id);
-            MyContactModel m = this.Model;
-            m.CurrentFilter = f;
-            this.Model = m;
-            return View(new MemberFilterModel(f));
+
+            ViewBag.FilterId = id;
+            ViewBag.FilterTitle = f.Title;
+
+            if (page == null)
+                page = 1;
+
+            if (pageSize == null)
+                pageSize = 12;
+
+
+            FilterPreviewModel m = new FilterPreviewModel();
+
+            m.Filter = f;
+
+            if (f.FilterClass == MemberFilterClass.Staff)
+            {
+
+                DynamicStaffFilter dsf = new DynamicStaffFilter(id);
+                dsf.Refresh();
+                List<HRStaffRecord> rr = dsf.Execute();
+                ViewBag.Total = rr.Count().ToString();
+                PagedList<HRStaffRecord> pl = new PagedList<HRStaffRecord>(rr, page.Value, pageSize.Value);
+
+                m.StaffList = pl;
+            }
+            else
+            {
+
+                DynamicStudentFilter stu = new DynamicStudentFilter(id);
+                stu.Refresh();
+                List<StudentRecord> ss = stu.Execute();
+                ViewBag.Total = ss.Count().ToString();
+                PagedList<StudentRecord> pl = new PagedList<StudentRecord>(ss, page.Value, pageSize.Value);
+
+                m.StudentList = pl;
+
+            }
+
+            return View(m);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -230,20 +247,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
 
             int count = DbContext.StaffFilterClauses.Where(x => x.FilterId.Equals(m.FilterId)).Count();
-            if (count == 0)
-            {
-                DynamicQueryClause dqc = m.ToDynamicQueryClause();
-
-                int idx = dqc.Where(x => x.Conjunction != Anvil.v2015.v001.Domain.Entities.DynamicFilters.DynamicQueryConjunctions.None).Count();
-
-                if (dqc.Count() > 1 & idx == 0)
-                    ModelState.AddModelError("", "At least one item must have a valid conjunction");
-            }
-            else
-            {
-                if (m.ClauseConjunction == DynamicQueryConjunctions.None)
-                    ModelState.AddModelError("", "Please select a clause conjunction");
-            }
 
             bool hasErrors = ViewData.ModelState.Values.Any(x => x.Errors.Count > 1);
             List<ModelState> errors = ViewData.ModelState.Values.Where(x => x.Errors.Count() > 0).ToList();
@@ -297,11 +300,13 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
             DbContext.StaffFilterClauses.Remove(c);
             DbContext.SaveChanges();
 
-            StaffFilterClause cf = DbContext.StaffFilterClauses.Where(x => x.FilterId.Equals(fid)).First();
-            cf.SortIndex = 0;
-            cf.ClauseConjunction = DynamicQueryConjunctions.None;
-            DbContext.Entry(cf).State = System.Data.Entity.EntityState.Modified;
-            DbContext.SaveChanges();
+            StaffFilterClause cf = DbContext.StaffFilterClauses.Where(x => x.FilterId.Equals(fid)).FirstOrDefault();
+            if (cf != null)
+            {
+                cf.SortIndex = 0;
+                DbContext.Entry(cf).State = System.Data.Entity.EntityState.Modified;
+                DbContext.SaveChanges();
+            }
 
             int idx = 1;
             List<StaffFilterClause> cc = DbContext.StaffFilterClauses.Where(x => x.FilterId.Equals(fid) & !x.StaffFilterClauseId.Equals(cf.StaffFilterClauseId)).OrderBy(x => x.SortIndex).ToList();
@@ -321,46 +326,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
         #region Students
 
-        public ActionResult StudentList(Guid id, int? page, int? pageSize)
-        {
-            try
-            {
-                DynamicStudentFilter f = new DynamicStudentFilter(id);
 
-                MemberFilter mf = DbContext.MemberFilters.Find(id);
-
-                ViewBag.FilterTitle = mf.Title;
-
-                f.Refresh();
-                List<StudentRecord> ss = f.Execute();
-
-                ViewBag.Total = ss.Count().ToString();
-
-                if (page == null)
-                    page = 1;
-
-                if (pageSize == null)
-                    pageSize = 12;
-
-                PagedList<StudentRecord> pl = new PagedList<StudentRecord>(ss, page.Value, pageSize.Value);
-
-                return View(pl);
-            }
-            catch(Exception ex)
-            {
-                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Create Student Clause", "Index", "Contacts", "Index");
-
-                return View("Error", em);
-            }
-        }
-
-        public ActionResult EditStudentFilter(Guid id)
-        {
-            StudentFilterModel m = new StudentFilterModel(id, "My", "Contacts", "CreateStudentClause", "Add Clause", "Index");
-            return View(m);
-        }
-
-        public ActionResult CreateStudentClause(StudentClauseFilterModel m)
+        public ActionResult CreateStudentClause(StudentFilterClauseModel m)
         {
             try
             {
@@ -386,11 +353,11 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
                 Guid fid = c.FilterId;
                 DbContext.StudentFilterClauses.Remove(c);
                 DbContext.SaveChanges();
-                return RedirectToAction("EditStudentFilter", new { id = fid});
+                return RedirectToAction("EditStudentFilter", new { id = fid });
             }
             catch (Exception ex)
             {
-                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Create Student Clause", "Index" , "Contacts", "Index");
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Create Student Clause", "Index", "Contacts", "Index");
 
                 return View("Error", em);
             }
@@ -398,7 +365,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
         public ActionResult DeleteStudentFilter(Guid id)
         {
-            try 
+            try
             {
                 MemberFilter f = DbContext.MemberFilters.Find(id);
 
@@ -416,7 +383,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
                 return RedirectToRoute("Index", new { c = fc });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 AnvilExceptionModel em = new AnvilExceptionModel(ex, "Delete Student Filter", "My", "Contacts", "Index");
                 return View("Error", em);

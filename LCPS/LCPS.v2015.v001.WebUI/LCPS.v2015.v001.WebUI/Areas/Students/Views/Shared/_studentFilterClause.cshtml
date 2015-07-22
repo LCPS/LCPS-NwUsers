@@ -3,7 +3,7 @@
 @using LCPS.v2015.v001.WebUI.Infrastructure;
 @using LCPS.v2015.v001.NwUsers.Filters;
 
-@model StudentClauseFilterModel
+@model StudentFilterClauseModel
 
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
@@ -17,8 +17,12 @@
 <script>
 
     $(document).ready(function () {
-        $('[id*="Conjunction"]').hide('slow');
-        $('.dq').hide('slow');
+        //$('[id*="Conjunction"]').hide('slow');
+        //$('.dq').hide('slow');
+
+        setFieldEnableStatus();
+
+        setConjunctionStatus();
     });
 
     $(function () {
@@ -142,6 +146,9 @@
 @using (Html.BeginForm(Model.FormAction, Model.FormController, new { area = Model.FormArea }, FormMethod.Post))
 {
     @Html.HiddenFor(model => model.FilterId)
+    @Html.HiddenFor(model => model.FormArea )
+    @Html.HiddenFor(model => model.FormController)
+    @Html.HiddenFor(model => model.FormAction)
 
     <div class="row">
         <div class="form-inline">

@@ -2,6 +2,7 @@
 
 @using LCPS.v2015.v001.NwUsers.Filters;
 
+
 @model DynamicStudentFilter
 
 <table class="table table-hover table-striped">
@@ -9,11 +10,11 @@
         <th>Clause</th>
         <th></th>
     </tr>
-    @foreach (DynamicStudentClause c in Model)
+    @foreach (IDynamicQueryClause c in Model)
     {
         <tr>
             <td>
-                @c.ToFriendlyString();
+                @c.ToFriendlyString()
             </td>
             <td>
                 <a href="@Url.Action("DeleteStudentClause", "Contacts", new { area = "My", id = c.ClauseId })">Delete</a>

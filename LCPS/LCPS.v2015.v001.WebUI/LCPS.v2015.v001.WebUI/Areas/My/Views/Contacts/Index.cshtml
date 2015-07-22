@@ -8,8 +8,7 @@
 
 
 <style>
-    .cmd
-    {
+    .cmd {
         margin-right: 12px;
     }
 </style>
@@ -19,18 +18,18 @@
 
 <h4>Filters</h4>
 <p>
-    @if(Request.QueryString["c"] == null)
-    { 
-    <div class="dropdown">
-        <button class="btn btn-sm btn-info dropdown-toggle" type="button" data-toggle="dropdown">
-            Create Filter
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Student })">Student Filter</a></li>
-            <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Staff })">Staff Filter</a></li>
-        </ul>
-    </div>
+    @if (Request.QueryString["c"] == null)
+    {
+        <div class="dropdown">
+            <button class="btn btn-sm btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                Create Filter
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Student })">Student Filter</a></li>
+                <li><a href="@Url.Action("CreateFilter", "Contacts", new { area = "my", c = MemberFilterClass.Staff })">Staff Filter</a></li>
+            </ul>
+        </div>
     }
     else
     {
@@ -54,34 +53,14 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
-                <div>
-                    @if (item.FilterClass == MemberFilterClass.Staff)
-                    {
-                        foreach (StaffFilterClause c in StaffFilterClause.GetClause(item.FilterId))
-                        {
-                            <small><span class="text-info">@c.ToString() <br /></span></small>
-                        }
-                    }
-
-                </div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FilterClass)
             </td>
             <td>
-                @if (item.FilterClass == MemberFilterClass.Staff)
-                {
-                    <a href="@Url.Action("StaffList", "Contacts", new { area = "My", id=item.FilterId })" class="cmd"><i class="fa fa-eye"></i></a>
-                    <a href="@Url.Action("EditStaffFilter", "Contacts", new { area = "My", id=item.FilterId })" class="cmd"><i class="fa fa-pencil"></i></a>
-                    <a href="@Url.Action("DeleteStaffFilter", "Contacts", new { area = "My", id=item.FilterId })" class="cmd" onclick="return confirm('Are you sure you want to delete this filter?')"><i class="fa fa-remove"></i></a>
-                }
-                else
-                {
-                    <a href="@Url.Action("StudentList", "Contacts", new { area = "My", id=item.FilterId })" class="cmd"><i class="fa fa-eye"></i></a>
-                    <a href="@Url.Action("EditStudentFilter", "Contacts", new { area = "My", id=item.FilterId })" class="cmd"><i class="fa fa-pencil"></i></a>
-                    <a href="@Url.Action("DeleteStudentFilter", "Contacts", new { area = "My", id=item.FilterId })" class="cmd" onclick="return confirm('Are you sure you want to delete this filter?')"><i class="fa fa-remove"></i></a>
-                }
-
+                <a href="@Url.Action("Preview", "Contacts", new { area = "My", id=item.FilterId })" cla class="cmd"><i class="fa fa-eye"></i></a>
+                <a href="@Url.Action("EditFilter", "Contacts", new { area = "My", id=item.FilterId })" class="cmd"><i class="fa fa-pencil"></i></a>
+                <a href="@Url.Action("DeleteFilter", "Contacts", new { area = "My", id=item.FilterId })" class= class="cmd" onclick="return confirm('Are you sure you want to delete this filter?')"><i class="fa fa-remove"></i></a>
             </td>
         </tr>
     }

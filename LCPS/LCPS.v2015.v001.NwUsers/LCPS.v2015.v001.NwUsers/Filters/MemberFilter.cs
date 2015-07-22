@@ -32,12 +32,13 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         [Display(Name = "Class")]
         public MemberFilterClass FilterClass { get; set; }
 
-
+        /*
         public override string ToString()
         {
             return ToDynamicQuery().ToString();
         }
 
+        
         public DynamicQueryStatement ToDynamicQueryStatement()
         {
             return ToDynamicQuery().ToDynamicQueryStatement();
@@ -54,8 +55,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         private DynamicQuery ToStaffQuery()
         {
-            DynamicQuery q = new DynamicQuery();
-
+            
             LcpsDbContext db = new LcpsDbContext();
 
             List<StaffFilterClause> scc = db.StaffFilterClauses
@@ -65,7 +65,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
             foreach (StaffFilterClause sc in scc)
             {
-                q.Add(sc.ToDynamicQueryClause());
+                q.Add( new DynamicStaffClause(sc));
             }
 
             return q;

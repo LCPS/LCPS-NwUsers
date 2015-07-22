@@ -4,32 +4,31 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
-using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
-using LCPS.v2015.v001.NwUsers.Infrastructure;
-using LCPS.v2015.v001.NwUsers.Students;
-using Anvil.v2015.v001.Domain.Exceptions;
 
+
+using System.Web.Mvc;
+
+using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
+using Anvil.v2015.v001.Domain.Exceptions;
+using LCPS.v2015.v001.NwUsers.Infrastructure;
+using LCPS.v2015.v001.NwUsers.HumanResources;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 
 namespace LCPS.v2015.v001.NwUsers.Filters
 {
-    public class DynamicStudentFilter : DynamicQuery
+    public class DynamicStaffFilter : DynamicQuery
     {
-
         #region Fields
 
         private LcpsDbContext _dbContext;
 
-
         #endregion
 
-        #region Constructors
-
-        public DynamicStudentFilter(Guid filterId)
+        public DynamicStaffFilter(Guid filterId)
         {
             this.FilterId = filterId;
         }
 
-        #endregion
 
         #region Properties
 
@@ -54,20 +53,22 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
             try
             {
-                List<StudentFilterClause> _clauses = DbContext.StudentFilterClauses
+                List<StaffFilterClause> _clauses = DbContext.StaffFilterClauses
                     .Where(x => x.FilterId.Equals(FilterId))
                     .OrderBy(x => x.SortIndex)
                     .ToList();
 
-                foreach (StudentFilterClause c in _clauses)
+                int count = _clauses.Count();
+
+                foreach (StaffFilterClause c in _clauses)
                 {
-                    DynamicStudentClause dsc = new DynamicStudentClause(c);
+                    DynamicStaffClause dsc = new DynamicStaffClause(c);
                     Add(dsc);
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Could not get student clauses from the database", ex);
+                throw new Exception("Could not get staff clauses from the database", ex);
             }
         }
 
@@ -76,14 +77,13 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         #region Database
 
 
-
-        public void CreateClause(StudentFilterClause c)
+        public void CreateClause(StaffFilterClause c)
         {
             try
             {
 
-                if (c.StudentFilterClauseId.Equals(Guid.Empty))
-                    c.StudentFilterClauseId = Guid.NewGuid();
+                if (c.StaffFilterClauseId.Equals(Guid.Empty))
+                    c.StaffFilterClauseId = Guid.NewGuid();
 
                 if (c.FilterId == Guid.Empty)
                     c.FilterId = this.FilterId;
@@ -91,36 +91,35 @@ namespace LCPS.v2015.v001.NwUsers.Filters
                 int count = DbContext.StudentFilterClauses.Where(x => x.FilterId.Equals(c.FilterId)).Count();
 
                 c.SortIndex = count;
-                DbContext.StudentFilterClauses.Add(c);
+                DbContext.StaffFilterClauses.Add(c);
                 DbContext.SaveChanges();
 
 
-
-                Add(new DynamicStudentClause(c));
+                Add(new DynamicStaffClause(c));
             }
             catch (Exception ex)
             {
-                throw new Exception("Could not create student clause", ex);
+                throw new Exception("Could not create staff clause", ex);
             }
         }
 
-        public void DeleteStudentClause(Guid studentFilterClauseId)
+        public void DeleteStudentClause(Guid staffFilterClauseId)
         {
             try
             {
-                StudentFilterClause sfc = DbContext.StudentFilterClauses.FirstOrDefault(x => x.StudentFilterClauseId.Equals(studentFilterClauseId));
+                StaffFilterClause sfc = DbContext.StaffFilterClauses.FirstOrDefault(x => x.StaffFilterClauseId.Equals(staffFilterClauseId));
                 if (sfc == null)
                     return;
 
-                DbContext.StudentFilterClauses.Remove(sfc);
+                DbContext.StaffFilterClauses.Remove(sfc);
                 DbContext.SaveChanges();
 
-                List<StudentFilterClause> cc = DbContext.StudentFilterClauses
+                List<StaffFilterClause> cc = DbContext.StaffFilterClauses
                     .Where(x => x.FilterId.Equals(this.FilterId))
                     .OrderBy(x => x.SortIndex)
                     .ToList();
 
-                foreach (StudentFilterClause c in cc)
+                foreach (StaffFilterClause c in cc)
                 {
                     c.SortIndex = cc.IndexOf(c);
 
@@ -131,21 +130,21 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             }
             catch (Exception ex)
             {
-                throw new Exception("Could not remove student clause from filter", ex);
+                throw new Exception("Could not remove staff clause from filter", ex);
             }
         }
 
-        public List<StudentRecord> Execute()
+        public List<HRStaffRecord> Execute()
         {
             DynamicQueryStatement dqs = ToDynamicQueryStatement();
 
             try
             {
-                StudentsContext context = new StudentsContext();
+                HRStaffContext context = new HRStaffContext();
                 if (Parms.Count() == 0)
-                    return context.StudentRecords.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
+                    return context.HRStaffRecords.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
                 else
-                    return context.StudentRecords
+                    return context.HRStaffRecords
                         .Where(dqs.Query, dqs.Parms)
                         .OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial)
                         .ToList();
@@ -153,20 +152,13 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             }
             catch (Exception ex)
             {
-                AnvilExceptionCollector ec = new AnvilExceptionCollector("Could not get student records from the database");
+                AnvilExceptionCollector ec = new AnvilExceptionCollector("Could not get staff records from the database");
                 ec.Add(ex);
                 ec.Add(dqs.Query);
                 throw ec.ToException();
             }
         }
 
-        
-
-            
-
-
         #endregion
-
-
     }
 }

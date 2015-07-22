@@ -20,14 +20,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    public class DynamicQuery : IList<DynamicQueryClause>
+    public abstract class DynamicQuery : IDynamicQuery
     {
         #region Fields
 
-        private List<DynamicQueryClause> _list = new List<DynamicQueryClause>();
+        private List<IDynamicQueryClause> _list = new List<IDynamicQueryClause>();
         private List<object> _parms = new List<object>();
         private List<string> _elements = new List<string>();
         private DynamicQueryOperatorLibrary lib = new DynamicQueryOperatorLibrary();
+
 
         #endregion
 
@@ -50,30 +51,17 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         #region List
 
-        public void Add(IDynamicFilterClause item)
+        public void Add(IDynamicQueryClause item)
         {
-            DynamicQueryClause c = new DynamicQueryClause();
-            AnvilEntity e = new AnvilEntity(item);
-            e.IgnoreFields.Add("Item");
-            e.CopyTo(c);
-            c.AddRange(item.ToArray());
-
-            Add(c);
-        }
-
-        public void Add(DynamicQueryClause item)
-        {
-
-
             _list.Add(item);
         }
 
-        public int IndexOf(DynamicQueryClause item)
+        public int IndexOf(IDynamicQueryClause item)
         {
             return _list.IndexOf(item);
         }
 
-        public void Insert(int index, DynamicQueryClause item)
+        public void Insert(int index, IDynamicQueryClause item)
         {
             _list.Insert(index, item);
         }
@@ -83,7 +71,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             _list.RemoveAt(index);
         }
 
-        public DynamicQueryClause this[int index]
+        public IDynamicQueryClause this[int index]
         {
             get
             {
@@ -101,12 +89,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             _list.Clear();
         }
 
-        public bool Contains(DynamicQueryClause item)
+        public bool Contains(IDynamicQueryClause item)
         {
             return _list.Contains(item);
         }
 
-        public void CopyTo(DynamicQueryClause[] array, int arrayIndex)
+        public void CopyTo(IDynamicQueryClause[] array, int arrayIndex)
         {
             _list.CopyTo(array, arrayIndex);
         }
@@ -121,12 +109,12 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             get { return _list.ToArray().IsReadOnly; }
         }
 
-        public bool Remove(DynamicQueryClause item)
+        public bool Remove(IDynamicQueryClause item)
         {
             return _list.Remove(item);
         }
 
-        public IEnumerator<DynamicQueryClause> GetEnumerator()
+        public IEnumerator<IDynamicQueryClause> GetEnumerator()
         {
             return _list.GetEnumerator();
         }
@@ -144,7 +132,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
         {
             string q = "";
 
-            foreach (DynamicQueryClause c in _list)
+            foreach (IDynamicQueryClause c in _list)
             {
 
 
@@ -160,8 +148,10 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 
         public virtual DynamicQueryStatement ToDynamicQueryStatement()
         {
+            Parms.Clear();
+            Elements.Clear();
 
-            foreach (DynamicQueryClause c in _list)
+            foreach (IDynamicQueryClause c in _list)
             {
                 string q = "(";
 
@@ -172,7 +162,7 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
                 {
                     if (f.Include)
                     {
-                        if (c.IndexOf(f) > 0 & f.Conjunction != DynamicQueryConjunctions.None)
+                        if (c.IndexOf(f) > 0)
                             q += f.Conjunction.ToString() + " ";
 
                         if (f.Operator == DynamicQueryOperators.Contains)
@@ -196,7 +186,8 @@ namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
             };
 
         }
+    }
+
 
         #endregion
-    }
 }

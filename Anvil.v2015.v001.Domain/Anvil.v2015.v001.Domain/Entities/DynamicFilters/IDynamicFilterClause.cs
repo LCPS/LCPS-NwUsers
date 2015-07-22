@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Anvil.v2015.v001.Domain.Entities.DynamicFilters
 {
-    public interface IDynamicFilterClause : IList<DynamicQueryClauseField>
+    public interface IDynamicQueryClause : IList<DynamicQueryClauseField>
     {
         DynamicQueryConjunctions ClauseConjunction { get; set; }
 

@@ -1,0 +1,78 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using LCPS.v2015.v001.NwUsers.Students;
+
+@{
+    ViewBag.Page = Request.QueryString["page"];
+}
+
+@model PagedList<StudentRecord>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+
+@Html.PagedListPager(Model, page => Url.Action(ViewBag.ReturnTo,
+    new { page }))
+
+<table class="table table-hover table-striped table-condensed table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().InstructionalLevelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().BuildingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SchoolYear)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstructionalLevelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolYear)
+            </td>
+        </tr>
+    }
+
+</table>
+
+

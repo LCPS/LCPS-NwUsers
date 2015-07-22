@@ -10,12 +10,18 @@ using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.WebUI.Infrastructure;
 
 using LCPS.v2015.v001.NwUsers.Importing;
+using LCPS.v2015.v001.NwUsers.Filters;
 using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
 using LCPS.v2015.v001.WebUI.Areas.Import.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq.Dynamic;
+
+using Anvil.v2015.v001.Domain.Exceptions;
+
+using PagedList;
+using PagedList.Mvc;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
@@ -24,6 +30,31 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
     {
         private LcpsDbContext db = new LcpsDbContext();
 
+        public StaffFilterClauseModel StaffClause
+        {
+            get
+            {
+
+                if (Session["StaffFilterClauseModel"] == null)
+                {
+                    StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefaultSearch());
+
+                    m.FormArea = "HumanResources";
+                    m.FormController = "HRStaff";
+                    m.FormAction = "Search";
+                    m.SubmitText = "Search";
+
+                    Session["StaffFilterClauseModel"] = m;
+                }
+                    
+
+                return (StaffFilterClauseModel)Session["StaffFilterClauseModel"];
+            }
+            set
+            {
+                Session["StaffFilterClauseModel"] = value;
+            }
+        }
 
 
         #region Importing
@@ -81,9 +112,38 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         #region Crud
 
         // GET: /HumanResources/HRStaff/
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? pageSize)
         {
-            return View(db.StaffMembers.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList());
+            try
+            {
+                StaffFilterClauseModel m = this.StaffClause;
+                DynamicStaffClause c = new DynamicStaffClause(m);
+                List<HRStaffRecord> ss = c.Execute();
+
+                ViewBag.Total = ss.Count().ToString();
+
+                if (page == null)
+                    page = 1;
+
+                if (pageSize == null)
+                    pageSize = 12;
+
+                PagedList<HRStaffRecord> pl = new PagedList<HRStaffRecord>(ss, page.Value, pageSize.Value);
+
+                return View(pl);
+            }
+            catch (Exception ex)
+            {
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Get Staff Records", "Public", "Home", "Index");
+                return View("Error", em);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Search(StaffFilterClauseModel m)
+        {
+            this.StaffClause = m;
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -210,6 +270,47 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        #endregion
+
+        #region Cascading Drop Downs
+
+
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetEmployeeTypes(Guid? buildingId)
+        {
+
+            List<HREmployeeType> ii = DynamicStaffClause.GetEmployeeTypes(buildingId, db);
+
+            var result = (from i in ii
+                          select new
+                          {
+                              id = i.EmployeeTypeLinkId.ToString(),
+                              name = i.EmployeeTypeName
+                          }).ToList();
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetJobTitles(Guid? buildingId, Guid? employeeTypeId)
+        {
+
+            List<HRJobTitle> jtt = DynamicStaffClause.GetJobTitles(buildingId, employeeTypeId, db);
+
+            var result = (from i in jtt
+                          select new
+                          {
+                              id = i.JobTitleKey.ToString(),
+                              name = i.JobTitleName
+                          }).ToList();
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
 
         #endregion
 

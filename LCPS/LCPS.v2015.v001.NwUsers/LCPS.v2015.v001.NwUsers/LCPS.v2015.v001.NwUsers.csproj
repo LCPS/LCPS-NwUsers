@@ -84,6 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\DynamicStaffClause.cs" />
+    <Compile Include="Filters\DynamicStaffFilter.cs" />
     <Compile Include="Filters\DynamicStudentClause.cs" />
     <Compile Include="Filters\DynamicStudentFilter.cs" />
     <Compile Include="Filters\FilterCategories.cs" />

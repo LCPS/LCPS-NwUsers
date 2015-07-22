@@ -1,0 +1,31 @@
+﻿@using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
+@using LCPS.v2015.v001.NwUsers.Filters;
+
+@using LCPS.v2015.v001.WebUI.Areas.My.Models;
+
+@model FilterPreviewModel
+
+@{
+    ViewBag.Title = "View1";
+    Layout = "~/Areas/My/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.FilterTitle</h2>
+<small>@Model.Filter.FilterClass.ToString() Filter</small>
+
+<p>
+    <a href="@Url.Action("Index", "Contacts", new { area = "My", c = Model.Filter.FilterClass })"><i class="fa fa-backward"></i> Back</a> &nbsp; &nbsp;
+    <a href="@Url.Action("EditFilter", "Contacts", new { area = "My", id = Model.Filter.FilterId })"><i class="fa fa-pencil"></i> Edit</a> &nbsp; &nbsp;
+
+</p>
+
+<p>Total: @ViewBag.Total</p>
+
+@if (Model.Filter.FilterClass == MemberFilterClass.Staff)
+{
+    @Html.Partial("~/Areas/humanResources/Views/Shared/_staffList.cshtml", Model.StaffList)
+}
+else
+{
+    @Html.Partial("~/Areas/Students/Views/Shared/_studentList.cshtml", Model.StudentList)
+}

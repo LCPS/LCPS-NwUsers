@@ -1,0 +1,21 @@
+﻿@using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
+@using LCPS.v2015.v001.NwUsers.Filters;
+@using LCPS.v2015.v001.WebUI.Areas.My.Models;
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+
+@model DynamicStaffFilter
+
+<table class="table table-striped table-hover table-condensed">
+    <tr>
+        <th>Clause</th>
+        <th></th>
+    </tr>
+    @foreach (IDynamicQueryClause c in Model)
+    {
+        <tr>
+            <td>@c. ()</td>
+            <th><a href="@Url.Action("DeleteStaffClause", "Contacts", new { area = "My", id = c.ClauseId })" onclick="return confirm('Are you sure you want to delete this clause?');"><i class="fa fa-remove"></i> &nbsp; Delete </a></th>
+        </tr>
+    }
+</table>
+

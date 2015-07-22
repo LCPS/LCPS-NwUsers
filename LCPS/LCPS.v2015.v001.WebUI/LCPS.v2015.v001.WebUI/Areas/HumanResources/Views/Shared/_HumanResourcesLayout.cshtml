@@ -27,6 +27,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
+                        <a href="@Url.Action("Index", "HRStaff", new { @area = "HumanResources" })">Staff</a>
+                    </li>
+                    <li>
                         <a href="@Url.Action("Index", "HRBuildings", new { @area = "HumanResources" })">Buildings</a>
                     </li>
                     <li>
@@ -34,18 +37,6 @@
                     </li>
                     <li>
                         <a href="@Url.Action("Index", "HRJobTitles", new { @area = "HumanResources" })">Job Titles</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "HRStaff", new { @area = "HumanResources" })">Staff</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "HRStaffPositions", new { @area = "HumanResources" })">Staff Positions</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Backup", "HumanResources", new { @area = "HumanResources", @u = ViewContext.HttpContext.Request.RawUrl} )">Backup</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Restore", "HumanResources", new { @area = "HumanResources"} )">Restore</a>
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")

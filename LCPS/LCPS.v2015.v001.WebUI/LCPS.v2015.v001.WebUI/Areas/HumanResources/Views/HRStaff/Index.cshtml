@@ -1,6 +1,10 @@
 ﻿@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+@using PagedList;
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+@using PagedList.Mvc;
 
-@model IEnumerable<LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaff>
+@model  PagedList<HRStaffRecord>
+
 
 @{
     ViewBag.Title = "Index";
@@ -10,85 +14,23 @@
 <h2>Staff Members <span class="badge">@Model.Count()</span></h2>
 
 
+
+
 <div class="navbar">
     <div class="navbar-collapse collapse">
-        @Html.Partial("_HRSTaffSearch", new StaffSearchModel())
-
         <ul class="nav navbar-nav">
-            <li>
-                <a href="@Url.Action("Create", "HRStaff", new { area = "HumanResources" })"><i class="fa fa-plus"></i> Create New</a>
-            </li>
-            <li>
-                <a href="@Url.Action("ImportFile", "HRStaff", new { area = "HumanResources" } )"><i class="fa fa-upload"></i>  Import</a>
-            </li>
             <li>
                 <a href="@Url.Action("Index", "HRStaff", new { area = "HumanResources" } )"> <i class="fa fa-refresh"></i> Refresh</a>
             </li>
             <li>
-                <a href="@Url.Action("Active", "HRStaff", new { area = "HumanResources" } )"> <i class="fa fa-exclamation-circle"></i> Active Staff</a>
-            </li>
-            <li>
-                <a href="@Url.Action("Index", "DynamicStaffGroup", new { area = "HumanResources" } )"> <i class="fa fa-group"></i> Dynamic Groups</a>
+                <a href="@Url.Action("ImportFile", "HRStaff", new { area = "HumanResources" } )"><i class="fa fa-upload"></i>  Import</a>
             </li>
         </ul>
     </div>
 </div>
 
-<table class="table table-condensed table-striped table-hover table-responsive">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StaffId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MiddleInitial)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StaffEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Birthdate)
-        </th>
-        <th></th>
-    </tr>
+@Html.Partial("_staffFilterClause", Session["StaffFilterClauseModel"])
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StaffId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MiddleInitial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StaffEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Birthdate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StaffKey }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StaffKey }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StaffKey })
-        </td>
-    </tr>
-}
+<p>Total: @ViewBag.Total</p>
 
-</table>
+@Html.Partial("_staffList", Model)

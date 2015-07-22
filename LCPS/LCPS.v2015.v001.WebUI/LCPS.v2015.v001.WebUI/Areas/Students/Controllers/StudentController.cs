@@ -1,117 +1,67 @@
-﻿using System;
+﻿using Anvil.v2015.v001.Domain.Entities;
+using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
+using Anvil.v2015.v001.Domain.Exceptions;
+using LCPS.v2015.v001.NwUsers.HumanResources;
+using LCPS.v2015.v001.NwUsers.Importing;
+using LCPS.v2015.v001.NwUsers.Filters;
+using LCPS.v2015.v001.NwUsers.Students;
+using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+using LCPS.v2015.v001.WebUI.Infrastructure;
+using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using LCPS.v2015.v001.NwUsers.Students;
-using LCPS.v2015.v001.WebUI.Infrastructure;
-using LCPS.v2015.v001.NwUsers.Importing;
-using System.IO;
-using LCPS.v2015.v001.WebUI.Areas.Import.Models;
-using PagedList;
-using Anvil.v2015.v001.Domain.Entities;
-using System.Linq.Dynamic;
-using LCPS.v2015.v001.WebUI.Areas.Students.Models;
-//using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
-using LCPS.v2015.v001.NwUsers.HumanResources;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 {
     public class StudentController : Controller
     {
-        private LcpsDbContext db = new LcpsDbContext();
-        //public static StudentViewModel  _studentmodel;
+        private LcpsDbContext _dbContext = new LcpsDbContext();
 
-
-        public List<SelectListItem> BuildingList
+        public LcpsDbContext DbContext
         {
             get
             {
-                if (Session["buildings"] == null)
-                {
-                    List<HRBuilding> bb = Student.GetBuildings();
-
-
-                    Session["buildings"] = (from HRBuilding b in bb
-                                                     select new SelectListItem()
-                                                     {
-                                                         Text = b.Name,
-                                                         Value = b.BuildingKey.ToString()
-                                                     }).ToList();
-                }
-
-                return Session["buildings"] as List<SelectListItem>;
+                if (_dbContext == null)
+                    _dbContext = new LcpsDbContext();
+                return _dbContext;
             }
         }
 
-        /*
-        public StudentClauseFilterModel StudentFilterModel
+        public StudentFilterClauseModel Clause
         {
             get
             {
-                if (Session["sf"] == null)
+                if (Session["StudentClauseFilterModel"] == null)
                 {
-                    StudentClauseFilterModel f = new StudentClauseFilterModel()
+                    StudentFilterClauseModel m = new StudentFilterClauseModel()
                     {
-                        FormArea = "Students",
+                        FormAction = "Search",
                         FormController = "Student",
-                        FormAction = "StudentFilter",
-                        Buildings = this.BuildingList,
+                        FormArea = "Students",
+                        StatusInclude = true,
+                        StatusConjunction = DynamicQueryConjunctions.And,
+                        StatusOperator = DynamicQueryOperators.Equals,
+                        StatusValue = StudentEnrollmentStatus.Enrolled
                     };
-
-                    if (f.Buildings.Count() > 0)
-                        f.InstructionalLevels = GetLevelList(new Guid(f.Buildings[0].Value));
-
-                    Session["sf"] = f;
+                    Session["StudentClauseFilterModel"] = m;
                 }
-                return (StudentClauseFilterModel) Session["sf"];
+                return (StudentFilterClauseModel)Session["StudentClauseFilterModel"];
             }
             set
             {
-                Session["sf"] = value;
+                Session["StudentClauseFilterModel"] = value;
             }
         }
-         * */
-
-        private List<SelectListItem> GetLevelList(Guid bId)
-        {
-
-            List<InstructionalLevel> il = Student.GetInstructionalLevels(bId);
-
-            return (from InstructionalLevel j in il
-                    select new SelectListItem()
-                    {
-                        Text = j.InstructionalLevelName,
-                        Value = j.InstructionalLevelKey.ToString()
-                    }).ToList();
-
-        }
-
-        /*
-        public StudentViewModel StudentModel
-        {
-            get
-            {
-                if (Session["studentModel"] == null)
-                {
-                    StudentViewModel _model = new StudentViewModel();
-                    _model.FilterClause = StudentFilterModel;
-                    
-                    Session["studentmodel"] = _model;
-                }
-
-                return (StudentViewModel)Session["studentModel"];
-            }
-            set
-            {
-                Session["studentModel"] = value;
-            }
-        }
-         * */
-
+        
         #region Import
 
         public ActionResult ImportFile()
@@ -150,7 +100,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         {
             try
             {
-                ImportSession dbs = db.ImportSessions.First(x => x.SessionId.Equals(s.SessionId));
+                ImportSession dbs = DbContext.ImportSessions.First(x => x.SessionId.Equals(s.SessionId));
                 StudentSession jt = new StudentSession(dbs);
                 jt.Import();
                 ImportPreviewModel m = new ImportPreviewModel(s.SessionId);
@@ -224,61 +174,47 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         #region Crud
 
         // GET: /Students/Student/
-        public ActionResult Index(int? page, int? pageSize, string currentSearch, string searchString, string filter)
+        public ActionResult Index(int? page, int? pageSize)
         {
-            if (searchString != null)
+            try
             {
-                page = 1;
+                StudentFilterClauseModel m = this.Clause;
+
+                DynamicStudentClause c = new DynamicStudentClause(m);
+
+                List<StudentRecord> ss = c.Execute();
+
+                ViewBag.Total = ss.Count().ToString();
+
+                if (page == null)
+                    page = 1;
+
+                if (pageSize == null)
+                    pageSize = 12;
+
+                PagedList<StudentRecord> pl = new PagedList<StudentRecord>(ss, page.Value, pageSize.Value);
+
+                return View(pl);
             }
-            else
+            catch(Exception ex)
             {
-                searchString = currentSearch;
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Get Students", "Public", "Home", "Index");
+                this.Clause = null;
+                return View("Error", em);
+                
+
             }
-
-            ViewBag.CurrentFilter = searchString;
-
-            List<Student> students;
-            if (String.IsNullOrEmpty(searchString))
-                students = db.Students.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
-            else
-                students = db.Students.
-                    Where
-                    (
-                        x => x.FirstName.Contains(searchString) |
-                            x.LastName.Contains(searchString) |
-                            x.StudentId.Contains(searchString)
-                    ).ToList();
-
-
-            if (!string.IsNullOrEmpty(filter))
-            {
-                List<object> parms = new List<object>();
-                List<string> qry = new List<string>();
-                foreach (string pr in filter.Split(','))
-                {
-                    string n = pr.Split(':')[0];
-                    Guid g = new Guid(pr.Split(':')[1]);
-
-                    string q = n + " = @" + parms.Count().ToString();
-                    qry.Add(q);
-                    parms.Add(g);
-                }
-
-                string qs = string.Join(" AND ", qry.ToArray());
-
-                students = students.AsQueryable().Where(qs, parms.ToArray()).ToList();
-            }
-
-            students = students.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
-
-            ViewBag.Total = students.Count();
-
-            if (pageSize == null)
-                pageSize = 12;
-
-            int pageNumber = (page ?? 1);
-            return View(students.ToPagedList(pageNumber, pageSize.Value));
         }
+
+
+        [HttpPost]
+        public ActionResult Search(StudentFilterClauseModel m)
+        {
+            this.Clause = m;
+            return RedirectToAction("Index");
+        }
+
+
 
         // GET: /Students/Student/Details/5
         public ActionResult Details(Guid? id)
@@ -287,7 +223,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = DbContext.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -311,8 +247,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
             if (ModelState.IsValid)
             {
                 student.StudentKey = Guid.NewGuid();
-                db.Students.Add(student);
-                db.SaveChanges();
+                DbContext.Students.Add(student);
+                DbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -326,7 +262,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = DbContext.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -343,8 +279,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
+                DbContext.Entry(student).State = EntityState.Modified;
+                DbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(student);
@@ -357,7 +293,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = DbContext.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -370,9 +306,9 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
-            db.SaveChanges();
+            Student student = DbContext.Students.Find(id);
+            DbContext.Students.Remove(student);
+            DbContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -382,7 +318,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                DbContext.Dispose();
             }
             base.Dispose(disposing);
         }

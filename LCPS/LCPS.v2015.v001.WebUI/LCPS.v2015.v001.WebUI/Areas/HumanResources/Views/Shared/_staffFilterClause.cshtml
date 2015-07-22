@@ -1,6 +1,6 @@
 ﻿@using LCPS.v2015.v001.NwUsers.Infrastructure;
 @using LCPS.v2015.v001.NwUsers.Filters;
-@using LCPS.v2015.v001.WebUI.Areas.My.Models;
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 
 @model StaffFilterClauseModel
 
@@ -10,45 +10,74 @@
 
 <script>
     $(window).load(function () {
-        var cb = document.getElementsByClassName('cb');
-
-
-        for (i = 0; i < cb.length; i++) {
-
-            f = cb[i].id.replace('Include', '');
-
-            var checked = cb[i].checked
-
-            op = document.getElementById(f + 'Operator');
-
-            op.disabled = (!checked);
-
-            v = document.getElementById(f + 'Value');
-            v.disabled = (!checked);
-
-            con = document.getElementById(f + 'Conjunction');
-
-            if (con != null)
-                con.disabled = (!checked);
-        }
+        setFieldEnableStatus();
+        setConjunctionStatus();
 
         GetEmployeeTypes();
         GetJobTitles();
     });
 
+
+    $(function () {
+        $('.cb').change(function () {
+
+            setFieldEnableStatus();
+
+            setConjunctionStatus();
+        });
+    })
+
+    function setFieldEnableStatus() {
+        var cb = document.getElementsByClassName('cb');
+
+        for (cx = 0; cx < cb.length; cx++) {
+            cn = cb[cx].id.replace('Include', '');
+            checked = cb[cx].checked;
+            if (checked)
+                $('.' + cn).show('slow');
+            else
+                $('.' + cn).hide('slow');
+        }
+    }
+
+    function setConjunctionStatus() {
+
+        var cbs = $('input:checkbox');
+        var checked = $('input:checkbox[id*="Include"]:checked');
+        var ddl = $('[id*="Conjunction"]');
+
+
+        if (checked.length == 0) {
+            ddl.hide('slow');
+            return;
+        }
+
+        idx = (cbs.index(checked[0]));
+
+        for (y = 0; y < idx; y++) {
+            cid = "#" + ddl[y].id;
+            $(cid).hide('slow');
+        }
+
+        for (x = idx; x < ddl.length; x++) {
+            cid = "#" + ddl[x].id;
+            $(cid).show('slow');
+        }
+    }
+
     $(function () {
         $("#BuildingInclude").bootstrapToggle({
             size: 'small',
-            on: 'Building On',
-            off: 'Building Off',
+            on: 'Building',
+            off: 'Building',
             onstyle: 'success',
             offstyle: 'danger'
         });
 
         $("#EmployeeTypeInclude").bootstrapToggle({
             size: 'small',
-            on: 'Type On',
-            off: 'Type Off',
+            on: 'Type',
+            off: 'Type',
             onstyle: 'success',
             offstyle: 'danger'
 
@@ -56,8 +85,8 @@
 
         $("#JobTitleInclude").bootstrapToggle({
             size: 'small',
-            on: 'Title On',
-            off: 'Title Off',
+            on: 'Title',
+            off: 'Title',
             onstyle: 'success',
             offstyle: 'danger'
 
@@ -65,8 +94,8 @@
 
         $("#StatusInclude").bootstrapToggle({
             size: 'small',
-            on: 'Status On',
-            off: 'Status Off',
+            on: 'Status',
+            off: 'Status',
             onstyle: 'success',
             offstyle: 'danger'
 
@@ -74,8 +103,8 @@
 
         $("#StaffIdInclude").bootstrapToggle({
             size: 'small',
-            on: 'ID On',
-            off: 'ID Off',
+            on: 'ID',
+            off: 'ID',
             onstyle: 'success',
             offstyle: 'danger'
 
@@ -83,44 +112,14 @@
 
         $("#LastNameInclude").bootstrapToggle({
             size: 'small',
-            on: 'Name On',
-            off: 'Name Off',
+            on: 'Name',
+            off: 'Name',
             onstyle: 'success',
             offstyle: 'danger'
 
         });
 
-        $('.cb').bootstrapToggle({
-            onstyle: 'success',
-            offstyle: 'danger',
-            size: 'mini'
-        });
     })
-
-    $(function () {
-        $('.cb').change(function () {
-
-
-            GetEmployeeTypes();
-            GetJobTitles();
-            enableConjunctions();
-
-            cbId = $(this).prop('id');
-
-            f = cbId.replace('Include', '');
-
-            op = document.getElementById(f + 'Operator');
-            op.disabled = (!$(this).prop('checked'));
-
-            v = document.getElementById(f + 'Value');
-            v.disabled = (!$(this).prop('checked'));
-
-            con = document.getElementById(f + 'Conjunction');
-            con.disabled = (!$(this).prop('checked'));
-
-        });
-    });
-
 
     $(function () {
         $("#BuildingValue").change(function () {
@@ -157,7 +156,7 @@
         $.ajax({
             cache: false,
             type: "GET",
-            url: "/My/Contacts/GetEmployeeTypes",
+            url: "/HumanResources/HRStaff/GetEmployeeTypes",
             data: { "buildingId": bid },
             success: function (data) {
                 etdl.html('');
@@ -192,7 +191,7 @@
         $.ajax({
             cache: false,
             type: "GET",
-            url: "/My/Contacts/GetJobTitles",
+            url: "/HumanResources/HRStaff/GetJobTitles",
             data: { "buildingId": bid, "employeeTypeId": eid },
             success: function (data) {
                 jtdl.html('');
@@ -208,117 +207,89 @@
         });
 
     }
-
-    function enableConjunctions() {
-        var bchk = $('#BuildingInclude').prop('checked');
-        var echk = $('#EmployeeTypeInclude').prop('checked');
-        var jchk = $('#JobTitleInclude').prop('checked');
-        var schk = $('#StatusInclude').prop('checked');
-        var ichk = $('#StaffIdInclude').prop('checked');
-        var nchk = $('#LastNameInclude').prop('checked');
-
-        var ecnj = $('#ETConj');
-        var jcnj = $('#JTConj');
-        var scnj = $('#STConj');
-        var icnj = $('#IDConj');
-        var ncnj = $('#NMConj');
-
-        var c = new Array();
-
-        var a = new Array(ecnj, jcnj, scnj, icnj, ncnj);
-
-        if (bchk) {
-            c.push(ecnj);
-            c.push(jcnj);
-            c.push(scnj);
-            c.push(icnj);
-            c.push(ncnj);
-        }
-
-        if (bchk | echk) {
-            var j = jQuery.inArray(jcnj, c);
-
-            if (j = -1)
-                c.push(jcnj);
-        }
-
-        if (bchk | echk | jchk) {
-            var s = jQuery.inArray(scnj, c);
-
-            if (s = -1)
-                c.push(scnj);
-        }
-
-        if (bchk | echk | jchk | schk) {
-            var i = jQuery.inArray(icnj, c);
-
-            if (i = -1)
-                c.push(icnj);
-        }
-
-        if (bchk | echk | jchk | schk | ichk) {
-            var n = jQuery.inArray(ncnj, c);
-
-            if (n = -1)
-                c.push(ncnj);
-        }
-
-
-
-        for (i = 0; i < a.length; i++) {
-            cntrl = a[i];
-
-            var x = jQuery.inArray(cntrl, c);
-            var b = (x != -1);
-
-            if (b)
-                cntrl.show('slow');
-            else
-                cntrl.hide('slow');
-        }
-    }
 </script>
 
-@using (Html.BeginForm("AddStaffClause", "Contacts", new { area = "My" }, FormMethod.Post))
+@using (Html.BeginForm(Model.FormAction, Model.FormController, new { area = Model.FormArea }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.FilterId)
     @Html.HiddenFor(model => model.StaffFilterClauseId)
+    @Html.HiddenFor(model => model.FormAction)
+    @Html.HiddenFor(model => model.FormController)
+    @Html.HiddenFor(model => model.FormArea)
+    @Html.HiddenFor(model => model.SubmitText)
+
+
+
+    <div class="form-inline">
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.BuildingInclude, new { @class = "cb" })
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.EmployeeTypeInclude, new { @class = "cb" })
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.JobTitleInclude, new { @class = "cb" })
+            </div>
+
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.StatusInclude, new { @class = "cb" })
+            </div>
+
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.StaffIdInclude, new { @class = "cb" })
+            </div>
+
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.LastNameInclude, new { @class = "cb" })
+            </div>
+
+        </div>
+    </div>
+
+    <hr />
 
     <div class="form-horizontal">
         <div class="text-danger">
             @Html.ValidationSummary(false)
         </div>
 
-        @{
-    LcpsDbContext db = new LcpsDbContext();
-    int count = db.StaffFilterClauses.Where(x => x.FilterId.Equals(Model.FilterId)).Count();
-    if (count > 0)
-    {
-        <div class="form-group form-group-sm">
-            <div class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.ClauseConjunction, new { @class = "@form-control input-sm" })
+
+        @if (Model.GetClauseCount(Model.FilterId) > 0)
+        {
+            <div class="form-group form-group-sm">
+                <div class="col-md-2">
+                    @Html.EnumDropDownListFor(model => model.ClauseConjunction, new { @class = "@form-control input-sm" })
+                </div>
             </div>
-        </div>
-    }
         }
 
-        <div class="form-group form-group-sm">
-            <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.BuildingInclude, new { @class = "cb" })
-            </div>
 
+        <div class="form-group form-group-sm Building">
             <div class="col-md-2">
-                @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", style = "width: 120px" })
-
+                @Html.LabelFor(model => model.BuildingValue)
             </div>
-            <div class="col-md-4">
-                @Html.DropDownListFor(model => model.BuildingValue, Model.GetBuildingList(), new { @class = "form-control input-sm" })
+                <div class="col-md-2">
+                    @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", style = "width: 120px" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(model => model.BuildingValue, DynamicStaffClause.GetBuildings(), new { @class = "form-control input-sm" })
+                </div>
             </div>
-        </div>
-        <div class="form-group form-group-sm">
+        <div class="form-group form-group-sm EmployeeType">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.EmployeeTypeInclude, new { @class = "cb" })
+                @Html.LabelFor(model => model.EmployeeTypeValue)
             </div>
             <div id="ETConj" style="display: none;" class="col-md-2">
                 @Html.EnumDropDownListFor(model => model.EmployeeTypeConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
@@ -330,9 +301,10 @@
                 @Html.DropDownListFor(model => model.EmployeeTypeValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
             </div>
         </div>
-        <div class="form-group form-group-sm">
+        <div class="form-group form-group-sm JobTitle">
+
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.JobTitleInclude, new { @class = "cb" })
+                @Html.LabelFor(model => model.JobTitleValue)
             </div>
             <div id="JTConj" style="display: none;" class="col-md-2">
                 @Html.EnumDropDownListFor(model => model.JobTitleConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
@@ -344,10 +316,11 @@
                 @Html.DropDownListFor(model => model.JobTitleValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
             </div>
         </div>
-        <div class="form-group form-group-sm">
+        <div class="form-group form-group-sm Status">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.StatusInclude, new { @class = "cb" })
+                @Html.LabelFor(model => model.StatusValue)
             </div>
+
             <div id="STConj" style="display: none;" class="col-md-2">
                 @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
             </div>
@@ -359,10 +332,11 @@
             </div>
         </div>
 
-        <div class="form-group form-group-sm">
+        <div class="form-group form-group-sm StaffId">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.StaffIdInclude, new { @class = "cb" })
+                @Html.LabelFor(model => model.StaffIdValue)
             </div>
+
             <div id="IDConj" style="display: none;" class="col-md-2">
                 @Html.EnumDropDownListFor(model => model.StaffIdConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
             </div>
@@ -374,9 +348,9 @@
             </div>
         </div>
 
-        <div class="form-group form-group-sm">
+        <div class="form-group form-group-sm LastName">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.LastNameInclude, new { @class = "cb" })
+                @Html.LabelFor(model => model.LastNameValue)
             </div>
             <div id="NMConj" style="display: none;" class="col-md-2">
                 @Html.EnumDropDownListFor(model => model.LastNameConjunction, new { @class = "form-control input-sm", style = "width: 120px" })
@@ -391,9 +365,10 @@
 
         <div class="form-group form-group-sm">
             <div class="col-md-offset-2">
-                <input type="submit" value="Add Filter" class="btn btn-success" />
+                <input type="submit" value="@Model.SubmitText" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
+
 

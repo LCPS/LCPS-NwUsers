@@ -5,6 +5,9 @@ using System.Web;
 using Anvil.v2015.v001.Domain.Exceptions;
 using Anvil.v2015.v001.Domain.Entities;
 using LCPS.v2015.v001.NwUsers.Filters;
+using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+
 
 namespace LCPS.v2015.v001.WebUI.Areas.My.Models
 {
@@ -18,15 +21,36 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Models
 
         public AnvilExceptionModel Exception { get; set; }
 
-        public List<StaffFilterClause> GetClauses()
+        public DynamicStudentFilter GetStudentFilter()
         {
-            LCPS.v2015.v001.NwUsers.Infrastructure.LcpsDbContext db = new NwUsers.Infrastructure.LcpsDbContext();
-            List<StaffFilterClause> cc = db.StaffFilterClauses
-                .Where(x => x.FilterId.Equals(FilterId))
-                .OrderBy(x => x.SortIndex)
-                .ToList();
+            DynamicStudentFilter f = new DynamicStudentFilter(FilterId);
+            f.Refresh();
 
-            return cc;
+            return f;
         }
+
+        public DynamicStaffFilter GetStaffFilter()
+        {
+            DynamicStaffFilter f = new DynamicStaffFilter(FilterId);
+            f.Refresh();
+
+            return f;
+        }
+
+        public StudentFilterClauseModel GetDefaultStudentClause()
+        {
+            StudentFilterClauseModel m = new StudentFilterClauseModel(DynamicStudentClause.GetDefaultStudentClause(FilterId));
+            return m;
+        }
+
+        public StaffFilterClauseModel GetDefaultStaffClause()
+        {
+            StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefault(FilterId));
+
+            return m;
+        }
+
+
+
     }
 }

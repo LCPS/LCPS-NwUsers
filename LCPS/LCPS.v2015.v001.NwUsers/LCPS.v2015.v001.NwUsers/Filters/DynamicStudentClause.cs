@@ -54,6 +54,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         {
             base.ClauseConjunction = c.ClauseConjunction;
             base.ClauseId = c.StudentFilterClauseId;
+            base.FilterId = c.FilterId;
 
             if (c.BuildingInclude)
                 AddElement(c.BuildingConjunction, fBuildingKey, c.BuildingOperator, c.BuildingValue);
@@ -88,8 +89,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         #endregion
 
-
-
         #region Defaults
 
         public static StudentFilterClause GetDefaultStudentClause(Guid filterId)
@@ -122,8 +121,8 @@ namespace LCPS.v2015.v001.NwUsers.Filters
         {
             string q = "(";
 
-            if (ClauseConjunction != DynamicQueryConjunctions.None)
-                q = ClauseConjunction.ToString() + " (";
+            //if (ClauseConjunction != DynamicQueryConjunctions.None)
+            //    q = ClauseConjunction.ToString() + " (";
 
             foreach (DynamicQueryClauseField f in this)
             {
@@ -153,14 +152,13 @@ namespace LCPS.v2015.v001.NwUsers.Filters
                     }
 
                     if (IndexOf(f) > 0)
-                        if (f.Conjunction != DynamicQueryConjunctions.None)
-                            q += f.Conjunction.ToString() + " ";
+                        q += f.Conjunction.ToString() + " ";
 
 
                     if (f.Operator == DynamicQueryOperators.Contains)
                         q += "[" + fn + "] Contains \"" + v + "\" ";
                     else
-                        q += "[" + fn + "] " + OperatorLibrary.GetOperator(f.Operator) + " \"" + v + " \" ";
+                        q += "[" + fn + "] " + OperatorLibrary.GetOperator(f.Operator) + " \"" + v + "\" ";
                 }
             }
 
@@ -169,7 +167,35 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
 
         #endregion
-        
+
+        #region Database
+
+        public List<StudentRecord> Execute()
+        {
+            DynamicQueryStatement dqs = ToDynamicQueryStatement();
+
+            try
+            {
+                StudentsContext context = new StudentsContext();
+               
+
+                List<StudentRecord> students = context.StudentRecords.Where(dqs.Query, dqs.Parms)
+                    .OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial)
+                    .ToList();
+
+                return students;
+            }
+            catch (Exception ex)
+            {
+                AnvilExceptionCollector ec = new AnvilExceptionCollector("Could not get students from database");
+                ec.Add(ex);
+                ec.Add(dqs.Query);
+                throw ec.ToException();
+                
+            }
+        }
+
+        #endregion
 
         #region Lists
 
