@@ -18,7 +18,6 @@
       <Column Name="FirstName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
       <Column Name="MiddleInitial" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
       <Column Name="LastName" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
-      <Column Name="StaffEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
       <Column Name="GenderVal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Birthdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="JobTitleKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />

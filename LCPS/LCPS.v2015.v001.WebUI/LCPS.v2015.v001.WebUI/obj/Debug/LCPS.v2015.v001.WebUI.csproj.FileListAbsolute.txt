@@ -240,3 +240,6 @@ C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter007.resources
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter008.resources
 C:\Lcps\NwUsers\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Email001.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Email001.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Email002.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LCPS.v2015.v001.WebUI\LCPS.v2015.v001.WebUI\obj\Debug\LCPS.v2015.v001.WebUI.Migrations.Filter009.resources

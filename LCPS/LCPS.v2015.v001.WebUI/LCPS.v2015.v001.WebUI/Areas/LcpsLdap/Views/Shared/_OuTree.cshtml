@@ -101,13 +101,30 @@
         if (n.Children.Count() == 0)
         {
             <li>
-                <span><i class="fa fa-list-alt"></i> </span> <a href="@Url.Action("SelectOu", "LdapOuTemplate", new { area = "LcpsLdap", id = new Guid(n.Value) })">@n.Text</a>
+                @if (Model.FormController != null)
+                {
+                    <span><i class="fa fa-list-alt"></i> </span> <a href="@Url.Action(Model.FormAction, Model.FormController, new { area = Model.FormArea, id = new Guid(n.Value) })">@n.Text</a>
+                }
+                else
+                {
+                    <span><i class="fa fa-list-alt"></i> </span>                    
+                    <a href="#" class="t-node" id="@n.Value">@n.Text</a>
+                }
             </li>
         }
         else
         {
             <li>
-                <span><i class="fa fa-folder-o"></i> </span> <a href="@Url.Action("SelectOu", "LdapOuTemplate", new { area = "LcpsLdap", id = new Guid(n.Value) })">@n.Text</a>
+                @if (Model.FormController != null)
+                {
+                    <span><i class="fa fa-folder-o"></i> </span> <a href="@Url.Action(Model.FormAction, Model.FormController, new { area = Model.FormArea, id = new Guid(n.Value) })">@n.Text</a>
+                }
+                else
+                {
+                    <span><i class="fa fa-folder-o"></i> </span>                    
+                    <a id="@n.Value" class="t-node" href="#">@n.Text</a>
+                }
+                
                 <ul>
                     @TreeNode(n)
                 </ul>

@@ -7,8 +7,12 @@ using System.Web.Mvc;
 using Anvil.v2015.v001.Domain.Exceptions;
 using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
 using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+using LCPS.v2015.v001.NwUsers.Filters;
+
 using LCPS.v2015.v001.WebUI.Infrastructure;
 using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+using LCPS.v2015.v001.WebUI.Areas.Students.Models;
 
 namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Controllers
 {
@@ -33,95 +37,129 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Controllers
             }
         }
 
-        public OUTemplateViewModel Model
-        {
-            get
-            {
-                if(Session["OUTemplateViewModel"] == null)
-                    Session["OUTemplateViewModel"] = new OUTemplateViewModel(DbContext);
-                return (OUTemplateViewModel)Session["OUTemplateViewModel"];
-            }
-            set
-            {
-                Session["OUTemplateViewModel"] = value;
-            }
-        }
+
 
         #endregion
         //
         // GET: /LcpsLdap/LdapOuTemplate/
         public ActionResult Index()
         {
-            return View(Model);
+            return View(new OUTemplateViewModel(DbContext));
         }
 
-        //
-        // GET: /LcpsLdap/LdapOuTemplate/
-        public ActionResult Create()
+        [HttpGet]
+        public ActionResult CreateOuTemplate(Guid id)
         {
-            try 
+            try
             {
-                OUTemplateViewModel m = Model;
-                LcpsAdsContainer c = m.OuTree.Domain;
-                return View(Model);
+                LcpsAdsOu ou = new LcpsAdsOu(id);
+                OUTemplate t = new OUTemplate();
+                t.OUId = id;
+                t.TemplateName = ou.Name;
+                t.Description = ou.Description;
+                DbContext.OUTemplates.Add(t);
+                DbContext.SaveChanges();
+
+                return Content("Success", "text/html");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                AnvilExceptionModel em = new AnvilExceptionModel(ex, "Error loading create page", "LcpsLdap", "LdapOuTemplate", "Index");
-                return View("~/Views/Shared/Error.cshtml", em);
+                AnvilExceptionCollector ec = new AnvilExceptionCollector(ex);
+                return Content(ec.ToUL(), "text/html");
             }
+        }
+
+        public ActionResult EditTemplate(Guid id)
+        {
+            OUTemplateViewModel m = new OUTemplateViewModel(DbContext, id);
+            return View(m);
         }
 
         [HttpPost]
-        public ActionResult Create(OUTemplateViewModel model)
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTemplate(OUTemplate m)
         {
-            if (model.OUTemplate.OUId.Equals(Guid.Empty))
-                ModelState.AddModelError(null, "Please select a valid OU");
+            OUTemplateViewModel oum = new OUTemplateViewModel(DbContext);
 
-
-
-            if(ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    DbContext.OUTemplates.Add(model.OUTemplate);
+                    DbContext.Entry(m).State = System.Data.Entity.EntityState.Modified;
                     DbContext.SaveChanges();
-                    return View("Index", model);
+
+                    return RedirectToAction("Index");
                 }
-                catch (Exception ex)
+                else
                 {
-                    Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel ec = new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(ex, "Create OU Template", "LcpsLdap", "LdapOuTemplate", "Create" );
-                    return View("~/Views/Shared/Error.cshtml", ec);
+                    return View();
                 }
             }
+            catch (Exception ex)
+            {
+                oum.Exception = ex;
+                return View(oum);
 
-            return View(model);
+            }
         }
 
-        public ActionResult SelectOu(Guid id)
+
+        public ActionResult StudentMembership(Guid id)
         {
-            OUTemplateViewModel m = Model;
-
-            if (m.OUTemplate == null)
-                m.OUTemplate = new NwUsers.LcpsLdap.LdapTemplates.OUTemplate();
-
-            m.OUTemplate.OUId = id;
-            Model = m;
-            return View("Create", Model);
+            OUTemplateViewModel m = new OUTemplateViewModel(DbContext, id);
+            return View(m);
         }
 
-        public ActionResult SelectTemplate(Guid id)
+        public ActionResult StaffMembership(Guid id)
         {
-            OUTemplateViewModel m = Model;
+            OUTemplateViewModel m = new OUTemplateViewModel(DbContext, id);
+            return View(m);
+        }
 
-            OUTemplate t = DbContext.OUTemplates.First(x => x.OUId.Equals(id));
+        public ActionResult AddStudentClause(StudentFilterClauseModel m)
+        {
+            DynamicStudentFilter f = new DynamicStudentFilter(m.FilterId);
+            f.CreateClause(m.ToFilterClause());
+            return RedirectToAction("StudentMembership", new { id = m.FilterId });
+        }
 
-            m.OUTemplate = t;
+        public ActionResult AddStaffClause(StaffFilterClauseModel m)
+        {
+            DynamicStaffFilter f = new DynamicStaffFilter(m.FilterId);
+            f.CreateClause(m.ToFilterClause());
+            return RedirectToAction("StaffMembership", new { id = m.FilterId });
+        }
 
-            Model = m;
 
-            return View("Index", Model);
+        [HttpGet]
+        public ActionResult DeleteOUTemplate(Guid id)
+        {
+            string result = "The template was successfully deleted";
+
+            try
+            {
+                OUTemplate t = DbContext.OUTemplates.Find(id);
+
+                List<StaffFilterClause> stf = DbContext.StaffFilterClauses.Where(x => x.FilterId.Equals(t.OUId)).ToList();
+
+                List<StudentFilterClause> stu = DbContext.StudentFilterClauses.Where(x => x.FilterId.Equals(t.OUId)).ToList();
+
+
+                DbContext.StaffFilterClauses.RemoveRange(stf);
+                DbContext.StudentFilterClauses.RemoveRange(stu);
+
+                DbContext.OUTemplates.Remove(t);
+
+                DbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                AnvilExceptionCollector ec = new AnvilExceptionCollector(ex);
+                result = ec.ToUL();
+            }
+
+            return Content(result, "text/html");
 
         }
-	}
+    }
 }

@@ -107,8 +107,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 		
 		private string _LastName;
 		
-		private string _StaffEmail;
-		
 		private int _GenderVal;
 		
 		private System.DateTime _Birthdate;
@@ -375,22 +373,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 				if ((this._LastName != value))
 				{
 					this._LastName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffEmail", DbType="NVarChar(256)")]
-		public string StaffEmail
-		{
-			get
-			{
-				return this._StaffEmail;
-			}
-			set
-			{
-				if ((this._StaffEmail != value))
-				{
-					this._StaffEmail = value;
 				}
 			}
 		}

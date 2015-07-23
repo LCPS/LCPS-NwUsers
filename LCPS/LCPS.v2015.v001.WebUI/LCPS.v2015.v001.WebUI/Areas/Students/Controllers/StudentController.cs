@@ -116,41 +116,24 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 
         #region Filter
 
-        /*
-        public ActionResult Students()
+        [HttpGet]
+        public ActionResult DeleteStudentFilterClause(Guid id)
         {
-            StudentViewModel m = this.StudentModel;
-            if(m.FilterClause == null)
-                m.FilterClause = this.StudentFilterModel;
-
-
-
-            return View(StudentModel);
-        }
-
-        [HttpPost]
-        public ActionResult StudentFilter(StudentFilterModel f)
-        {
-            StudentViewModel _model = this.StudentModel;
-
-            if (f.Buildings == null)
+            string result = "Success";
+            try
             {
-                f.Buildings = this.BuildingList;
-                if (!f.BuildingValue.Equals(Guid.Empty))
-                    f.InstructionalLevels = this.GetLevelList(f.BuildingValue);
-                else
-                    f.InstructionalLevels = this.GetLevelList(new Guid(f.Buildings[0].Value));
+                StudentFilterClause c = DbContext.StudentFilterClauses.Find(id);
+                DbContext.StudentFilterClauses.Remove(c);
+                DbContext.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                AnvilExceptionCollector ec = new AnvilExceptionCollector(ex);
+                result = ec.ToUL();
             }
 
-
-            _model.FilterClause = f;
-
-            this.StudentModel = _model;
-
-
-            return View("Students", StudentModel);
+            return Content(result, "text/html");
         }
-        */
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult GetInstructionalLevels(Guid buildingId)

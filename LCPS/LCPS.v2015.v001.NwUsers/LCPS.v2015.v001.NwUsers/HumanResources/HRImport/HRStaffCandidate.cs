@@ -38,8 +38,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.HRImport
 
         public string StaffId { get; set; }
 
-        public string StaffEmail { get; set; }
-        
         #endregion
 
         #region Person

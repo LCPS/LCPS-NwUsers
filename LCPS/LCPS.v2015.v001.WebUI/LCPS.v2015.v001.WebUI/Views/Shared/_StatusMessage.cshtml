@@ -1,0 +1,19 @@
+﻿<script>
+    $(function () {
+        $('#hide-stat').click(function () {
+            var stat = $('#div-status').hide('slow');
+        });
+    })
+</script>
+
+
+<div id="div-status" style="display: none;">
+    <div id="stat-hdr" class="panel-heading">
+    </div>
+    <div id="stat-bdy" class="panel-body">
+        <div class="container">
+            <a id="hide-stat" href="#">Close</a>
+        </div>
+    </div>
+</div>
+

@@ -171,6 +171,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Errors\Controllers\ErrorHandlingController.cs" />
+    <Compile Include="Areas\Errors\ErrorsAreaRegistration.cs" />
     <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
@@ -298,10 +300,24 @@
     <Compile Include="Migrations\201507231026486_Email001.Designer.cs">
       <DependentUpon>201507231026486_Email001.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507231223047_Email002.cs" />
+    <Compile Include="Migrations\201507231223047_Email002.Designer.cs">
+      <DependentUpon>201507231223047_Email002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507231949569_Filter-009.cs" />
+    <Compile Include="Migrations\201507231949569_Filter-009.Designer.cs">
+      <DependentUpon>201507231949569_Filter-009.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Models\LcpsMvcActionTarget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -401,8 +417,8 @@
     <Content Include="Areas\LcpsLdap\Views\LdapTemplate\Filters.cshtml" />
     <Content Include="Areas\Filters\Views\_MemberFilterDetail_org.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapTemplate\_LdapTemplateLayout.cshtml" />
-    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Index.cshtml" />
-    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Create.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Index_org.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Create_org.cshtml" />
     <Content Include="Areas\My\Views\web.config" />
     <Content Include="Areas\My\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\My\Views\Profile\Index.cshtml" />
@@ -414,7 +430,7 @@
     <Content Include="Areas\My\Views\Contacts\Index.cshtml" />
     <Content Include="Areas\Filters\Views\Shared\_clauseList.cshtml" />
     <Content Include="Areas\Filters\Views\_clauseList.cshtml" />
-    <Content Include="Areas\Students\Views\Shared\_studentClauseList.cshtml" />
+    <Content Include="Areas\Students\Views\Shared\_studentFilterClauseList.cshtml" />
     <Content Include="Areas\HumanResources\Views\Shared\_staffFilterClause.cshtml" />
     <Content Include="Areas\HumanResources\Views\Shared\_staffList.cshtml" />
     <Content Include="Areas\My\Views\Contacts\EditFilter.cshtml" />
@@ -423,6 +439,20 @@
     <Content Include="Areas\Students\Views\Shared\_studentList.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapDashboard\Index.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\Shared\_OuTree.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Index.cshtml" />
+    <Content Include="Areas\Errors\Views\web.config" />
+    <Content Include="Areas\Errors\Views\ErrorHandling\AppStart.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\Create.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\_OuTemplateList.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\_OuTemplateEdit.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\EditTemplate.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\_OuTemplateCreate.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\StudentMembership.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\StaffMembership.cshtml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -546,10 +576,13 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\ddl.cshtml" />
-    <Content Include="Views\Shared\_ExceptionModal.cshtml" />
+    <Content Include="Views\Shared\_ExceptionModel.cshtml" />
+    <Content Include="Views\Shared\_StatusMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Errors\Models\" />
+    <Folder Include="Areas\Errors\Views\Shared\" />
     <Folder Include="Areas\Filters\Controllers\" />
     <Folder Include="Areas\Filters\Models\" />
     <Folder Include="Areas\Filters\Views\StudentFilter\" />
@@ -641,6 +674,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507231026486_Email001.resx">
       <DependentUpon>201507231026486_Email001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507231223047_Email002.resx">
+      <DependentUpon>201507231223047_Email002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507231949569_Filter-009.resx">
+      <DependentUpon>201507231949569_Filter-009.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

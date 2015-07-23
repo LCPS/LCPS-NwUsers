@@ -20,6 +20,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Models
 
         public StaffFilterClauseModel(StaffFilterClause c)
         {
+
             AnvilEntity e = new AnvilEntity(c);
             e.CopyTo(this);
         }

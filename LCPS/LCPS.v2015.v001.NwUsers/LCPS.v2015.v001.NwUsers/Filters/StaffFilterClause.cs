@@ -35,15 +35,11 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         public int SortIndex { get; set; }
 
-        [ForeignKey("FilterId")]
-        public virtual MemberFilter Filter { get; set; }
-
         public DynamicQueryConjunctions ClauseConjunction { get; set; }
 
         public bool BuildingInclude { get; set; }
         public DynamicQueryConjunctions BuildingConjunction { get; set; }
         public DynamicQueryOperators BuildingOperator { get; set; }
-
         [Display(Name = "Building")]
         public Guid BuildingValue { get; set; }
 

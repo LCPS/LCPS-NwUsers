@@ -1,0 +1,25 @@
+﻿@using Anvil.v2015.v001.Domain.Exceptions;
+
+@model AnvilExceptionModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AppStart</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    @Html.Partial("_ExceptionModel", Model)
+</body>
+</html>

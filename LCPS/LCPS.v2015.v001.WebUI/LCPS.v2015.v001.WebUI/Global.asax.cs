@@ -6,6 +6,12 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using Anvil.v2015.v001.Domain.Exceptions;
+using Anvil.v2015.v001.Domain.Entities;
+using LCPS.v2015.v001.WebUI.Infrastructure;
+
+using LCPS.v2015.v001.WebUI.Areas.Errors.Controllers;
+
 namespace LCPS.v2015.v001.WebUI
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -21,7 +27,13 @@ namespace LCPS.v2015.v001.WebUI
 
             LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext db = new WebUI.Infrastructure.LcpsDbContext();
             LCPS.v2015.v001.NwUsers.Properties.Settings.Default.ConnectionString = db.Database.Connection.ConnectionString;
+
+            ApplicationBase ab = LcpsDbContext.Application;
+            //db.Seed();
+            
             
         }
+
+       
     }
 }

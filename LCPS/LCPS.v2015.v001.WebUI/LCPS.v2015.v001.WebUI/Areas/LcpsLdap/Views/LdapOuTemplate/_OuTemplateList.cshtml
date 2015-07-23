@@ -1,0 +1,97 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+
+@model IEnumerable<OUTemplate>
+
+<style>
+    .cmd a
+    {
+        margin-right: 18px;
+    }
+</style>
+
+<script>
+
+    $(function () {
+        $('#hide-stat').click(function () {
+            var stat = $('#div-status').hide('slow');
+        });
+    })
+
+
+    $(function () {
+        $('.del-template').click(function () {
+            var tId = $(this).attr("id");
+            var tr = tId + '-tr';
+
+            var stat = $('#div-status');
+            var hdr = $('#stat-hdr');
+            var bdy = $('#stat-bdy');
+
+            var url = "/LcpsLdap/LdapOuTemplate/DeleteOuTemplate";
+
+            hdr.html('Title');
+
+
+            $.ajax({
+                url: "/LcpsLdap/LdapOuTemplate/DeleteOuTemplate",
+                type: "GET",
+                data: {
+                    id: tId
+                },
+                error: function (response) {
+                    stat.html(response.responseText);
+                },
+                success: function (response) {
+                    if (response.length >= 4 && response.substr(1, 2) == "ul") {
+                        stat.addClass("panel panel-danger");
+                        hdr.html('Error');
+                        bdy.prepend(response);
+
+                        stat.show('slow');
+                    }
+                    else {
+                        $("#" + tr).hide('slow');
+                    }
+                }
+            });
+        });
+    })
+</script>
+
+<div id="div-status" style="display: none;">
+    <div id="stat-hdr" class="panel-heading">
+    </div>
+    <div id="stat-bdy" class="panel-body">
+        <div class="container">
+            <a id="hide-stat" href="#">Close</a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover table-striped table-condensed">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TemplateName)</th>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th>@Html.DisplayNameFor(model => model.OUName)</th>
+        <th>@Html.DisplayNameFor(model => model.OUDescription)</th>
+        <th>&nbsp;</th>
+    </tr>
+    @foreach (OUTemplate t in Model)
+    {
+        <tr id="@t.OUId.ToString()-tr">
+            <td>@t.TemplateName</td>
+            <td>@t.Description</td>
+            <td>@t.OUName</td>
+            <td>@t.OUDescription</td>
+            <th class="cmd">
+                <a href="@Url.Action("EditTemplate", "LdapOuTemplate", new { area = "LcpsLdap", id = t.OUId })"><i class="fa fa-pencil"></i></a>
+                <a href="@Url.Action("StudentMembership", "LdapOuTemplate", new { area = "LcpsLdap", id = t.OUId })"><i class="fa fa-graduation-cap"></i></a>
+                <a href="@Url.Action("StaffMembership", "LdapOuTemplate", new { area = "LcpsLdap", id = t.OUId })"><i class="fa fa-apple"></i></a>
+                <a id="@t.OUId.ToString()" class="del-template" href="#" onclick="return confirm('Are you sure you want to delete this template?');"><i class="fa fa-remove"></i></a>
+            </th>
+        </tr>
+    }
+</table>
+

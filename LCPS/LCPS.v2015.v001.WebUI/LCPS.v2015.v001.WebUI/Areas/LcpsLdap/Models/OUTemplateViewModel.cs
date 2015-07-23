@@ -4,72 +4,155 @@ using System.Linq;
 using System.Web;
 
 using LCPS.v2015.v001.NwUsers.Infrastructure;
+using LCPS.v2015.v001.NwUsers.Filters;
 using LCPS.v2015.v001.NwUsers.LcpsLdap;
 using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
 using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
-//using LCPS.v2015.v001.WebUI.Areas.Filters.Models;
+using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 
 namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 {
     public class OUTemplateViewModel
     {
+        #region Fields
+
         private LcpsDbContext _dbContext;
-        private List<OUTemplate> _ouTemplates;
-        private LcpsAdsOuTree _ouTree;
+        private OUTemplate _currentTemplate;
 
-        public OUTemplateViewModel()
-        { }
+        #endregion
 
-        public OUTemplateViewModel(LcpsDbContext db)
+        #region Constructors
+
+        public OUTemplateViewModel(LcpsDbContext context)
         {
-            _dbContext = db;
+            _dbContext = context;
         }
 
-        public OUTemplate OUTemplate { get; set; }
+        public OUTemplateViewModel(LcpsDbContext context, Guid id)
+        {
+            _dbContext = context;
+            _currentTemplate = _dbContext.OUTemplates.Find(id);
+        }
 
-        public LcpsDbContext DbContext
+        #endregion
+
+        #region Properties
+
+        public Exception Exception { get; set;}
+
+        public OUTemplate CurrentTemplate
+        {
+            get { return _currentTemplate; }
+        }
+
+        public OuTreeModel CreateTemplateTree
         {
             get
             {
-                if (_dbContext == null)
-                    _dbContext = new LcpsDbContext();
+                OuTreeModel m = new OuTreeModel() { 
+                    FormAction = null,
+                    FormController = null,
+                    FormArea = null
+                };
 
-                return _dbContext;
+                return m;
             }
         }
 
-        public List<OUTemplate> Templates
-        {
-            get
-            {
-                if (_ouTemplates == null)
-                    _ouTemplates = GetTemplates();
-                return _ouTemplates;
-            }
-        }
+        #endregion
 
-        public LcpsAdsOuTree OuTree
-        {
-            get 
-            {
-                if (_ouTree == null)
-                    _ouTree = new LcpsAdsOuTree();
+        #region OU Templates
 
-                return _ouTree;
-            }
-        }
-
-
-        private List<OUTemplate> GetTemplates()
+        public List<OUTemplate> GetTemplates()
         {
             try
             {
-                return DbContext.OUTemplates.OrderBy(x => x.TemplateName).ToList();
+                List<OUTemplate> tt = _dbContext.OUTemplates.OrderBy(x => x.TemplateName).ToList();
+                return tt;
             }
             catch (Exception ex)
             {
-                throw new Exception("Coudl not get templates from database", ex);
+                this.Exception = ex;
+                return new List<OUTemplate>();
+            }
+
+        }
+
+        #endregion
+
+
+        #region Student Filters
+
+        public StudentFilterClauseModel GetStudentClauseModel()
+        {
+            if(CurrentTemplate != null)
+            {
+                StudentFilterClause c = DynamicStudentClause.GetDefaultStudentClause(CurrentTemplate.OUId);
+                return new StudentFilterClauseModel(c)
+                    {
+                        FormAction = "AddStudentClause",
+                        FormController = "LdapOuTemplate",
+                        FormArea = "LcpsLdap",
+                        SubmitText = "Add Clause"
+                    };
+            }
+            else
+            {
+                throw new Exception("Could not get student filter. The OU has not been set");
             }
         }
+
+        public DynamicStudentFilter GetStudentFilter()
+        {
+            if (CurrentTemplate != null)
+            {
+                DynamicStudentFilter f = new DynamicStudentFilter(CurrentTemplate.OUId);
+                f.Refresh();
+                return f;
+            }
+            else
+            {
+                throw new Exception("Could not get student filter. The OU has not been set");
+            }
+        }
+
+        #endregion
+
+        #region Staff Filters
+
+        public StaffFilterClauseModel GetStaffFilterClause()
+        {
+            if(CurrentTemplate != null)
+            {
+                StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefaultSearch())
+                    {
+                        FormAction = "AddStaffClause",
+                        FormController = "LdapOuTemplate",
+                        FormArea = "LcpsLdap",
+                        SubmitText = "Add Clause"
+                    };
+                return m;
+            }
+            else
+                throw new Exception("Could not get student filter. The OU has not been set");
+        }
+
+        public DynamicStaffFilter GetStaffFilter()
+        {
+            if(CurrentTemplate != null)
+            {
+                DynamicStaffFilter stu = new DynamicStaffFilter(CurrentTemplate.OUId);
+                return stu;
+            }
+            else
+            {
+                throw new Exception("Could not get the staff filter. The OU has not been set");
+            }
+        }
+
+        #endregion
+
+
     }
 }

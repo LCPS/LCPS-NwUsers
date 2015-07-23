@@ -10,63 +10,58 @@
 
 <script>
     $(window).load(function () {
-        setFieldEnableStatus();
-        setConjunctionStatus();
+        setStaffField();
+        setStaffCunj();
 
-        GetEmployeeTypes();
-        GetJobTitles();
+        GetEmployeeTypes(true);
+        GetJobTitles(true);
     });
 
 
     $(function () {
-        $('.cb').change(function () {
-
-            setFieldEnableStatus();
-
-            setConjunctionStatus();
+        $('.cb-stf').change(function () {
+            setStaffField(true);
+            setStaffCunj(true);
         });
     })
 
-    function setFieldEnableStatus() {
-        var cb = document.getElementsByClassName('cb');
+    function setStaffField(b) {
+        var cb = $('.cb-stf');
 
-        for (cx = 0; cx < cb.length; cx++) {
-            cn = cb[cx].id.replace('Include', '');
-            checked = cb[cx].checked;
+        cb.each(function () {
+            var cn = $(this).attr('id').replace('Include', '');
+            var checked = $(this).prop('checked');
+            var fldId = "#Stf-" + cn;
+            var fld = $(fldId);
+
             if (checked)
-                $('.' + cn).show('slow');
+                fld.show('slow');
             else
-                $('.' + cn).hide('slow');
-        }
+                fld.hide('slow');
+        })
     }
 
-    function setConjunctionStatus() {
+    function setStaffCunj(b) {
+        var checked = $('.cb-stf[id*="Include"]:checked');
+ 
+        checked.each(function () {
+            var cn = $(this).attr('id');
+            var f = cn.replace("Include", "");
+            var cnj = $('.stf-cnj[id^=' + f);
 
-        var cbs = $('input:checkbox');
-        var checked = $('input:checkbox[id*="Include"]:checked');
-        var ddl = $('[id*="Conjunction"]');
+            var idx = checked.index($(this));
 
+            if(idx == 0)
+                cnj.hide('slow');
+            else
+                cnj.show('slow');
+        });
 
-        if (checked.length == 0) {
-            ddl.hide('slow');
-            return;
-        }
-
-        idx = (cbs.index(checked[0]));
-
-        for (y = 0; y < idx; y++) {
-            cid = "#" + ddl[y].id;
-            $(cid).hide('slow');
-        }
-
-        for (x = idx; x < ddl.length; x++) {
-            cid = "#" + ddl[x].id;
-            $(cid).show('slow');
-        }
+        
     }
 
     $(function () {
-        $("#BuildingInclude").bootstrapToggle({
+        $(".cb-stf[id=BuildingInclude]").bootstrapToggle({
             size: 'small',
             on: 'Building',
             off: 'Building',
@@ -74,7 +69,7 @@
             offstyle: 'danger'
         });
 
-        $("#EmployeeTypeInclude").bootstrapToggle({
+        $(".cb-stf[id=EmployeeTypeInclude]").bootstrapToggle({
             size: 'small',
             on: 'Type',
             off: 'Type',
@@ -83,7 +78,7 @@
 
         });
 
-        $("#JobTitleInclude").bootstrapToggle({
+        $(".cb-stf[id=JobTitleInclude]").bootstrapToggle({
             size: 'small',
             on: 'Title',
             off: 'Title',
@@ -92,7 +87,7 @@
 
         });
 
-        $("#StatusInclude").bootstrapToggle({
+        $(".cb-stf[id=StatusInclude]").bootstrapToggle({
             size: 'small',
             on: 'Status',
             off: 'Status',
@@ -101,7 +96,7 @@
 
         });
 
-        $("#StaffIdInclude").bootstrapToggle({
+        $(".cb-stf[id=StaffIdInclude]").bootstrapToggle({
             size: 'small',
             on: 'ID',
             off: 'ID',
@@ -110,7 +105,7 @@
 
         });
 
-        $("#LastNameInclude").bootstrapToggle({
+        $(".cb-stf[id=LastNameInclude]").bootstrapToggle({
             size: 'small',
             on: 'Name',
             off: 'Name',
@@ -122,14 +117,14 @@
     })
 
     $(function () {
-        $("#BuildingValue").change(function () {
+        $(".cb-stf[id=BuildingValue]").change(function () {
             GetEmployeeTypes();
             GetJobTitles();
         });
     });
 
     $(function () {
-        $("#EmployeeTypeValue").change(function () {
+        $(".cb-stf[id=EmployeeTypeValue]").change(function () {
             GetJobTitles();
         });
     });
@@ -224,35 +219,35 @@
     <div class="form-inline">
         <div class="form-group form-group-sm">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.BuildingInclude, new { @class = "cb" })
+                @Html.CheckBoxFor(model => model.BuildingInclude, new { @class = "cb-stf" })
             </div>
         </div>
         <div class="form-group form-group-sm">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.EmployeeTypeInclude, new { @class = "cb" })
+                @Html.CheckBoxFor(model => model.EmployeeTypeInclude, new { @class = "cb-stf" })
             </div>
         </div>
         <div class="form-group form-group-sm">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.JobTitleInclude, new { @class = "cb" })
-            </div>
-
-        </div>
-        <div class="form-group form-group-sm">
-            <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.StatusInclude, new { @class = "cb" })
+                @Html.CheckBoxFor(model => model.JobTitleInclude, new { @class = "cb-stf" })
             </div>
 
         </div>
         <div class="form-group form-group-sm">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.StaffIdInclude, new { @class = "cb" })
+                @Html.CheckBoxFor(model => model.StatusInclude, new { @class = "cb-stf" })
             </div>
 
         </div>
         <div class="form-group form-group-sm">
             <div class="col-md-2">
-                @Html.CheckBoxFor(model => model.LastNameInclude, new { @class = "cb" })
+                @Html.CheckBoxFor(model => model.StaffIdInclude, new { @class = "cb-stf" })
+            </div>
+
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="col-md-2">
+                @Html.CheckBoxFor(model => model.LastNameInclude, new { @class = "cb-stf" })
             </div>
 
         </div>
@@ -276,23 +271,23 @@
         }
 
 
-        <div class="form-group form-group-sm Building">
+        <div id="Stf-Building" class="form-group form-group-sm">
             <div class="col-md-2">
                 @Html.LabelFor(model => model.BuildingValue)
             </div>
-                <div class="col-md-1">
-                    @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", style = "width: 90px" })
-                </div>
-                <div class="col-md-2">
-                    @Html.DropDownListFor(model => model.BuildingValue, DynamicStaffClause.GetBuildings(), new { @class = "form-control input-sm" })
-                </div>
+            <div class="col-md-1">
+                @Html.EnumDropDownListFor(model => model.BuildingOperator, new { @class = "form-control input-sm", style = "width: 90px" })
             </div>
-        <div class="form-group form-group-sm EmployeeType">
+            <div class="col-md-2">
+                @Html.DropDownListFor(model => model.BuildingValue, DynamicStaffClause.GetBuildings(), new { @class = "form-control input-sm" })
+            </div>
+        </div>
+        <div id="Stf-EmployeeType" class="form-group form-group-sm">
             <div class="col-md-1">
                 @Html.LabelFor(model => model.EmployeeTypeValue)
             </div>
             <div class="col-md-1">
-                @Html.EnumDropDownListFor(model => model.EmployeeTypeConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
+                @Html.EnumDropDownListFor(model => model.EmployeeTypeConjunction, new { @class = "form-control input-sm stf-cnj", style = "width: 90px" })
             </div>
             <div class="col-md-1">
                 @Html.EnumDropDownListFor(model => model.EmployeeTypeOperator, new { @class = "form-control input-sm", style = "width: 90px" })
@@ -301,13 +296,13 @@
                 @Html.DropDownListFor(model => model.EmployeeTypeValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
             </div>
         </div>
-        <div class="form-group form-group-sm JobTitle">
+        <div id="Stf-JobTitle" class="form-group form-group-sm">
 
             <div class="col-md-1">
                 @Html.LabelFor(model => model.JobTitleValue)
             </div>
             <div class="col-md-1">
-                @Html.EnumDropDownListFor(model => model.JobTitleConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
+                @Html.EnumDropDownListFor(model => model.JobTitleConjunction, new { @class = "form-control input-sm stf-cnj", style = "width: 90px" })
             </div>
             <div class="col-md-1">
                 @Html.EnumDropDownListFor(model => model.JobTitleOperator, new { @class = "form-control input-sm", style = "width: 90px" })
@@ -316,13 +311,13 @@
                 @Html.DropDownListFor(model => model.JobTitleValue, new List<SelectListItem>(), new { @class = "form-control input-sm" })
             </div>
         </div>
-        <div class="form-group form-group-sm Status">
+        <div id="Stf-Status" class="form-group form-group-sm">
             <div class="col-md-1">
                 @Html.LabelFor(model => model.StatusValue)
             </div>
 
             <div class="col-md-1">
-                @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
+                @Html.EnumDropDownListFor(model => model.StatusConjunction, new { @class = "form-control input-sm stf-cnj", style = "width: 90px" })
             </div>
             <div class="col-md-1">
                 @Html.EnumDropDownListFor(model => model.StatusOperator, new { @class = "form-control input-sm", style = "width: 90px" })
@@ -332,13 +327,13 @@
             </div>
         </div>
 
-        <div class="form-group form-group-sm StaffId">
+        <div id="Stf-StaffId" class="form-group form-group-sm">
             <div class="col-md-1">
                 @Html.LabelFor(model => model.StaffIdValue)
             </div>
 
             <div class="col-md-1">
-                @Html.EnumDropDownListFor(model => model.StaffIdConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
+                @Html.EnumDropDownListFor(model => model.StaffIdConjunction, new { @class = "form-control input-sm stf-cnj", style = "width: 90px" })
             </div>
             <div class="col-md-1">
                 @Html.EnumDropDownListFor(model => model.StaffIdOperator, new { @class = "form-control input-sm", style = "width: 90px" })
@@ -348,12 +343,12 @@
             </div>
         </div>
 
-        <div class="form-group form-group-sm LastName">
+        <div id="Stf-LastName" class="form-group form-group-sm">
             <div class="col-md-1">
                 @Html.LabelFor(model => model.LastNameValue)
             </div>
             <div class="col-md-1">
-                @Html.EnumDropDownListFor(model => model.LastNameConjunction, new { @class = "form-control input-sm", style = "width: 90px" })
+                @Html.EnumDropDownListFor(model => model.LastNameConjunction, new { @class = "form-control input-sm stf-cnj", style = "width: 90px" })
             </div>
             <div class="col-md-1">
                 @Html.EnumDropDownListFor(model => model.LastNameOperator, new { @class = "form-control input-sm", style = "width: 90px" })

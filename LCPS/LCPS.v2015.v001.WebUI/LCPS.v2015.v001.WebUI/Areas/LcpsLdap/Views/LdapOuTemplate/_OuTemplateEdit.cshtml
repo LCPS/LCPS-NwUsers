@@ -1,0 +1,38 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+@model OUTemplate
+
+
+
+@using (Html.BeginForm("EditTemplate", "LdapOuTemplate", new { area = "LcpsLdap" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.OUId)
+
+    <div id="ou-frm" class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.TemplateName, new { @class = "control-label col-md-3" })
+            @Html.TextBoxFor(model => model.TemplateName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TemplateName, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3" })
+            @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "text-danger" })
+        </div>
+        @if (!Model.OUId.Equals(Guid.Empty))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.OUName, new { @class = "control-label col-md-3" })
+                @Html.TextBoxFor(model => model.OUName, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.OUDescription, new { @class = "control-label col-md-3" })
+                @Html.TextBoxFor(model => model.OUDescription, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        }
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-success col-md-offset-1" />
+        </div>
+    </div>
+}

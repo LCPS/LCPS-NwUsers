@@ -1,0 +1,67 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
+@model OUTemplateViewModel
+
+
+@{
+    ViewBag.Title = "OUTemplates";
+    Layout = "~/Areas/LcpsLdap/Views/LdapTemplate/_LdapTemplateLayout.cshtml";
+}
+
+<style>
+    #template-list, #template-list li {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<h2>OU Templates</h2>
+
+<div class="well">
+    OU Templates are templates used to determine which LCPS members (Staff and students) will be created in or moved to an Active Directory Organizational Unit
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="well well-sm">
+            <h3>Templates</h3>
+            <a href="@Url.Action("Create", "LdapOuTemplate", new { area = "LcpsLdap" })" class="btn btn-sm btn-info">Create New</a>
+            <ul id="template-list" style="margin-top: 18px;">
+                @foreach (OUTemplate t in Model.Templates)
+                {
+                    <li style="list-style-type: none;"><i class="fa fa-cube"></i> <span style="margin-left: 12px; display: inline-block"><a href="@Url.Action("SelectTemplate", "LdapOuTemplate", new { @area = "LcpsLdap", id = t.OUId })">@t.TemplateName</a></span><br />
+                        <span class="text-info" style="margin-left: 32px;"><small>Apply To:&nbsp;&nbsp;@t.FilterClass.ToString()</small></span>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        @if (Model.OUTemplate != null)
+        {
+            <div class="well">
+                <h3 class="text-info">@Model.OUTemplate.TemplateName</h3>
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.OUTemplate.Description) </dt>
+                    <dd>@Html.DisplayFor(model => model.OUTemplate.Description) </dd>
+                    <dt>@Html.DisplayNameFor(model => model.OUTemplate.OUName) </dt>
+                    <dd>@Html.DisplayFor(model => model.OUTemplate.OUName) </dd>
+                    @if (!String.IsNullOrEmpty(Model.OUTemplate.OUDescription))
+                    {
+                        <dt>@Html.DisplayNameFor(model => model.OUTemplate.OUDescription) </dt>
+                        <dd>@Html.DisplayFor(model => model.OUTemplate.OUDescription) </dd>
+                    }
+                </dl>
+            </div>
+
+
+            <hr />
+
+
+        }
+
+    </div>
+</div>

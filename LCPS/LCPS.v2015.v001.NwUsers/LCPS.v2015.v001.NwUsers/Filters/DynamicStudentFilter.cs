@@ -75,8 +75,6 @@ namespace LCPS.v2015.v001.NwUsers.Filters
 
         #region Database
 
-
-
         public void CreateClause(StudentFilterClause c)
         {
             try
@@ -153,7 +151,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             }
             catch (Exception ex)
             {
-                AnvilExceptionCollector ec = new AnvilExceptionCollector("Could not get student records from the database");
+                AnvilExceptionCollector ec = new AnvilExceptionCollector("Could not get staff records from the database");
                 ec.Add(ex);
                 ec.Add(dqs.Query);
                 throw ec.ToException();

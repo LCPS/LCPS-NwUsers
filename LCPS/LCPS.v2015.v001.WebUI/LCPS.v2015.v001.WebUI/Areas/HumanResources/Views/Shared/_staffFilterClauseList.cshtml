@@ -5,6 +5,49 @@
 
 @model DynamicStaffFilter
 
+
+<script>
+    $(function () {
+        $('.del-item').click(function () {
+            var tId = $(this).attr("id");
+            var tr = tId + '-tr';
+
+            var stat = $('#div-status');
+            var hdr = $('#stat-hdr');
+            var bdy = $('#stat-bdy');
+
+            var url = "/HumanResources/HRStaff/DeleteStaffFilterClause";
+
+            hdr.html('Title');
+
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: {
+                    id: tId
+                },
+                error: function (response) {
+                    stat.html(response.responseText);
+                },
+                success: function (response) {
+                    if (response.length >= 4 && response.substr(1, 2) == "ul") {
+                        stat.addClass("panel panel-danger");
+                        hdr.html('Error');
+                        bdy.prepend(response);
+
+                        stat.show('slow');
+                    }
+                    else {
+                        $("#" + tr).hide('slow');
+                    }
+                }
+            });
+        });
+    })
+</script>
+
+
 <table class="table table-striped table-hover table-condensed">
     <tr>
         <th>Clause</th>
@@ -12,9 +55,11 @@
     </tr>
     @foreach (IDynamicQueryClause c in Model)
     {
-        <tr>
+        <tr id="@c.ClauseId.ToString()-tr">
             <td>@c.ToFriendlyString()</td>
-            <th style="white-space:nowrap;"><a href="@Url.Action("DeleteStaffClause", "Contacts", new { area = "My", id = c.ClauseId })" onclick="return confirm('Are you sure you want to delete this clause?');"><i class="fa fa-remove"></i> &nbsp; Delete </a></th>
+            <th style="white-space:nowrap;">
+                <a id="@c.ClauseId.ToString()" class="del-item" href="#" onclick="return confirm('Are you sure you want to delete this clause?');"><i class="fa fa-remove"></i> &nbsp; Delete </a>
+            </th>
         </tr>
     }
 </table>

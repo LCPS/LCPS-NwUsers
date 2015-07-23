@@ -108,6 +108,16 @@ namespace Anvil.v2015.v001.Domain.Exceptions
             return items;
         }
 
+        public string ToUL()
+        {
+            string ul = "<ul>\n";
+            string[] items = ToArray();
+            string[] lis = items.Select(x => "<li>" + x + "</li>\n").ToArray();
+            ul += string.Join("", lis);
+            ul += "</ul>";
+            return ul;
+        }
+
         #endregion
 
         #region Inner Exceptions

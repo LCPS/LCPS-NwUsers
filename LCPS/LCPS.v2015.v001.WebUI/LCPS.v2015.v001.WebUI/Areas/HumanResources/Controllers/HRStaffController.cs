@@ -200,7 +200,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StaffKey,StaffId,FirstName,MiddleInitial,LastName,StaffEmail,Gender,Birthdate")] HRStaff hrstaff)
+        public ActionResult Create([Bind(Include = "StaffKey,StaffId,FirstName,MiddleInitial,LastName,Gender,Birthdate")] HRStaff hrstaff)
         {
             if (ModelState.IsValid)
             {
@@ -233,7 +233,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StaffKey,StaffId,FirstName,MiddleInitial,LastName,StaffEmail,Gender,Birthdate")] HRStaff hrstaff)
+        public ActionResult Edit([Bind(Include = "StaffKey,StaffId,FirstName,MiddleInitial,LastName,Gender,Birthdate")] HRStaff hrstaff)
         {
             if (ModelState.IsValid)
             {
@@ -268,6 +268,29 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             db.StaffMembers.Remove(hrstaff);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        #endregion
+
+        #region Filters
+
+        [HttpGet]
+        public ActionResult DeleteStaffFilterClause(Guid id)
+        {
+            string result = "Success";
+            try
+            {
+                StaffFilterClause c = db.StaffFilterClauses.Find(id);
+                db.StaffFilterClauses.Remove(c);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                AnvilExceptionCollector ec = new AnvilExceptionCollector(ex);
+                result = ec.ToUL();
+            }
+
+            return Content(result, "text/html");
         }
 
         #endregion

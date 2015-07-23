@@ -1,0 +1,67 @@
+﻿@using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
+
+@using LCPS.v2015.v001.NwUsers.Filters;
+
+
+@model DynamicStudentFilter
+
+<script>
+    $(function () {
+        $('.del-item').click(function () {
+            var tId = $(this).attr("id");
+            var tr = tId + '-tr';
+
+            var stat = $('#div-status');
+            var hdr = $('#stat-hdr');
+            var bdy = $('#stat-bdy');
+
+            var url = "/Students/Student/DeleteStudentFilterClause";
+
+            hdr.html('Title');
+
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: {
+                    id: tId
+                },
+                error: function (response) {
+                    stat.html(response.responseText);
+                },
+                success: function (response) {
+                    if (response.length >= 4 && response.substr(1, 2) == "ul") {
+                        stat.addClass("panel panel-danger");
+                        hdr.html('Error');
+                        bdy.prepend(response);
+
+                        stat.show('slow');
+                    }
+                    else {
+                        $("#" + tr).hide('slow');
+                    }
+                }
+            });
+        });
+    })
+</script>
+
+@Html.Partial("_StatusMessage")
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Clause</th>
+        <th></th>
+    </tr>
+    @foreach (IDynamicQueryClause c in Model)
+    {
+        <tr id="@c.ClauseId.ToString()-tr">
+            <td>
+                @c.ToFriendlyString()
+            </td>
+            <td>
+                <a id="@c.ClauseId" href="" class="del-item" onclick="return confirm('Are you sure you want to delete this clause?');">Delete</a>
+            </td>
+        </tr>
+    }
+</table> 

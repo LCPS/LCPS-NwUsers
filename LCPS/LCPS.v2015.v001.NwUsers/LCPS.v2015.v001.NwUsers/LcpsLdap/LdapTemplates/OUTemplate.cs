@@ -34,9 +34,6 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates
         [MaxLength(256)]
         public string Description { get; set; }
 
-        [Display(Name = "Apply To")]
-        public Filters.MemberFilterClass FilterClass { get; set; }
-
         [Display(Name = "OU Name")]
         public string OUName
         {

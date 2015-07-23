@@ -239,7 +239,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
             try
             {
                 f = DbContext.MemberFilters.First(x => x.FilterId.Equals(m.FilterId));
-                m.Filter = f;
             }
             catch
             {

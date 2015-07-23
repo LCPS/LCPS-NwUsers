@@ -1,8 +1,19 @@
-﻿
+﻿@using LCPS.v2015.v001.WebUI.Infrastructure;
+@using LCPS.v2015.v001.WebUI.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2><i class="fa fa-sitemap"></i> LDAP Dashboard</h2>
 
+<div class="row">
+    @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
+{
+    Area = "LcpsLdap",
+    Controller = "LdapOuTemplate",
+    Action = "Index",
+    CssClass = "fa fa-cube",
+    Text = "OU Templates"
+})
+</div>
