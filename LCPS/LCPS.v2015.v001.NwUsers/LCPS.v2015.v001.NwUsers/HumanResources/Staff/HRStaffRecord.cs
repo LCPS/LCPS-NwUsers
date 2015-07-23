@@ -33,7 +33,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
                 Birthdate = staff.Birthdate;
                 StaffKey = staff.StaffKey;
                 StaffId = staff.StaffId;
-                StaffEmail = staff.StaffEmail;
             }
 
             if (position != null)

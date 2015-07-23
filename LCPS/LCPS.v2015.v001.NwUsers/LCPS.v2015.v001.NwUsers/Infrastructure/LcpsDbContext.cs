@@ -89,6 +89,9 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         public DbSet<Filters.StudentFilterClause> StudentFilterClauses { get; set; }
 
 
+        // ----------------------------- Email
+        public DbSet<LcpsEmail.EmailAccount> EmailAccounts { get; set; }
+
 
         #endregion
 

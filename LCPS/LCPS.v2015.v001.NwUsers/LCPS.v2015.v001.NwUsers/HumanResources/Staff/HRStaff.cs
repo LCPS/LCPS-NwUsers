@@ -86,12 +86,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         [MaxLength(75)]
         public string LastName { get; set; }
 
-        [Display(Name = "Email Address")]
-        [MaxLength(256)]
-        [DataType(DataType.EmailAddress)]
-        public string StaffEmail { get; set; }
-
-
         [Display(Name = "Name")]
         public string SortName
         {

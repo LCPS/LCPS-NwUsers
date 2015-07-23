@@ -12,6 +12,5 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         string StaffId { get; set; }
 
-        string StaffEmail { get; set; }
     }
 }

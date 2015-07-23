@@ -153,7 +153,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
                 (
                     x => x.LastName.Contains(m.SearchString) |
                         x.FirstName.Contains(m.SearchString) |
-                        x.StaffEmail.Contains(m.SearchString) |
                         x.StaffId.Contains(m.SearchString)
                 )
                 .OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();

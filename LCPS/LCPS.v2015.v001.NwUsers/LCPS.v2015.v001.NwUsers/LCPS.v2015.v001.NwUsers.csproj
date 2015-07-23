@@ -124,6 +124,15 @@
     <Compile Include="HumanResources\Staff\HRStaffPositionCandidate.cs" />
     <Compile Include="HumanResources\Staff\IStaff.cs" />
     <Compile Include="HumanResources\Staff\IStaffPosition.cs" />
+    <Compile Include="Importing2\IImportFile.cs" />
+    <Compile Include="Importing2\IImportFileRecord.cs" />
+    <Compile Include="Importing2\ImportCrudStatus.cs" />
+    <Compile Include="Importing2\ImportFile.cs" />
+    <Compile Include="Importing2\ImportFileRecord.cs" />
+    <Compile Include="Importing2\ImportRecordStatus.cs" />
+    <Compile Include="LcpsEmail\EmailAccount.cs" />
+    <Compile Include="LcpsEmail\LcpsEmailImport.cs" />
+    <Compile Include="LcpsEmail\LcpsEmailImportRecord.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategory.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategoryType.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserGroupAssignment.cs" />
@@ -178,6 +187,9 @@
       <DependentUpon>StudentsContext.dbml</DependentUpon>
     </Compile>
     <Compile Include="Students\StudentSession.cs" />
+    <Compile Include="Support\SupportStaffStatus.cs" />
+    <Compile Include="Support\SupportDepartment.cs" />
+    <Compile Include="Support\SupportStaff.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

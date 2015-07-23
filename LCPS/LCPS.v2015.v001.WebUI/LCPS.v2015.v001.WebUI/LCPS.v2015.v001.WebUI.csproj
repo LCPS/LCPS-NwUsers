@@ -294,6 +294,10 @@
     <Compile Include="Migrations\201507211312571_Filter008.Designer.cs">
       <DependentUpon>201507211312571_Filter008.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507231026486_Email001.cs" />
+    <Compile Include="Migrations\201507231026486_Email001.Designer.cs">
+      <DependentUpon>201507231026486_Email001.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Models\LcpsMvcActionTarget.cs" />
@@ -634,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507211312571_Filter008.resx">
       <DependentUpon>201507211312571_Filter008.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507231026486_Email001.resx">
+      <DependentUpon>201507231026486_Email001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
