@@ -11,16 +11,28 @@ using System.Threading.Tasks;
 
 using System.Reflection;
 
+using LCPS.v2015.v001.NwUsers.Infrastructure;
+
 namespace LCPS.v2015.v001.NwUsers.Importing2
 {
     public class ImportFile : IImportFile
     {
+        #region Fields
+
+        private List<IImportFileRecord> _lines = new List<IImportFileRecord>();
+        private LcpsDbContext _dbContext = new LcpsDbContext();
+
+        #endregion
+
         #region Constructors
 
         public ImportFile(Stream contents, Char delimiter)
         {
             this.Delimiter = delimiter;
-            this.ParseFile(contents);
+            MemoryStream ms = new MemoryStream();
+            contents.CopyTo(ms);
+            ms.Position = 0;
+            this.Contents = new StreamReader(ms);
         }
 
         #endregion
@@ -33,22 +45,18 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
 
         public List<object> Items { get; set; }
 
-        public void ParseFile(Stream content)
+        public void ParseFile()
         {
 
             try
             {
                 Items = new List<object>();
 
-                MemoryStream ms = new MemoryStream();
-                content.CopyTo(ms);
-                ms.Position = 0;
 
-                this.Contents = new StreamReader(ms);
 
                 int index = 0;
 
-                while(!this.Contents.EndOfStream)
+                while (!this.Contents.EndOfStream)
                 {
                     string line = this.Contents.ReadLine();
                     if (index == 0)
@@ -58,28 +66,21 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
                     }
                     else
                     {
-                        ImportFileRecord record = new ImportFileRecord()
-                        {
-                            Index = index,
-                            Fields = line.Split(this.Delimiter),
-                            Content = line,
-                        };
-
                         this.ParseLine(line);
 
-                        record.Validate();
+                        IImportFileRecord record = Lines[index - 1];
+
+                        record.Validate(_dbContext);
 
                         if (record.ValidationStatus != ImportRecordStatus.danger)
-                            record.GetCrudStatus();
+                            record.GetCrudStatus(_dbContext);
 
-                        Lines.Add(record);
-
-                        index ++;
+                        index++;
                     }
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error reading input file", ex);
             }
@@ -89,14 +90,14 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
         public virtual void ParseLine(string line)
         {
             var item = Activator.CreateInstance(ItemType, true);
-            
-            string[] record = line.Split(this.Delimiter);
+
+            ((IImportFileRecord)item).Fields = line.Split(this.Delimiter);
 
             Dictionary<string, string> dic = new Dictionary<string, string>();
 
             for (int index = 0; index <= Columns.Count() - 1; index++)
             {
-                dic.Add(Columns[index], record[index]);
+                dic.Add(Columns[index], ((IImportFileRecord)item).Fields[index]);
             }
 
             foreach (string k in dic.Keys)
@@ -148,18 +149,19 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
             }
 
             Items.Add(item);
+            Lines.Add((IImportFileRecord)item);
 
         }
 
         public void Import()
         {
-            foreach(ImportFileRecord item in Lines)
+            foreach (IImportFileRecord item in Lines)
             {
                 if (item.CrudStatus == ImportCrudStatus.Insert)
-                    item.Create();
+                    item.Create(_dbContext);
 
                 if (item.CrudStatus == ImportCrudStatus.Update & Overwrite)
-                    item.Update();
+                    item.Update(_dbContext);
 
             }
         }
@@ -168,7 +170,11 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
 
         public char Delimiter { get; set; }
 
-        public List<IImportFileRecord> Lines { get; set; }
+        public List<IImportFileRecord> Lines
+        {
+            get { return _lines; }
+            set { _lines = value; }
+        }
 
 
 

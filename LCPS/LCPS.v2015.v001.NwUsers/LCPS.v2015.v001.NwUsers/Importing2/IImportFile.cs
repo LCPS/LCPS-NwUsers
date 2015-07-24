@@ -20,7 +20,7 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
 
         StreamReader Contents { get; set; }
 
-        void ParseFile(Stream content);
+        void ParseFile();
 
         System.Type ItemType { get; set; }
 

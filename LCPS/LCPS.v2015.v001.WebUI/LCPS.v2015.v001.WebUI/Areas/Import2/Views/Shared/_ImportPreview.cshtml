@@ -1,0 +1,34 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing2;
+
+@model IImportFile 
+
+<table class="table table-hover table-striped table-condensed">
+    <tr>
+        @foreach (string c in Model.Columns)
+        {
+            <th>@c</th>
+        }
+        <th>Crud</th>
+        <th>Validation</th>
+        <th>Import</th>
+    </tr>
+    @foreach (IImportFileRecord r in Model.Lines)
+    {
+        <tr>
+            @foreach (string f in r.Fields)
+            {
+                <td>@f</td>
+            }
+            <td>
+                @r.CrudStatus.ToString()
+            </td>
+            <td class="text-@r.ValidationStatus.ToString()">
+                @Html.Raw(r.ValidationReport)
+            </td>
+            <td>
+                @Html.Raw(r.ImportReport)
+            </td>
+        </tr>
+    }
+</table>
+

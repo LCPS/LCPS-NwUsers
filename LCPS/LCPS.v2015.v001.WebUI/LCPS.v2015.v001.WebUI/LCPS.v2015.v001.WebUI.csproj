@@ -184,10 +184,14 @@
     <Compile Include="Areas\HumanResources\Models\HRRestoreModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffFilterClauseModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
+    <Compile Include="Areas\Import2\Import2AreaRegistration.cs" />
+    <Compile Include="Areas\Import2\Models\ImportViewModel.cs" />
     <Compile Include="Areas\Import\Controllers\ImportSessionController.cs" />
     <Compile Include="Areas\Import\ImportAreaRegistration.cs" />
     <Compile Include="Areas\Import\Models\ImportPreviewModel.cs" />
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
+    <Compile Include="Areas\LcpsEmail\Controllers\LcpsEmailController.cs" />
+    <Compile Include="Areas\LcpsEmail\LcpsEmailAreaRegistration.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapDashboardController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapOuTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapTemplateController.cs" />
@@ -449,6 +453,13 @@
     <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\_OuTemplateCreate.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\StudentMembership.cshtml" />
     <Content Include="Areas\LcpsLdap\Views\LdapOuTemplate\StaffMembership.cshtml" />
+    <Content Include="Areas\Import2\Views\web.config" />
+    <Content Include="Areas\Import2\Views\Shared\_ImportBrowse.cshtml" />
+    <Content Include="Areas\LcpsEmail\Views\web.config" />
+    <Content Include="Areas\LcpsEmail\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\LcpsEmail\Views\LcpsEmail\Import.cshtml" />
+    <Content Include="Areas\Import2\Views\Shared\_ImportPreview.cshtml" />
+    <Content Include="Areas\LcpsEmail\Views\LcpsEmail\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -586,7 +597,9 @@
     <Folder Include="Areas\Filters\Controllers\" />
     <Folder Include="Areas\Filters\Models\" />
     <Folder Include="Areas\Filters\Views\StudentFilter\" />
+    <Folder Include="Areas\Import2\Controllers\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
+    <Folder Include="Areas\LcpsEmail\Models\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
     <Folder Include="Assets\" />

@@ -1,0 +1,38 @@
+﻿@using LCPS.v2015.v001.NwUsers.Importing2;
+@using LCPS.v2015.v001.WebUI.Areas.Import2.Models;
+
+@model ImportViewModel
+
+@using (Html.BeginForm(Model.FormAction, Model.FormController, new { area = Model.FormArea }, FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(model => model.FormAction)
+    @Html.HiddenFor(model => model.FormController)
+    @Html.HiddenFor(model => model.FormArea)
+    @Html.HiddenFor(model => model.SubmitText)
+    @Html.HiddenFor(model => model.SessionVarName)
+    @Html.HiddenFor(model => model.ImportArea)
+    @Html.HiddenFor(model => model.ImportController)
+    @Html.HiddenFor(model => model.ImportAction)
+
+    <div class="form-inline">
+        <div class="form-group" style="white-space: nowrap;">
+            @Html.LabelFor(model => model.InputFile, new { @class = "control-label col-md-3" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.InputFile, new { @type = "file", @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-sm btn-info"><i class="fa fa-eye"></i> @Model.SubmitText</button>
+        </div>
+        @if (Model.ImportFile != null)
+        {
+            <div class="form-group">
+                <a href="@Url.Action(Model.ImportAction, Model.ImportController, new { area = Model.ImportArea, id = Model.SessionVarName })" class="btn btn-warning">Import</a>
+            </div>
+            
+        }
+    </div>
+}

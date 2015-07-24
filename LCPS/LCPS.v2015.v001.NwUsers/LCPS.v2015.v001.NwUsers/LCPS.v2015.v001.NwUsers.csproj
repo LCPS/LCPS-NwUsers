@@ -128,10 +128,8 @@
     <Compile Include="Importing2\IImportFileRecord.cs" />
     <Compile Include="Importing2\ImportCrudStatus.cs" />
     <Compile Include="Importing2\ImportFile.cs" />
-    <Compile Include="Importing2\ImportFileRecord.cs" />
     <Compile Include="Importing2\ImportRecordStatus.cs" />
     <Compile Include="LcpsEmail\EmailAccount.cs" />
-    <Compile Include="LcpsEmail\LcpsEmailImport.cs" />
     <Compile Include="LcpsEmail\LcpsEmailImportRecord.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategory.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategoryType.cs" />
@@ -217,18 +215,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
-    <EmbeddedResource Include="Seed\Sql\Views\Students.StudentRecord.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Seed\Sql\Views\LcpsEmail.EmailAccounts.sql" />
+    <EmbeddedResource Include="Seed\Sql\Views\Students.StudentRecord.sql" />
     <None Include="Students\StudentsContext.dbml.layout">
       <DependentUpon>StudentsContext.dbml</DependentUpon>
     </None>
     <None Include="HumanResources\Staff\HRStaffContext.dbml.layout">
       <DependentUpon>HRStaffContext.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="Seed\Sql\Views\HumanResources.HRStaffRecord.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Seed\Sql\Views\HumanResources.HRStaffRecord.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

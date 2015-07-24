@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using LCPS.v2015.v001.NwUsers.Infrastructure;
+
 namespace LCPS.v2015.v001.NwUsers.Importing2
 {
     public interface IImportFileRecord
@@ -28,15 +30,15 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
 
         ImportCrudStatus CrudStatus { get; set; }
 
-        void Validate();
+        void Validate(LcpsDbContext context);
 
-        void GetCrudStatus();
+        void GetCrudStatus(LcpsDbContext context);
 
-        void Import();
+        void Import(LcpsDbContext context);
 
-        void Create();
+        void Create(LcpsDbContext context);
 
-        void Update();
+        void Update(LcpsDbContext context);
         
 
     }
