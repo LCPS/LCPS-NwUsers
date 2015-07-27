@@ -1,0 +1,28 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsComputers.Peripherals;
+
+@model IEnumerable<IProcessor>
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Current Speed</th>
+        <th>Max Speed</th>
+        <th>Description</th>
+        <th>Manufacturer</th>
+        <th>Cores</th>
+        <th>Architecture</th>
+    </tr>
+    @foreach (IProcessor n in Model)
+    {
+        <tr>
+            <td>@n.Name</td>
+            <td>@n.CurrentClockSpeed</td>
+            <td>@n.MaxClockSpeed</td>
+            <td>@n.Description</td>
+            <td>@n.Manufacturer</td>
+            <td>@n.NumberOfCores</td>
+            <td>@n.ArchitectureCaption</td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,19 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsComputers.Peripherals;
+
+@model IEnumerable<INetworkAdapter>
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Name</th>
+        <th>MAC</th>
+        <th>Manufacturer</th>
+    </tr>
+    @foreach(INetworkAdapter n in Model)
+    {
+        <tr>
+            <td>@n.Name</td>
+            <td>@n.MacAddress</td>
+            <td>@n.Manufacturer</td>
+        </tr>
+    }
+</table>

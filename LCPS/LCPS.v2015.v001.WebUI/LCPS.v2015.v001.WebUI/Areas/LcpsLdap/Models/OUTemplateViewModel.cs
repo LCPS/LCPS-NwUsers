@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using PagedList;
+using PagedList.Mvc;
+
 using LCPS.v2015.v001.NwUsers.Infrastructure;
 using LCPS.v2015.v001.NwUsers.Filters;
 using LCPS.v2015.v001.NwUsers.LcpsLdap;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
 using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
 using LCPS.v2015.v001.WebUI.Areas.Students.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+using LCPS.v2015.v001.NwUsers.Students;
 
 namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 {
@@ -124,15 +129,61 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
             }
         }
 
+        public PagedList<StudentRecord> GetStudents(Guid id, int?page)
+        {
+            LcpsDbContext db = new LcpsDbContext();
+
+            MemberFilter f = db.MemberFilters.Find(id);
+
+            if (page == null)
+                page = 1;
+            else
+            {
+                if (page == 0)
+                    page = 1;
+            }
+
+            DynamicStudentFilter stu = new DynamicStudentFilter(id);
+            stu.Refresh();
+            List<StudentRecord> ss = stu.Execute();
+
+            PagedList<StudentRecord> pl = new PagedList<StudentRecord>(ss, page.Value, 12);
+
+            return pl;
+        }
+
         #endregion
 
         #region Staff Filters
 
-        public StaffFilterClauseModel GetStaffFilterClause()
+        public PagedList<HRStaffRecord> GetStaffMembers(Guid id, int? page)
+        {
+            LcpsDbContext db = new LcpsDbContext();
+
+            MemberFilter f = db.MemberFilters.Find(id);
+
+            if (page == null)
+                page = 1;
+            else
+            {
+                if (page == 0)
+                    page = 1;
+            }
+
+            DynamicStaffFilter stf = new DynamicStaffFilter(id);
+            stf.Refresh();
+            List<HRStaffRecord> ss = stf.Execute();
+
+            PagedList<HRStaffRecord> pl = new PagedList<HRStaffRecord>(ss, page.Value, 12);
+
+            return pl;
+        }
+
+        public StaffFilterClauseModel GetStaffFilterClause(Guid id)
         {
             if (CurrentTemplate != null)
             {
-                StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefaultSearch())
+                StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefault(id))
                     {
                         FormAction = "AddStaffClause",
                         FormController = "LdapOuTemplate",
@@ -150,6 +201,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
             if (CurrentTemplate != null)
             {
                 DynamicStaffFilter stu = new DynamicStaffFilter(CurrentTemplate.OUId);
+                stu.Refresh();
                 return stu;
             }
             else

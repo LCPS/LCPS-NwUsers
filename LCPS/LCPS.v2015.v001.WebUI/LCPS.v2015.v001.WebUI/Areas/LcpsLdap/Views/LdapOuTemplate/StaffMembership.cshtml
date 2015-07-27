@@ -28,10 +28,7 @@
     })
 </script>
 
-<div class="container">
-    <a href="@Url.Action("Index", "LdapOuTemplate", new {area = "LcpsLdap" })"><i class="fa fa-angle-double-left"> Back</i> </a>
-</div>
-
+<h3>Staff Filter</h3>
 <div class="well">
     <h2>@Model.CurrentTemplate.TemplateName</h2>
     <p>
@@ -40,18 +37,33 @@
         </small>
     </p>
     <p><small> <i class="fa fa-cube"></i>  OU: @Model.CurrentTemplate.OUName</small></p>
+    <div class="container">
+        <a href="@Url.Action("Index", "LdapOuTemplate", new {area = "LcpsLdap" })"><i class="fa fa-angle-double-left"></i> Back</a>
+    </div>
 </div>
 <div class="row">
     <small>
         <a id="toggle-fltr" class="tgl-btn"><span id="fltr-ico" class="fa fa-angle-double-up"></span>Filter Clause</a>
     </small>
-    <div id="fltr-dtl">
+    <div id="fltr-dtl" class="well">
         <h3>Staff Filter Clause</h3>
-        @Html.Partial("~/Areas/HumanResources/Views/Shared/_staffFilterClause.cshtml", Model.GetStaffFilterClause())
+        @Html.Partial("~/Areas/HumanResources/Views/Shared/_staffFilterClause.cshtml", Model.GetStaffFilterClause(Model.CurrentTemplate.OUId))
     </div>
 </div>
 <div class="row">
-    <div id="lst-dtl">
+    <small>
+        <a id="toggle-lst" class="tgl-btn"><span id="lst-ico" class="fa fa-angle-double-up"></span>Clause List</a>
+    </small>
+    <div id="lst-dtl" class="well">
         @Html.Partial("~/Areas/HumanResources/Views/Shared/_StaffFilterClauseList.cshtml", Model.GetStaffFilter())
+    </div>
+</div>
+
+<div class="row">
+    <small>
+        <a id="toggle-stu" class="tgl-btn"><span id="stu-ico" class="fa fa-angle-double-up"></span>Clause List</a>
+    </small>
+    <div id="stu-dtl" class="well">
+        @Html.Partial("~/Areas/HumanResources/Views/Shared/_staffList.cshtml", Model.GetStaffMembers(Model.CurrentTemplate.OUId, Convert.ToInt32(Request.QueryString["page"])))
     </div>
 </div>

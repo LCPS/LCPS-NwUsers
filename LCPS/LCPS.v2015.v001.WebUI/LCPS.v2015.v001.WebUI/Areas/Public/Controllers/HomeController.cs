@@ -101,8 +101,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.Public.Controllers
                 return View(model);
             }
 
-            LcpsGmailContext gmail = new LcpsGmailContext();
-            gmail.Validate();
+            //LcpsGmailContext gmail = new LcpsGmailContext();
+            //gmail.Validate();
             
 
             LcpsEmailContext c = new LcpsEmailContext();

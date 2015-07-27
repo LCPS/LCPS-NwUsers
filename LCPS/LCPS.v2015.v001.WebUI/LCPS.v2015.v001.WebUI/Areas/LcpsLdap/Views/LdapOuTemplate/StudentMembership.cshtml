@@ -29,18 +29,19 @@
     })
 </script>
 
-<div class="container">
-    <a href="@Url.Action("Index", "LdapOuTemplate", new {area = "LcpsLdap" })"><i class="fa fa-angle-double-left"> Back</i> </a>
-</div>
+<h2>Student Filter</h2>
 
 <div class="well">
-    <h2>@Model.CurrentTemplate.TemplateName</h2>
+    <h3>@Model.CurrentTemplate.TemplateName</h3>
     <p>
         <small>
             @Model.CurrentTemplate.Description
         </small>
     </p>
     <p><small> <i class="fa fa-cube"></i>  OU: @Model.CurrentTemplate.OUName</small></p>
+    <div class="container">
+        <a href="@Url.Action("Index", "LdapOuTemplate", new {area = "LcpsLdap" })"><i class="fa fa-angle-double-left"></i> Back</a>
+    </div>
 </div>
 <div class="row">
     <small>
@@ -56,3 +57,4 @@
         @Html.Partial("~/Areas/Students/Views/Shared/_studentFilterClauseList.cshtml", Model.GetStudentFilter())
     </div>
 </div>
+

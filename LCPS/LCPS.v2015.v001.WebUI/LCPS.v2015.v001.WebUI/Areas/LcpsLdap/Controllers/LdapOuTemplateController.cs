@@ -16,6 +16,7 @@ using LCPS.v2015.v001.WebUI.Areas.Students.Models;
 
 namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Controllers
 {
+    [LcpsControllerAuthorization(Area = "LcpsLdap", Controller = "LdapOuTemplate")]
     public class LdapOuTemplateController : Controller
     {
 

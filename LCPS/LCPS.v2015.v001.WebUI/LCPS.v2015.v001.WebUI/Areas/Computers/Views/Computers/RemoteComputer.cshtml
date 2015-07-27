@@ -1,0 +1,53 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsComputers;
+@using LCPS.v2015.v001.WebUI.Areas.Computers.Models;
+
+@model RemoteComputer
+
+@{
+    ViewBag.Title = "RemoteComputer";
+    Layout = "~/Areas/Computers/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .tab-pane
+    {
+        padding-top: 24px;
+    }
+</style>
+
+@if (Request.QueryString["name"] == null)
+{
+    <h2>Select Computer</h2>
+}
+else
+{
+    <h2>@Request.QueryString["name"]</h2>
+}
+
+@Html.Partial("_computerLookup", new ComputerLookupModel())
+
+<div class="container" style="margin-top: 18px;">
+    @if (Model != null)
+    {
+        @Html.Partial("_remoteComputerDetail", Model)
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#Nics" aria-controls="Nics" role="tab" data-toggle="tab">Network Adapters</a></li>
+            <li role="presentation"><a href="#Processors" aria-controls="Processors" role="tab" data-toggle="tab">Processors</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="Nics">
+                @Html.Partial("_nicList", Model.NetworkAdapters)
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="Processors">
+                @Html.Partial("_processorList", Model.Processors)
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+

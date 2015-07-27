@@ -52,6 +52,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\LCPS.v2015.v001.NwUsers\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\LCPS\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList">
       <HintPath>..\..\LCPS\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -123,9 +127,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\LCPS.v2015.v001.NwUsers\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\..\LCPS.v2015.v001.NwUsers\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -172,6 +173,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Computers\ComputersAreaRegistration.cs" />
+    <Compile Include="Areas\Computers\Controllers\ComputersController.cs" />
+    <Compile Include="Areas\Computers\Models\ComputerLookupModel.cs" />
     <Compile Include="Areas\Errors\Controllers\ErrorHandlingController.cs" />
     <Compile Include="Areas\Errors\ErrorsAreaRegistration.cs" />
     <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
@@ -212,6 +216,7 @@
     <Compile Include="Areas\Students\Controllers\StudentController.cs" />
     <Compile Include="Areas\Students\Models\StudentDetailModel.cs" />
     <Compile Include="Areas\Students\Models\StudentFilterClauseModel.cs" />
+    <Compile Include="Areas\Students\Models\StudentFilterListModel.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Infrastructure\LcpsControllerAuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\LcpsDbContext.cs" />
@@ -336,10 +341,6 @@
     <Compile Include="Migrations\201507241910027_MvcControllerACL002.cs" />
     <Compile Include="Migrations\201507241910027_MvcControllerACL002.Designer.cs">
       <DependentUpon>201507241910027_MvcControllerACL002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241922033_MvcControllerACL003.cs" />
-    <Compile Include="Migrations\201507241922033_MvcControllerACL003.Designer.cs">
-      <DependentUpon>201507241922033_MvcControllerACL003.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201507241933093_MvcControllerACL004.cs" />
     <Compile Include="Migrations\201507241933093_MvcControllerACL004.Designer.cs">
@@ -509,6 +510,14 @@
     <Content Include="Areas\Public\Views\Home\Register.cshtml" />
     <Content Include="Areas\My\Views\Contacts\ServerVars.cshtml" />
     <Content Include="Areas\Public\Views\Home\EmailNotify.cshtml" />
+    <EmbeddedResource Include="Assets\GMail\lcps-admin-dir.p12" />
+    <Content Include="Areas\Computers\Views\web.config" />
+    <Content Include="Areas\Computers\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Computers\Views\Computers\RemoteComputer.cshtml" />
+    <Content Include="Areas\Computers\Views\Shared\_computerLookup.cshtml" />
+    <Content Include="Areas\Computers\Views\Shared\_remoteComputerDetail.cshtml" />
+    <Content Include="Areas\Computers\Views\Shared\_nicList.cshtml" />
+    <Content Include="Areas\Computers\Views\Shared\_processorList.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -650,7 +659,6 @@
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\LcpsEmail\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
-    <Folder Include="Assets\" />
     <Folder Include="Models\Importing\" />
     <Folder Include="Views\Import\" />
     <Folder Include="Views\Shared\EditorFor\" />
@@ -756,9 +764,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507241910027_MvcControllerACL002.resx">
       <DependentUpon>201507241910027_MvcControllerACL002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241922033_MvcControllerACL003.resx">
-      <DependentUpon>201507241922033_MvcControllerACL003.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507241933093_MvcControllerACL004.resx">
       <DependentUpon>201507241933093_MvcControllerACL004.cs</DependentUpon>

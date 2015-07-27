@@ -24,14 +24,21 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
             if(Area == null & Controller == null & Action == null)
                 return httpContext.User.Identity.IsAuthenticated;
 
-            if(Action == null & Controller != null)
-                return manager.UserCanAccess(HttpContext.Current.User, Area, Controller);
-            else
+            try
             {
-                if (Action != null)
-                    return manager.UserCanAccess(HttpContext.Current.User, Action);
-            }
+                if (Action == null & Controller != null)
+                    return manager.UserCanAccess(HttpContext.Current.User, Area, Controller);
+                else
+                {
+                    if (Action != null)
+                        return manager.UserCanAccess(HttpContext.Current.User, Action);
+                }
 
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
             return true;
 
         }

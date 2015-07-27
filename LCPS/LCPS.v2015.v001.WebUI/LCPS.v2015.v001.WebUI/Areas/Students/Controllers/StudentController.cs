@@ -22,6 +22,7 @@ using System.Web.Mvc;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
 {
+    [LcpsControllerAuthorization(Area = "Students", Controller = "StudentController")]
     public class StudentController : Controller
     {
         private LcpsDbContext _dbContext = new LcpsDbContext();

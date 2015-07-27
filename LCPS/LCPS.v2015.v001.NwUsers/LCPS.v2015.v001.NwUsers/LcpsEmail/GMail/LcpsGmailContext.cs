@@ -17,67 +17,44 @@ namespace LCPS.v2015.v001.NwUsers.LcpsEmail.GMail
 {
     public class LcpsGmailContext
     {
-        static string[] Scopes = { DirectoryService.Scope.AdminDirectoryUserReadonly };
-        static string ApplicationName = "Directory API Quickstart";
+        static string[] scopes = { DirectoryService.Scope.AdminDirectoryUserReadonly };
+        static string ApplicationName = "lcps-admin-dir";
 
         public void Validate()
         {
-            Assembly _assembly = typeof(LCPS.v2015.v001.NwUsers.Infrastructure.LcpsDbContext).Assembly;
-            string[] names = _assembly.GetManifestResourceNames();
-            string json = "LCPS.v2015.v001.NwUsers.LcpsEmail.Assets.API-Project.p12";
-            StreamReader reader = new StreamReader(_assembly.GetManifestResourceStream(json));
-
-            var bytes = default(byte[]);
-            using (var memstream = new MemoryStream())
-            {
-                var buffer = new byte[512];
-                var bytesRead = default(int);
-                while ((bytesRead = reader.BaseStream.Read(buffer, 0, buffer.Length)) > 0)
-                    memstream.Write(buffer, 0, bytesRead);
-                bytes = memstream.ToArray();
-            }
-            
-
-
-            const string serviceAccountEmail = "295890335281-0893v3u7vrecvd3auaacof0kh5uro9ba@developer.gserviceaccount.com";
-            //const string serviceAccountCertPath = @"E:\Test.p12";
+            const string serviceAccountEmail = "61410732382-0tiqcjvhv4c1bl0dandsus64odntdi8m@developer.gserviceaccount.com";
+            string serviceAccountCertPath = System.Web.HttpContext.Current.Server.MapPath("~/Assets/Gmail/lcps-admin-dir.p12"); 
             const string serviceAccountCertPassword = "notasecret";
             const string userEmail = "matthew.early@k12lcps.org";
 
-            
-
-            var certificate = new X509Certificate2(bytes, 
+            var certificate = new X509Certificate2(serviceAccountCertPath, 
                 serviceAccountCertPassword, 
                 X509KeyStorageFlags.Exportable);
-            ServiceAccountCredential credential = new ServiceAccountCredential(
+                ServiceAccountCredential credential = new ServiceAccountCredential(
 
            new ServiceAccountCredential.Initializer(serviceAccountEmail)
-
            {
-               Scopes = new[] { DirectoryService.Scope.AdminDirectoryUser },
-
+               Scopes = scopes,
                User = userEmail
 
-
            }.FromCertificate(certificate));
+
 
             
             var service = new DirectoryService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
-                ApplicationName = "User Provisioning",
+                ApplicationName = ApplicationName
             });
 
 
             UsersResource.ListRequest request = service.Users.List();
-            //request.Customer = "my_customer";
-            request.Domain = "mail.k12lcps.org";
-            request.MaxResults = 10;
+            request.Customer = "my_customer";
             request.OrderBy = UsersResource.ListRequest.OrderByEnum.Email;
 
-            // List users.
+            // List users. UsersResource.ListRequest.Execute().UsersValue
             IList<User> users = request.Execute().UsersValue;
-            Console.WriteLine("Users:");
+            
             if (users != null && users.Count > 0)
             {
                 foreach (var userItem in users)

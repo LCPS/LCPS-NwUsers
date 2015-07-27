@@ -29,7 +29,7 @@ namespace LCPS.v2015.v001.WebUI
             LCPS.v2015.v001.NwUsers.Properties.Settings.Default.ConnectionString = db.Database.Connection.ConnectionString;
 
             ApplicationBase ab = LcpsDbContext.Application;
-            //db.Seed();
+            db.Seed();
             
             
         }

@@ -67,7 +67,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 
                 try
                 {
-                    dom = new LcpsAdsDomain(app.LDAPDomainFQN);
+                    dom = new LcpsAdsDomain("LDAP://" + app.LDAPDomainFQN);
                     return dom;
                 }
                 catch(Exception ex)

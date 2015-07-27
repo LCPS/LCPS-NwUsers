@@ -199,6 +199,11 @@ namespace Anvil.v2015.v001.Domain.Entities
                 if(u.Birthdate == DateTime.MinValue)
                     u.Birthdate = DateTime.MaxValue;
 
+                foreach(ApplicationUser usr in _context.Users)
+                {
+                    string n = usr.UserName;
+                }
+
                 ApplicationUser dbU = _context.Users.FirstOrDefault(x => x.UserName.ToLower() == u.UserName.ToLower());
                 
                 if (dbU == null)
