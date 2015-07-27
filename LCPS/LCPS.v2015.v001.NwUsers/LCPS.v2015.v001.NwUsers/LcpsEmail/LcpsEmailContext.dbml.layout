@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LcpsEmailContext">
+  <DataContextMoniker Name="/LcpsEmailContext" />
+  <nestedChildShapes>
+    <classShape Id="95120751-eaa0-4d98-8c5b-51102a96c82f" absoluteBounds="0.5, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/LcpsEmailContext/LcpsEmailKey" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b4703000-a499-49fa-8f6b-fe5776bdd3af" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

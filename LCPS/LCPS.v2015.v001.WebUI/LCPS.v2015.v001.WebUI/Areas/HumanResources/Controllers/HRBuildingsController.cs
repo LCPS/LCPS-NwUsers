@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LCPS.v2015.v001.NwUsers.HumanResources;
+using LCPS.v2015.v001.NwUsers.Importing;
+using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+using LCPS.v2015.v001.WebUI.Infrastructure;
+using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LCPS.v2015.v001.NwUsers.HumanResources;
-using LCPS.v2015.v001.WebUI.Infrastructure;
-
-
-using LCPS.v2015.v001.NwUsers.Importing;
-using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
-using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
-using LCPS.v2015.v001.WebUI.Areas.Import.Models;
-using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
-    [Authorize(Roles = "APP-Admins,HR-Admins")]
+    [LcpsControllerAuthorization(Area = "HumanResources", Controller = "HRBuildings")]
     public class HRBuildingsController : Controller
     {
         private LcpsDbContext db = new LcpsDbContext();

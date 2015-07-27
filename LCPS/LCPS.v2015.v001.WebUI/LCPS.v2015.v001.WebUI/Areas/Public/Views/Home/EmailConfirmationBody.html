@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LCPS Account Registration</title>
+    <link href="http://{2}/Content/bootstrap.css" rel="stylesheet" />
+    <link href="http://{2}/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="http://{2}/Content/site.css" rel="stylesheet" />
+    <link href="http://{2}/Content/lcps-aux.css" rel="stylesheet" />
+    <link href="http://{2}/Content/lcps-theme.min.css" rel="stylesheet" />
+    <script src="http://{2}/Scripts/modernizr-2.6.2.js"></script>
+    <script src="http://{2}/Scripts/jquery-2.1.4.js"></script>
+    <script src="http://{2}/Scripts/bootstrap.js"></script>
+    <script src="http://{2}/Scripts/respond.js"></script>
+
+</head>
+<body>
+    <string>Hello, </string> {0} {1}
+
+    <p>
+        Thank you for registering your email address with the LCPS Intranet Website.
+    </p>
+
+    <p>To confirm your request <a href="http://{2}/Public/Home/ClientConfirm/id=?{3}">click here</a></p>
+
+    <p>If you did not make this request or have chosen not to proceed, <a href="http://{2}/Public/Home/ClientCancelConfirm/id=?{3}">click here</a></p>
+
+    <hr />
+
+    <h4>Request Detials</h4>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            The following information was collected when the account request was made
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Host Server:</dt>
+                <dd>{2}</dd>
+                <dt>IP Address:</dt>
+                <dd>{4}</dd>
+                <dt>Date:</dt>
+                <dd>{5}</dd>
+                <dt>Browser:</dt>
+                <dd>{6}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <hr />
+
+    <p>Yours Truly,</p>
+
+    Matthew S Early<br />
+    Senior Computer Technician<br />
+    IT Project Manager
+</body>
+</html>

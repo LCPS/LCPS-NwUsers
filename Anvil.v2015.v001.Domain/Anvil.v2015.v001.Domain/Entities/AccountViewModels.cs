@@ -52,7 +52,7 @@ namespace Anvil.v2015.v001.Domain.Entities
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User Name")]
+        [Display(Name = "LCP Email")]
         public string UserName { get; set; }
 
         [Required]

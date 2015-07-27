@@ -75,7 +75,6 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
         // ----------------------------- LDAP
         public DbSet<LcpsLdap.LdapTemplates.OUTemplate> OUTemplates { get; set; }
-        //public DbSet<LcpsLdap.LdapTemplates.OUTemplateFilterLink> OUTemplateFilterLinks { get; set; }
 
         // ----------------------------- Importing
 
@@ -137,7 +136,7 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
             }
             catch(Exception ex)
             {
-                throw new Exception("Could notr create SQL objects during seed", ex);
+                throw new Exception("Could not create SQL objects during seed", ex);
             }
         }
 

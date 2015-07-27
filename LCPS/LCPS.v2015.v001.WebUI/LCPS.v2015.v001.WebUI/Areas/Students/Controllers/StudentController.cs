@@ -25,6 +25,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
     public class StudentController : Controller
     {
         private LcpsDbContext _dbContext = new LcpsDbContext();
+        private StudentsContext _studentContext = new StudentsContext();
 
         public LcpsDbContext DbContext
         {
@@ -206,7 +207,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.Students.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = DbContext.Students.Find(id);
+            StudentDetailModel student = new StudentDetailModel(id.Value);
+
             if (student == null)
             {
                 return HttpNotFound();

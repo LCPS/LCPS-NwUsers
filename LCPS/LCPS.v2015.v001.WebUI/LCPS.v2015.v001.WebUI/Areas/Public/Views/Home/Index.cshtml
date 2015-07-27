@@ -1,5 +1,6 @@
 ﻿@using LCPS.v2015.v001.WebUI.Infrastructure;
 @using LCPS.v2015.v001.WebUI.Models;
+@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers;
 
 @{
     ViewBag.Title = "Home Page";
@@ -11,7 +12,8 @@
 </div>
 
 <div style="text-align:center;">
-    @if (User.IsInRole("APP-Admins") | User.IsInRole("HR-Managers"))
+
+    @if (LcpsMvcControllerACLManager.GetUserCanAccess(User, "HumanResources"))
     {
         @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
 {
@@ -24,7 +26,7 @@
 
     }
 
-    @if (User.IsInRole("APP-Admins") | User.IsInRole("HR-Managers"))
+    @if (LcpsMvcControllerACLManager.GetUserCanAccess(User, "Students"))
     {
         @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
 {
@@ -38,7 +40,7 @@
     }
 
 
-    @if (User.IsInRole("APP-Admins") | User.IsInRole("HR-Managers"))
+    @if (LcpsMvcControllerACLManager.GetUserCanAccess(User, "LcpsLdap"))
     {
         @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
 {

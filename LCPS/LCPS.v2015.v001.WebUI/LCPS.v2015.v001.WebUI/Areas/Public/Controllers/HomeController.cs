@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Anvil.v2015.v001.Domain.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System;
 using System.Threading.Tasks;
-using Anvil.v2015.v001.Domain.Entities;
-using Anvil.v2015.v001.Domain.Services;
-using LCPS.v2015.v001.WebUI;
+using System.Web;
+using System.Reflection;
+using System.Linq;
+using System.Web.Mvc;
+using LCPS.v2015.v001.WebUI.Infrastructure;
+using LCPS.v2015.v001.WebUI.Areas.Public.Models;
+using LCPS.v2015.v001.NwUsers.LcpsEmail;
+using LCPS.v2015.v001.NwUsers.LcpsEmail.GMail;
 
-using System.Globalization;
-using System.Security.Claims;
 
 namespace LCPS.v2015.v001.WebUI.Areas.Public.Controllers
 {
+    
     public class HomeController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -100,22 +101,49 @@ namespace LCPS.v2015.v001.WebUI.Areas.Public.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            LcpsGmailContext gmail = new LcpsGmailContext();
+            gmail.Validate();
+            
+
+            LcpsEmailContext c = new LcpsEmailContext();
+            LcpsEmailKey k = c.LcpsEmailKeys.FirstOrDefault(x => x.EmailAddress.ToLower() == model.UserName.ToLower());
+
+
+            if (k == null)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
+
+
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
             }
+            else
+            {
+                return RedirectToAction("EmailNotify", new { u = model.UserName });
+            }
+        }
+
+        public ActionResult EmailNotify(string u, string pw)
+        {
+            RegisterModel m = new RegisterModel(u, pw);
+            m.SendConfirmationEmail(System.Web.HttpContext.Current);
+            return View();
+
+
+
         }
 
         //

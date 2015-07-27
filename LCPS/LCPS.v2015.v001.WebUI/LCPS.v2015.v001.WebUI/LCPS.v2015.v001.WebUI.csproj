@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
@@ -205,15 +206,19 @@
     <Compile Include="Areas\My\Models\MyContactModel.cs" />
     <Compile Include="Areas\My\MyAreaRegistration.cs" />
     <Compile Include="Areas\Public\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Public\Models\RegisterModel.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\Students\Controllers\InstructionalLevelController.cs" />
     <Compile Include="Areas\Students\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Students\Models\StudentDetailModel.cs" />
     <Compile Include="Areas\Students\Models\StudentFilterClauseModel.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
+    <Compile Include="Infrastructure\LcpsControllerAuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\LcpsDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\LcpsMvcControllerACLManager.cs" />
     <Compile Include="Infrastructure\LcpsRoleManager.cs" />
     <Compile Include="Infrastructure\LcpsUserManager.cs" />
     <Compile Include="Migrations\201507141201140_INIT-001.cs" />
@@ -312,6 +317,46 @@
     <Compile Include="Migrations\201507231949569_Filter-009.Designer.cs">
       <DependentUpon>201507231949569_Filter-009.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507241403036_ApplicationUser-AddedCompanyIdField.cs" />
+    <Compile Include="Migrations\201507241403036_ApplicationUser-AddedCompanyIdField.Designer.cs">
+      <DependentUpon>201507241403036_ApplicationUser-AddedCompanyIdField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241408387_ApplicationUser-AddedCompanyIdField2.cs" />
+    <Compile Include="Migrations\201507241408387_ApplicationUser-AddedCompanyIdField2.Designer.cs">
+      <DependentUpon>201507241408387_ApplicationUser-AddedCompanyIdField2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241435062_ApplicationUserMod001.cs" />
+    <Compile Include="Migrations\201507241435062_ApplicationUserMod001.Designer.cs">
+      <DependentUpon>201507241435062_ApplicationUserMod001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241732083_MvcControllerACL001.cs" />
+    <Compile Include="Migrations\201507241732083_MvcControllerACL001.Designer.cs">
+      <DependentUpon>201507241732083_MvcControllerACL001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241910027_MvcControllerACL002.cs" />
+    <Compile Include="Migrations\201507241910027_MvcControllerACL002.Designer.cs">
+      <DependentUpon>201507241910027_MvcControllerACL002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241922033_MvcControllerACL003.cs" />
+    <Compile Include="Migrations\201507241922033_MvcControllerACL003.Designer.cs">
+      <DependentUpon>201507241922033_MvcControllerACL003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241933093_MvcControllerACL004.cs" />
+    <Compile Include="Migrations\201507241933093_MvcControllerACL004.Designer.cs">
+      <DependentUpon>201507241933093_MvcControllerACL004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241935096_MvcControllerACL005.cs" />
+    <Compile Include="Migrations\201507241935096_MvcControllerACL005.Designer.cs">
+      <DependentUpon>201507241935096_MvcControllerACL005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507242333247_MvcControllerACL006.cs" />
+    <Compile Include="Migrations\201507242333247_MvcControllerACL006.Designer.cs">
+      <DependentUpon>201507242333247_MvcControllerACL006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507260349468_AppBaseSmtpDomainAdd.cs" />
+    <Compile Include="Migrations\201507260349468_AppBaseSmtpDomainAdd.Designer.cs">
+      <DependentUpon>201507260349468_AppBaseSmtpDomainAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
     <Compile Include="Models\LcpsMvcActionTarget.cs" />
@@ -325,6 +370,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Public\Views\Home\EmailConfirmationBody.html" />
     <Content Include="Content\addons\jquery.mmenu.counters.css" />
     <Content Include="Content\addons\jquery.mmenu.dragopen.css" />
     <Content Include="Content\addons\jquery.mmenu.header.css" />
@@ -460,6 +506,9 @@
     <Content Include="Areas\LcpsEmail\Views\LcpsEmail\Import.cshtml" />
     <Content Include="Areas\Import2\Views\Shared\_ImportPreview.cshtml" />
     <Content Include="Areas\LcpsEmail\Views\LcpsEmail\Index.cshtml" />
+    <Content Include="Areas\Public\Views\Home\Register.cshtml" />
+    <Content Include="Areas\My\Views\Contacts\ServerVars.cshtml" />
+    <Content Include="Areas\Public\Views\Home\EmailNotify.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -600,7 +649,6 @@
     <Folder Include="Areas\Import2\Controllers\" />
     <Folder Include="Areas\Import\Views\ImportSession\" />
     <Folder Include="Areas\LcpsEmail\Models\" />
-    <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Views\Shared\" />
     <Folder Include="Assets\" />
     <Folder Include="Models\Importing\" />
@@ -693,6 +741,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507231949569_Filter-009.resx">
       <DependentUpon>201507231949569_Filter-009.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241403036_ApplicationUser-AddedCompanyIdField.resx">
+      <DependentUpon>201507241403036_ApplicationUser-AddedCompanyIdField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241408387_ApplicationUser-AddedCompanyIdField2.resx">
+      <DependentUpon>201507241408387_ApplicationUser-AddedCompanyIdField2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241435062_ApplicationUserMod001.resx">
+      <DependentUpon>201507241435062_ApplicationUserMod001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241732083_MvcControllerACL001.resx">
+      <DependentUpon>201507241732083_MvcControllerACL001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241910027_MvcControllerACL002.resx">
+      <DependentUpon>201507241910027_MvcControllerACL002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241922033_MvcControllerACL003.resx">
+      <DependentUpon>201507241922033_MvcControllerACL003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241933093_MvcControllerACL004.resx">
+      <DependentUpon>201507241933093_MvcControllerACL004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241935096_MvcControllerACL005.resx">
+      <DependentUpon>201507241935096_MvcControllerACL005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507242333247_MvcControllerACL006.resx">
+      <DependentUpon>201507242333247_MvcControllerACL006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507260349468_AppBaseSmtpDomainAdd.resx">
+      <DependentUpon>201507260349468_AppBaseSmtpDomainAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

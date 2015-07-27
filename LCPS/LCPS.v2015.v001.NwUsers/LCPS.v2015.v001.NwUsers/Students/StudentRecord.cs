@@ -71,11 +71,23 @@ namespace LCPS.v2015.v001.NwUsers.Students
         [Display(Name = "Name")]
         public string SortName { get; set; }
 
+        [Display(Name = "Student Id")]
+        public string StudentId { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Initial")]
+        public string MiddleInitial { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
         [Display(Name = "Birthdate")]
         [DataType(DataType.Date)]
         public DateTime Birthdate { get; set; }
 
-        [Display(Name = "Building")]
+        [Display(Name = "School")]
         public string BuildingName { get; set; }
 
         [Display(Name = "Grade / Level")]

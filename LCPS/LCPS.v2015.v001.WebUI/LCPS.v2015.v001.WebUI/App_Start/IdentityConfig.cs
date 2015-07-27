@@ -14,19 +14,41 @@ using Anvil.v2015.v001.Domain.Entities;
 using Anvil.v2015.v001.Domain.Services;
 using Anvil.v2015.v001.Domain.Infrastructure;
 using LCPS.v2015.v001.NwUsers.Infrastructure;
+using LCPS.v2015.v001.WebUI.Infrastructure;
+
+using System.Net;
+using System.Net.Mail;
 
 namespace LCPS.v2015.v001.WebUI
 {
+    public class EmailService : IIdentityMessageService
+    {
+        public Task SendAsync(IdentityMessage message)
+        {
+            // Plug in your email service here to send an email.
+
+            ApplicationBase app = LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext.DefaultApp;
+            SmtpClient client = new SmtpClient(app.SMTPServer, app.SMPTPPort);
+            client.EnableSsl = true;
+
+            client.SendCompleted += (s, e) =>
+            {
+                client.Dispose();
+            };
+
+            LcpsUserManager um = new LcpsUserManager();
+            string id = HttpContext.Current.User.Identity.GetUserId();
+            ApplicationUser u =  um.FindById(id);
+                      
+            MailMessage mm = new MailMessage(u.Email, message.Destination, message.Subject, message.Body);
+
+            return client.SendMailAsync(mm);
+        }
+    }
+
     /*
      * 
-     *  public class EmailService : IIdentityMessageService
-     {
-         public Task SendAsync(IdentityMessage message)
-         {
-             // Plug in your email service here to send an email.
-             return Task.FromResult(0);
-         }
-     }
+     *  
 
      public class SmsService : IIdentityMessageService
      {

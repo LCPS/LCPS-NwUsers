@@ -62,6 +62,10 @@ namespace Anvil.v2015.v001.Domain.Entities
         [MaxLength(128)]
         public string SMTPServer { get; set; }
 
+        [Display(Name = "SMTP Domain")]
+        [MaxLength(128)]
+        public string SMTPDomain { get; set; }
+
         [Display(Name = "SMTP Port")]
         public int SMPTPPort { get; set; }
 

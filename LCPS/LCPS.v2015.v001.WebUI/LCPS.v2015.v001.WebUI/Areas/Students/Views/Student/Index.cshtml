@@ -12,9 +12,21 @@
     ViewBag.Page = Request.QueryString["page"];
 }
 
+<script>
+    $(function () {
+        $('#stu-toggle').change(function () {
+            $('#stu-list').toggle('slow', function () {
+                $('#stu-list').toggleClass('fa-angle-double-up fa-angle-double-down');
+            });
+        });
+    })</script>
+
 <h2>Students</h2>
 
-@Html.Partial("_studentFilterClause", Session["StudentClauseFilterModel"])
+<a id="stu-toggle" style="cursor: pointer;">Student Filter <i class="fa fa-angle-double-up"></i></a>
+<div id="stu-list">
+    @Html.Partial("_studentFilterClause", Session["StudentClauseFilterModel"])
+</div>
 
 <p>Total: @ViewBag.Total</p>
 

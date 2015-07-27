@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "ServerVars";
+    Layout = "~/Areas/My/Views/Shared/_Layout.cshtml";
+}
+
+@model Dictionary<string, string>
+
+<h2>Server Vars</h2>
+
+<dl class="dl-horizontal">
+    @try
+    {
+        
+        foreach (string s in Model.Keys)
+        {
+            try
+            {
+                <dt>@s</dt>
+                <dd>@Request.ServerVariables[s]</dd>
+            }
+            catch { }
+        }
+
+    }
+    catch (Exception ex)
+    {
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                Error!
+            </div>
+            <div class="panel-body">
+                <ul>
+                    @foreach (string e in (new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionCollector(ex)))
+                    {
+                        <li>@e</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+</dl>
+
+
+

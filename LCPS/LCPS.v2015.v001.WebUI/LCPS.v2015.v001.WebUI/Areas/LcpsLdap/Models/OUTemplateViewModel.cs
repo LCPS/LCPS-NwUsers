@@ -27,19 +27,26 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
         public OUTemplateViewModel(LcpsDbContext context)
         {
             _dbContext = context;
+
+            LcpsAdsDomain dom = LcpsAdsDomain.Default;
+            string d = dom.Name;
+
         }
 
         public OUTemplateViewModel(LcpsDbContext context, Guid id)
         {
             _dbContext = context;
             _currentTemplate = _dbContext.OUTemplates.Find(id);
+
+            LcpsAdsDomain dom = LcpsAdsDomain.Default;
+            string d = dom.Name;
         }
 
         #endregion
 
         #region Properties
 
-        public Exception Exception { get; set;}
+        public Exception Exception { get; set; }
 
         public OUTemplate CurrentTemplate
         {
@@ -50,7 +57,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
         {
             get
             {
-                OuTreeModel m = new OuTreeModel() { 
+                OuTreeModel m = new OuTreeModel()
+                {
                     FormAction = null,
                     FormController = null,
                     FormArea = null
@@ -81,12 +89,11 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 
         #endregion
 
-
         #region Student Filters
 
         public StudentFilterClauseModel GetStudentClauseModel()
         {
-            if(CurrentTemplate != null)
+            if (CurrentTemplate != null)
             {
                 StudentFilterClause c = DynamicStudentClause.GetDefaultStudentClause(CurrentTemplate.OUId);
                 return new StudentFilterClauseModel(c)
@@ -123,7 +130,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 
         public StaffFilterClauseModel GetStaffFilterClause()
         {
-            if(CurrentTemplate != null)
+            if (CurrentTemplate != null)
             {
                 StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefaultSearch())
                     {
@@ -140,7 +147,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 
         public DynamicStaffFilter GetStaffFilter()
         {
-            if(CurrentTemplate != null)
+            if (CurrentTemplate != null)
             {
                 DynamicStaffFilter stu = new DynamicStaffFilter(CurrentTemplate.OUId);
                 return stu;

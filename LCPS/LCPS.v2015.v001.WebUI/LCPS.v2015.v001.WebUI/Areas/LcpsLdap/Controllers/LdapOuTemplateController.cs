@@ -44,7 +44,15 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Controllers
         // GET: /LcpsLdap/LdapOuTemplate/
         public ActionResult Index()
         {
-            return View(new OUTemplateViewModel(DbContext));
+            try
+            {
+                return View(new OUTemplateViewModel(DbContext));
+            }
+            catch(Exception ex)
+            {
+                AnvilExceptionModel em = new AnvilExceptionModel(ex, "OU Templates", "Public", "Home", "Index");
+                return View("Error", em);
+            }
         }
 
         [HttpGet]

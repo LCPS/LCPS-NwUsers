@@ -12,15 +12,6 @@ namespace Anvil.v2015.v001.Domain.Entities
 {
     public class ApplicationRole : IdentityRole
     {
-        #region Enums
-
-        public enum BLRoleTypes
-        {
-            Security = 0,
-            PoetGroup = 1
-        }
-
-        #endregion
 
         #region Fields
 
@@ -34,8 +25,6 @@ namespace Anvil.v2015.v001.Domain.Entities
         [MaxLength(256)]
         public string Description { get; set; }
 
-        [Display(Name = "Role Type")]
-        public BLRoleTypes RoleType { get; set; }
 
         #endregion
 

@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using Microsoft.AspNet.Identity;
 using Anvil.v2015.v001.Domain.Entities;
+using Anvil.v2015.v001.Domain.Infrastructure;
 
 #endregion
 
@@ -24,6 +25,6 @@ namespace Anvil.v2015.v001.Domain.Infrastructure
         public System.Data.Entity.DbSet<ApplicationRole> Roles { get; set; }
         public System.Data.Entity.DbSet<ApplicationBase> Applications { get; set; }
 
-        // public System.Data.Entity.DbSet<BlackLamp.v2015.v003.Models.ApplicationUser> ApplicationUsers { get; set; }
+        public System.Data.Entity.DbSet<MvcControllerACL> MvcControllerACLs { get; set; }
     }
 }

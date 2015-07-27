@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
-
-using System.Web;
-using System.Web.Mvc;
-
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Serialization;
-
-using LCPS.v2015.v001.NwUsers.HumanResources;
+﻿using Anvil.v2015.v001.Domain.Exceptions;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
-using LCPS.v2015.v001.WebUI.Infrastructure;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
-
-using Anvil.v2015.v001.Domain.Exceptions;
+using LCPS.v2015.v001.WebUI.Infrastructure;
+using System;
+using System.IO;
+using System.Web.Mvc;
+using System.Xml.Serialization;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
+    [LcpsControllerAuthorization(Area = "HumanResources", Controller = "HumanResources")]
     public class HumanResourcesController : Controller
     {
         // GET: HumanResources/HumanResources
@@ -33,7 +23,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             }
             catch (Exception ex)
             {
-                return View("Error", new AnvilExceptionModel(ex, "backup Human Resources", "HumanResources", "HREmployeeTypes", "Index"));
+                return View("Error", new AnvilExceptionModel(ex, "Backup Human Resources", "HumanResources", "HREmployeeTypes", "Index"));
             }
         }
 

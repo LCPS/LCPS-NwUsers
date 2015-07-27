@@ -70,6 +70,9 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
             <td>
                 @Html.DisplayFor(modelItem => item.SchoolYear)
             </td>
+            <td>
+                <a href="@Url.Action("Details", "Student", new { area = "Students", id = item.StudentKey })" class="fa fa-info-circle"></a>
+            </td>
         </tr>
     }
 

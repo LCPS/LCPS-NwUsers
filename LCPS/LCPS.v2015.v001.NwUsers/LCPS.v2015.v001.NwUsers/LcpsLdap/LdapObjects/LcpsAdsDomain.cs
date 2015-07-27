@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.DirectoryServices;
+using LCPS.v2015.v001.NwUsers.Infrastructure;
+using Anvil.v2015.v001.Domain.Entities;
 
 namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 {
@@ -45,6 +47,35 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
         #endregion
 
         #region Properties
+
+        public static LcpsAdsDomain Default
+        {
+            get
+            {
+                LcpsAdsDomain dom = null;
+                LcpsDbContext _dbContext = new LcpsDbContext();
+                ApplicationBase app = null;
+
+                try
+                {
+                    app = LcpsDbContext.DefaultApp;
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception("Could get domain connection details from server", ex);
+                }
+
+                try
+                {
+                    dom = new LcpsAdsDomain(app.LDAPDomainFQN);
+                    return dom;
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception("Could not communicate with domain controller", ex);
+                }
+            }
+        }
 
         public string Name
         {

@@ -1,21 +1,21 @@
 ﻿using Anvil.v2015.v001.Domain.Entities;
-using Anvil.v2015.v001.Domain.Entities.DynamicFilters;
 using Anvil.v2015.v001.Domain.Exceptions;
 using LCPS.v2015.v001.NwUsers.Filters;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
-using LCPS.v2015.v001.NwUsers.Infrastructure;
 using LCPS.v2015.v001.NwUsers.Students;
-using LCPS.v2015.v001.WebUI.Areas.My.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+using LCPS.v2015.v001.WebUI.Areas.My.Models;
 using LCPS.v2015.v001.WebUI.Areas.Students.Models;
+using LCPS.v2015.v001.WebUI.Infrastructure;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
+namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers 
 {
+    [LcpsControllerAuthorization(Area = "My", Controller = "Contacts")]
     public class ContactsController : Controller
     {
 
@@ -335,7 +335,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
                 f.CreateClause(m.ToFilterClause());
                 f.Refresh();
 
-                return RedirectToAction("StudentFilter", new { id = m.FilterId });
+                return RedirectToAction("EditFilter", new { id = m.FilterId });
             }
             catch (Exception ex)
             {
@@ -391,7 +391,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
         }
 
         #endregion
-
 
         #region StaffQuery
 
@@ -458,6 +457,24 @@ namespace LCPS.v2015.v001.WebUI.Areas.My.Controllers
 
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        #region Server
+
+        public ActionResult ServerVars()
+        {
+            Dictionary<string, string> vars = new Dictionary<string, string>();
+
+            var keys = Request.ServerVariables.Keys;
+            foreach(var k in keys)
+            {
+                vars.Add(k.ToString(), Request.ServerVariables[k.ToString()]);
+            }
+
+
+            return View(vars);
         }
 
         #endregion

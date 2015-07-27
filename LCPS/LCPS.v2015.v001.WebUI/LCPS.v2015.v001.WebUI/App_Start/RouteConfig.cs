@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace LCPS.v2015.v001.WebUI
@@ -21,10 +17,6 @@ namespace LCPS.v2015.v001.WebUI
 
             route.DataTokens["Area"] = "Public";
 
-            routes.MapRoute("GetInstructionalLevels",
-                           "Students/Student/GetInstructionalLevels/",
-                           new { controller = "Address", action = "GetStatesByCountryId" },
-                           new[] { "CountryStateApplication.Controllers" });
         }
     }
 }

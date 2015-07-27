@@ -11,12 +11,13 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Anvil.v2015.v001.Domain.Infrastructure;
+using System.Net.Mail;
+using System.Web;
 
 #endregion
 
 namespace Anvil.v2015.v001.Domain.Entities
 {
-
     public class ApplicationUser : IdentityUser
     {
 
@@ -30,15 +31,15 @@ namespace Anvil.v2015.v001.Domain.Entities
 
         #region Enums
 
-        public enum BLVisibilityQualifier
+        public enum PrivacyQualifier
         {
-            Personal,
-            Community,
-            Neighborhood,
-            Global
+            Personal = 0,
+            Community = 1,
+            Neighborhood = 2,
+            Global = 4
         }
 
-        public enum BLAccountStatus
+        public enum AccountStatusQualifier
         {
             Active = 0,
             PendingEmailConfirmation = 1,
@@ -52,10 +53,10 @@ namespace Anvil.v2015.v001.Domain.Entities
         #region Properties
 
         [Display(Name = "Account Status", Description = "The status of the account, 'Active' = The account is functioning account; 'Pendnging Email Confirmation' = The account will be funtional as soon as the author confirms the email address; 'PendingInfo' = The account will be functional as soon as the author completes the application wizard; 'Suspended' = The publishers have suspended this account. The Bio nor work will be visible by anyone accept the authors; 'Locked Out' = The account has been accesses with the wrong password too many times")]
-        public BLAccountStatus AccountStatus { get; set; }
+        public AccountStatusQualifier AccountStatus { get; set; }
 
         [Display(Name = "Account Visibility", Description = "Determines who will be able to view your account")]
-        public BLVisibilityQualifier AccountVisibility { get; set; }
+        public PrivacyQualifier AccountVisibility { get; set; }
 
         [Display(Name = "First Name")]
         [MaxLength(128)]
@@ -76,8 +77,8 @@ namespace Anvil.v2015.v001.Domain.Entities
         }
 
         [Display(Name = "Email Visibility", Description = "Determines who can see your email address")]
-        public BLVisibilityQualifier EmailVisibility { get; set; }
-        
+        public PrivacyQualifier EmailVisibility { get; set; }
+
         [Display(Name = "Avatar")]
         public byte[] AvatarContent { get; set; }
 
@@ -101,7 +102,19 @@ namespace Anvil.v2015.v001.Domain.Entities
         [MinLength(2)]
         public string HomeTownState { get; set; }
 
+        [Display(Name = "Company Id")]
+        [MaxLength(25)]
+        public string CompanyId { get; set; }
+
+        [Display(Name = "Avatar")]
+        public byte[] AvatarData { get; set; }
+
+
+
+
         #endregion
-       
+
+
+
     }
 }

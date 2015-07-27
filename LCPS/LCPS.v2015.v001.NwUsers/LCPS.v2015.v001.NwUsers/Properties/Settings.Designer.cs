@@ -33,5 +33,16 @@ namespace LCPS.v2015.v001.NwUsers.Properties {
                 return ((string)(this["_connectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=NWUsers.Lcps.v2015.v004;Integrated Secur" +
+            "ity=False;User ID=Sa;Password=Sql-pw1")]
+        public string NWUsers_Lcps_v2015_v004ConnectionString {
+            get {
+                return ((string)(this["NWUsers_Lcps_v2015_v004ConnectionString"]));
+            }
+        }
     }
 }

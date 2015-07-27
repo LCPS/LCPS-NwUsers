@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Anvil.v2015.v001.Domain.Entities;
+using Anvil.v2015.v001.Domain.Infrastructure;
+using LCPS.v2015.v001.NwUsers.Infrastructure;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
-using LCPS.v2015.v001.NwUsers.Infrastructure;
-using Anvil.v2015.v001.Domain.Entities;
-using Anvil.v2015.v001.Domain.Infrastructure;
+using System;
 using System.Configuration;
 
 namespace LCPS.v2015.v001.WebUI
@@ -37,7 +36,7 @@ namespace LCPS.v2015.v001.WebUI
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Public/Home/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

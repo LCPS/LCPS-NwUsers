@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
-using LCPS.v2015.v001.WebUI.Infrastructure;
-
-using LCPS.v2015.v001.NwUsers.Importing;
+﻿using Anvil.v2015.v001.Domain.Exceptions;
 using LCPS.v2015.v001.NwUsers.Filters;
 using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
-using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+using LCPS.v2015.v001.NwUsers.Importing;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Linq.Dynamic;
-
-using Anvil.v2015.v001.Domain.Exceptions;
-
+using LCPS.v2015.v001.WebUI.Areas.Import.Models;
+using LCPS.v2015.v001.WebUI.Infrastructure;
 using PagedList;
-using PagedList.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Reflection;
+using System.Web.Mvc;
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
-    [Authorize(Roles = "APP-Admins,HR-Admins")]
+    [LcpsControllerAuthorization(Area = "HumanResources", Controller = "HRStaff")]
     public class HRStaffController : Controller
     {
         private LcpsDbContext db = new LcpsDbContext();
@@ -114,6 +108,12 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         // GET: /HumanResources/HRStaff/
         public ActionResult Index(int? page, int? pageSize)
         {
+            StackTrace st = new StackTrace();
+            StackFrame sf = st.GetFrame(0);
+
+            MethodBase mb = sf.GetMethod();
+
+
             try
             {
                 StaffFilterClauseModel m = this.StaffClause;

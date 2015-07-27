@@ -22,16 +22,13 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
         public const string UserAdminEmail = "lcps@k12lcps.org";
         public const string UserAdminPassword = "Lcp$-pw1";
 
-        public const string RoleAdminName = "APP-Admins";
-        public const string RoleAdminDesc = "Add, edit, and delete roles and users";
-
         #endregion
 
         public LcpsDbContext()
-            :base(ConfigurationManager.ConnectionStrings["LcpsDbContext"].ConnectionString)
+            : base(ConfigurationManager.ConnectionStrings["LcpsDbContext"].ConnectionString)
         {
             this.Configuration.ProxyCreationEnabled = false;
-            
+
         }
 
         #region Properties
@@ -52,7 +49,7 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
 
             }
         }
-      
+
 
         #endregion
 
@@ -64,29 +61,54 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
 
         public void Seed()
         {
+            SeedDefaultSecurityEntities();
+            SeedDefaultApplication();
+            SeedSql();
+            SeedDefaultACL();
+        }
+
+        public void SeedDefaultSecurityEntities()
+        {
             try
             {
                 LcpsRoleManager rm = new LcpsRoleManager();
                 LcpsUserManager um = new LcpsUserManager();
 
-                if(!rm.RoleExists(RoleAdminName))
-                    rm.Create(new ApplicationRole() { Name = RoleAdminName, Description = RoleAdminDesc });
+                ApplicationUserCandidateCollection defaultUsers = new ApplicationUserCandidateCollection();
+                defaultUsers.Add("lcps", "Lcp$-2015", "lcps@k12lcps.org");
 
-                if(um.FindByName(UserAdminName) == null)
-                    um.Create(new ApplicationUser(){
-                        UserName = UserAdminName, 
-                        Email = UserAdminEmail, 
-                        Birthdate = new DateTime(1953, 6, 12),
-                        GivenName = "System",
-                        SurName = "Admin"
-                    }, UserAdminPassword);
+                ApplicationRoleCollection defaultRoles = new ApplicationRoleCollection();
+                defaultRoles.Add(LcpsRoleManager.ApplicationAdminRole, "This user has full access to all application modules and objects");
+                defaultRoles.Add(LcpsRoleManager.HrAdminRole, "This user has full access to all application modules and objects in the Human Resources area");
+                defaultRoles.Add(LcpsRoleManager.StudentAdminRole, "This user has full access to all application modules and objects in the Students area");
+                defaultRoles.Add(LcpsRoleManager.StudentEmailRole, "This user can modify student email accounts");
+                defaultRoles.Add(LcpsRoleManager.StaffEmailRole, "This user can modify staff email accounts");
+                defaultRoles.Add(LcpsRoleManager.StudentLanRole, "This user can modify staff LAN accounts");
+                defaultRoles.Add(LcpsRoleManager.StaffLanRole, "This user can modify staff LAN accounts");
+                defaultRoles.Add(LcpsRoleManager.StudentPwdRole, "This user can modify student passwords");
+                defaultRoles.Add(LcpsRoleManager.StaffPwdRole, "This user can modify staff passwords");
 
-                ApplicationUser u = um.FindByName(UserAdminName);
+                ApplicationUserRoleValidator _roleValidator = new ApplicationUserRoleValidator(this, um, rm);
+                foreach (ApplicationRole r in defaultRoles)
+                {
+                    _roleValidator.Add(defaultUsers[0], r);
+                }
 
-                if (!um.IsInRole(u.Id, RoleAdminName))
-                    um.AddToRole(u.Id, RoleAdminName);
+                _roleValidator.Validate();
 
-                if(Applications.Count() == 0)
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Could not create default entities", ex);
+            }
+        }
+
+        public void SeedDefaultApplication()
+        {
+            try
+            {
+                if (Applications.Count() == 0)
                 {
                     ApplicationBase app = new ApplicationBase()
                     {
@@ -116,14 +138,30 @@ namespace LCPS.v2015.v001.WebUI.Infrastructure
                     Applications.Add(app);
                     SaveChanges();
                 }
-
-                this.SeedSql();
- 
             }
             catch (Exception ex)
             {
-                throw new Exception("Could not create default entities", ex);
+                throw new Exception("Could not create default application", ex);
             }
         }
+
+        public void SeedDefaultACL()
+        {
+            LcpsMvcControllerACLManager manager = new LcpsMvcControllerACLManager();
+            manager.AddAccess(LcpsRoleManager.ApplicationAdminRole, "HumanResources");
+            manager.AddAccess(LcpsRoleManager.HrAdminRole, "HumanResources");
+            
+            manager.AddAccess(LcpsRoleManager.ApplicationAdminRole, "Students");
+            manager.AddAccess(LcpsRoleManager.StudentAdminRole, "Students");
+
+            manager.AddAccess(LcpsRoleManager.StudentAdminRole, "My");
+
+            manager.AddAccess(LcpsRoleManager.ApplicationAdminRole, "LcpsLdap");
+
+
+
+
+        }
+
     }
 }

@@ -91,6 +91,10 @@
     <Compile Include="Entities\AnvilEntity.cs" />
     <Compile Include="Entities\ApplicationBase.cs" />
     <Compile Include="Entities\ApplicationModels.cs" />
+    <Compile Include="Entities\ApplicationRoleCollection.cs" />
+    <Compile Include="Entities\ApplicationUserCandidate.cs" />
+    <Compile Include="Entities\ApplicationUserCandidateCollection.cs" />
+    <Compile Include="Entities\ApplicationUserRoleValidator.cs" />
     <Compile Include="Entities\Dynamic.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryStatement.cs" />
     <Compile Include="Entities\DynamicFilters\DynamicQueryClauseField.cs" />
@@ -113,6 +117,8 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Infrastructure\ApplicationUserManager.cs" />
     <Compile Include="Html\AnvilHtmlHelper.cs" />
+    <Compile Include="Infrastructure\MvcControllerACL.cs" />
+    <Compile Include="Infrastructure\MvcControllerACLManager.cs" />
     <Compile Include="Security\AnvilEncryptor.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Entities\ManageViewModels.cs" />
