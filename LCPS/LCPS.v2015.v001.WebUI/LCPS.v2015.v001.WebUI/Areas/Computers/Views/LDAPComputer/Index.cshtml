@@ -1,0 +1,74 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.Computers.Models;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+
+@model LDAPComputerModel
+
+
+@{
+    ViewBag.Title = "LDAP Computers";
+    Layout = "~/Areas/Computers/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(function () {
+        $('.ou-tn').click(function () {
+
+            var ou = $(this).attr('id');
+
+            $('#myModal').modal('hide');
+
+            window.location.href = "/Computers/LDAPComputer/Index?ou=" + ou;
+        });
+    });
+</script>
+
+<h2>LDAP Computers</h2>
+
+<div class=" container row">
+    @if (Model.OU == null)
+    {
+        <small>There is no OU selected</small>
+    }
+    else
+    {
+        @Model.OU.Name <small>(@Model.OU.Description)</small>
+    }
+
+    @Html.Partial("~/Areas/LcpsLdap/Views/Shared/_OUTreeModal.cshtml", Model.OUTreeModel)
+
+
+    @if (Model.OU != null)
+    {
+        <p>
+            Total Count: @Model.Computers.Count()
+        </p>
+
+        <table class="table table-hover table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Manufacturer</th>
+                <th>Model</th>
+                <th>SN</th>
+                <th>OS</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+            @foreach (LcpsAdsComputer c in Model.Computers)
+            {
+                <tr>
+                    <td>@c.ComputerName</td>
+                    <td>@c.Manufacturer</td>
+                    <td>@c.Model</td>
+                    <td>@c.SerialNumber</td>
+                    <td>@c.OSName @c.OSServicePack</td>
+                    <td>@c.Description</td>
+                    <td><a href="@Url.Action("RemoteComputer", "Computers", new {area = "Computers", name = c.ComputerName})"><i class="fa fa-cogs"></i></a></td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+<hr />
+
+
+

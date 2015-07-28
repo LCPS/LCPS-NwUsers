@@ -13,6 +13,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
     {
         private LcpsAdsOuTree _ouTree;
 
+        public string ModalTitle { get; set; }
+
         public string FormArea { get; set; }
 
         public string FormController { get; set; }
@@ -20,6 +22,8 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
         public string FormAction { get; set; }
 
         public string SubmitText { get; set; }
+
+        public string LinkText { get; set; }
 
         public string OnErrorActionName { get; set; }
 

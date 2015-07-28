@@ -40,7 +40,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BuildingKey }) |
-            <a href="@Url.Action("Index", "HRRooms", new {area ="HumanResources", id=item.BuildingKey })">Rooms</a> @Html.Raw("|")
+            <a href="@Url.Action("Index", "HRRooms", new {area ="HumanResources", b=item.BuildingKey })">Rooms</a> @Html.Raw("|")
             @Html.ActionLink("Delete", "Delete", new { id=item.BuildingKey })
         </td>
     </tr>

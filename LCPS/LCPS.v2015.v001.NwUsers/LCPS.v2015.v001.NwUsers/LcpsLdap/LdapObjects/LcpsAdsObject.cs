@@ -181,6 +181,9 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
             foreach(string k in _adsToLcps.Keys)
             {
                 PropertyInfo p = this.GetType().GetProperty(_adsToLcps[k]);
+                if (p == null)
+                    throw new Exception(String.Format("Property {0} was not found in type {1}", _adsToLcps[k], this.GetType().Name));
+
                 object v = _directoryEntry.InvokeGet(k);
                 p.SetValue(this, v, null);
             }
@@ -195,9 +198,19 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 
             foreach (string k in _lcpsToAds.Keys)
             {
-                PropertyInfo p = this.GetType().GetProperty(k);
-                object v = p.GetValue(this, null);
-                UpdateProperty(_lcpsToAds[k], _directoryEntry, v);
+                if (_lcpsToAds[k].ToLower() != "cn")
+                {
+                    try
+                    {
+                        PropertyInfo p = this.GetType().GetProperty(k);
+                        object v = p.GetValue(this, null);
+                        UpdateProperty(_lcpsToAds[k], _directoryEntry, v);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(string.Format("An error occurred while attempting to set property {0}", k), ex);
+                    }
+                }
             }
             
             if (commitChanges)

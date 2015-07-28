@@ -6,6 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using LCPS.v2015.v001.NwUsers.Infrastructure;
+using LCPS.v2015.v001.NwUsers.HumanResources;
+using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+using System.DirectoryServices;
 
 using System.Management;
 
@@ -13,7 +17,7 @@ using LCPS.v2015.v001.NwUsers.LcpsComputers.Peripherals;
 
 namespace LCPS.v2015.v001.NwUsers.LcpsComputers
 {
-    public class RemoteComputer : IComputer
+    public class RemoteComputer : IComputerInfo
     {
 
         #region Constants
@@ -52,6 +56,9 @@ namespace LCPS.v2015.v001.NwUsers.LcpsComputers
         [Display(Name = "Serial Number")]
         public string SerialNumber { get; set; }
 
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
         public string Manufacturer { get; set; }
 
         public string Model { get; set; }
@@ -60,7 +67,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsComputers
 
         public bool LDAPExists { get; set; }
 
-
+        public ComputerTypes ComputerType { get; set; }
 
         #endregion
 
@@ -73,33 +80,6 @@ namespace LCPS.v2015.v001.NwUsers.LcpsComputers
         #endregion
 
         #region Get
-
-        public void Refresh()
-        {
-            ManagementScope _scope = new ManagementScope(string.Format(PathExp, this.ComputerName));
-            if (this.ComputerName.ToLower() != Environment.MachineName.ToLower())
-            {
-                _scope.Options = new ConnectionOptions()
-                {
-                    Username = this.UserName,
-                    Password = this.Password,
-                    Authentication = AuthenticationLevel.PacketPrivacy,
-                    Impersonation = ImpersonationLevel.Impersonate
-                };
-            }
-
-            _scope.Connect();
-            GetOperatingSystem(_scope);
-            GetComputerSystem(_scope);
-            GetBios(_scope);
-
-            string nQry = "SELECT * FROM Win32_NetworkAdapter WHERE Manufacturer <> 'Microsoft' AND Manufacturer <> 'Symantec' AND Manufacturer <> 'VMware, Inc.'";
-            this.NetworkAdapters = GetList(_scope, typeof(Win32_NetworkAdapter), nQry).ToArray().Cast<Win32_NetworkAdapter>().ToArray();
-
-            string cpuQry = "SELECT * FROM Win32_Processor";
-            this.Processors = GetList(_scope, typeof(Win32_Processor), cpuQry).ToArray().Cast<Win32_Processor>().ToArray();
-
-        }
 
         private void GetOperatingSystem(ManagementScope scope)
         {
@@ -170,5 +150,130 @@ namespace LCPS.v2015.v001.NwUsers.LcpsComputers
 
         #endregion
 
+
+        public string BuildingName { get; set; }
+
+        public string RoomName { get; set; }
+
+        public string UnitNumber { get; set; }
+
+        public void DBAcrchive(ComputerInfo m, string author)
+        {
+            LcpsAdsDomain dom = LcpsAdsDomain.Default;
+            string fltr = "(&(cn=" + this.ComputerName + "))";
+            DirectorySearcher s = new DirectorySearcher(dom.DirectoryEntry, fltr);
+            SearchResult r = s.FindOne();
+            if (r.GetDirectoryEntry() == null)
+                m.LDAPExists = false;
+            else
+            {
+                m.LDAPExists = true;
+                LcpsAdsComputer ldapC = new LcpsAdsComputer(r.GetDirectoryEntry());
+                m.LDAPGuid = ldapC.ObjectGuid;
+            }
+
+            ComputerInfo i = new ComputerInfo()
+            {
+                ComputerId = Guid.NewGuid(),
+                LDAPExists = m.LDAPExists,
+                LDAPGuid = m.LDAPGuid,
+                AcrchiveDate = DateTime.Now,
+                BuildingId = m.BuildingId,
+                RoomId = m.RoomId,
+                UnitNumber = m.UnitNumber,
+                ArchiveAuthor = author,
+                ComputerName = this.ComputerName,
+                ComputerType = this.ComputerType,
+                Description = this.Description,
+                Manufacturer = this.Manufacturer,
+                Model = this.Model,
+                SerialNumber = this.SerialNumber,
+                OSName = this.OSName,
+                OSServicePack = this.OSServicePack,
+                RecordState = ComputerRecordState.Active
+            };
+
+            List<ArchiveNic> _nics = new List<ArchiveNic>();
+            foreach (Win32_NetworkAdapter n in this.NetworkAdapters)
+            {
+                ArchiveNic archN = new ArchiveNic()
+                {
+                    RecordId = Guid.NewGuid(),
+                    ComputerId = i.ComputerId,
+                    MacAddress = n.MacAddress,
+                    Manufacturer = n.Manufacturer,
+                    Name = n.Name
+                };
+                _nics.Add(archN);
+            }
+
+            LcpsDbContext db = new LcpsDbContext();
+
+            foreach (ComputerInfo ac in db.Computers)
+            {
+                ac.RecordState = ComputerRecordState.Archive;
+                db.Entry(ac).State = System.Data.Entity.EntityState.Modified;
+            }
+
+            db.Computers.Add(i);
+            db.ArchivedNics.AddRange(_nics);
+            db.SaveChanges();
+    
+        }
+
+        public void Refresh()
+        {
+            ManagementScope _scope = new ManagementScope(string.Format(PathExp, this.ComputerName));
+            if (this.ComputerName.ToLower() != Environment.MachineName.ToLower())
+            {
+                _scope.Options = new ConnectionOptions()
+                {
+                    Username = this.UserName,
+                    Password = this.Password,
+                    Authentication = AuthenticationLevel.PacketPrivacy,
+                    Impersonation = ImpersonationLevel.Impersonate
+                };
+            }
+
+            _scope.Connect();
+            GetOperatingSystem(_scope);
+            GetComputerSystem(_scope);
+            GetBios(_scope);
+
+            string nQry = "SELECT * FROM Win32_NetworkAdapter WHERE Manufacturer <> 'Microsoft' AND Manufacturer <> 'Symantec' AND Manufacturer <> 'VMware, Inc.'";
+            this.NetworkAdapters = GetList(_scope, typeof(Win32_NetworkAdapter), nQry).ToArray().Cast<Win32_NetworkAdapter>().ToArray();
+
+            string cpuQry = "SELECT * FROM Win32_Processor";
+            this.Processors = GetList(_scope, typeof(Win32_Processor), cpuQry).ToArray().Cast<Win32_Processor>().ToArray();
+
+            ComputerType = ComputerTypes.Unknown;
+
+            if (Model.ToLower().StartsWith("latitude"))
+                ComputerType = ComputerTypes.Laptop;
+
+            if (Model.ToLower().StartsWith("optiplex"))
+                ComputerType = ComputerTypes.PC;
+
+            if (Manufacturer.ToLower().StartsWith("asus"))
+                ComputerType = ComputerTypes.Tablet;
+        }
+
+        #region Conversions
+
+        public ComputerInfo ToComputerInfo()
+        {
+            LcpsDbContext db = new LcpsDbContext();
+            ComputerInfo dbC = db.Computers.FirstOrDefault(x => x.RecordState == ComputerRecordState.Active & x.ComputerName.ToLower() == this.ComputerName.ToLower());
+            ComputerInfo wmi = new ComputerInfo(this);
+            if(dbC != null)
+            {
+                wmi.BuildingId = dbC.BuildingId;
+                wmi.RoomId = dbC.RoomId;
+                wmi.UnitNumber = dbC.UnitNumber;
+            }
+            return wmi;
+        }
+
+        #endregion
     }
 }

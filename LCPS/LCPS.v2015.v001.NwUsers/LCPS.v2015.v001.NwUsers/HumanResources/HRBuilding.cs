@@ -46,5 +46,16 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
             return items;
                                           
         }
+
+        public static string GetBuildingName(Guid id)
+        {
+            if (id.Equals(Guid.Empty))
+                return "";
+            else
+            {
+                LcpsDbContext db = new LcpsDbContext();
+                return db.Buildings.Find(id).Name;
+            }
+        }
     }
 }

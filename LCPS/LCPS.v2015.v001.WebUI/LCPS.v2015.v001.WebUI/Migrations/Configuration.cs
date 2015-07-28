@@ -10,7 +10,6 @@ namespace LCPS.v2015.v001.WebUI.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext context)
@@ -27,9 +26,6 @@ namespace LCPS.v2015.v001.WebUI.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext db = new Infrastructure.LcpsDbContext();
-            db.Seed();
         }
     }
 }

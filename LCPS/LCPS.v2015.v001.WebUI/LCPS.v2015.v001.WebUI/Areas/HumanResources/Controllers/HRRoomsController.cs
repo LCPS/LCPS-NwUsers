@@ -16,15 +16,20 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         private LcpsDbContext db = new LcpsDbContext();
 
         // GET: HumanResources/HRRooms
-        public ActionResult Index(Guid? id)
+        public ActionResult Index(Guid? b)
         {
-            if (id == null)
-                return View(db.Rooms.ToList());
+            IEnumerable<HRRoom> rooms;
+
+            if (b == null)
+                rooms = db.Rooms;
             else
             {
-                List<HRRoom> rooms = db.Rooms.Where(x => x.BuildingId.Equals(id.Value)).ToList();
-                return View(rooms);
+                rooms = db.Rooms.Where(x => x.BuildingId.Equals(b.Value));
             }
+
+            List<HRRoom> rr = rooms.OrderBy(x => x.RoomId).ToList();
+
+            return View(rr);
                 
             
         }
@@ -45,7 +50,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
         }
 
         // GET: HumanResources/HRRooms/Create
-        public ActionResult Create()
+        public ActionResult Create(Guid b)
         {
             return View();
         }
@@ -62,7 +67,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
                 hRRoom.RoomKey = Guid.NewGuid();
                 db.Rooms.Add(hRRoom);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { b = hRRoom.BuildingId });
             }
 
             return View(hRRoom);
@@ -94,7 +99,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             {
                 db.Entry(hRRoom).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { b = hRRoom.BuildingId, area = "HumanResources" });
             }
             return View(hRRoom);
         }

@@ -7,23 +7,21 @@
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
 }
 
-<h2>Create</h2>
+<script>
+
+</script>
+
+<h2>Building -- @HRRoomModel.GetBuildingName(new Guid(Request.QueryString["b"]))</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+    @Html.Hidden("BuildingId", Request.QueryString["b"])
     
     <div class="form-horizontal">
-        <h4>HRRoom</h4>
+        <h4>Create Room</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.BuildingId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BuildingId, HRRoomModel.GetBuildings(), new { @class = "form-control" } )
-                @Html.ValidationMessageFor(model => model.BuildingId, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.RoomNumber, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -66,5 +64,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { b = new Guid(Request.QueryString["b"]), area = "HumanResources"})
 </div>

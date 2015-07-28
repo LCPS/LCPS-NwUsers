@@ -93,6 +93,11 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         public DbSet<LcpsEmail.EmailAccount> EmailAccounts { get; set; }
 
 
+        // ----------------------------- Computers
+        public DbSet<LcpsComputers.ComputerInfo> Computers { get; set; }
+        public DbSet<LcpsComputers.Peripherals.ArchiveNic> ArchivedNics { get; set; }
+
+
         #endregion
 
         #region Methods

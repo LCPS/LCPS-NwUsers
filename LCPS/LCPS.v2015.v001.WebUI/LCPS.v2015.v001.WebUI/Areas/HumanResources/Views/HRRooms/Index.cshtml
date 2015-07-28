@@ -9,7 +9,7 @@
 <h2>Rooms</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { b = new Guid(Request.QueryString["b"]) })
 </p>
 <table class="table">
     <tr>

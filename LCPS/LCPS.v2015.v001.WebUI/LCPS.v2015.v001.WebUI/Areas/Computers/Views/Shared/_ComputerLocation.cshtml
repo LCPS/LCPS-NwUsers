@@ -1,0 +1,19 @@
+﻿@using LCPS.v2015.v001.NwUsers.HumanResources;
+@using LCPS.v2015.v001.NwUsers.LcpsComputers;
+
+@model ComputerInfo
+
+<div class="form-inline">
+    @Html.LabelFor(model => model.BuildingId, new { @class = "label-control" })
+    @HRBuilding.GetBuildingName(Model.BuildingId)
+
+
+    @Html.LabelFor(model => model.RoomId, new { @class = "label-control" })
+    @HRRoom.GetName(Model.RoomId)
+
+    @Html.LabelFor(model => model.UnitNumber, new { @class = "label-control" })
+    @Model.UnitNumber
+
+    <button onclick="setLocation();" class="btn btn-sm btn-info">Set Location</button>
+</div>
+

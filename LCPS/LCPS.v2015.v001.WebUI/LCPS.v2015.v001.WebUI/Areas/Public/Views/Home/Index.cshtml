@@ -41,14 +41,27 @@
 
 
     @if (LcpsMvcControllerACLManager.GetUserCanAccess(User, "LcpsLdap"))
-    {
-        @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
+{
+    @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
 {
     Area = "LcpsLdap",
     Controller = "LdapDashboard",
     Action = "Index",
     CssClass = "fa fa-sitemap",
     Text = "LDAP Network"
+})
+
+}
+
+    @if (LcpsMvcControllerACLManager.GetUserCanAccess(User, "Computers"))
+    {
+        @Html.Partial("_HugeButtonPartial", new LcpsMvcHugeButtonModel()
+{
+    Area = "Computers",
+    Controller = "LDAPComputer",
+    Action = "Index",
+    CssClass = "fa fa-desktop",
+    Text = "Computers"
 })
 
     }

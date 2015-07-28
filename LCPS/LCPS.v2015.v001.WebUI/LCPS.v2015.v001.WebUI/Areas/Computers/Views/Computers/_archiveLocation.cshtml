@@ -1,0 +1,59 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.Computers.Models;
+@using LCPS.v2015.v001.NwUsers.HumanResources;
+@using LCPS.v2015.v001.NwUsers.LcpsComputers;
+
+@model ComputerInfo
+
+
+<div class="form-inline">
+    @Html.LabelFor(model => model.BuildingId, new { @class = "label-control" })
+    @HRBuilding.GetBuildingName(Model.BuildingId)
+
+
+    @Html.LabelFor(model => model.RoomId, new { @class = "label-control" })
+    @HRRoom.GetName(Model.RoomId)
+
+    @Html.LabelFor(model => model.UnitNumber, new { @class = "label-control" })
+    @Model.UnitNumber
+
+    <button class="btn btn-link" data-toggle="modal" data-target="#myModal"><i class="fa fa-arrows-alt"></i> Relocate</button>
+</div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Relocate Computer</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="form-horizontal" style="margin: 24px 0;">
+                        <div class="form-group">
+                            <label class="control-label">Building</label>
+                            <select id="Buildings" class="form-control input-sm"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Room</label>
+                            <select id="Rooms" class="form-control input-sm"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Unit</label>
+                            <input id="UnitNumber" type="number" class="form-control input-sm" style="width: 60px;" />
+                        </div>
+                        <div class="form-group">
+                            <button onclick="relocate();" class="btn btn-info btn-sm">Relocate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

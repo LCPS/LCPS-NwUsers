@@ -3,8 +3,14 @@ namespace LCPS.v2015.v001.WebUI.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init001 : DbMigration
+    public partial class Initial : DbMigration
     {
+        public override void Up()
+        {
+            //throw new NotImplementedException();
+        }
+
+        /*
         public override void Up()
         {
             CreateTable(
@@ -388,7 +394,7 @@ namespace LCPS.v2015.v001.WebUI.Migrations
                 .Index(t => t.UserId);
             
         }
-        
+        */
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");

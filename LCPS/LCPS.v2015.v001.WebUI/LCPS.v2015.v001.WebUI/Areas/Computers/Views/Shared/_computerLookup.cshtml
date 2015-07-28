@@ -1,15 +1,64 @@
 ﻿@using LCPS.v2015.v001.NwUsers.LcpsComputers;
 @using LCPS.v2015.v001.WebUI.Areas.Computers.Models;
 
-@model ComputerLookupModel
+<script>
+    function getComputer() {
+       
+        var cnm = $("#LookForName").val();
+ 
+        if (cnm.length == 0) {
+            alert("Computer name cannot be null");
+            return;
+        }
 
-@using (Html.BeginForm("Lookup", "Computers", new { area = "Computers" }, FormMethod.Post))
-{
-    <div class="form-inline">
-        <div class="form-group">
-            @Html.LabelFor(model => model.ComputerName, new { @class = "control-label" })
-            @Html.TextBoxFor(model => model.ComputerName, new { @class = "form-control" })
-            <input type="submit" value="Search" class="btn btn-info" />
-        </div>
+        var stat = $('#div-status');
+        var hdr = $('#stat-hdr');
+        var bdy = $('#stat-bdy');
+
+        var url = "/Computers/Computers/LookupComputer";
+
+        $('#spinner').show('fast');
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: {
+                name: cnm
+            },
+            error: function (response) {
+                $('#spinner').hide('slow');
+                stat.html(response.responseText);
+            },
+            success: function (response) {
+                if (response.length >= 4 && response.substr(1, 2) == "ul") {
+                    stat.addClass("panel panel-danger");
+                    hdr.html('Error');
+                    bdy.prepend(response);
+
+                    stat.show('slow');
+                    $('#spinner').hide('slow');
+                }
+                else {
+                    $('#spinner').hide('slow');
+                    window.location.href = "/Computers/Computers/RemoteComputer?name=" + cnm;
+                }
+            }
+        });
+
+        
+    }
+
+</script>
+
+<div class="form-inline">
+    <div class="form-group">
+        <label class="control-label">Computer Name:</label>
+        <input id="LookForName" type="text" class="form-control" value="@Request.QueryString["name"]" />
+        <input type="submit" value="Search" class="btn btn-info" onclick="getComputer()" />
+        <img id="spinner" src="~/Content/spinners/atom-64.gif" width="64" height="64" style="display:none" />
     </div>
-}
+</div>
+
+<div style="margin: 24px 0;">
+    @Html.Partial("_StatusMessage")
+</div>

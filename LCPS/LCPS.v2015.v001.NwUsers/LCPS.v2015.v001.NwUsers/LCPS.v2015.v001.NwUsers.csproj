@@ -195,7 +195,10 @@
     <Compile Include="Importing2\ImportRecordStatus.cs" />
     <Compile Include="LcpsComputers\ComputerInfo.cs" />
     <Compile Include="LcpsComputers\ComputerRecordState.cs" />
+    <Compile Include="LcpsComputers\ComputerTypes.cs" />
     <Compile Include="LcpsComputers\IComputer.cs" />
+    <Compile Include="LcpsComputers\IComputerInfo.cs" />
+    <Compile Include="LcpsComputers\Peripherals\ArchiveNic.cs" />
     <Compile Include="LcpsComputers\Peripherals\INetworkAdapter.cs" />
     <Compile Include="LcpsComputers\Peripherals\IProcessor.cs" />
     <Compile Include="LcpsComputers\Peripherals\ProcessorArchitectures.cs" />
@@ -214,6 +217,7 @@
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategory.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategoryType.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserGroupAssignment.cs" />
+    <Compile Include="LcpsLdap\LdapObjects\LcpsAdsComputer.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsContainer.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsObjectTypes.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsDomain.cs" />
@@ -306,6 +310,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+    <EmbeddedResource Include="Seed\Sql\Views\LcpsEmail.LcpsEmailKey.sql" />
     <None Include="LcpsEmail\LcpsEmailContext.dbml.layout">
       <DependentUpon>LcpsEmailContext.dbml</DependentUpon>
     </None>

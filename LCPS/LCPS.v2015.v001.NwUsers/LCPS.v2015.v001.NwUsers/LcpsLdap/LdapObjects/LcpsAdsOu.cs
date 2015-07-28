@@ -85,6 +85,15 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
             return i;
         }
 
+        public LcpsAdsComputer[] GetComputers(bool recursive)
+        {
+            ICollection x = FindAll("(&(objectCategory=computer))", DirectoryEntry, recursive, typeof(LcpsAdsComputer));
+            List<LcpsAdsComputer> l = x.Cast<LcpsAdsComputer>().ToList();
+            l = l.OrderBy(c => c.ComputerName).ToList();
+            LcpsAdsComputer[] i = l.ToArray();
+            return i;
+        }
+
         #endregion
     }
 }

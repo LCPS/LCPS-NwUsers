@@ -175,7 +175,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Computers\ComputersAreaRegistration.cs" />
     <Compile Include="Areas\Computers\Controllers\ComputersController.cs" />
+    <Compile Include="Areas\Computers\Controllers\LDAPComputerController.cs" />
     <Compile Include="Areas\Computers\Models\ComputerLookupModel.cs" />
+    <Compile Include="Areas\Computers\Models\LDAPComputerModel.cs" />
     <Compile Include="Areas\Errors\Controllers\ErrorHandlingController.cs" />
     <Compile Include="Areas\Errors\ErrorsAreaRegistration.cs" />
     <Compile Include="Areas\Filters\FiltersAreaRegistration.cs" />
@@ -228,9 +230,29 @@
     <Compile Include="Infrastructure\LcpsMvcControllerACLManager.cs" />
     <Compile Include="Infrastructure\LcpsRoleManager.cs" />
     <Compile Include="Infrastructure\LcpsUserManager.cs" />
-    <Compile Include="Migrations\201507280031285_Init001.cs" />
-    <Compile Include="Migrations\201507280031285_Init001.Designer.cs">
-      <DependentUpon>201507280031285_Init001.cs</DependentUpon>
+    <Compile Include="Migrations\201507281152514_Initial.cs" />
+    <Compile Include="Migrations\201507281152514_Initial.Designer.cs">
+      <DependentUpon>201507281152514_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507281154283_Init001.cs" />
+    <Compile Include="Migrations\201507281154283_Init001.Designer.cs">
+      <DependentUpon>201507281154283_Init001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507281254431_Computer001.cs" />
+    <Compile Include="Migrations\201507281254431_Computer001.Designer.cs">
+      <DependentUpon>201507281254431_Computer001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507281432398_Computer002.cs" />
+    <Compile Include="Migrations\201507281432398_Computer002.Designer.cs">
+      <DependentUpon>201507281432398_Computer002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507281603169_Computer003.cs" />
+    <Compile Include="Migrations\201507281603169_Computer003.Designer.cs">
+      <DependentUpon>201507281603169_Computer003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507281954286_Computer004.cs" />
+    <Compile Include="Migrations\201507281954286_Computer004.Designer.cs">
+      <DependentUpon>201507281954286_Computer004.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -392,14 +414,34 @@
     <Content Include="Areas\Computers\Views\Shared\_remoteComputerDetail.cshtml" />
     <Content Include="Areas\Computers\Views\Shared\_nicList.cshtml" />
     <Content Include="Areas\Computers\Views\Shared\_processorList.cshtml" />
-    <EmbeddedResource Include="Migrations\201507280031285_Init001.resx">
-      <DependentUpon>201507280031285_Init001.cs</DependentUpon>
-    </EmbeddedResource>
     <Content Include="Areas\HumanResources\Views\HRRooms\Create.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRRooms\Delete.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRRooms\Details.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRRooms\Edit.cshtml" />
     <Content Include="Areas\HumanResources\Views\HRRooms\Index.cshtml" />
+    <EmbeddedResource Include="Migrations\201507281152514_Initial.resx">
+      <DependentUpon>201507281152514_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507281154283_Init001.resx">
+      <DependentUpon>201507281154283_Init001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507281254431_Computer001.resx">
+      <DependentUpon>201507281254431_Computer001.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\Computers\Views\LDAPComputer\Index.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\Shared\_OUTreeModal.cshtml" />
+    <EmbeddedResource Include="Migrations\201507281432398_Computer002.resx">
+      <DependentUpon>201507281432398_Computer002.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\Computers\Views\Computers\ArchiveComputer.cshtml" />
+    <Content Include="Areas\Computers\Views\Computers\_archiveLocation.cshtml" />
+    <EmbeddedResource Include="Migrations\201507281603169_Computer003.resx">
+      <DependentUpon>201507281603169_Computer003.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\Computers\Views\Shared\_ComputerLocation.cshtml" />
+    <EmbeddedResource Include="Migrations\201507281954286_Computer004.resx">
+      <DependentUpon>201507281954286_Computer004.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
