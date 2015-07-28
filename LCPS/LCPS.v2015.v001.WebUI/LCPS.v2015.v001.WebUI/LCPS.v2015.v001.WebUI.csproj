@@ -182,11 +182,13 @@
     <Compile Include="Areas\HumanResources\Controllers\HRBuildingsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HREmployeeTypesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HRRoomsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRStaffController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HumanResourcesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
     <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
     <Compile Include="Areas\HumanResources\Models\HRRestoreModel.cs" />
+    <Compile Include="Areas\HumanResources\Models\HRRoomModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffFilterClauseModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
     <Compile Include="Areas\Import2\Import2AreaRegistration.cs" />
@@ -226,137 +228,9 @@
     <Compile Include="Infrastructure\LcpsMvcControllerACLManager.cs" />
     <Compile Include="Infrastructure\LcpsRoleManager.cs" />
     <Compile Include="Infrastructure\LcpsUserManager.cs" />
-    <Compile Include="Migrations\201507141201140_INIT-001.cs" />
-    <Compile Include="Migrations\201507141201140_INIT-001.Designer.cs">
-      <DependentUpon>201507141201140_INIT-001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507151805377_ADS-001.cs" />
-    <Compile Include="Migrations\201507151805377_ADS-001.Designer.cs">
-      <DependentUpon>201507151805377_ADS-001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161312205_Filters001.cs" />
-    <Compile Include="Migrations\201507161312205_Filters001.Designer.cs">
-      <DependentUpon>201507161312205_Filters001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161317272_Filters002.cs" />
-    <Compile Include="Migrations\201507161317272_Filters002.Designer.cs">
-      <DependentUpon>201507161317272_Filters002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161338177_Filters003.cs" />
-    <Compile Include="Migrations\201507161338177_Filters003.Designer.cs">
-      <DependentUpon>201507161338177_Filters003.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161414038_LdapTemplates001.cs" />
-    <Compile Include="Migrations\201507161414038_LdapTemplates001.Designer.cs">
-      <DependentUpon>201507161414038_LdapTemplates001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161828126_LdapTemplates002.cs" />
-    <Compile Include="Migrations\201507161828126_LdapTemplates002.Designer.cs">
-      <DependentUpon>201507161828126_LdapTemplates002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161834498_LdapTemplates003.cs" />
-    <Compile Include="Migrations\201507161834498_LdapTemplates003.Designer.cs">
-      <DependentUpon>201507161834498_LdapTemplates003.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161838201_LdapTemplates004.cs" />
-    <Compile Include="Migrations\201507161838201_LdapTemplates004.Designer.cs">
-      <DependentUpon>201507161838201_LdapTemplates004.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161922407_LdapTemplates005.cs" />
-    <Compile Include="Migrations\201507161922407_LdapTemplates005.Designer.cs">
-      <DependentUpon>201507161922407_LdapTemplates005.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161932379_LdapTemplates006.cs" />
-    <Compile Include="Migrations\201507161932379_LdapTemplates006.Designer.cs">
-      <DependentUpon>201507161932379_LdapTemplates006.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161933331_LdapTemplates007.cs" />
-    <Compile Include="Migrations\201507161933331_LdapTemplates007.Designer.cs">
-      <DependentUpon>201507161933331_LdapTemplates007.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161937378_LdapTemplates009.cs" />
-    <Compile Include="Migrations\201507161937378_LdapTemplates009.Designer.cs">
-      <DependentUpon>201507161937378_LdapTemplates009.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507161947229_LdapTemplates010.cs" />
-    <Compile Include="Migrations\201507161947229_LdapTemplates010.Designer.cs">
-      <DependentUpon>201507161947229_LdapTemplates010.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171405184_Filters004.cs" />
-    <Compile Include="Migrations\201507171405184_Filters004.Designer.cs">
-      <DependentUpon>201507171405184_Filters004.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507190102551_Filter004.cs" />
-    <Compile Include="Migrations\201507190102551_Filter004.Designer.cs">
-      <DependentUpon>201507190102551_Filter004.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507190223317_Filter005.cs" />
-    <Compile Include="Migrations\201507190223317_Filter005.Designer.cs">
-      <DependentUpon>201507190223317_Filter005.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507190304099_Filter006.cs" />
-    <Compile Include="Migrations\201507190304099_Filter006.Designer.cs">
-      <DependentUpon>201507190304099_Filter006.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507192143307_Filter0041.cs" />
-    <Compile Include="Migrations\201507192143307_Filter0041.Designer.cs">
-      <DependentUpon>201507192143307_Filter0041.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507211204132_Filter007.cs" />
-    <Compile Include="Migrations\201507211204132_Filter007.Designer.cs">
-      <DependentUpon>201507211204132_Filter007.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507211312571_Filter008.cs" />
-    <Compile Include="Migrations\201507211312571_Filter008.Designer.cs">
-      <DependentUpon>201507211312571_Filter008.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507231026486_Email001.cs" />
-    <Compile Include="Migrations\201507231026486_Email001.Designer.cs">
-      <DependentUpon>201507231026486_Email001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507231223047_Email002.cs" />
-    <Compile Include="Migrations\201507231223047_Email002.Designer.cs">
-      <DependentUpon>201507231223047_Email002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507231949569_Filter-009.cs" />
-    <Compile Include="Migrations\201507231949569_Filter-009.Designer.cs">
-      <DependentUpon>201507231949569_Filter-009.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241403036_ApplicationUser-AddedCompanyIdField.cs" />
-    <Compile Include="Migrations\201507241403036_ApplicationUser-AddedCompanyIdField.Designer.cs">
-      <DependentUpon>201507241403036_ApplicationUser-AddedCompanyIdField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241408387_ApplicationUser-AddedCompanyIdField2.cs" />
-    <Compile Include="Migrations\201507241408387_ApplicationUser-AddedCompanyIdField2.Designer.cs">
-      <DependentUpon>201507241408387_ApplicationUser-AddedCompanyIdField2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241435062_ApplicationUserMod001.cs" />
-    <Compile Include="Migrations\201507241435062_ApplicationUserMod001.Designer.cs">
-      <DependentUpon>201507241435062_ApplicationUserMod001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241732083_MvcControllerACL001.cs" />
-    <Compile Include="Migrations\201507241732083_MvcControllerACL001.Designer.cs">
-      <DependentUpon>201507241732083_MvcControllerACL001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241910027_MvcControllerACL002.cs" />
-    <Compile Include="Migrations\201507241910027_MvcControllerACL002.Designer.cs">
-      <DependentUpon>201507241910027_MvcControllerACL002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241933093_MvcControllerACL004.cs" />
-    <Compile Include="Migrations\201507241933093_MvcControllerACL004.Designer.cs">
-      <DependentUpon>201507241933093_MvcControllerACL004.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507241935096_MvcControllerACL005.cs" />
-    <Compile Include="Migrations\201507241935096_MvcControllerACL005.Designer.cs">
-      <DependentUpon>201507241935096_MvcControllerACL005.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507242333247_MvcControllerACL006.cs" />
-    <Compile Include="Migrations\201507242333247_MvcControllerACL006.Designer.cs">
-      <DependentUpon>201507242333247_MvcControllerACL006.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507260349468_AppBaseSmtpDomainAdd.cs" />
-    <Compile Include="Migrations\201507260349468_AppBaseSmtpDomainAdd.Designer.cs">
-      <DependentUpon>201507260349468_AppBaseSmtpDomainAdd.cs</DependentUpon>
+    <Compile Include="Migrations\201507280031285_Init001.cs" />
+    <Compile Include="Migrations\201507280031285_Init001.Designer.cs">
+      <DependentUpon>201507280031285_Init001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -518,6 +392,14 @@
     <Content Include="Areas\Computers\Views\Shared\_remoteComputerDetail.cshtml" />
     <Content Include="Areas\Computers\Views\Shared\_nicList.cshtml" />
     <Content Include="Areas\Computers\Views\Shared\_processorList.cshtml" />
+    <EmbeddedResource Include="Migrations\201507280031285_Init001.resx">
+      <DependentUpon>201507280031285_Init001.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\HumanResources\Views\HRRooms\Create.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRRooms\Delete.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRRooms\Details.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRRooms\Edit.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRRooms\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -676,107 +558,6 @@
       <Project>{05cf2b1c-46f2-4818-9f1c-4cb5eb0e17db}</Project>
       <Name>LCPS.v2015.v001.NwUsers</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507141201140_INIT-001.resx">
-      <DependentUpon>201507141201140_INIT-001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507151805377_ADS-001.resx">
-      <DependentUpon>201507151805377_ADS-001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161312205_Filters001.resx">
-      <DependentUpon>201507161312205_Filters001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161317272_Filters002.resx">
-      <DependentUpon>201507161317272_Filters002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161338177_Filters003.resx">
-      <DependentUpon>201507161338177_Filters003.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161414038_LdapTemplates001.resx">
-      <DependentUpon>201507161414038_LdapTemplates001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161828126_LdapTemplates002.resx">
-      <DependentUpon>201507161828126_LdapTemplates002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161834498_LdapTemplates003.resx">
-      <DependentUpon>201507161834498_LdapTemplates003.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161838201_LdapTemplates004.resx">
-      <DependentUpon>201507161838201_LdapTemplates004.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161922407_LdapTemplates005.resx">
-      <DependentUpon>201507161922407_LdapTemplates005.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161932379_LdapTemplates006.resx">
-      <DependentUpon>201507161932379_LdapTemplates006.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161933331_LdapTemplates007.resx">
-      <DependentUpon>201507161933331_LdapTemplates007.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161937378_LdapTemplates009.resx">
-      <DependentUpon>201507161937378_LdapTemplates009.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507161947229_LdapTemplates010.resx">
-      <DependentUpon>201507161947229_LdapTemplates010.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507171405184_Filters004.resx">
-      <DependentUpon>201507171405184_Filters004.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507190102551_Filter004.resx">
-      <DependentUpon>201507190102551_Filter004.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507190223317_Filter005.resx">
-      <DependentUpon>201507190223317_Filter005.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507190304099_Filter006.resx">
-      <DependentUpon>201507190304099_Filter006.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507192143307_Filter0041.resx">
-      <DependentUpon>201507192143307_Filter0041.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507211204132_Filter007.resx">
-      <DependentUpon>201507211204132_Filter007.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507211312571_Filter008.resx">
-      <DependentUpon>201507211312571_Filter008.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507231026486_Email001.resx">
-      <DependentUpon>201507231026486_Email001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507231223047_Email002.resx">
-      <DependentUpon>201507231223047_Email002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507231949569_Filter-009.resx">
-      <DependentUpon>201507231949569_Filter-009.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241403036_ApplicationUser-AddedCompanyIdField.resx">
-      <DependentUpon>201507241403036_ApplicationUser-AddedCompanyIdField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241408387_ApplicationUser-AddedCompanyIdField2.resx">
-      <DependentUpon>201507241408387_ApplicationUser-AddedCompanyIdField2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241435062_ApplicationUserMod001.resx">
-      <DependentUpon>201507241435062_ApplicationUserMod001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241732083_MvcControllerACL001.resx">
-      <DependentUpon>201507241732083_MvcControllerACL001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241910027_MvcControllerACL002.resx">
-      <DependentUpon>201507241910027_MvcControllerACL002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241933093_MvcControllerACL004.resx">
-      <DependentUpon>201507241933093_MvcControllerACL004.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507241935096_MvcControllerACL005.resx">
-      <DependentUpon>201507241935096_MvcControllerACL005.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507242333247_MvcControllerACL006.resx">
-      <DependentUpon>201507242333247_MvcControllerACL006.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507260349468_AppBaseSmtpDomainAdd.resx">
-      <DependentUpon>201507260349468_AppBaseSmtpDomainAdd.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

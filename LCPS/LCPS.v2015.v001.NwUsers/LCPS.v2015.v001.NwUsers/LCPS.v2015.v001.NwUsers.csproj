@@ -162,8 +162,11 @@
     <Compile Include="HumanResources\HRBuilding.cs" />
     <Compile Include="HumanResources\HRImport\HRStaffCandidate.cs" />
     <Compile Include="HumanResources\HRImport\HRStaffSession.cs" />
+    <Compile Include="HumanResources\HRRoom.cs" />
+    <Compile Include="HumanResources\HRRoomTypes.cs" />
     <Compile Include="HumanResources\IBuilding.cs" />
     <Compile Include="HumanResources\IPerson.cs" />
+    <Compile Include="HumanResources\IRoom.cs" />
     <Compile Include="HumanResources\Staff\HREmployeeType.cs" />
     <Compile Include="HumanResources\Staff\HRJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaff.cs" />

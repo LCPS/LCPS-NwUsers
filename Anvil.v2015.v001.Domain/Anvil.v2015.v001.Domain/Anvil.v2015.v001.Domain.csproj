@@ -111,6 +111,7 @@
     <Compile Include="Exceptions\AnvilExceptionCollector.cs" />
     <Compile Include="Html\AnvilTreeNode.cs" />
     <Compile Include="Html\IAnvilFormHandler.cs" />
+    <Compile Include="IEnumrableExtensions.cs" />
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
     <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Infrastructure\ApplicationRoleManager.cs" />
