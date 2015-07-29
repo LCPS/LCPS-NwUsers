@@ -214,6 +214,9 @@
       <DependentUpon>LcpsEmailContext.dbml</DependentUpon>
     </Compile>
     <Compile Include="LcpsEmail\LcpsEmailImportRecord.cs" />
+    <Compile Include="LcpsLdap\LcpsLdapSync\OUSyncAction.cs" />
+    <Compile Include="LcpsLdap\LcpsLdapSync\OUSyncEntry.cs" />
+    <Compile Include="LcpsLdap\LcpsLdapSync\OUSyncLog.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategory.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategoryType.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserGroupAssignment.cs" />
