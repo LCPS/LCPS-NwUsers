@@ -1,0 +1,50 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
+@model LcpsAdsUser
+
+<style>
+    .user-detail dl dt, .user-detail dl dd {
+        white-space: nowrap;
+    }
+</style>
+
+<dl class="dl-horizontal">
+    <dt>
+        Parent OU
+    </dt>
+    <dd>
+        @Model.OUName
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.DisplayName)
+    </dt>
+    <dd>
+        @Model.DisplayName
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Email)
+    </dt>
+    <dd>
+        @Model.Email
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Location)
+    </dt>
+    <dd>
+        @Model.Location
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.EmployeeType)
+    </dt>
+    <dd>
+        @Model.EmployeeType
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Title)
+    </dt>
+    <dd>
+        @Model.Title
+    </dd>
+
+</dl>

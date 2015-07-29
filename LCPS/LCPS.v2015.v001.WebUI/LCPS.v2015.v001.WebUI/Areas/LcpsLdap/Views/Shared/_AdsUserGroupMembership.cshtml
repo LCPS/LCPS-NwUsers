@@ -1,0 +1,10 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+
+@model IEnumerable<LcpsAdsGroup>
+
+<ul class="ldap-group">
+    @foreach (LcpsAdsGroup g in Model)
+    {
+        <li>@g.Name</li>
+    }
+</ul>

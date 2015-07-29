@@ -13,6 +13,8 @@ namespace Anvil.v2015.v001.Domain.Entities
 
         private Object _source;
         private List<String> _ignoreFields = new List<string>();
+        private List<string> _requiredFields = new List<string>();
+        private List<string> _compareFields = new List<string>();
 
         #endregion
 
@@ -35,6 +37,50 @@ namespace Anvil.v2015.v001.Domain.Entities
         {
             get { return _ignoreFields;  }
         }
+
+        public List<string> RequiredFields
+        {
+            get { return _requiredFields; }
+        }
+
+        public List<string> CompareFields
+        {
+            get { return _compareFields; }
+        }
+
+        #endregion
+
+        #region Validate
+
+        public List<string> Validate()
+        {
+            if (RequiredFields.Count() == 0)
+                return new List<string>();
+
+            List<String> emptyFields = new List<String>();
+
+            foreach(string f in RequiredFields)
+            {
+                PropertyInfo p = _source.GetType().GetProperties().FirstOrDefault(x => x.Name.ToLower() == f.ToLower());
+                if( p!= null)
+                {
+                    object v = p.GetValue(_source, null);
+                    if (v == null)
+                        emptyFields.Add(f);
+                    else
+                        if (string.IsNullOrEmpty(v.ToString()))
+                            emptyFields.Add(f);
+                }
+            }
+
+            return emptyFields;
+        }
+
+        #endregion
+
+        #region Compare
+
+       
 
         #endregion
 
@@ -95,6 +141,67 @@ namespace Anvil.v2015.v001.Domain.Entities
 
         #region Compare
 
+        public List<string> Compare(object target)
+        {
+            List<string> different = new List<string>();
+
+            if (CompareFields.Count == 0)
+            {
+                string[] ff = (from PropertyInfo x in target.GetType().GetProperties()
+                               where x.CanRead & x.CanWrite
+                               select x.Name).ToArray();
+                CompareFields.AddRange(ff);
+            }
+
+            foreach (string f in CompareFields)
+            {
+                PropertyInfo sp = _source.GetType().GetProperties().FirstOrDefault(x => x.Name.ToLower() == f.ToLower());
+                PropertyInfo tp = target.GetType().GetProperties().FirstOrDefault(x => x.Name.ToLower() == f.ToLower());
+                if (sp == null)
+                    throw new Exception(string.Format("The field {0} was not found in the source object", f));
+
+                if (tp == null)
+                    throw new Exception(string.Format("The field {0} was not found in the target object", f));
+
+                object sv = sp.GetValue(_source, null);
+                object tv = tp.GetValue(target, null);
+
+               
+
+                if (sv != null & tv != null)
+                {
+
+                    try 
+                    {
+                        if (sv == null & tv != null)
+                            different.Add(f);
+                        else
+                        {
+                            if (sv != null & tv == null)
+                            {
+                                different.Add(f);
+                            }
+                            else if (sv != null & tv != null)
+                            {
+                                if (!sv.Equals(tv))
+                                    different.Add(f);
+
+                            }
+                        } 
+
+
+                    }
+                    catch(Exception ex)
+                    {
+                        throw new Exception(string.Format("Error comparing field {0}", f), ex);
+                    }
+                }
+            }
+
+            return different;
+        }
+
+        /*
         public string[] Compare(object target)
         {
             List<string> different = new List<string>();
@@ -143,6 +250,7 @@ namespace Anvil.v2015.v001.Domain.Entities
             return different.ToArray();
 
         }
+        */
 
         #endregion
 

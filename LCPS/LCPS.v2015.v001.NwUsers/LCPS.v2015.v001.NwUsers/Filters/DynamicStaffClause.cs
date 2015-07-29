@@ -273,7 +273,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             }
             catch(Exception ex)
             {
-                throw new Exception("could not get employeeTypes from database", ex);
+                throw new Exception("Could not get employeeTypes from database", ex);
             }
         }
 

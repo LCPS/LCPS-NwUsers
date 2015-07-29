@@ -180,7 +180,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HRStaffContext.dbml</DependentUpon>
     </Compile>
+    <Compile Include="HumanResources\Staff\HRStaffImportFile.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffImportRecord.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPosition.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffPositionDefinition.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionSession.cs" />
     <Compile Include="HumanResources\Staff\HRStaffRecord.cs" />
     <Compile Include="HumanResources\Staff\IEmployeeType.cs" />
@@ -220,6 +223,17 @@
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategory.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserCategoryType.cs" />
     <Compile Include="LcpsLdap\LcpsLdapUsers\LDAPUserGroupAssignment.cs" />
+    <Compile Include="LcpsLdap\LdapAccounts\LdapAccount.cs" />
+    <Compile Include="LcpsLdap\LdapAccounts\LdapAccountContext.cs">
+      <DependentUpon>LdapAccountContext.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LcpsLdap\LdapAccounts\LdapAccountContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LdapAccountContext.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LcpsLdap\LdapAccounts\LdapAccountImportRecord.cs" />
+    <Compile Include="LcpsLdap\LdapAccounts\StaffLdapAccount.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsComputer.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsContainer.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsObjectTypes.cs" />
@@ -230,6 +244,9 @@
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsOuTree.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUser.cs" />
     <Compile Include="LcpsLdap\LdapObjects\LcpsAdsUserAccountControl.cs" />
+    <Compile Include="LcpsLdap\LdapTemplates\GroupTemplate.cs" />
+    <Compile Include="LcpsLdap\LdapTemplates\HomeFolderIdFields.cs" />
+    <Compile Include="LcpsLdap\LdapTemplates\HomeFolderTemplate.cs" />
     <Compile Include="LcpsLdap\LdapTemplates\OUTemplate.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -294,6 +311,11 @@
       <LastGenOutput>LcpsEmailContext.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="LcpsLdap\LdapAccounts\LdapAccountContext.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>LdapAccountContext.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -313,6 +335,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+    <EmbeddedResource Include="Seed\Sql\Views\LcpsLdap.Ldap-Staff-Import.sql" />
+    <None Include="LcpsLdap\LdapAccounts\LdapAccountContext.dbml.layout">
+      <DependentUpon>LdapAccountContext.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Seed\Sql\Views\LcpsLdap.LdapAccount-Staff.sql" />
     <EmbeddedResource Include="Seed\Sql\Views\LcpsEmail.LcpsEmailKey.sql" />
     <None Include="LcpsEmail\LcpsEmailContext.dbml.layout">
       <DependentUpon>LcpsEmailContext.dbml</DependentUpon>

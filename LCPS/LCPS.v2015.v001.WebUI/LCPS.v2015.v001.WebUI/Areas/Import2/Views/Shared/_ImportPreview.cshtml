@@ -1,6 +1,6 @@
 ﻿@using LCPS.v2015.v001.NwUsers.Importing2;
 
-@model IImportFile 
+@model IImportFile
 
 <table class="table table-hover table-striped table-condensed">
     <tr>
@@ -17,18 +17,25 @@
         <tr>
             @foreach (string f in r.Fields)
             {
-                <td>@f</td>
+                <td style="white-space:nowrap;">@f</td>
             }
-            <td>
+            <td style="white-space:nowrap;">
                 @r.CrudStatus.ToString()
             </td>
             <td class="text-@r.ValidationStatus.ToString()">
-                @Html.Raw(r.ValidationReport)
+                @Html.Raw(r.ValidationReport.Replace("\n", "<br>"))
             </td>
-            <td>
-                @Html.Raw(r.ImportReport)
+            <td class="text-@r.ImportStatus.ToString()">
+                @if (r.ImportReport == null)
+                {
+                    @Html.Raw("&nbsp;")
+                }
+                else
+                {
+                    @Html.Raw(r.ImportReport.Replace("\n", "<br>"))
+                }
+
             </td>
         </tr>
     }
 </table>
-

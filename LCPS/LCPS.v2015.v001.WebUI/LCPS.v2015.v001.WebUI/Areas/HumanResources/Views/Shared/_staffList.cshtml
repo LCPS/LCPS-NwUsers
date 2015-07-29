@@ -35,6 +35,7 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
         <th>
             @Html.DisplayNameFor(model => model.First().FiscalYear)
         </th>
+        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -56,6 +57,9 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FiscalYear)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "HRStaff", new { area = "HumanResources", id = item.StaffKey})" title="View Staff Details"><i class="fa fa-eye"></i></a>
             </td>
         </tr>
     }

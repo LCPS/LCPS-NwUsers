@@ -52,8 +52,6 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
             {
                 Items = new List<object>();
 
-
-
                 int index = 0;
 
                 while (!this.Contents.EndOfStream)
@@ -66,7 +64,12 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
                     }
                     else
                     {
-                        this.ParseLine(line);
+                        if(index == 208)
+                        {
+                            int x = 0;
+                            x++;
+                        }
+                        this.ParseLine(line, index);
 
                         IImportFileRecord record = Lines[index - 1];
 
@@ -87,65 +90,84 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
 
         }
 
-        public virtual void ParseLine(string line)
+        public virtual void ParseLine(string line, int lineIndex)
         {
             var item = Activator.CreateInstance(ItemType, true);
 
-            ((IImportFileRecord)item).Fields = line.Split(this.Delimiter);
+            string[] ff = line.Split(this.Delimiter);
+            ((IImportFileRecord)item).Fields = ff;
+
+            if(Columns.Count() != ff.Count())
+                throw new Exception(string.Format("The number of columns{0} does not match the number of fields {1} in the record", Columns.Count(), ff.Count()));
 
             Dictionary<string, string> dic = new Dictionary<string, string>();
 
-            for (int index = 0; index <= Columns.Count() - 1; index++)
+            try
             {
-                dic.Add(Columns[index], ((IImportFileRecord)item).Fields[index]);
-            }
 
-            foreach (string k in dic.Keys)
-            {
-                PropertyInfo p = item.GetType().GetProperty(k);
-
-                if (p == null)
-                    throw new Exception(string.Format("{0} could not be set. Make sure the field name is correct", k));
-
-                if (p.CanWrite)
+                for (int index = 0; index <= Columns.Count() - 1; index++)
                 {
-                    string t = dic[k];
-                    object v = null;
-
-                    if (!string.IsNullOrEmpty(t))
+                    try
                     {
-                        try
-                        {
-                            if (p.PropertyType == typeof(DateTime))
-                                v = Convert.ToDateTime(t);
-
-                            if (p.PropertyType == typeof(string))
-                                v = t;
-
-                            if (p.PropertyType == typeof(Guid))
-                                v = new Guid(t);
-
-                            if (p.PropertyType == typeof(int))
-                                v = Convert.ToInt32(t);
-
-                            if (p.PropertyType.IsEnum)
-                                v = System.Enum.Parse(p.PropertyType, t);
-
-                            if (p.PropertyType == typeof(bool))
-                                v = Convert.ToBoolean(t);
-
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new Exception("Could not parse item from string record", ex);
-                        }
-
-                        if (v != null)
-                            p.SetValue(item, v, null);
-                        else
-                            throw new Exception(string.Format("{0} is not an accepted type", p.PropertyType.Name));
+                        dic.Add(Columns[index], ((IImportFileRecord)item).Fields[index]);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(string.Format("Error adding field '{0}' at index {1} to column dictionary\nArray Length: {2}", Columns[index], index.ToString(), ex));
                     }
                 }
+
+                foreach (string k in dic.Keys)
+                {
+                    PropertyInfo p = item.GetType().GetProperty(k);
+
+                    if (p == null)
+                        throw new Exception(string.Format("{0} could not be set. Make sure the field name is correct", k));
+
+                    if (p.CanWrite)
+                    {
+                        string t = dic[k];
+                        object v = null;
+
+                        if (!string.IsNullOrEmpty(t))
+                        {
+                            try
+                            {
+                                if (p.PropertyType == typeof(DateTime))
+                                    v = Convert.ToDateTime(t);
+
+                                if (p.PropertyType == typeof(string))
+                                    v = t;
+
+                                if (p.PropertyType == typeof(Guid))
+                                    v = new Guid(t);
+
+                                if (p.PropertyType == typeof(int))
+                                    v = Convert.ToInt32(t);
+
+                                if (p.PropertyType.IsEnum)
+                                    v = System.Enum.Parse(p.PropertyType, t);
+
+                                if (p.PropertyType == typeof(bool))
+                                    v = Convert.ToBoolean(t);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new Exception("Could not parse item from string record", ex);
+                            }
+
+                            if (v != null)
+                                p.SetValue(item, v, null);
+                            else
+                                throw new Exception(string.Format("{0} is not an accepted type", p.PropertyType.Name));
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(string.Format("Error parsing record, {0}", lineIndex.ToString(), ex));
             }
 
             Items.Add(item);
@@ -157,12 +179,15 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
         {
             foreach (IImportFileRecord item in Lines)
             {
-                if (item.CrudStatus == ImportCrudStatus.Insert)
+                /*
+                if (item.CrudStatus == ImportCrudStatus.InsertMember)
                     item.Create(_dbContext);
 
-                if (item.CrudStatus == ImportCrudStatus.Update & Overwrite)
+                if (item.CrudStatus == ImportCrudStatus.UpdateMember & Overwrite)
                     item.Update(_dbContext);
+                */
 
+                item.Import(_dbContext);
             }
         }
 

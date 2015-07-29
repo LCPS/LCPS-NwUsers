@@ -1,0 +1,50 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapAccounts;
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Staff Accounts";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+    ViewBag.Page = Request.QueryString["page"];
+}
+
+@model PagedList<StaffLdapAccount>
+
+
+<h2>Staff Accounts</h2>
+
+<p>
+    <strong>Total Records:</strong>
+    <span class="text-info">@ViewBag.Total</span>
+</p>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action(ViewBag.ReturnTo,
+    new { page }))
+
+<table class="table table-condensed table-hover table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.First().SortName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().StaffId)</th>
+        <th>@Html.DisplayNameFor(model => model.First().UserName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Active)</th>
+    </tr>
+    @foreach(StaffLdapAccount a in Model)
+    {
+        <tr>
+            <td>@a.SortName</td>
+            <td>@a.StaffId</td>
+            <td>@a.UserName</td>
+            <td>@a.Active</td>
+        </tr>
+    }
+</table> 
+
+
+
+
+
+
+

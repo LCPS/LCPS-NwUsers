@@ -36,10 +36,5 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
 
         void Import(LcpsDbContext context);
 
-        void Create(LcpsDbContext context);
-
-        void Update(LcpsDbContext context);
-        
-
     }
 }

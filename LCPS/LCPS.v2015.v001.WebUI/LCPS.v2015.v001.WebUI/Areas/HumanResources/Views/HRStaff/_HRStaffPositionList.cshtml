@@ -1,0 +1,15 @@
+﻿@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+
+@model IEnumerable<HRStaffPosition>
+
+<table class="table table-condensed table-striped table-hover">
+    @foreach(HRStaffPosition p in Model)
+    {
+        <tr>
+            <td>p.BuildingName</td>
+            <td>p.EmployeeTypeName</td>
+            <td>p.JobTitleName</td>
+            <td>p.Status</td>
+        </tr>
+    }
+</table>

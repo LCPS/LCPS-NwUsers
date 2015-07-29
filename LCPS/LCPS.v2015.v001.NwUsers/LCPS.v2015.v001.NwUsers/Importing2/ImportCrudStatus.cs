@@ -10,10 +10,13 @@ using System.Threading.Tasks;
 
 namespace LCPS.v2015.v001.NwUsers.Importing2
 {
+    [Flags]
     public enum ImportCrudStatus
     {
         None = 0,
-        Insert = 1,
-        Update = 2
+        InsertMember = 1,
+        UpdateMember = 2,
+        CreateMembership = 4,
+        UpdateMembership = 8
     }
 }

@@ -1,67 +1,127 @@
-﻿@model LCPS.v2015.v001.NwUsers.HumanResources.Staff.HRStaff
+﻿@using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
+@using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
+@using LCPS.v2015.v001.NwUsers.HumanResources;
+@using LCPS.v2015.v001.NwUsers.LcpsEmail;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapAccounts;
+@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+@model HRStaffDetailModel
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/HumanResources/Views/Shared/_HumanResourcesLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>@Model.StaffMember.FullName</h2>
+<h4>Staff Member Details</h4>
 
-<div>
-    <h4>HRStaff</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.StaffId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StaffId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MiddleInitial)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MiddleInitial)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthdate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Birthdate)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StaffKey }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index", "HRStaff", new { area = "HumanResources" })"><i class="fa fa-angle-double-left"></i> Back to List</a>
 </p>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Staff Details
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StaffMember.StaffId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StaffMember.StaffId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StaffMember.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StaffMember.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StaffMember.MiddleInitial)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StaffMember.MiddleInitial)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StaffMember.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StaffMember.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StaffMember.Gender)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StaffMember.Gender)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StaffMember.Birthdate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StaffMember.Birthdate)
+                    </dd>
+
+                </dl>
+                
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-danger" style="margin-bottom: 24px;">
+            <div class="panel-heading">
+                Employment Positions
+            </div>
+            <div class="panel-body">
+                @foreach (HRStaffPosition p in Model.StaffPositions)
+                {
+                    <div>
+                        @p.Caption
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="panel panel-danger" style="margin-bottom: 24px;">
+            <div class="panel-heading">
+                Email Addresses
+            </div>
+            <div class="panel-body">
+                @foreach (EmailAccount p in Model.EmailAccounts)
+                {
+                    <div>
+                        @p.EmailAddress
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="panel panel-danger" style="margin-top: 24px;">
+            <div class="panel-heading">
+                LDAP Accounts
+            </div>
+            <div class="panel-body">
+                @foreach (LdapAccount p in Model.LdapAccounts)
+                {
+                    @p.UserName @Html.Raw("&nbsp; &nbsp;") <a href="@Url.Action("StaffldapAccount", "HRStaff", new {Area = "HumanResources", userName = p.UserName, userKey = p.UserKey})"><i class="fa fa-cubes"></i> Details</a>
+                }
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

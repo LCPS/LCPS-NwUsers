@@ -93,7 +93,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsEmail
             LcpsEmail.EmailAccount eml = context.EmailAccounts.FirstOrDefault(x => x.UserLink.Equals(_userId) & x.EmailAddress == EmailAddress);
 
             if (eml == null)
-                CrudStatus = ImportCrudStatus.Insert;
+                CrudStatus = ImportCrudStatus.InsertMember;
             else
                 CrudStatus = ImportCrudStatus.None;
 
@@ -101,36 +101,29 @@ namespace LCPS.v2015.v001.NwUsers.LcpsEmail
 
         public void Import(LcpsDbContext context)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Create(LcpsDbContext context)
-        {
-            try
+            if (this.CrudStatus == ImportCrudStatus.InsertMember)
             {
-                EmailAccount e = new EmailAccount()
+                try
                 {
-                    RecordId = Guid.NewGuid(),
-                    EmailAddress = this.EmailAddress,
-                    InitialPassword = this.InitialPassword,
-                    UserLink = _userId
-                };
-                context.EmailAccounts.Add(e);
-                context.SaveChanges();
+                    EmailAccount e = new EmailAccount()
+                    {
+                        RecordId = Guid.NewGuid(),
+                        EmailAddress = this.EmailAddress,
+                        InitialPassword = this.InitialPassword,
+                        UserLink = _userId
+                    };
+                    context.EmailAccounts.Add(e);
+                    context.SaveChanges();
 
-                ImportStatus = ImportRecordStatus.success;
+                    ImportStatus = ImportRecordStatus.success;
+                }
+                catch (Exception ex)
+                {
+                    Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionCollector ec = new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionCollector(ex);
+                    ImportStatus = ImportRecordStatus.danger;
+                    ImportReport = ec.ToUL();
+                }
             }
-            catch(Exception ex)
-            {
-                Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionCollector ec = new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionCollector(ex);
-                ImportStatus = ImportRecordStatus.danger;
-                ImportReport = ec.ToUL();
-            }
-        }
-
-        public void Update(LcpsDbContext context)
-        {
-            return;
         }
     }
 }

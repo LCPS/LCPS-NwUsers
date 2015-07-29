@@ -1,0 +1,74 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+@model LcpsAdsUserModel
+
+<div class="row">
+    <div class="col-md-7">
+        <h4>@Request.QueryString["userName"]</h4>
+        @if (Model.ExistsInAds)
+        {
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Account Info
+                </div>
+                <div class="panel-body">
+                    @Html.Partial("~/Areas/LcpsLdap/Views/Shared/_LcpsAdsUserDetail.cshtml", Model.User)
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Group Membership
+                </div>
+                <div class="panel-body">
+                    @Html.Partial("~/Areas/LcpsLdap/Views/Shared/_AdsuserGroupMembership.cshtml", Model.User.GetGroupMembership())
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Account Info
+                </div>
+                <div class="panel-body">
+                    This account name was not found in Active Directory
+                </div>
+            </div>
+            
+        }
+    </div>
+    <div class="col-md-5">
+        @if(Model.ExistsInAds)
+        {
+            <h4>Membership Templates</h4>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    OU Membership Templates
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        @foreach (OUTemplate t in Model.OUTemplates)
+                        {
+                            <li>@Html.Raw(t.TemplateName +  "<br><small>OU: " + t.OUName + "</small>")</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Group Membership Templates
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        @foreach (GroupTemplate t in Model.GroupTemplates)
+                        {
+                            <li>@Html.Raw(t.TemplateName + "<br><small>Group: " + t.GroupName + "</small>")</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>

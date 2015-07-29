@@ -30,6 +30,6 @@ namespace LCPS.v2015.v001.NwUsers.Importing2
 
         List<object> Items { get; set; }
 
-        void ParseLine(string line);
+        void ParseLine(string line, int lineIndex);
     }
 }

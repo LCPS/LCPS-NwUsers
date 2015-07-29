@@ -118,6 +118,12 @@ namespace Anvil.v2015.v001.Domain.Exceptions
             return ul;
         }
 
+        public string ToLineBreakString()
+        {
+            string[] items = ToArray();
+            return string.Join("\n", items);
+        }
+
         #endregion
 
         #region Inner Exceptions

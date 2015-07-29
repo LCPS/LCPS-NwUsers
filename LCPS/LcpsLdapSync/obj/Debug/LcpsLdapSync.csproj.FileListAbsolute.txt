@@ -1,0 +1,9 @@
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\bin\Debug\LcpsLdapSync.exe.config
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\bin\Debug\LcpsLdapSync.exe
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\bin\Debug\LcpsLdapSync.pdb
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\obj\Debug\LcpsLdapSync.csprojResolveAssemblyReference.cache
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\obj\Debug\LcpsLdapSync.Form1.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\obj\Debug\LcpsLdapSync.Properties.Resources.resources
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\obj\Debug\LcpsLdapSync.csproj.GenerateResource.Cache
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\obj\Debug\LcpsLdapSync.exe
+C:\Anvil\LCPS\LCPS-NwUsers\LCPS\LcpsLdapSync\obj\Debug\LcpsLdapSync.pdb

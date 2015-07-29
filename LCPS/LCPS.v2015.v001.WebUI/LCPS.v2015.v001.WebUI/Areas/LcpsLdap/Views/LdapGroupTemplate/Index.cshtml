@@ -1,0 +1,74 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
+@model GroupTemplateViewModel
+
+@{
+    ViewBag.Title = "Group Templates";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(function () {
+        $('.t-node').click(function () {
+            var tId = $(this).attr("id");
+
+            var stat = $("#div-status");
+            var hdr = $("#stat-hdr");
+            var bdy = $("#stat-bdy");
+
+            var url = "/LcpsLdap/LdapGroupTemplate/CreateGroupTemplate";
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: {
+                    id: tId
+                },
+                error: function (response) {
+                    $('#myModal').modal('toggle');
+                    stat.addClass("panel panel-danger");
+                    hdr.html('Error');
+                    bdy.prepend(response);
+
+                    stat.show('slow');
+                },
+                success: function (response) {
+                    $('#myModal').modal('toggle');
+                    if (response.length >= 4 && response.substr(1, 2) == "ul") {
+                        stat.addClass("panel panel-danger");
+                        hdr.html('Error');
+                        bdy.prepend(response);
+
+                        stat.show('slow');
+                    }
+                    else {
+                        window.location.replace('/LcpsLdap/LdapGroupTemplate/EditTemplate/?id=' + tId);
+                    }
+                }
+            });
+        });
+    })
+</script>
+
+<h2>Group Membership Templates</h2>
+
+
+
+@Html.Partial("_GroupTemplateCreate", Model.CreateTemplateTree)
+
+<p></p>
+
+<div id="div-status" style="display: none;">
+    <div id="stat-hdr" class="panel-heading">
+    </div>
+    <div id="stat-bdy" class="panel-body">
+        <div class="container">
+            <a id="hide-stat" href="#">Close</a>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_GroupTemplateList", Model.GetTemplates())

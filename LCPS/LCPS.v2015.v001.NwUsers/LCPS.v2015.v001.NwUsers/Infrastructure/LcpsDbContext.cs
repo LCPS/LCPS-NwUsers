@@ -76,6 +76,8 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
         // ----------------------------- LDAP
         public DbSet<LcpsLdap.LdapTemplates.OUTemplate> OUTemplates { get; set; }
+        public DbSet<LcpsLdap.LdapTemplates.GroupTemplate> GroupTemplates { get; set; }
+        public DbSet<LcpsLdap.LdapTemplates.HomeFolderTemplate> HomeFolderTemplates { get; set; }
 
         // ----------------------------- Importing
 
@@ -97,6 +99,9 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
         public DbSet<LcpsComputers.ComputerInfo> Computers { get; set; }
         public DbSet<LcpsComputers.Peripherals.ArchiveNic> ArchivedNics { get; set; }
 
+
+        // ----------------------------- Ldap
+        public DbSet<LcpsLdap.LdapAccounts.LdapAccount> LdapAccounts { get; set; }
 
         #endregion
 

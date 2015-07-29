@@ -16,6 +16,8 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Web.Mvc;
+using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
 
 namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 {
@@ -102,7 +104,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
 
         #endregion
 
-
         #region Crud
 
         // GET: /HumanResources/HRStaff/
@@ -181,12 +182,17 @@ namespace LCPS.v2015.v001.WebUI.Areas.HumanResources.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HRStaff hrstaff = db.StaffMembers.Find(id);
-            if (hrstaff == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hrstaff);
+
+            HRStaffDetailModel m = new HRStaffDetailModel();
+            m.Load(id.Value);
+            
+            return View(m);
+        }
+
+        public ActionResult StaffLdapAccount(string userName, Guid userKey)
+        {
+            LcpsAdsUserModel m = new LcpsAdsUserModel(userName, userKey);
+            return View(m);
         }
 
         // GET: /HumanResources/HRStaff/Create

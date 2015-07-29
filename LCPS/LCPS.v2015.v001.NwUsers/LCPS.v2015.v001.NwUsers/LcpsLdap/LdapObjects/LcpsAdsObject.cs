@@ -162,7 +162,17 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 
         public static Guid GetObjectGuid(DirectoryEntry d)
         {
-            byte[] b = d.InvokeGet("objectGuid") as byte[];
+            object gid = null;
+            try
+            { 
+                gid = d.InvokeGet("objectGuid"); 
+            }
+            catch (Exception ex) 
+            { 
+                throw new Exception(string.Format("Could not get GUID on entry: {0}", d.Path), ex); 
+            }
+
+            byte[] b = gid as byte[];
             Guid g = new Guid(b);
             return g;
         }

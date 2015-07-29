@@ -142,7 +142,7 @@ namespace LCPS.v2015.v001.NwUsers.Filters
             {
                 HRStaffContext context = new HRStaffContext();
                 if (Parms.Count() == 0)
-                    return context.HRStaffRecords.OrderBy(x => x.LastName + x.FirstName + x.MiddleInitial).ToList();
+                    return new List<HRStaffRecord>();
                 else
                     return context.HRStaffRecords
                         .Where(dqs.Query, dqs.Parms)

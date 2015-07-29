@@ -44,5 +44,16 @@ namespace LCPS.v2015.v001.NwUsers.Properties {
                 return ((string)(this["NWUsers_Lcps_v2015_v004ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sbo-mse;Initial Catalog=LCPS.NwUsers.V001;Integrated Security=False;U" +
+            "ser ID=Sa;Password=Sql-pw1")]
+        public string LCPS_NwUsers_V001ConnectionString {
+            get {
+                return ((string)(this["LCPS_NwUsers_V001ConnectionString"]));
+            }
+        }
     }
 }

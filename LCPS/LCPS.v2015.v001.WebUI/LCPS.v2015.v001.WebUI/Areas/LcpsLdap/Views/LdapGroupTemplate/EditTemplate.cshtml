@@ -1,0 +1,22 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
+@model GroupTemplateViewModel
+
+@{
+    ViewBag.Title = "EditTemplate";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.CurrentTemplate.TemplateName</h2>
+
+@if (Model.Exception != null)
+{
+    @Html.Partial("_ExceptionModel", new Anvil.v2015.v001.Domain.Exceptions.AnvilExceptionModel(Model.Exception, "Error", null, null, null))
+}
+
+
+<a href="@Url.Action("Index", "LdapGroupTemplate", new  { area = "LcpsLdap" })"><i class="fa fa-angle-double-left"> Back</i></a>
+
+@Html.Partial("_GroupTemplateEdit", Model.CurrentTemplate)
+
+

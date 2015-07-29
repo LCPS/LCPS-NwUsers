@@ -219,6 +219,17 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
         #endregion
 
 
+        #region Get
+
+        public static LcpsAdsUser Get(string userName)
+        {
+            string filter = string.Format("(&(samAccountName={0}))", userName);
+            DirectoryEntry d = Find(filter, LcpsAdsDomain.Default.DirectoryEntry);
+            LcpsAdsUser u = new LcpsAdsUser(d);
+            return u;
+        }
+
+        #endregion
 
         #region Fill
 
@@ -266,7 +277,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 
             if (groups.GetType() == typeof(string))
             {
-                string p = DefaultApp.LDAPDomainFQN + "/" + (string)groups;
+                string p = "LDAP://" + DefaultApp.LDAPDomainFQN + "/" + (string)groups;
                 LcpsAdsGroup g = new LcpsAdsGroup(p);
                 l.Add(g);
             }
@@ -275,7 +286,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
                 ICollection gc = groups as ICollection;
                 foreach (string g in gc)
                 {
-                    string p = DefaultApp.LDAPDomainFQN + "/" + g;
+                    string p = "LDAP://" + DefaultApp.LDAPDomainFQN + "/" + g;
                     LcpsAdsGroup grp = new LcpsAdsGroup(p);
                     l.Add(grp);
                 }

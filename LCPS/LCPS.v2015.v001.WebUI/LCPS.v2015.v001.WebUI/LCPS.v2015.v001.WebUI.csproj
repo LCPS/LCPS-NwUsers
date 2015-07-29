@@ -186,11 +186,13 @@
     <Compile Include="Areas\HumanResources\Controllers\HRJobTitlesController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRRoomsController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HRStaffController.cs" />
+    <Compile Include="Areas\HumanResources\Controllers\HRStaffImportController.cs" />
     <Compile Include="Areas\HumanResources\Controllers\HumanResourcesController.cs" />
     <Compile Include="Areas\HumanResources\HumanResourcesAreaRegistration.cs" />
     <Compile Include="Areas\HumanResources\Models\HRJobTitleFilterModel.cs" />
     <Compile Include="Areas\HumanResources\Models\HRRestoreModel.cs" />
     <Compile Include="Areas\HumanResources\Models\HRRoomModel.cs" />
+    <Compile Include="Areas\HumanResources\Models\HRStaffDetailModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffFilterClauseModel.cs" />
     <Compile Include="Areas\HumanResources\Models\StaffSearchModel.cs" />
     <Compile Include="Areas\Import2\Import2AreaRegistration.cs" />
@@ -201,10 +203,15 @@
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
     <Compile Include="Areas\LcpsEmail\Controllers\LcpsEmailController.cs" />
     <Compile Include="Areas\LcpsEmail\LcpsEmailAreaRegistration.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapAccountImportController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapDashboardController.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapGroupTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapOuTemplateController.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\LdapStaffAccountController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\LcpsLdapAreaRegistration.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\GroupTemplateViewModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\LcpsAdsUserModel.cs" />
     <Compile Include="Areas\LcpsLdap\Models\OUTemplateViewModel.cs" />
     <Compile Include="Areas\LcpsLdap\Models\OuTreeModel.cs" />
     <Compile Include="Areas\My\Controllers\ContactsController.cs" />
@@ -253,6 +260,22 @@
     <Compile Include="Migrations\201507281954286_Computer004.cs" />
     <Compile Include="Migrations\201507281954286_Computer004.Designer.cs">
       <DependentUpon>201507281954286_Computer004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507291625217_LdapAccount001.cs" />
+    <Compile Include="Migrations\201507291625217_LdapAccount001.Designer.cs">
+      <DependentUpon>201507291625217_LdapAccount001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507291650113_LdapAccount002.cs" />
+    <Compile Include="Migrations\201507291650113_LdapAccount002.Designer.cs">
+      <DependentUpon>201507291650113_LdapAccount002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507292054096_GroupTemplate001.cs" />
+    <Compile Include="Migrations\201507292054096_GroupTemplate001.Designer.cs">
+      <DependentUpon>201507292054096_GroupTemplate001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507292308095_HomeFolderTemplates001.cs" />
+    <Compile Include="Migrations\201507292308095_HomeFolderTemplates001.Designer.cs">
+      <DependentUpon>201507292308095_HomeFolderTemplates001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HugeButtonModel.cs" />
@@ -441,6 +464,34 @@
     <Content Include="Areas\Computers\Views\Shared\_ComputerLocation.cshtml" />
     <EmbeddedResource Include="Migrations\201507281954286_Computer004.resx">
       <DependentUpon>201507281954286_Computer004.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\HumanResources\Views\HRStaffImport\Import.cshtml" />
+    <EmbeddedResource Include="Migrations\201507291625217_LdapAccount001.resx">
+      <DependentUpon>201507291625217_LdapAccount001.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\LcpsLdap\Views\LdapAccountImport\Import.cshtml" />
+    <EmbeddedResource Include="Migrations\201507291650113_LdapAccount002.resx">
+      <DependentUpon>201507291650113_LdapAccount002.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\LcpsLdap\Views\LdapStaffAccount\Index.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\_HRStaffPositionList.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\Shared\_LcpsAdsUserDetail.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\Shared\_LcpsLdapAdsUserPage.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\Shared\_AdsUserGroupMembership.cshtml" />
+    <Content Include="Areas\HumanResources\Views\HRStaff\StaffLdapAccount.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\_GroupTemplateCreate.cshtml" />
+    <EmbeddedResource Include="Migrations\201507292054096_GroupTemplate001.resx">
+      <DependentUpon>201507292054096_GroupTemplate001.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\_GroupTemplateEdit.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\_GroupTemplateList.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\Create.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\Index.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\EditTemplate.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\StaffMembership.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\LdapGroupTemplate\StudentMembership.cshtml" />
+    <EmbeddedResource Include="Migrations\201507292308095_HomeFolderTemplates001.resx">
+      <DependentUpon>201507292308095_HomeFolderTemplates001.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

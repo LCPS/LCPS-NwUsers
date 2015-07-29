@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LdapAccountContext">
+  <DataContextMoniker Name="/LdapAccountContext" />
+  <nestedChildShapes>
+    <classShape Id="ba816598-200c-473e-9502-6641aef548ba" absoluteBounds="0.875, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/LdapAccountContext/StaffLdapAccount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c0c28f3-e60a-4bb3-9d14-249b9df4bf95" absoluteBounds="0.88999999999999968, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="46f18bf0-3ee2-43ff-8097-48ed245eb4e7" absoluteBounds="3, 0.5, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/LdapAccountContext/LdapStaffImportRecord" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5e37813-b0f2-4d1f-879a-5bcb1f456861" absoluteBounds="3.015, 0.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

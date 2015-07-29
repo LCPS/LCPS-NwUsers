@@ -1,0 +1,21 @@
+﻿
+@using LCPS.v2015.v001.WebUI.Areas.Import2.Models;
+
+@model ImportViewModel
+
+@{
+    ViewBag.Title = "Import";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Import LDAP Accounts</h2>
+
+@Html.Partial("~/Areas/Import2/Views/Shared/_ImportBrowse.cshtml", Model)
+
+@if (Model.ImportFile != null)
+{
+    <hr>
+    <p>Total: @Model.ImportFile.Items.Count()</p>
+
+    @Html.Partial("~/Areas/Import2/Views/Shared/_ImportPreview.cshtml", Model.ImportFile)
+}

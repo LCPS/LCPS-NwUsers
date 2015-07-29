@@ -138,6 +138,14 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public string FiscalYear { get; set; }
 
+        public string Caption 
+        {
+            get
+            {
+                return this.Building.Name + " - " + this.EmployeeType.EmployeeTypeName + " - " + this.JobTitle.JobTitleName + " (" + this.Status.ToString() + ")";
+            }
+        }
+
         public static HRStaffPosition Load(string staffId, string buildingId, string employeeTypeId, string jobTitleId, LcpsDbContext db)
         {
             try
@@ -172,6 +180,25 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
                 throw new Exception("Could not load position", ex);
             }
 
+        }
+
+        public static void ValidatePosition(string buildingId, string employeeTypeId, string jobTitleId, LcpsDbContext db)
+        {
+            HRBuilding _building = db.Buildings.FirstOrDefault(x => x.BuildingId == buildingId);
+
+            HREmployeeType _employeeType = db.EmployeeTypes.FirstOrDefault(x => x.EmployeeTypeId == employeeTypeId);
+
+            HRJobTitle _jobTitle = db.JobTitles.FirstOrDefault(x => x.JobTitleId == jobTitleId);
+
+
+            if (_building == null)
+                throw new Exception(string.Format("{0} is an invalid building Id", buildingId));
+
+            if (_employeeType == null)
+                throw new Exception(String.Format("{0} is an invalid employee type Id", employeeTypeId));
+
+            if (_jobTitle == null)
+                throw new Exception(string.Format("{0} is an invalid job title Id", jobTitleId));
         }
 
         public static IEnumerable<SelectListItem> StaffQualifierList()

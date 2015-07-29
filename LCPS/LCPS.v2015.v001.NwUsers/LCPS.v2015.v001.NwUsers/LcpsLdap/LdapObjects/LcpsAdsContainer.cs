@@ -105,7 +105,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
                     containers.Add(c);
                 }
 
-                return containers;
+                return containers.OrderBy(x => x.Name).ToList();
             }
             catch (Exception ex)
             {

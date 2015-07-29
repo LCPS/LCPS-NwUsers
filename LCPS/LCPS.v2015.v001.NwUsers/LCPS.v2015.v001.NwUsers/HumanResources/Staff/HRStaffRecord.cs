@@ -66,7 +66,8 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
 
         public HRStaffPositionQualifier Status
         {
-            get { return (HRStaffPositionQualifier)this.StatusVal; }
+            get { 
+                return (HRStaffPositionQualifier)this.StatusVal; }
             set { this.StatusVal = Convert.ToInt32(value); }
         }
 

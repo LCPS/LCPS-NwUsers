@@ -1,0 +1,44 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+
+@model GroupTemplate
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Template</h2>
+
+@using (Html.BeginForm("Create", "LdapOuTemplate", new { area = "LcpsLdap" }, FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.GroupId)
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.TemplateName, new { @class = "control-label col-md-3" })
+            @Html.TextBoxFor(model => model.TemplateName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TemplateName, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3" })
+            @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "text-danger" })
+        </div>
+        @if ( !Model.GroupId.Equals(Guid.Empty))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.GroupName, new { @class = "control-label col-md-3" })
+                @Html.DisplayFor(model => model.GroupName, new { @class = "control-label" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.GroupDescription, new { @class = "control-label col-md-3" })
+                @Html.DisplayFor(model => model.GroupDescription, new { @class = "control-label" })
+            </div>
+        }
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-success col-md-offset-1" />
+        </div>
+    </div>
+}
+

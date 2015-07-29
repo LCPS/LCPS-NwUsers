@@ -86,7 +86,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
             LcpsAdsObjectTypes t = LcpsAdsObjectTypes.OrganizationalUnit;
             
             if (Groups)
-                t = t & LcpsAdsObjectTypes.Group;
+                t = t | LcpsAdsObjectTypes.Group;
 
             List<LcpsAdsContainer> cc = parent.GetContainers(parent, t, false);
             foreach(LcpsAdsContainer c in cc)

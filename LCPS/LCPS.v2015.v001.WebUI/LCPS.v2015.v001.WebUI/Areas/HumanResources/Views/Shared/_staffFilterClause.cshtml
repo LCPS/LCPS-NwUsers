@@ -22,6 +22,20 @@
         $('.cb-stf').change(function () {
             setStaffField(true);
             setStaffCunj(true);
+
+            var id = $(this).attr('id');
+
+            var fld = id.replace("Include", "");
+
+            if (fld == "Building") {
+                GetEmployeeTypes();
+                GetJobTitles();
+            }
+
+            if (fld == "EmployeeType") {
+                GetJobTitles();
+            }
+
         });
     })
 
@@ -61,7 +75,7 @@
     }
 
     $(function () {
-        $(".cb-stf[id=BuildingInclude]").bootstrapToggle({
+        $("#BuildingInclude").bootstrapToggle({
             size: 'small',
             on: 'Building',
             off: 'Building',
@@ -69,7 +83,7 @@
             offstyle: 'danger'
         });
 
-        $(".cb-stf[id=EmployeeTypeInclude]").bootstrapToggle({
+        $("#EmployeeTypeInclude").bootstrapToggle({
             size: 'small',
             on: 'Type',
             off: 'Type',
@@ -78,7 +92,7 @@
 
         });
 
-        $(".cb-stf[id=JobTitleInclude]").bootstrapToggle({
+        $("#JobTitleInclude").bootstrapToggle({
             size: 'small',
             on: 'Title',
             off: 'Title',
@@ -117,14 +131,14 @@
     })
 
     $(function () {
-        $(".cb-stf[id=BuildingValue]").change(function () {
+        $("#BuildingValue").change(function () {
             GetEmployeeTypes();
             GetJobTitles();
         });
     });
 
     $(function () {
-        $(".cb-stf[id=EmployeeTypeValue]").change(function () {
+        $("#EmployeeTypeValue").change(function () {
             GetJobTitles();
         });
     });
@@ -179,7 +193,6 @@
         var echk = $('#EmployeeTypeInclude').prop('checked');
         if (echk)
             eid = $("#EmployeeTypeValue").val();
-
 
         var jtdl = $("#JobTitleValue");
 

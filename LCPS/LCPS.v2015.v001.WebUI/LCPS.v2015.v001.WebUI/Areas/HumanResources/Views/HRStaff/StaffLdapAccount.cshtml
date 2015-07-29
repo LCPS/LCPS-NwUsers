@@ -1,0 +1,18 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
+@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
+@model LcpsAdsUserModel 
+
+@{
+    ViewBag.Title = "Staff LDAP Account";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Staff LDAP Account Details</h2>
+
+<p>
+    <a href="@Url.Action("Details", "HRStaff", new {area = "HumanResources", id=Model.UserKey})"><i class="fa fa-angle-double-left"></i> Back to Details</a>
+</p>
+
+@Html.Partial("~/Areas/LcpsLdap/Views/Shared/_LcpsLdapAdsUserPage.cshtml", Model)
+

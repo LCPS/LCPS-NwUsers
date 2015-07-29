@@ -1,0 +1,60 @@
+﻿@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
+@model GroupTemplateViewModel
+
+
+@{
+    ViewBag.Title = "Student Membership";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .tgl-btn {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    $(function () {
+        $('.tgl-btn').click(function () {
+            var id = $(this).attr('id');
+            var cn = id.replace('toggle-', '');
+            var dn = cn + '-dtl';
+            var ico = cn + '-ico';
+
+            $('#' + dn).toggle('slow', function () {
+                $('#' + ico).toggleClass('fa-angle-double-up fa-angle-double-down');
+            });
+        });
+    })
+</script>
+
+<h2>Student Filter</h2>
+
+<div class="well">
+    <h3>@Model.CurrentTemplate.TemplateName</h3>
+    <p>
+        <small>
+            @Model.CurrentTemplate.Description
+        </small>
+    </p>
+    <p><small> <i class="fa fa-cube"></i>  Group: @Model.CurrentTemplate.GroupName</small></p>
+    <div class="container">
+        <a href="@Url.Action("Index", "LdapGroupTemplate", new {area = "LcpsLdap" })"><i class="fa fa-angle-double-left"></i> Back</a>
+    </div>
+</div>
+<div class="row">
+    <small>
+        <a id="toggle-fltr" class="tgl-btn"><span id="fltr-ico" class="fa fa-angle-double-up"></span>Filter Clause</a>
+    </small>
+    <div id="fltr-dtl">
+        <h3>Student Filter Clause</h3>
+        @Html.Partial("~/Areas/Students/Views/Shared/_studentFilterClause.cshtml", Model.GetStudentClauseModel())
+    </div>
+</div>
+<div class="row">
+    <div id="lst-dtl">
+        @Html.Partial("~/Areas/Students/Views/Shared/_studentFilterClauseList.cshtml", Model.GetStudentFilter())
+    </div>
+</div>
+
