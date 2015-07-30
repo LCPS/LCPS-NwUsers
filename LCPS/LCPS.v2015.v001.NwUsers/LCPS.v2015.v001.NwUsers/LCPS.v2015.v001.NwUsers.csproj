@@ -201,6 +201,7 @@
     <Compile Include="LcpsComputers\ComputerTypes.cs" />
     <Compile Include="LcpsComputers\IComputer.cs" />
     <Compile Include="LcpsComputers\IComputerInfo.cs" />
+    <Compile Include="LcpsComputers\IO\SharedFolderTree.cs" />
     <Compile Include="LcpsComputers\Peripherals\ArchiveNic.cs" />
     <Compile Include="LcpsComputers\Peripherals\INetworkAdapter.cs" />
     <Compile Include="LcpsComputers\Peripherals\IProcessor.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="LcpsComputers\Peripherals\Win32_NetworkAdapter.cs" />
     <Compile Include="LcpsComputers\Peripherals\Win32_Processor.cs" />
     <Compile Include="LcpsComputers\RemoteComputer.cs" />
+    <Compile Include="LcpsComputers\IO\Win32_Share.cs" />
     <Compile Include="LcpsEmail\EmailAccount.cs" />
     <Compile Include="LcpsEmail\EmailEngine.cs" />
     <Compile Include="LcpsEmail\GMail\LcpsGmailContext.cs" />
@@ -248,6 +250,7 @@
     <Compile Include="LcpsLdap\LdapTemplates\HomeFolderIdFields.cs" />
     <Compile Include="LcpsLdap\LdapTemplates\HomeFolderTemplate.cs" />
     <Compile Include="LcpsLdap\LdapTemplates\OUTemplate.cs" />
+    <Compile Include="LcpsLdap\Servers\ServerShareTree.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

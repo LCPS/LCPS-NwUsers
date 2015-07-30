@@ -65,6 +65,8 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
                 AddFieldMap("Name", "dc");
             if (DirectoryEntry.SchemaClassName == "group")
                 AddFieldMap("Name", "cn");
+            if (DirectoryEntry.SchemaClassName == "container")
+                AddFieldMap("Name", "name");
 
         }
 
@@ -77,6 +79,8 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
                 string catFilter = "(objectClass={0})";
                 List<string> _cats = new List<string>();
 
+
+
                 if (containerTypes.HasFlag(LcpsAdsObjectTypes.Domain))
                     _cats.Add(string.Format(catFilter, "domain"));
                 
@@ -84,7 +88,10 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
                     _cats.Add(string.Format(catFilter, "organizationalUnit"));
 
                 if (containerTypes.HasFlag(LcpsAdsObjectTypes.Group))
+                {
                     _cats.Add(string.Format(catFilter, "group"));
+                    _cats.Add(string.Format(catFilter, "container"));
+                }
 
                 if (containerTypes.HasFlag(LcpsAdsObjectTypes.User))
                     throw new Exception("User is an unsupported option in this context");

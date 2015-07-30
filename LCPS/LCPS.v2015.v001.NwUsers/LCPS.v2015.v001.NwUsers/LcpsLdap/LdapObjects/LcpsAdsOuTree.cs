@@ -21,14 +21,14 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 
         #endregion
 
-       
+
         #region Properties
 
         public LcpsAdsContainer Domain
         {
             get
             {
-                if(_domain == null)
+                if (_domain == null)
                     _domain = new LcpsAdsContainer(DefaultApp.LdapDomainEntry);
 
                 return _domain;
@@ -84,18 +84,59 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
         private void LoadChildren(ref AnvilTreeNode n, LcpsAdsContainer parent)
         {
             LcpsAdsObjectTypes t = LcpsAdsObjectTypes.OrganizationalUnit;
-            
+
             if (Groups)
                 t = t | LcpsAdsObjectTypes.Group;
 
             List<LcpsAdsContainer> cc = parent.GetContainers(parent, t, false);
-            foreach(LcpsAdsContainer c in cc)
+            foreach (LcpsAdsContainer c in cc)
             {
-                AnvilTreeNode cn = new AnvilTreeNode(c.Name, c.ObjectGuid.ToString(), (c.ObjectType == LcpsAdsObjectTypes.OrganizationalUnit ? "ou fa fa-list-alt" : "group fa fa-users"));
-                if(c.ObjectType == LcpsAdsObjectTypes.OrganizationalUnit)
-                    LoadChildren(ref cn, c);
+                AnvilTreeNode child = new AnvilTreeNode()
+                {
+                    Text = c.Name,
+                    Value = c.ObjectGuid.ToString(),
+                    LinkClass = c.ObjectCategory.ToString()
+                };
 
-                n.Children.Add(cn);
+                if(String.IsNullOrEmpty(c.Name))
+                    child.Text = c.AdsPath;
+
+                switch (c.ObjectType)
+                {
+                    case LcpsAdsObjectTypes.Unknown:
+                        child.InitGlyph = "fa fa-question";
+                        child.ItemGlyphCss = "fa-question";
+                        child.SelectedItemGlyphCss = "fa-question";
+                        break;
+                    case LcpsAdsObjectTypes.Container:
+                        child.InitGlyph = "fa fa-folder-o";
+                        child.ItemGlyphCss = "fa-folder-o";
+                        child.SelectedItemGlyphCss = "fa-folder-o";
+                        break;
+                    case LcpsAdsObjectTypes.Domain:
+                        child.InitGlyph = "fa fa-globe";
+                        child.ItemGlyphCss = "fa-globe";
+                        child.SelectedItemGlyphCss = "fa-globe";
+                        break;
+                    case LcpsAdsObjectTypes.OrganizationalUnit:
+                        child.InitGlyph = "fa fa-folder-o";
+                        child.ItemGlyphCss = "fa-folder-o";
+                        child.SelectedItemGlyphCss = "fa-folder-o";
+                        break;
+                    case LcpsAdsObjectTypes.Group:
+                        child.InitGlyph = "fa fa-group";
+                        child.ItemGlyphCss = "fa-group";
+                        child.SelectedItemGlyphCss = "fa-group";
+                        break;
+                }
+
+                
+
+
+                if (c.ObjectType == LcpsAdsObjectTypes.OrganizationalUnit | c.ObjectType == LcpsAdsObjectTypes.Container)
+                    LoadChildren(ref child, c);
+
+                n.Children.Add(child);
             }
         }
 

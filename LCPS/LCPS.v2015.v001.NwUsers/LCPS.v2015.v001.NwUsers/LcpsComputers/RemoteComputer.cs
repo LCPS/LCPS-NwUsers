@@ -14,6 +14,7 @@ using System.DirectoryServices;
 using System.Management;
 
 using LCPS.v2015.v001.NwUsers.LcpsComputers.Peripherals;
+using LCPS.v2015.v001.NwUsers.LcpsComputers.IO;
 
 namespace LCPS.v2015.v001.NwUsers.LcpsComputers
 {
@@ -26,12 +27,19 @@ namespace LCPS.v2015.v001.NwUsers.LcpsComputers
 
         #endregion
 
+        #region Fields
+
+        private ManagementScope _scope;
+        private Win32_Share[] _shares;
+
+        #endregion
+
         #region Constructors
 
         public RemoteComputer(string computerName, string userName, string password)
         {
             this.ComputerName = computerName;
-            this.UserName = UserName;
+            this.UserName = userName;
             this.Password = password;
         }
 
@@ -150,6 +158,27 @@ namespace LCPS.v2015.v001.NwUsers.LcpsComputers
 
         #endregion
 
+        #region IO
+
+        public Win32_Share[] SharedFolders
+        {
+            get
+            {
+                if (_scope == null)
+                    Refresh();
+
+                if(_shares == null)
+                {
+                    string q = "SELECT * FROM Win32_Share WHERE Type = 0";
+                    _shares = GetList(_scope, typeof(Win32_Share), q).Cast<Win32_Share>().ToArray();
+                }
+
+                return _shares;
+            }
+        }
+
+        #endregion
+
 
         public string BuildingName { get; set; }
 
@@ -223,7 +252,7 @@ namespace LCPS.v2015.v001.NwUsers.LcpsComputers
 
         public void Refresh()
         {
-            ManagementScope _scope = new ManagementScope(string.Format(PathExp, this.ComputerName));
+            _scope = new ManagementScope(string.Format(PathExp, this.ComputerName));
             if (this.ComputerName.ToLower() != Environment.MachineName.ToLower())
             {
                 _scope.Options = new ConnectionOptions()

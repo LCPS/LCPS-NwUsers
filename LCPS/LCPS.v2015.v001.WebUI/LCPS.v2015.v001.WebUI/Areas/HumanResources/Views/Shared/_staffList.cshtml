@@ -21,6 +21,9 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
             @Html.DisplayNameFor(model => model.First().SortName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.First().StaffId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.First().BuildingName)
         </th>
         <th>
@@ -42,6 +45,9 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.SortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BuildingName)

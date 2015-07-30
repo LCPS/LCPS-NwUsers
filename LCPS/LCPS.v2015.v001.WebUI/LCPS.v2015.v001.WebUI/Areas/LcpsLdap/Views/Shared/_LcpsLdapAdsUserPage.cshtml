@@ -69,6 +69,19 @@
                     </ul>
                 </div>
             </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Home Folder Templates
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        @foreach (HomeFolderTemplate t in Model.HomeFolders)
+                        {
+                            <li>@Html.Raw(t.TemplateName + "<br><small>Group: " + t.HomeFoldePath + "</small>")</li>
+                        }
+                    </ul>
+                </div>
+            </div>
         }
     </div>
 </div>

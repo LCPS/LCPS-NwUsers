@@ -110,7 +110,10 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
                 if (this.ObjectCategory.ToLower().Contains("group"))
                     return LcpsAdsObjectTypes.Group;
 
-                throw new Exception(String.Format("{0} is not valid in this context", this.ObjectCategory));
+                if (this.ObjectCategory.ToLower().Contains("container"))
+                    return LcpsAdsObjectTypes.Container;
+
+                return LcpsAdsObjectTypes.Unknown;
             }
         }
 

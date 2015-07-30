@@ -1,0 +1,52 @@
+﻿@model IEnumerable<LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates.HomeFolderTemplate>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TemplateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeFoldePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdField)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TemplateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeFoldePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdField)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.HomeFolderId }) |
+            @Html.ActionLink("Staff", "StaffMembership", new { area = "LcpsLdap", id = item.HomeFolderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HomeFolderId })
+        </td>
+    </tr>
+}
+
+</table>

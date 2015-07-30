@@ -158,7 +158,6 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Controllers
 
                 List<StudentFilterClause> stu = DbContext.StudentFilterClauses.Where(x => x.FilterId.Equals(t.GroupId)).ToList();
 
-
                 DbContext.StaffFilterClauses.RemoveRange(stf);
                 DbContext.StudentFilterClauses.RemoveRange(stu);
 

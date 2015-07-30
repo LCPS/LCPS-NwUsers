@@ -104,6 +104,29 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
             }
         }
 
+        public IEnumerable<HomeFolderTemplate> HomeFolders
+        {
+            get
+            {
+                List<HomeFolderTemplate> items = new List<HomeFolderTemplate>();
+                foreach(HomeFolderTemplate t in db.HomeFolderTemplates.OrderBy(x => x.TemplateName))
+                {
+                    DynamicStaffFilter sf = new DynamicStaffFilter(t.HomeFolderId);
+                    sf.Refresh();
+                    List<HRStaffRecord> stf = sf.Execute();
 
+                    if (stf.Where(
+                        x => x.StaffKey.Equals(this.UserKey)).Count() > 0)
+                        items.Add(t);
+
+                    DynamicStudentFilter stuF = new DynamicStudentFilter(t.HomeFolderId);
+                    stuF.Refresh();
+                    List<StudentRecord> stu = stuF.Execute();
+                    if (stu.Where(x => x.StudentKey.Equals(this.UserKey)).Count() > 0)
+                        items.Add(t);
+                }
+                return items;
+            }
+        }
     }
 }

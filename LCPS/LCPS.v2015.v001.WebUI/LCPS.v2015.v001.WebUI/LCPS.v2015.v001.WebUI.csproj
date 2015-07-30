@@ -203,6 +203,7 @@
     <Compile Include="Areas\Import\Models\ImportSessionModel.cs" />
     <Compile Include="Areas\LcpsEmail\Controllers\LcpsEmailController.cs" />
     <Compile Include="Areas\LcpsEmail\LcpsEmailAreaRegistration.cs" />
+    <Compile Include="Areas\LcpsLdap\Controllers\HomeFolderController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapAccountImportController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapDashboardController.cs" />
     <Compile Include="Areas\LcpsLdap\Controllers\LdapGroupTemplateController.cs" />
@@ -211,6 +212,9 @@
     <Compile Include="Areas\LcpsLdap\Controllers\LdapTemplateController.cs" />
     <Compile Include="Areas\LcpsLdap\LcpsLdapAreaRegistration.cs" />
     <Compile Include="Areas\LcpsLdap\Models\GroupTemplateViewModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\HomeFolderCreateModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\HomeFolderTemplateModel.cs" />
+    <Compile Include="Areas\LcpsLdap\Models\HomeFolderTreeModel.cs" />
     <Compile Include="Areas\LcpsLdap\Models\LcpsAdsUserModel.cs" />
     <Compile Include="Areas\LcpsLdap\Models\OUTemplateViewModel.cs" />
     <Compile Include="Areas\LcpsLdap\Models\OuTreeModel.cs" />
@@ -316,6 +320,7 @@
     <Content Include="Content\lcps-theme.min.css" />
     <Content Include="Content\LcpsAds.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\spinners\atom-64.gif" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -493,6 +498,12 @@
     <EmbeddedResource Include="Migrations\201507292308095_HomeFolderTemplates001.resx">
       <DependentUpon>201507292308095_HomeFolderTemplates001.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Areas\LcpsLdap\Views\HomeFolder\Create.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\HomeFolder\Delete.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\HomeFolder\Edit.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\HomeFolder\Index.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\HomeFolder\_HomeFolderTree.cshtml" />
+    <Content Include="Areas\LcpsLdap\Views\HomeFolder\StaffMembership.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -622,6 +633,9 @@
     <Content Include="Views\Home\ddl.cshtml" />
     <Content Include="Views\Shared\_ExceptionModel.cshtml" />
     <Content Include="Views\Shared\_StatusMessage.cshtml" />
+    <Content Include="Views\Shared\_tree.cshtml" />
+    <Content Include="Views\Shared\_treeHelper.cshtml" />
+    <Content Include="Views\Shared\_serverShareTreeModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

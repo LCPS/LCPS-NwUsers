@@ -30,7 +30,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.Action("Index", "LdapOuTemplate", new { area = "LcpsLdap"})">OU Templates</a></li>
                     <li><a href="@Url.Action("Index", "LdapGroupTemplate", new { area = "LcpsLdap"})">Group Templates</a></li>
+                    <li><a href="@Url.Action("Index", "HomeFolder", new { area = "LcpsLdap"})">Home Folders</a></li>
                     <li><a href="@Url.Action("Index", "LdapStaffAccount", new { area = "LcpsLdap"})">Staff Accounts</a></li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -1,0 +1,9 @@
+﻿@using Anvil.v2015.v001.Domain.Html;
+
+@model AnvilTreeNode
+
+@Html.Partial("_treeHelper");
+
+<div class="tree">
+    @Html.Raw(Model.ToUL())
+</div>

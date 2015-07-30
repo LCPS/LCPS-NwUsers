@@ -8,10 +8,14 @@ namespace LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects
 {
     [Flags]
     public enum LcpsAdsObjectTypes
+    
+
     {
-        Domain = 0,
-        OrganizationalUnit = 1,
-        Group = 2,
-        User = 4
+        Unknown = 0,
+        Domain = 1,
+        OrganizationalUnit = 2,
+        Group = 4,
+        User = 8,
+        Container = 16
     }
 }

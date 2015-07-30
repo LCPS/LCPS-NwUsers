@@ -1,0 +1,79 @@
+﻿@using LCPS.v2015.v001.NwUsers.LcpsComputers.IO;
+@using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapTemplates;
+@using LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models;
+
+@model HomeFolderTemplate
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/LcpsLdap/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+<h4>Home Folder Template</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <p>Select A Folder Below</p>
+
+        @if (Request.QueryString["server"] == null)
+        {
+            @Html.Partial("_HomeFolderTree", SharedFolderTree.Get(null))
+        }
+        else
+        {
+            @Html.Partial("_HomeFolderTree", SharedFolderTree.Get(Request.QueryString["server"]))
+        }
+
+
+    </div>
+    <div class="col-md-8">
+        <div class="form-horizontal">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TemplateName, new { @class = "control-label col-md-3" })
+                    @Html.TextBoxFor(model => model.TemplateName, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(model => model.TemplateName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3" })
+                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HomeFoldePath, new { @class = "control-label col-md-3" })
+                    @Html.TextBoxFor(model => model.HomeFoldePath, new { @class = "form-control col-md-5", @readonly = "true" })
+                    @Html.ValidationMessageFor(model => model.HomeFoldePath)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdField, new { @class = "control-label col-md-3" })
+                    @Html.EnumDropDownListFor(model => model.IdField, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(model => model.IdField)
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

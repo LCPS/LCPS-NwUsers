@@ -16,21 +16,20 @@ using LCPS.v2015.v001.WebUI.Areas.Students.Models;
 using LCPS.v2015.v001.WebUI.Areas.HumanResources.Models;
 using LCPS.v2015.v001.NwUsers.Students;
 
-using LCPS.v2015.v001.NwUsers.LcpsLdap.LdapObjects;
 namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 {
-    public class GroupTemplateViewModel
+    public class HomeFolderTemplateModel
     {
-        #region Fields
+          #region Fields
 
         private LcpsDbContext _dbContext;
-        private GroupTemplate _currentTemplate;
+        private HomeFolderTemplate _currentTemplate;
 
         #endregion
 
         #region Constructors
 
-        public GroupTemplateViewModel(LcpsDbContext context)
+        public HomeFolderTemplateModel(LcpsDbContext context)
         {
             _dbContext = context;
 
@@ -39,10 +38,10 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 
         }
 
-        public GroupTemplateViewModel(LcpsDbContext context, Guid id)
+        public HomeFolderTemplateModel(LcpsDbContext context, Guid id)
         {
             _dbContext = context;
-            _currentTemplate = _dbContext.GroupTemplates.Find(id);
+            _currentTemplate = _dbContext.HomeFolderTemplates.Find(id);
 
             LcpsAdsDomain dom = LcpsAdsDomain.Default;
             string d = dom.Name;
@@ -54,43 +53,28 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
 
         public Exception Exception { get; set; }
 
-        public GroupTemplate CurrentTemplate
+        public HomeFolderTemplate CurrentTemplate
         {
             get { return _currentTemplate; }
         }
 
-        public OuTreeModel CreateTemplateTree
-        {
-            get
-            {
-                OuTreeModel m = new OuTreeModel()
-                {
-                    FormAction = null,
-                    FormController = null,
-                    FormArea = null,
-                };
-
-                m.OuTree.Groups = true;
-
-                return m;
-            }
-        }
+       
 
         #endregion
 
-        #region Group Templates
+        #region HomeFolder Templates
 
-        public List<GroupTemplate> GetTemplates()
+        public List<HomeFolderTemplate> GetTemplates()
         {
             try
             {
-                List<GroupTemplate> tt = _dbContext.GroupTemplates.OrderBy(x => x.TemplateName).ToList();
+                List<HomeFolderTemplate> tt = _dbContext.HomeFolderTemplates.OrderBy(x => x.TemplateName).ToList();
                 return tt;
             }
             catch (Exception ex)
             {
                 this.Exception = ex;
-                return new List<GroupTemplate>();
+                return new List<HomeFolderTemplate>();
             }
 
         }
@@ -102,18 +86,18 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
         {
             if (CurrentTemplate != null)
             {
-                StudentFilterClause c = DynamicStudentClause.GetDefaultStudentClause(CurrentTemplate.GroupId);
+                StudentFilterClause c = DynamicStudentClause.GetDefaultStudentClause(CurrentTemplate.HomeFolderId);
                 return new StudentFilterClauseModel(c)
                 {
                     FormAction = "AddStudentClause",
-                    FormController = "LdapGroupTemplate",
+                    FormController = "HomeFolder",
                     FormArea = "LcpsLdap",
                     SubmitText = "Add Clause"
                 };
             }
             else
             {
-                throw new Exception("Could not get student filter. The Group has not been set");
+                throw new Exception("Could not get student filter. The HomeFolder has not been set");
             }
         }
 
@@ -121,13 +105,13 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
         {
             if (CurrentTemplate != null)
             {
-                DynamicStudentFilter f = new DynamicStudentFilter(CurrentTemplate.GroupId);
+                DynamicStudentFilter f = new DynamicStudentFilter(CurrentTemplate.HomeFolderId);
                 f.Refresh();
                 return f;
             }
             else
             {
-                throw new Exception("Could not get student filter. The Group has not been set");
+                throw new Exception("Could not get student filter. The HomeFolder has not been set");
             }
         }
 
@@ -188,7 +172,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
                 StaffFilterClauseModel m = new StaffFilterClauseModel(DynamicStaffClause.GetDefault(id))
                 {
                     FormAction = "AddStaffClause",
-                    FormController = "LdapGroupTemplate",
+                    FormController = "HomeFolder",
                     FormArea = "LcpsLdap",
                     SubmitText = "Add Clause"
                 };
@@ -202,7 +186,7 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
         {
             if (CurrentTemplate != null)
             {
-                DynamicStaffFilter stu = new DynamicStaffFilter(CurrentTemplate.GroupId);
+                DynamicStaffFilter stu = new DynamicStaffFilter(CurrentTemplate.HomeFolderId);
                 stu.Refresh();
                 return stu;
             }
@@ -213,7 +197,5 @@ namespace LCPS.v2015.v001.WebUI.Areas.LcpsLdap.Models
         }
 
         #endregion
-
     }
-
 }

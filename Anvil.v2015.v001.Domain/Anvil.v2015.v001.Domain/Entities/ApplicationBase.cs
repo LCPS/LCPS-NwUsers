@@ -149,6 +149,14 @@ namespace Anvil.v2015.v001.Domain.Entities
         [MaxLength(128)]
         public string LDAPPassword { get; set; }
 
+        public string LDAPDomainUserName
+        {
+            get
+            {
+                return string.Format("{0}\\{1}", this.LDAPDomain, this.LDAPUserName);
+            }
+        }
+
         #endregion
 
         public System.Net.NetworkCredential GetLdapCredential()
