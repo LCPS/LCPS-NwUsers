@@ -57,5 +57,6 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources
                 return db.Buildings.Find(id).Name;
             }
         }
+
     }
 }

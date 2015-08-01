@@ -186,6 +186,7 @@
     <Compile Include="HumanResources\Staff\HRStaffPositionDefinition.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionSession.cs" />
     <Compile Include="HumanResources\Staff\HRStaffRecord.cs" />
+    <Compile Include="HumanResources\Staff\HRStaffTree.cs" />
     <Compile Include="HumanResources\Staff\IEmployeeType.cs" />
     <Compile Include="HumanResources\Staff\IJobTitle.cs" />
     <Compile Include="HumanResources\Staff\HRStaffPositionCandidate.cs" />
@@ -338,6 +339,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+    <EmbeddedResource Include="Seed\Sql\Views\LcpsEmail.StudentEmailAccount.sql" />
     <EmbeddedResource Include="Seed\Sql\Views\LcpsLdap.Ldap-Staff-Import.sql" />
     <None Include="LcpsLdap\LdapAccounts\LdapAccountContext.dbml.layout">
       <DependentUpon>LdapAccountContext.dbml</DependentUpon>

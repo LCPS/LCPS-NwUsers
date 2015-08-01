@@ -28,8 +28,6 @@ namespace LCPS.v2015.v001.WebUI
             LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext db = new WebUI.Infrastructure.LcpsDbContext();
             LCPS.v2015.v001.NwUsers.Properties.Settings.Default.ConnectionString = db.Database.Connection.ConnectionString;
 
-            ApplicationBase ab = LcpsDbContext.Application;
-            db.Seed();
             
             
         }

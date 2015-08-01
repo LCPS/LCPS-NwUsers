@@ -19,6 +19,8 @@ using LCPS.v2015.v001.NwUsers.HumanResources;
 using LCPS.v2015.v001.NwUsers.HumanResources.Staff;
 using LCPS.v2015.v001.NwUsers.HumanResources.HRImport;
 
+
+
 using LCPS.v2015.v001.NwUsers.Filters;
 using System.Web;
 
@@ -28,6 +30,7 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 {
     public class LcpsDbContext : ApplicationDbContext
     {
+
         #region Events
         #endregion
 
@@ -157,4 +160,5 @@ namespace LCPS.v2015.v001.NwUsers.Infrastructure
 
 
     }
+
 }

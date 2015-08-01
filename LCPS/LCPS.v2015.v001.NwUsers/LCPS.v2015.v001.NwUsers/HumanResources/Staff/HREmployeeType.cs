@@ -78,5 +78,23 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
             return items;
 
         }
+
+        public List<HREmployeeType> GetList(Guid? buildingKey)
+        {
+            LcpsDbContext db = new LcpsDbContext();
+            if (buildingKey == null)
+                return db.EmployeeTypes.OrderBy(x => x.EmployeeTypeName).ToList();
+            else
+            {
+                List<HREmployeeType> items = (from HREmployeeType x in db.EmployeeTypes
+                                              join HRStaffPosition p in db.StaffPositions on x.EmployeeTypeLinkId equals p.EmployeeTypeKey
+                                              where p.BuildingKey.Equals(buildingKey)
+                                              orderby x.EmployeeTypeName
+                                              select x).ToList();
+                return items;
+            }
+        }
+
+
     }
 }

@@ -51,7 +51,47 @@ namespace LCPS.v2015.v001.NwUsers.HumanResources.Staff
         }
 
 
+        public List<HRJobTitle> GetList(Guid? buildingId, Guid? employeeTypeId)
+        {
+            LcpsDbContext db = new LcpsDbContext();
+            List<HRJobTitle> items = new List<HRJobTitle>();
 
+
+            if(buildingId == null & employeeTypeId == null)
+            {
+                items = db.JobTitles.OrderBy(x => x.JobTitleName).ToList();
+            }
+
+            if(buildingId != null & employeeTypeId == null)
+            {
+                items = (from HRJobTitle jt in db.JobTitles 
+                         join HRStaffPosition p in db.StaffPositions on jt.JobTitleKey equals p.JobTitleKey
+                         where p.BuildingKey.Equals(buildingId.Value)
+                         orderby jt.JobTitleName
+                         select jt).ToList();
+            }
+
+            if (buildingId == null & employeeTypeId != null)
+            {
+                items = (from HRJobTitle jt in db.JobTitles
+                         join HRStaffPosition p in db.StaffPositions on jt.JobTitleKey equals p.JobTitleKey
+                         where p.EmployeeTypeKey.Equals(employeeTypeId.Value)
+                         orderby jt.JobTitleName
+                         select jt).ToList();
+            }
+
+            if (buildingId != null & employeeTypeId != null)
+            {
+                items = (from HRJobTitle jt in db.JobTitles
+                         join HRStaffPosition p in db.StaffPositions on jt.JobTitleKey equals p.JobTitleKey
+                         where p.EmployeeTypeKey.Equals(employeeTypeId.Value) &
+                            p.BuildingKey.Equals(buildingId.Value)
+                         orderby jt.JobTitleName
+                         select jt).ToList();
+            }
+
+            return items;
+        }
 
 
         

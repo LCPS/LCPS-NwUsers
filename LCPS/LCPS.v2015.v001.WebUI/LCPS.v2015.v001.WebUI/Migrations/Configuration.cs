@@ -9,7 +9,7 @@ namespace LCPS.v2015.v001.WebUI.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(LCPS.v2015.v001.WebUI.Infrastructure.LcpsDbContext context)
